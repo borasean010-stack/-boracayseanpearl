@@ -27,12 +27,17 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Testimonials:** User-focused social proof section.
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 
-## 4. Recent Tasks
+## 4. Current Task: Hero Video Integration
+*   Adding/Fixing the main hero background video using the local file `Pearl of sean viedo.mp4`.
+*   Ensuring smooth playback (autoplay, muted, loop) and proper responsive covering.
+*   Maintaining contrast for overlays and text.
+
+## 5. Project History
 ### Add Logo to Header
 *   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
 *   Ensured responsive sizing and color transitions on scroll.
 
-### Add Hero Background Video
-*   Replaced static hero image with a high-quality, autoplaying background video.
+### Hero Background Video (In Progress)
+*   Replacing static hero image with a high-quality, autoplaying background video.
 *   Maintained readable text through multi-layered color and gradient overlays.
-*   Note: Facebook video links are not suitable for direct background embedding; a direct MP4 file should be used for optimal performance and aesthetics.
+*   Fixed the source to use the correct local file: `Pearl of sean viedo.mp4`.
