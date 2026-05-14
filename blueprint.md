@@ -37,7 +37,8 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
 *   Ensured responsive sizing and color transitions on scroll.
 
-### Hero Background Video (In Progress)
-*   Replacing static hero image with a high-quality, autoplaying background video.
+### Hero Background Video (Fixed)
+*   Replaced static hero image with a high-quality, autoplaying background video.
+*   Downscaled the video to 1080p (`hero-video.mp4`) to ensure smooth playback across all devices and faster loading.
 *   Maintained readable text through multi-layered color and gradient overlays.
-*   Fixed the source to use the correct local file: `Pearl of sean viedo.mp4`.
+*   Simplified the filename and updated the HTML `<video>` tag with `preload="auto"` and `playsinline` for maximum compatibility.
