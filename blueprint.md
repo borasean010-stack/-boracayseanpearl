@@ -28,18 +28,18 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Hopping Tour Booking Page Updates
-*   **Hero Section:** Update background video to `https://youtu.be/9bDWdocKn9I` on both `index.html` and `yacht-tour.html`.
-*   **Included Section:** Replace the main image in `yacht-tour.html` with a YouTube Short embed (`https://youtube.com/shorts/fuMdnDUH2aY`).
-*   **Pricing:** Update price to 1,900 PHP per person across all relevant sections in `yacht-tour.html`.
-*   **Elite Guestbook:** Replace the background image in `yacht-tour.html` with `Pearl of sean 10.png`.
+## 4. Current Task: Hopping Tour Detailed Content Updates
+*   **Product Title:** Updated to "Pearl of Sean Yacht Hopping (Free GoPro Photo, Water Slide, Kayak & Unlimited Cocktails)".
+*   **Narrative Description:** Added "The ultimate and most luxurious way..." narrative with sections for Snorkeling, Floating Playground, and Endless Treats.
+*   **Feature Grid:** Implemented 4-pillar highlights: Luxury Yacht, Water Playground, GoPro Photos, and Unlimited Party.
+*   **Lists:** Created structured Inclusions and Exclusions sections with 100 PHP Environment Fee clearly noted.
 
 ## 5. Project History
-### Hopping Tour Page Enhancements (Current)
-*   **Unified Visuals:** Synced the hero background video across the landing page and tour detail page for a cohesive brand experience.
-*   **Dynamic Content:** Integrated YouTube Shorts into the tour highlights section to provide a more engaging, mobile-first visual experience.
-*   **Pricing Adjustment:** Updated the standard tour investment to 1,900 PHP, ensuring consistent pricing across sticky CTAs and detail sections.
-*   **Branding:** Applied the "Pearl of sean 10.png" as a textured background for the social proof section.
+### Detailed Content & Narrative Implementation (Current)
+*   **Brand Voice:** Infused the page with a premium, welcoming narrative that distinguishes the yacht experience from ordinary boat tours.
+*   **Activity Focus:** Highlighted the massive water slide, diving platform, and complimentary kayaks to emphasize the "Floating Playground" aspect.
+*   **Service Excellence:** Integrated details about the multilingual (English/Korean) crew and the free professional GoPro photo service.
+*   **Clear Information Architecture:** Reorganized inclusion and exclusion lists for better transparency, specifically highlighting on-site fees.
 
 ### Add Logo to Header
 *   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
