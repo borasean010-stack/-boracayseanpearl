@@ -42,8 +42,9 @@
     <!-- Navbar -->
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-heading font-bold z-50">
-                <span id="logo-text" class="text-white transition-colors duration-300">Pearl Of Sean</span>
+            <a href="#home" class="z-50 flex items-center gap-3 group">
+                <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <span id="logo-text" class="text-xl md:text-2xl font-heading font-bold text-white transition-colors duration-300">Pearl Of Sean</span>
             </a>
 
             <!-- Desktop Nav -->
@@ -80,7 +81,19 @@
     <!-- Hero Section -->
     <section id="home" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Boracay Ocean" class="w-full h-full object-cover" />
+            <!-- Background Video -->
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                class="w-full h-full object-cover"
+                poster="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+                <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=7b23158f94e69e4690f05ca07b66b4d3204213d2&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                <!-- Fallback image is already handled by poster and the img tag below if video fails -->
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Boracay Ocean" class="w-full h-full object-cover" />
+            </video>
+            
             <div class="absolute inset-0 bg-secondary/40 mix-blend-multiply"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-secondary/50 via-transparent to-secondary/80"></div>
         </div>
@@ -493,7 +506,10 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <h3 class="text-3xl font-heading font-bold mb-4">Pearl Of Sean</h3>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain">
+                        <h3 class="text-3xl font-heading font-bold">Pearl Of Sean</h3>
+                    </div>
                     <p class="text-gray-300 max-w-sm">
                         Premium Boracay island hopping tours, sunset cruises, and unforgettable ocean experiences.
                     </p>

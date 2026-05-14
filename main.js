@@ -33,14 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isMenuOpen) {
             mobileMenu.classList.remove('-translate-y-full');
             mobileToggleIcon.classList.replace('ph-list', 'ph-x');
-            // Ensure icon is secondary color when menu is open on white bg
+            // Ensure elements are secondary color when menu is open on white bg
             mobileToggleIcon.classList.replace('text-white', 'text-secondary'); 
+            logoText.classList.replace('text-white', 'text-secondary');
         } else {
             mobileMenu.classList.add('-translate-y-full');
             mobileToggleIcon.classList.replace('ph-x', 'ph-list');
-            // Revert icon color based on scroll position
+            // Revert colors based on scroll position
             if (window.scrollY <= 50) {
                 mobileToggleIcon.classList.replace('text-secondary', 'text-white');
+                logoText.classList.replace('text-secondary', 'text-white');
             }
         }
     }

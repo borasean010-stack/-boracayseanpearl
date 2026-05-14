@@ -1,32 +1,38 @@
-# Red Whale Boracay - Project Blueprint
+# Pearl Of Sean Boracay - Project Blueprint
 
 ## 1. Overview
-This project is a modern, responsive landing page for a premium yacht tour and party cruise service in Boracay, inspired by "Red Whale". The goal is to convey luxury, excitement, and a premium experience through high-quality visuals, elegant typography, and smooth interactions. The site is built without external frameworks, relying on modern HTML, CSS, and JS (Baseline web standards).
+This project is a modern, responsive landing page for "Pearl Of Sean", a premium island hopping tour and ocean experience service in Boracay. The website aims to provide a high-end, immersive experience for potential travelers, showcasing tours, gallery, and reviews with a clean and vibrant aesthetic.
 
 ## 2. Design & Styling Outline
-*   **Aesthetics:** Premium, energetic, and marine-themed.
-*   **Color Palette:**
-    *   Primary: Deep Ocean Blue (`#0B2046`)
-    *   Secondary: Sunset Gold (`#F5A623`) - used for accents and CTAs.
-    *   Background: Clean White (`#FFFFFF`) and Light Gray (`#F8F9FA`) for alternating sections.
-    *   Text: Dark Charcoal (`#333333`) for readability.
+*   **Aesthetics:** Premium, vibrant, and modern marine theme.
+*   **Color Palette (Tailwind Config):**
+    *   Primary: `#29D3D0` (Teal/Turquoise)
+    *   Secondary: `#062B43` (Deep Navy)
+    *   Accent: `#F2C94C` (Gold/Yellow)
+    *   Light: `#F8F9FA` (Off-white)
 *   **Typography:**
-    *   Headings: 'Montserrat' (Bold, expressive)
-    *   Body: 'Poppins' (Clean, legible)
+    *   Headings: 'Montserrat'
+    *   Body: 'Inter'
 *   **Visual Elements:**
-    *   Large, immersive hero image background.
-    *   Glassmorphism effects for navigation to give a modern feel.
-    *   Subtle hover animations (scale, box-shadow) on buttons and interactive elements.
+    *   Glassmorphism/Translucency on fixed headers.
+    *   Fade-in and Zoom animations using Intersection Observer.
+    *   Modern Phosphor Icons.
 
 ## 3. Features
-*   **Hero Section:** High-impact visual with a clear "Book Now" call to action.
-*   **About the Cruise:** Brief introduction to the luxury yacht experience.
-*   **Highlights/Services:** Icon-based grid highlighting key features (Unlimited Drinks, DJ Party, Water Sports, Sunset Views).
-*   **Gallery:** A responsive grid showcasing the experience.
-*   **Footer:** Links, contact info, social icons.
+*   **Fixed Navbar:** Sticky navigation with dynamic background transitions.
+*   **Hero Section:** Full-screen immersive hero with background video, parallax-like overlays, and smooth typography.
+*   **Tours Section:** Grid of tour cards with pricing, features, and booking CTAs.
+*   **Gallery Section:** Masonry-style layout for visual storytelling.
+*   **Timeline Section:** Vertical itinerary showing a "Day in Paradise".
+*   **Testimonials:** User-focused social proof section.
+*   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 
-## 4. Current Implementation Plan
-1.  **Generate `blueprint.md`**: Define the scope and design.
-2.  **Scaffold `index.html`**: Structure the document with semantic tags.
-3.  **Develop `style.css`**: Implement CSS variables, layout, and responsive design.
-4.  **Write `main.js`**: Add logic for a sticky navigation bar and mobile menu.
+## 4. Recent Tasks
+### Add Logo to Header
+*   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
+*   Ensured responsive sizing and color transitions on scroll.
+
+### Add Hero Background Video
+*   Replaced static hero image with a high-quality, autoplaying background video.
+*   Maintained readable text through multi-layered color and gradient overlays.
+*   Note: Facebook video links are not suitable for direct background embedding; a direct MP4 file should be used for optimal performance and aesthetics.
