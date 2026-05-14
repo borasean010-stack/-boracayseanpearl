@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Yacht Hopping Tour | Pearl Of Sean Boracay</title>
+    <meta name="description" content="Experience the ultimate luxury island hopping in Boracay. Premium yacht, snorkeling, sunset party, and drone photography. Book your unforgettable ocean adventure.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#29D3D0",
+                        secondary: "#062B43",
+                        accent: "#F2C94C",
+                        light: "#F8F9FA",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        heading: ["Montserrat", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light text-secondary antialiased overflow-x-hidden font-sans flex min-h-screen flex-col">
+
+    <!-- Navbar -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="z-50 flex items-center gap-3 group">
+                <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <span id="logo-text" class="text-xl font-heading font-bold text-white">Pearl Of Sean</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <ul class="flex gap-8">
+                    <li><a href="index.html" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="#about" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Why Us</a></li>
+                    <li><a href="#gallery" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Gallery</a></li>
+                    <li><a href="#timeline" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Itinerary</a></li>
+                </ul>
+                <a href="#booking" class="bg-primary text-white px-6 py-2 rounded-full font-medium hover:shadow-[0_0_20px_rgba(41,211,208,0.4)] transition-all">
+                    Book Tour
+                </a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-toggle" class="md:hidden z-50 text-white">
+                <i class="ph ph-list text-3xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 transform -translate-y-full transition-transform duration-500 ease-in-out">
+            <a href="index.html" class="mobile-link text-2xl font-heading font-semibold text-secondary">Home</a>
+            <a href="#about" class="mobile-link text-2xl font-heading font-semibold text-secondary">Why Us</a>
+            <a href="#gallery" class="mobile-link text-2xl font-heading font-semibold text-secondary">Gallery</a>
+            <a href="#timeline" class="mobile-link text-2xl font-heading font-semibold text-secondary">Itinerary</a>
+            <a href="#booking" class="mobile-link bg-primary text-white px-8 py-3 rounded-full font-medium text-lg shadow-lg">Book Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Background Video (YouTube) -->
+            <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none scale-110">
+                <iframe 
+                    class="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-80"
+                    src="https://www.youtube.com/embed/p1Ksygpa4cE?autoplay=1&mute=1&loop=1&playlist=p1Ksygpa4cE&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <!-- Overlay & Glass Effect -->
+            <div class="absolute inset-0 bg-secondary/30 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-secondary/60 via-transparent to-secondary/90"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center text-white pt-20">
+            <div class="fade-up">
+                <span class="inline-block px-4 py-1 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-md text-primary text-xs font-bold uppercase tracking-[0.3em] mb-6">
+                    Featured Adventure
+                </span>
+                <h1 class="text-5xl md:text-8xl font-heading font-extrabold mb-6 leading-[1.1] tracking-tight">
+                    Yacht Hopping <br> <span class="text-primary italic font-light">Experience</span>
+                </h1>
+                <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    Sail through Boracay's most beautiful moments on a premium luxury yacht. An elite journey crafted for the modern traveler.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="#booking" class="group bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-[0_10px_30px_rgba(41,211,208,0.3)] flex items-center gap-3">
+                        Book Your Spot <i class="ph ph-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                    <a href="#timeline" class="text-white hover:text-primary font-semibold transition-colors flex items-center gap-2">
+                        View Itinerary <i class="ph ph-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 opacity-50">
+            <div class="w-[1px] h-16 bg-gradient-to-b from-transparent via-white to-transparent relative overflow-hidden">
+                <div class="scroll-indicator-line absolute top-0 left-0 w-full h-1/2 bg-primary"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section id="about" class="py-32 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-end justify-between mb-20 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="fade-up text-4xl md:text-6xl font-heading font-bold text-secondary mb-6 leading-tight">
+                        Why Choose <br><span class="text-primary italic">Pearl Of Sean</span>?
+                    </h2>
+                    <p class="fade-up text-gray-500 text-lg delay-100">
+                        We don't just offer tours; we create core memories. Our yacht hopping experience is defined by attention to detail and exclusive access.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="fade-up group p-10 rounded-[2.5rem] bg-light hover:bg-white border border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 delay-100">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 text-primary shadow-sm text-3xl group-hover:scale-110 transition-transform">
+                        <i class="ph ph-yacht"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Premium Yacht</h3>
+                    <p class="text-gray-600 leading-relaxed">State-of-the-art vessels equipped with luxury amenities for your ultimate comfort.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="fade-up group p-10 rounded-[2.5rem] bg-light hover:bg-white border border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 delay-200">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 text-primary shadow-sm text-3xl group-hover:scale-110 transition-transform">
+                        <i class="ph ph-users-three"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Small Groups</h3>
+                    <p class="text-gray-600 leading-relaxed">Intimate experiences only. We keep our groups small to ensure personal service for every guest.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="fade-up group p-10 rounded-[2.5rem] bg-light hover:bg-white border border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 delay-300">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 text-primary shadow-sm text-3xl group-hover:scale-110 transition-transform">
+                        <i class="ph ph-camera-rotate"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Drone Ready</h3>
+                    <p class="text-gray-600 leading-relaxed">We take you to the best spots and help capture stunning drone footage of your journey.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="fade-up group p-10 rounded-[2.5rem] bg-light hover:bg-white border border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 delay-400">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 text-primary shadow-sm text-3xl group-hover:scale-110 transition-transform">
+                        <i class="ph ph-sparkles"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Elite Vibes</h3>
+                    <p class="text-gray-600 leading-relaxed">From curated music to premium snacks, every detail is designed for a high-end feel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Highlights Section -->
+    <section class="py-24 bg-secondary text-white overflow-hidden relative">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="fade-left relative">
+                    <div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Yacht Party" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 rounded-[2rem] overflow-hidden border-8 border-secondary hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Snorkeling" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8">What's Included in Your <span class="text-primary italic">Adventure</span></h2>
+                    <ul class="space-y-6 mb-12">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="ph-bold ph-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">Premium Yacht Access</h4>
+                                <p class="text-gray-400">Access to all decks, lounge areas, and onboard amenities.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="ph-bold ph-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">Gourmet Tropical Lunch</h4>
+                                <p class="text-gray-400">Freshly prepared seafood BBQ and local delicacies served on board.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="ph-bold ph-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">Pro Snorkeling Equipment</h4>
+                                <p class="text-gray-400">High-quality gear and professional guides to show you the best reefs.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="ph-bold ph-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">Unlimited Drinks & Spirits</h4>
+                                <p class="text-primary font-medium">Enjoy our curated selection of cocktails and chilled beers.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-gray-400 font-medium uppercase tracking-widest text-sm">Investment</span>
+                            <span class="text-accent font-bold text-3xl">$125 <span class="text-sm font-normal text-gray-400">/ person</span></span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 italic">*Private charters available upon request for $1,500+</p>
+                        <a href="#booking" class="block w-full text-center bg-primary text-white py-4 rounded-2xl font-bold hover:shadow-[0_0_20px_rgba(41,211,208,0.3)] transition-all">Secure Your Date</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masonry Gallery -->
+    <section id="gallery" class="py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="fade-up text-4xl md:text-5xl font-heading font-bold text-secondary mb-4">
+                    Captured <span class="text-primary italic">Moments</span>
+                </h2>
+                <p class="fade-up text-gray-500 max-w-2xl mx-auto text-lg delay-100">
+                    A collection of raw, unedited beauty from our recent voyages.
+                </p>
+            </div>
+
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="fade-zoom masonry-item relative group rounded-[2rem] overflow-hidden break-inside-avoid shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1544551763-77ef2d011504?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-white font-bold tracking-widest border border-white/30 px-6 py-2 rounded-full uppercase text-xs">View Full</span>
+                    </div>
+                </div>
+                <div class="fade-zoom masonry-item relative group rounded-[2rem] overflow-hidden break-inside-avoid shadow-lg delay-100">
+                    <img src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-white font-bold tracking-widest border border-white/30 px-6 py-2 rounded-full uppercase text-xs">View Full</span>
+                    </div>
+                </div>
+                <div class="fade-zoom masonry-item relative group rounded-[2rem] overflow-hidden break-inside-avoid shadow-lg delay-200">
+                    <img src="https://images.unsplash.com/photo-1498623116890-37e912163d5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-white font-bold tracking-widest border border-white/30 px-6 py-2 rounded-full uppercase text-xs">View Full</span>
+                    </div>
+                </div>
+                <div class="fade-zoom masonry-item relative group rounded-[2rem] overflow-hidden break-inside-avoid shadow-lg delay-300">
+                    <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-white font-bold tracking-widest border border-white/30 px-6 py-2 rounded-full uppercase text-xs">View Full</span>
+                    </div>
+                </div>
+                <div class="fade-zoom masonry-item relative group rounded-[2rem] overflow-hidden break-inside-avoid shadow-lg delay-400">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-white font-bold tracking-widest border border-white/30 px-6 py-2 rounded-full uppercase text-xs">View Full</span>
+                    </div>
+                </div>
+                <div class="fade-zoom masonry-item relative group rounded-[2rem] overflow-hidden break-inside-avoid shadow-lg delay-500">
+                    <img src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-white font-bold tracking-widest border border-white/30 px-6 py-2 rounded-full uppercase text-xs">View Full</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="timeline" class="py-32 bg-light overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-24">
+                <h2 class="fade-up text-4xl md:text-6xl font-heading font-bold text-secondary mb-4">
+                    The Elite <span class="text-primary italic">Itinerary</span>
+                </h2>
+                <p class="fade-up text-gray-500 text-lg delay-100">A meticulously planned day for effortless enjoyment.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div id="timeline-progress" class="w-full h-0 bg-primary transition-all duration-1000 ease-out"></div>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
+                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
+                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">10:00 AM</span>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Elite Meet & Greet</h3>
+                        <p class="text-gray-500">Boarding and orientation at our private station. Welcome chilled towels and drinks.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
+                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
+                    <div class="fade-left md:w-[45%] md:ml-auto pl-12 md:pl-12">
+                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">11:00 AM</span>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Yacht Departure</h3>
+                        <p class="text-gray-500">Set sail along White Beach. Experience the thrill of the open ocean with premium music.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
+                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
+                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">12:30 PM</span>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Crystal Water Haven</h3>
+                        <p class="text-gray-500">Snorkeling at exclusive, uncrowded reefs. Underwater photography session included.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
+                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
+                    <div class="fade-left md:w-[45%] md:ml-auto pl-12 md:pl-12">
+                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">02:00 PM</span>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Premium Island BBQ</h3>
+                        <p class="text-gray-500">Dine on a gourmet selection of grilled seafood, tropical fruits, and premium sides.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
+                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
+                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">04:30 PM</span>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Sunset Party Vibes</h3>
+                        <p class="text-gray-500">Live DJ session as the sun sets over the horizon. Cocktails flowing, spirits high.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-32 bg-secondary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Background" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="fade-up text-4xl md:text-5xl font-heading font-bold mb-4">Elite <span class="text-primary italic">Guestbook</span></h2>
+                <p class="fade-up text-gray-400 delay-100">Hear from those who've experienced the Pearl Of Sean vibe.</p>
+            </div>
+
+            <div class="flex overflow-x-auto hide-scrollbar gap-8 pb-10">
+                <!-- Review 1 -->
+                <div class="fade-up min-w-[300px] md:min-w-[450px] bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-[3rem] relative">
+                    <div class="flex text-accent mb-6 text-xl">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-300 italic mb-10 leading-relaxed">
+                        "The absolute peak of our Boracay trip. The yacht was pristine, the food was gourmet level, and the sunset party is something we'll never forget."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">AV</div>
+                        <div>
+                            <h4 class="font-bold">Alessandro V.</h4>
+                            <p class="text-sm text-gray-500">Italy</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="fade-up min-w-[300px] md:min-w-[450px] bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-[3rem] relative delay-100">
+                    <div class="flex text-accent mb-6 text-xl">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-300 italic mb-10 leading-relaxed">
+                        "If you're looking for luxury, this is it. The staff treats you like royalty and the snorkeling spots they found were pure magic. Worth every cent."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">SM</div>
+                        <div>
+                            <h4 class="font-bold">Sarah M.</h4>
+                            <p class="text-sm text-gray-500">United Kingdom</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="fade-up min-w-[300px] md:min-w-[450px] bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-[3rem] relative delay-200">
+                    <div class="flex text-accent mb-6 text-xl">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-300 italic mb-10 leading-relaxed">
+                        "The perfect blend of relaxation and party. We started as strangers and ended the day as friends. Best ocean experience ever!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">KC</div>
+                        <div>
+                            <h4 class="font-bold">Kevin C.</h4>
+                            <p class="text-sm text-gray-400">Singapore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="booking" class="relative py-40 bg-secondary text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Sunset" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-secondary/80 mix-blend-multiply"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="fade-up text-5xl md:text-7xl font-heading font-bold mb-10 max-w-4xl mx-auto leading-tight">
+                Ready to Join the <br> <span class="text-primary italic">Elite?</span>
+            </h2>
+            <p class="fade-up text-xl text-gray-300 mb-12 max-w-2xl mx-auto delay-100">
+                Spaces for the Yacht Hopping Tour are extremely limited. Secure your premium Boracay experience today.
+            </p>
+            <div class="fade-up flex flex-col sm:flex-row items-center justify-center gap-6 delay-200">
+                <a href="#" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-secondary transition-all transform hover:scale-105 shadow-2xl shadow-primary/40 flex items-center justify-center gap-3">
+                    Confirm Your Booking <i class="ph-bold ph-calendar"></i>
+                </a>
+                <a href="#" class="w-full sm:w-auto bg-green-500 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-green-400 transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center gap-3">
+                    <i class="ph-fill ph-whatsapp-logo"></i> WhatsApp Inquiry
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-20 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-12">
+                <div class="flex items-center gap-3">
+                    <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 w-auto">
+                    <h3 class="text-3xl font-heading font-bold">Pearl Of Sean</h3>
+                </div>
+                <div class="flex gap-12 text-gray-400 font-medium text-sm uppercase tracking-widest">
+                    <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors">Tours</a>
+                    <a href="#gallery" class="hover:text-primary transition-colors">Gallery</a>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-primary transition-all text-xl">
+                        <i class="ph-fill ph-facebook-logo"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-primary transition-all text-xl">
+                        <i class="ph-fill ph-instagram-logo"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-20 pt-10 border-t border-white/5 text-center text-gray-600 text-sm">
+                <p>&copy; 2026 Pearl Of Sean. Premium Boracay Experiences. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 w-full z-50 p-4 md:hidden transform translate-y-full transition-transform duration-500 ease-out">
+        <div class="bg-white/80 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-2xl flex items-center justify-between gap-4">
+            <div>
+                <span class="text-gray-400 text-xs font-bold uppercase block tracking-widest">Starts From</span>
+                <span class="text-secondary font-bold text-xl">$125</span>
+            </div>
+            <a href="#booking" class="bg-primary text-white px-8 py-3 rounded-2xl font-bold flex-1 text-center shadow-lg shadow-primary/20">Book Now</a>
+        </div>
+    </div>
+
+    <!-- Sticky Desktop CTA -->
+    <div id="desktop-cta" class="fixed top-24 right-8 z-50 hidden lg:block opacity-0 translate-x-10 transition-all duration-500">
+        <div class="glass-card p-8 rounded-[2.5rem] w-72 shadow-2xl">
+            <span class="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Limited Availability</span>
+            <h4 class="text-white text-xl font-bold mb-2 leading-tight">Join Our Next Voyage</h4>
+            <div class="flex items-center gap-2 mb-6 text-accent">
+                <i class="ph-fill ph-star"></i>
+                <span class="font-bold">4.9/5</span>
+                <span class="text-gray-500 text-sm">(120+ reviews)</span>
+            </div>
+            <div class="mb-8">
+                <span class="text-gray-500 text-xs block mb-1">Price per guest</span>
+                <span class="text-white text-3xl font-bold">$125</span>
+            </div>
+            <a href="#booking" class="block w-full text-center bg-primary text-white py-4 rounded-2xl font-bold hover:shadow-[0_0_20px_rgba(41,211,208,0.4)] transition-all">
+                Reserve Now
+            </a>
+        </div>
+    </div>
+
+    <script src="yacht-tour.js"></script>
+</body>
+</html>

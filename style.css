@@ -30,6 +30,13 @@
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+/* Stagger animation delay helpers */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
 /* Final states applied by JavaScript */
 .is-visible {
     opacity: 1 !important;
@@ -48,4 +55,57 @@
     100% {
         transform: translateY(100%);
     }
+}
+
+/* --- Luxury UI Utilities --- */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.text-glow {
+    text-shadow: 0 0 15px rgba(41, 211, 208, 0.5);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(41, 211, 208, 0.3);
+    border-color: rgba(41, 211, 208, 0.4);
+}
+
+.masonry-item {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-line-active {
+    height: 100%;
+    transition: height 1s ease-out;
+}
+
+/* Floating animation */
+.float-anim {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Custom horizontal scroll hide */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

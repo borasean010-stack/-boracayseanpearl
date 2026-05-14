@@ -26,19 +26,24 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Timeline Section:** Vertical itinerary showing a "Day in Paradise".
 *   **Testimonials:** User-focused social proof section.
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
+*   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Hero Video Integration
-*   Adding/Fixing the main hero background video using the local file `Pearl of sean viedo.mp4`.
-*   Ensuring smooth playback (autoplay, muted, loop) and proper responsive covering.
-*   Maintaining contrast for overlays and text.
+## 4. Current Task: Yacht Tour Detail Page
+*   Created `yacht-tour.html` and `yacht-tour.js`.
+*   Implemented cinematic YouTube hero background.
+*   Added luxury UI components: Glassmorphism, floating CTAs, masonry gallery, and animated timeline.
+*   Linked main landing page (`index.html`) to the new detail page.
 
 ## 5. Project History
 ### Add Logo to Header
 *   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
 *   Ensured responsive sizing and color transitions on scroll.
 
-### Hero Background Video (Fixed)
-*   Replaced static hero image with a high-quality, autoplaying background video.
-*   Downscaled the video to 1080p (`hero-video.mp4`) to ensure smooth playback across all devices and faster loading.
-*   Maintained readable text through multi-layered color and gradient overlays.
-*   Simplified the filename and updated the HTML `<video>` tag with `preload="auto"` and `playsinline` for maximum compatibility.
+### Hero Background Video (YouTube Integration)
+*   Switched from a local video file to a YouTube-hosted background video (`https://youtu.be/p1Ksygpa4cE`).
+*   Configured the YouTube iframe for seamless background playback:
+    *   **Autoplay & Mute:** Required for automatic playback in modern browsers.
+    *   **Loop:** Enabled via the `playlist` parameter.
+    *   **UI Hidden:** Removed controls, branding, and related videos.
+    *   **Responsive Covering:** Used CSS transform and scaling to ensure the video covers the hero area without letterboxing.
+*   This approach ensures 100% deployment compatibility with Cloudflare Pages and significantly faster initial page loads.
