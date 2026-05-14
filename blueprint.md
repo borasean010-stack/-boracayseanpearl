@@ -28,22 +28,24 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Yacht Tour Detail Page
-*   Created `yacht-tour.html` and `yacht-tour.js`.
-*   Implemented cinematic YouTube hero background.
-*   Added luxury UI components: Glassmorphism, floating CTAs, masonry gallery, and animated timeline.
-*   Linked main landing page (`index.html`) to the new detail page.
+## 4. Current Task: Hopping Tour Booking Page Updates
+*   **Hero Section:** Update background video to `https://youtu.be/9bDWdocKn9I` on both `index.html` and `yacht-tour.html`.
+*   **Included Section:** Replace the main image in `yacht-tour.html` with a YouTube Short embed (`https://youtube.com/shorts/fuMdnDUH2aY`).
+*   **Pricing:** Update price to 1,900 PHP per person across all relevant sections in `yacht-tour.html`.
+*   **Elite Guestbook:** Replace the background image in `yacht-tour.html` with `Pearl of sean 10.png`.
 
 ## 5. Project History
+### Hopping Tour Page Enhancements (Current)
+*   **Unified Visuals:** Synced the hero background video across the landing page and tour detail page for a cohesive brand experience.
+*   **Dynamic Content:** Integrated YouTube Shorts into the tour highlights section to provide a more engaging, mobile-first visual experience.
+*   **Pricing Adjustment:** Updated the standard tour investment to 1,900 PHP, ensuring consistent pricing across sticky CTAs and detail sections.
+*   **Branding:** Applied the "Pearl of sean 10.png" as a textured background for the social proof section.
+
 ### Add Logo to Header
 *   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
 *   Ensured responsive sizing and color transitions on scroll.
 
 ### Hero Background Video (YouTube Integration)
 *   Switched from a local video file to a YouTube-hosted background video (`https://youtu.be/p1Ksygpa4cE`).
-*   Configured the YouTube iframe for seamless background playback:
-    *   **Autoplay & Mute:** Required for automatic playback in modern browsers.
-    *   **Loop:** Enabled via the `playlist` parameter.
-    *   **UI Hidden:** Removed controls, branding, and related videos.
-    *   **Responsive Covering:** Used CSS transform and scaling to ensure the video covers the hero area without letterboxing.
+*   Configured the YouTube iframe for seamless background playback.
 *   This approach ensures 100% deployment compatibility with Cloudflare Pages and significantly faster initial page loads.
