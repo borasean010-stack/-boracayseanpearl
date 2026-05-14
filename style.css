@@ -109,3 +109,12 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* --- Video Cover Engine --- */
+.video-cover {
+    width: 100vw;
+    height: 56.25vw; /* 9/16 of width */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16/9 of height */
+    transform: translate(-50%, -50%) scale(1.05); /* Slight scale to hide edges */
+}
