@@ -6,10 +6,10 @@ import { Check } from "lucide-react";
 const tours = [
   {
     image: "https://images.unsplash.com/photo-1544551763-77ef2d011504?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    title: "Crystal Cove Hopping",
-    description: "Explore the stunning caves and crystal clear waters of Boracay's famous neighbor.",
+    title: "Puka Beach Adventure",
+    description: "Relax on the pristine white sands and swim in the clear waters of Boracay's Puka Shell Beach.",
     price: "$85",
-    includes: ["Snorkeling Gear", "Seafood BBQ Lunch", "Cove Entrance Fee", "Hotel Transfer"]
+    includes: ["Snorkeling Gear", "Seafood BBQ Lunch", "Beach Access", "Hotel Transfer"]
   },
   {
     image: "https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
