@@ -74,10 +74,9 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Visual Activity Grid:** Transformed activity bullet points into "side-by-side" visual cards with icons and bold typography, ensuring high visibility for Kayaking, Paddleboarding, Snorkeling, etc.
 *   **Visual Polish:** Integrated point-specific imagery and grid layouts for highlights and activities.
 
-### Land Tour Detailed Page Implementation
-
-*   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
-*   Ensured responsive sizing and color transitions on scroll.
+### Land Tour Video Layout Standardization
+*   **Hero Section:** Maintained the original high-quality static background image as requested, ensuring a clean and focused entry point.
+*   **Highlight Video Optimization:** Removed the `max-w-sm` and `mx-auto` constraints from the "Tour Highlights" video embed. This ensures the video fills its grid space symmetrically with the Hopping Tour page, providing a consistent "premium" visual scale across both products.
 
 ### Hero Background Video (YouTube Integration)
 *   Switched from a local video file to a YouTube-hosted background video (`https://youtu.be/p1Ksygpa4cE`).
