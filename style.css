@@ -1,3 +1,9 @@
+html {
+    zoom: 0.9;
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: 0 0;
+}
+
 /* --- Custom Animations --- */
 
 /* Initial states for intersection observer animations */

@@ -35,6 +35,10 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Visual Polish:** Use modern CSS (Grid/Flex) to ensure the horizontal flow is responsive and aesthetically pleasing.
 
 ## 5. Project History
+### Global UI Scaling & Zoom Lock
+*   **Default Zoom Level:** Set the global zoom to 90% via CSS (`zoom: 0.9`) for a more compact and balanced visual experience across all pages.
+*   **Scaling Lock:** Updated `viewport` meta tags in `index.html`, `land-tour.html`, and `yacht-tour.html` to disable user scaling (`user-scalable=no`), ensuring the layout remains fixed and consistent.
+
 ### Land Tour Designation Correction
 *   **Removed 'Private' Labeling:** Updated `index.html` and `land-tour.html` to remove references to the land tour being a "private" service, accurately reflecting it as a standard/guided tour.
 *   **Terminology Update:** Changed "Private Transport" to "Tour Transport" and updated descriptions to use "comfortable" or "guided" instead of "private".
