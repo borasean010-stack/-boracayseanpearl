@@ -88,7 +88,8 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Icon Standardization:** Standardized all affiliate icons to a larger, more premium size (`w-24 h-24 md:w-32 md:h-32`) and updated label text to a consistent `text-sm`.
 *   **Background Consistency:** Ensured all partner icons have a clean `bg-white rounded-full` background with `shadow-xl` for a polished look.
 
-### Hero Background Video (YouTube Integration)
-*   Switched from a local video file to a YouTube-hosted background video (`https://youtu.be/p1Ksygpa4cE`).
-*   Configured the YouTube iframe for seamless background playback.
-*   This approach ensures 100% deployment compatibility with Cloudflare Pages and significantly faster initial page loads.
+### Membership Icon & Styling Overhaul
+*   **Premium Partner Integration:** Replaced generic partner icons with 10 new "Pearl of Sean" partner logos (`Pearl of sean 1..10`).
+*   **Styling Fix:** Resolved the "square edges" issue by switching from `object-contain` with padding to `object-cover`. This ensures images fill the circular containers perfectly.
+*   **Background Color Adjustment:** Removed white backgrounds from icons as requested, ensuring the circular container's aesthetic matches the provided logos.
+*   **Full English Translation:** Conducted a project-wide sweep to ensure all user-facing text, labels, and alt tags are in English.
