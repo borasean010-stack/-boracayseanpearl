@@ -329,84 +329,291 @@
         </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section class="py-24 bg-secondary text-white">
-        <div class="container mx-auto px-6 max-w-4xl">
+    <!-- Membership Discount Section -->
+    <section id="membership" class="py-24 bg-secondary text-white overflow-hidden">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="fade-up text-4xl md:text-5xl font-heading font-bold mb-4">
-                    A Day in <span class="text-primary italic">Paradise</span>
+                    보라카이션 <span class="text-primary italic">멤버쉽 할인카드</span>
                 </h2>
-                <p class="fade-up text-gray-400" style="transition-delay: 200ms;">Typical itinerary for our full-day premium tour.</p>
+                <p class="fade-up text-gray-400 text-lg" style="transition-delay: 200ms;">
+                    "할인카드로 보라카이를 더 가볍게, 더 즐겁게! <br class="hidden md:block"> 엄선된 최고의 파트너사들과 함께하는 놀라운 혜택을 누리세요."
+                </p>
             </div>
 
-            <div class="relative border-l border-white/20 pl-8 ml-4 md:pl-0 md:ml-0 md:border-l-0">
-                <div class="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/20"></div>
+            <!-- Auto Scrolling Partners -->
+            <div class="relative mt-20">
+                <div class="flex overflow-hidden">
+                    <div class="animate-scroll flex items-center gap-12 md:gap-20 py-10">
+                        <!-- Priority Partners -->
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="hallomango.jpg" alt="Hallomango" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">할로망고</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="cafedesol.jpg" alt="Cafe del Sol" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">카페데솔</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="gerrys.jpg" alt="Gerry's Grill" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">게리스그릴</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="jumbocrab.jpg" alt="Jumbo Crab" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">점보크랩</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="epic.jpg" alt="Epic" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">에픽</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="ilovebbq.jpg" alt="I Love BBQ" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아이러브바베큐</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="iceflake.jpg" alt="Iceflake" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아이스플레이크</span>
+                        </div>
 
-                <div class="mb-12 relative md:flex md:justify-between md:items-center">
-                    <div class="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary z-10 shadow-[0_0_10px_rgba(41,211,208,0.8)]"></div>
-                    <div class="fade-right md:w-[45%] md:text-right">
-                        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-left md:text-right">
-                            <span class="text-primary font-bold tracking-wider text-sm mb-2 block">08:00 AM</span>
-                            <h3 class="text-xl font-bold mb-2">Meet & Greet</h3>
-                            <p class="text-gray-400 text-sm">Gather at Station 2 for check-in and safety briefing.</p>
+                        <!-- Other Partners -->
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="kumkangsan.jpg" alt="Kumkangsan" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">금강산</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="ditto.jpg" alt="Ditto" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">디토</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="mayas.jpg" alt="Mayas" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">마야스</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="munimuni.png" alt="Munimuni" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">무니무니</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="steampunk.jpg" alt="Steampunk" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">스팀펑크</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="aria.jpg" alt="Aria" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아리아</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="aplaya.jpg" alt="Aplaya" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아플라야</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="obama.jpg" alt="Obama Grill" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">오바마그릴</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="ole.jpg" alt="Ole" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">올레</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="giuseppe.jpg" alt="Giuseppe" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">쥬세페</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="cafemaruza.jpg" alt="Cafe Maruza" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">카페마루자</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="twobrownboys.jpg" alt="Two Brown Boys" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">투브라운보이즈</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="pigout.jpg" alt="Pig Out" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">피그아웃</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="hama.jpg" alt="Hama" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">하마</span>
+                        </div>
+
+                        <!-- Duplicate for Seamless Scroll -->
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="hallomango.jpg" alt="Hallomango" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">할로망고</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="cafedesol.jpg" alt="Cafe del Sol" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">카페데솔</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="gerrys.jpg" alt="Gerry's Grill" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">게리스그릴</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="jumbocrab.jpg" alt="Jumbo Crab" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">점보크랩</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="epic.jpg" alt="Epic" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">에픽</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="ilovebbq.jpg" alt="I Love BBQ" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아이러브바베큐</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="iceflake.jpg" alt="Iceflake" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아이스플레이크</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="kumkangsan.jpg" alt="Kumkangsan" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">금강산</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="ditto.jpg" alt="Ditto" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">디토</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="mayas.jpg" alt="Mayas" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">마야스</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="munimuni.png" alt="Munimuni" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">무니무니</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="steampunk.jpg" alt="Steampunk" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">스팀펑크</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="aria.jpg" alt="Aria" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아리아</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="aplaya.jpg" alt="Aplaya" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">아플라야</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="obama.jpg" alt="Obama Grill" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">오바마그릴</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="ole.jpg" alt="Ole" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">올레</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="giuseppe.jpg" alt="Giuseppe" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">쥬세페</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="cafemaruza.jpg" alt="Cafe Maruza" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">카페마루자</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="twobrownboys.jpg" alt="Two Brown Boys" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">투브라운보이즈</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="pigout.jpg" alt="Pig Out" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">피그아웃</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 shrink-0">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center p-4 shadow-xl hover:scale-110 transition-transform">
+                                <img src="hama.jpg" alt="Hama" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300">하마</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-12 relative md:flex md:justify-between md:items-center">
-                    <div class="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary z-10 shadow-[0_0_10px_rgba(41,211,208,0.8)]"></div>
-                    <div class="fade-left md:w-[45%] md:text-left md:ml-auto">
-                        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="text-primary font-bold tracking-wider text-sm mb-2 block">09:00 AM</span>
-                            <h3 class="text-xl font-bold mb-2">Set Sail</h3>
-                            <p class="text-gray-400 text-sm">Board the luxury yacht and begin cruising the coastline.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-12 relative md:flex md:justify-between md:items-center">
-                    <div class="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary z-10 shadow-[0_0_10px_rgba(41,211,208,0.8)]"></div>
-                    <div class="fade-right md:w-[45%] md:text-right">
-                        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-left md:text-right">
-                            <span class="text-primary font-bold tracking-wider text-sm mb-2 block">10:30 AM</span>
-                            <h3 class="text-xl font-bold mb-2">Snorkeling & Water Sports</h3>
-                            <p class="text-gray-400 text-sm">Dive into crystal waters or enjoy paddleboarding.</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Gradient Overlays for smooth scroll effect -->
+                <div class="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-secondary to-transparent z-10"></div>
+                <div class="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-secondary to-transparent z-10"></div>
+            </div>
 
-                <div class="mb-12 relative md:flex md:justify-between md:items-center">
-                    <div class="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary z-10 shadow-[0_0_10px_rgba(41,211,208,0.8)]"></div>
-                    <div class="fade-left md:w-[45%] md:text-left md:ml-auto">
-                        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="text-primary font-bold tracking-wider text-sm mb-2 block">12:30 PM</span>
-                            <h3 class="text-xl font-bold mb-2">Premium Seafood Lunch</h3>
-                            <p class="text-gray-400 text-sm">Feast on a freshly prepared island-style BBQ.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-12 relative md:flex md:justify-between md:items-center">
-                    <div class="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary z-10 shadow-[0_0_10px_rgba(41,211,208,0.8)]"></div>
-                    <div class="fade-right md:w-[45%] md:text-right">
-                        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-left md:text-right">
-                            <span class="text-primary font-bold tracking-wider text-sm mb-2 block">03:00 PM</span>
-                            <h3 class="text-xl font-bold mb-2">Island Exploration</h3>
-                            <p class="text-gray-400 text-sm">Visit hidden coves and pristine white beaches.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-12 relative md:flex md:justify-between md:items-center">
-                    <div class="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary z-10 shadow-[0_0_10px_rgba(41,211,208,0.8)]"></div>
-                    <div class="fade-left md:w-[45%] md:text-left md:ml-auto">
-                        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="text-primary font-bold tracking-wider text-sm mb-2 block">05:00 PM</span>
-                            <h3 class="text-xl font-bold mb-2">Sunset Party Vibes</h3>
-                            <p class="text-gray-400 text-sm">Live DJ, cocktails, and the famous Boracay sunset.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mt-16">
+                <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:text-white transition-colors">
+                    전체 제휴사 및 할인 혜택 상세 보기 <i class="ph ph-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
