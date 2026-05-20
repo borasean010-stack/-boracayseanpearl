@@ -116,13 +116,28 @@
     scrollbar-width: none;
 }
 
-/* Horizontal bounce for hints */
-@keyframes bounceX {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
+/* --- Infinite Scroll Animation --- */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
-.animate-bounce-x {
-    animation: bounceX 1s infinite;
+
+.animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
+
+/* Pause animation when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .animate-scroll {
+        animation: none;
+        overflow-x: auto;
+    }
 }
 
 /* --- Infinite Scroll Animation --- */

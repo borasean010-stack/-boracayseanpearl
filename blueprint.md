@@ -78,6 +78,16 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Hero Section:** Maintained the original high-quality static background image as requested, ensuring a clean and focused entry point.
 *   **Highlight Video Optimization:** Removed the `max-w-sm` and `mx-auto` constraints from the "Tour Highlights" video embed. This ensures the video fills its grid space symmetrically with the Hopping Tour page, providing a consistent "premium" visual scale across both products.
 
+### Thumbnail & Deployment Fixes
+*   **Fixed Broken Thumbnails:** Restored `land.jpg` and `hopping.jpg` by copying them from existing assets (`land0.jpg`, `hopping0.jpg`), fixing the "broken image" issue on the main `index.html` page.
+*   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
+
+### Affiliate Section Optimization
+*   **Removed Detailed View Link:** Deleted the "전체 제휴사 및 할인 혜택 상세 보기" link as requested, streamlining the Membership section.
+*   **HTML Structure Cleanup:** Identified and removed a significant block of orphaned and redundant partner icons that were outside the section container, fixing a layout bug.
+*   **Icon Standardization:** Standardized all affiliate icons to a larger, more premium size (`w-24 h-24 md:w-32 md:h-32`) and updated label text to a consistent `text-sm`.
+*   **Background Consistency:** Ensured all partner icons have a clean `bg-white rounded-full` background with `shadow-xl` for a polished look.
+
 ### Hero Background Video (YouTube Integration)
 *   Switched from a local video file to a YouTube-hosted background video (`https://youtu.be/p1Ksygpa4cE`).
 *   Configured the YouTube iframe for seamless background playback.
