@@ -364,200 +364,173 @@
 
     <!-- Experience Timeline -->
     <section id="timeline" class="py-32 bg-light overflow-hidden">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
                 <h2 class="fade-up text-4xl md:text-6xl font-heading font-bold text-secondary mb-4">
                     The Elite <span class="text-primary italic">Itinerary</span>
                 </h2>
                 <p class="fade-up text-gray-500 text-lg delay-100">A meticulously planned day for effortless enjoyment.</p>
             </div>
 
-            <div class="relative space-y-32">
-                <!-- Vertical Line -->
-                <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gray-200 rounded-full overflow-hidden hidden md:block">
-                    <div id="timeline-progress" class="w-full h-0 bg-primary transition-all duration-1000 ease-out"></div>
-                </div>
-
-                <!-- Point 1: Coral Garden -->
-                <div class="relative flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2 fade-right">
-                        <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-gray-100">
-                            <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-4">🌊 FIRST POINT</span>
-                            <h3 class="text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">Sailing to Coral Garden</h3>
-                            <p class="text-gray-500 mb-8 italic">A luxury ocean journey begins here. Complimentary cookies, fresh drinks, and onboard hair braiding service await you to elevate your Boracay experience.</p>
-                            
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="font-bold text-secondary mb-4 flex items-center gap-2">
-                                        <i class="ph ph-sparkles text-primary"></i> Experience Highlights
-                                    </h4>
-                                    <ul class="space-y-2 text-sm text-gray-600">
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Fresh cookies & fruits</li>
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Unlimited comfort snacks</li>
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Professional hair braiding</li>
-                                    </ul>
-                                </div>
-                                <div class="col-span-full">
-                                    <h4 class="font-bold text-secondary mb-10 flex items-center gap-2 border-b border-gray-100 pb-4 text-2xl">
-                                        <i class="ph ph-waves text-primary"></i> Premium Ocean Activities
-                                    </h4>
-                                    
-                                    <div class="space-y-16">
-                                        <!-- Snorkeling -->
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
-                                            <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-lg order-last md:order-first">
-                                                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Snorkeling" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                                <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
-                                            </div>
-                                            <div class="md:pl-6">
-                                                <h5 class="text-2xl font-bold text-secondary mb-3 flex items-center gap-3">
-                                                    <span class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl font-bold">01</span>
-                                                    Premium Snorkeling
-                                                </h5>
-                                                <p class="text-gray-600 leading-relaxed">Discover the underwater magic of Boracay. We provide professional gear and expert guides to help you explore vibrant coral reefs and tropical marine life safely.</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Yacht Diving -->
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
-                                            <div class="md:pr-6 text-right order-last md:order-first">
-                                                <h5 class="text-2xl font-bold text-secondary mb-3 justify-end flex items-center gap-3">
-                                                    Rooftop Yacht Diving
-                                                    <span class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl font-bold">02</span>
-                                                </h5>
-                                                <p class="text-gray-600 leading-relaxed">The ultimate thrill for adrenaline seekers. Jump from our second-floor rooftop deck into the deep blue ocean for an exhilarating splash you'll never forget.</p>
-                                            </div>
-                                            <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-lg">
-                                                <img src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yacht Diving" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                                <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Water Slide -->
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
-                                            <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-lg order-last md:order-first">
-                                                <img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Slide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                                <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
-                                            </div>
-                                            <div class="md:pl-6">
-                                                <h5 class="text-2xl font-bold text-secondary mb-3 flex items-center gap-3">
-                                                    <span class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl font-bold">03</span>
-                                                    Ocean Water Slide
-                                                </h5>
-                                                <p class="text-gray-600 leading-relaxed">Slide straight from the yacht deck into the crystal clear ocean. A fast, fun, and exciting way to cool off and enjoy the water playground.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <p class="mt-8 text-sm text-gray-500 leading-relaxed border-t border-gray-100 pt-6">
-                                Relax on our sunbathing nets and lounge beds as we sail. Capture unforgettable moments with ocean breeze and island light. <span class="text-primary font-bold">Mermaid tails</span> are available for your dream-style photoshoot.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 fade-left order-first md:order-last">
-                        <div class="rounded-[3rem] overflow-hidden shadow-2xl aspect-video md:aspect-square">
-                            <img src="Pearl of sean 1.png" alt="Coral Garden Sailing" class="w-full h-full object-cover">
+            <!-- Horizontal Scroll Container -->
+            <div class="flex overflow-x-auto hide-scrollbar gap-8 pb-12 snap-x snap-mandatory px-4 md:px-0">
+                
+                <!-- START: POINT 1 Intro -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[450px]">
+                    <div class="h-full bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-gray-100 flex flex-col justify-center">
+                        <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-4">🌊 FIRST POINT</span>
+                        <h3 class="text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">Coral Garden</h3>
+                        <p class="text-gray-500 italic">Luxury ocean journey with complimentary cookies, fresh drinks, and onboard hair braiding.</p>
+                        <div class="mt-8 pt-8 border-t border-gray-100">
+                             <div class="flex items-center gap-4 text-primary font-bold">
+                                <span class="text-xs uppercase tracking-widest">Swipe for activities</span>
+                                <i class="ph ph-arrow-right animate-bounce-x"></i>
+                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Point 2: Balinghai Beach -->
-                <div class="relative flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2 fade-right">
-                        <div class="rounded-[3rem] overflow-hidden shadow-2xl aspect-video md:aspect-square">
-                            <img src="Pearl of sean 3.png" alt="Balinghai Beach Adventure" class="w-full h-full object-cover">
+                <!-- Point 1: Activity 1 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[400px]">
+                    <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 h-full">
+                        <div class="relative aspect-[4/5] bg-gray-200 group">
+                            <!-- Placeholder for GIF/JPG -->
+                            <div class="absolute inset-0 flex items-center justify-center bg-secondary/5 z-10">
+                                <div class="text-center">
+                                    <span class="text-secondary/20 font-bold text-xl uppercase tracking-widest block rotate-12">GIF / JPG Slot</span>
+                                    <span class="text-secondary/10 text-xs uppercase tracking-tighter block mt-2">Replace with media</span>
+                                </div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Snorkeling" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40">
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-20">01</div>
                         </div>
-                    </div>
-                    <div class="md:w-1/2 fade-left">
-                        <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-gray-100">
-                            <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-4">📍 SECOND POINT</span>
-                            <h3 class="text-3xl md:text-4xl font-heading font-bold text-secondary mb-2">Sailing to Balinghai Beach</h3>
-                            <p class="text-primary font-medium mb-6 uppercase tracking-wider text-xs italic">From luxury cruise to island playground adventure.</p>
-                            
-                            <p class="text-gray-500 mb-8">Embark on a premium island adventure with <span class="font-bold">Pearl Of Sean</span>. Every moment is designed for comfort, fun, and unforgettable memories.</p>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-                                <div>
-                                    <h4 class="font-bold text-secondary mb-4 flex items-center gap-2">
-                                        <i class="ph ph-utensils text-primary"></i> Onboard Dining
-                                    </h4>
-                                    <ul class="space-y-2 text-sm text-gray-600">
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Tropical fruits selection</li>
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Signature pika-pika snacks</li>
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Cup noodles & hot ramen</li>
-                                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-primary"></i> Refreshing beverages</li>
-                                    </ul>
-                                </div>
-                                <div class="col-span-full">
-                                    <h4 class="font-bold text-secondary mb-10 flex items-center gap-2 border-b border-gray-100 pb-4 text-2xl">
-                                        <i class="ph ph-poker-chip text-primary"></i> Premier Island Adventures
-                                    </h4>
-                                    
-                                    <div class="space-y-16">
-                                        <!-- Kayaking & Paddle Board -->
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
-                                            <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-lg order-last md:order-first">
-                                                <img src="https://images.unsplash.com/photo-1544551763-77ef2d011504?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kayaking" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                                <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
-                                            </div>
-                                            <div class="md:pl-6">
-                                                <h5 class="text-2xl font-bold text-secondary mb-3 flex items-center gap-3">
-                                                    <span class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl font-bold">01</span>
-                                                    Kayaking & Paddle Board
-                                                </h5>
-                                                <p class="text-gray-600 leading-relaxed">For a more peaceful island experience. Glide across the calm waters of Balinghai Beach on our premium kayaks and stand-up paddle boards at your own pace.</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Banana Boat -->
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
-                                            <div class="md:pr-6 text-right order-last md:order-first">
-                                                <h5 class="text-2xl font-bold text-secondary mb-3 justify-end flex items-center gap-3">
-                                                    Extreme Banana Boat
-                                                    <span class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl font-bold">02</span>
-                                                </h5>
-                                                <p class="text-gray-600 leading-relaxed">Hold on tight! Experience the thrill of being pulled across the ocean waves on our high-speed banana boat. A guaranteed highlight for groups and friends.</p>
-                                            </div>
-                                            <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-lg">
-                                                <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Banana Boat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                                <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Water Gun Party -->
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center group">
-                                            <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-lg order-last md:order-first">
-                                                <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Gun Party" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                                <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
-                                            </div>
-                                            <div class="md:pl-6">
-                                                <h5 class="text-2xl font-bold text-secondary mb-3 flex items-center gap-3">
-                                                    <span class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl font-bold">03</span>
-                                                    Island Water Gun Party
-                                                </h5>
-                                                <p class="text-gray-600 leading-relaxed">Let the games begin! Our energetic crew leads an epic water gun battle right on the ocean, perfect for letting loose and creating fun memories.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-light p-6 rounded-2xl border border-gray-100">
-                                <h4 class="font-bold text-secondary mb-3 flex items-center gap-2">
-                                    <i class="ph ph-music-notes text-primary"></i> Entertainment & Family
-                                </h4>
-                                <ul class="grid grid-cols-2 gap-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="ph-fill ph-circle text-[6px] text-primary"></i> Live DJ Onboard</li>
-                                    <li class="flex items-center gap-2"><i class="ph-fill ph-circle text-[6px] text-primary"></i> Group Party Vibes</li>
-                                    <li class="flex items-center gap-2"><i class="ph-fill ph-circle text-[6px] text-primary"></i> Babysitter Service</li>
-                                    <li class="flex items-center gap-2"><i class="ph-fill ph-circle text-[6px] text-primary"></i> Pro Photo Crew</li>
-                                </ul>
-                            </div>
+                        <div class="p-8">
+                            <h4 class="text-2xl font-bold text-secondary mb-3">Premium Snorkeling</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">Discover underwater magic with professional gear and expert guides.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Point 1: Activity 2 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[400px]">
+                    <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 h-full">
+                        <div class="relative aspect-[4/5] bg-gray-200 group">
+                             <!-- Placeholder for GIF/JPG -->
+                             <div class="absolute inset-0 flex items-center justify-center bg-secondary/5 z-10">
+                                <div class="text-center">
+                                    <span class="text-secondary/20 font-bold text-xl uppercase tracking-widest block rotate-12">GIF / JPG Slot</span>
+                                    <span class="text-secondary/10 text-xs uppercase tracking-tighter block mt-2">Replace with media</span>
+                                </div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yacht Diving" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40">
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-20">02</div>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="text-2xl font-bold text-secondary mb-3">Rooftop Yacht Diving</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">The ultimate thrill jump from our second-floor rooftop deck.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Point 1: Activity 3 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[400px]">
+                    <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 h-full">
+                        <div class="relative aspect-[4/5] bg-gray-200 group">
+                             <!-- Placeholder for GIF/JPG -->
+                             <div class="absolute inset-0 flex items-center justify-center bg-secondary/5 z-10">
+                                <div class="text-center">
+                                    <span class="text-secondary/20 font-bold text-xl uppercase tracking-widest block rotate-12">GIF / JPG Slot</span>
+                                    <span class="text-secondary/10 text-xs uppercase tracking-tighter block mt-2">Replace with media</span>
+                                </div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Slide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40">
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-20">03</div>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="text-2xl font-bold text-secondary mb-3">Ocean Water Slide</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">Slide straight from the yacht deck into the crystal clear ocean.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- START: POINT 2 Intro -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[450px]">
+                    <div class="h-full bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-gray-100 flex flex-col justify-center">
+                        <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-4">📍 SECOND POINT</span>
+                        <h3 class="text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">Balinghai Beach</h3>
+                        <p class="text-gray-500 italic">From luxury cruise to island playground adventure. Enjoy fruits, snacks, and ramen.</p>
+                        <div class="mt-8 pt-8 border-t border-gray-100">
+                             <div class="flex items-center gap-4 text-primary font-bold">
+                                <span class="text-xs uppercase tracking-widest">Keep swiping</span>
+                                <i class="ph ph-arrow-right animate-bounce-x"></i>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Point 2: Activity 1 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[400px]">
+                    <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 h-full">
+                        <div class="relative aspect-[4/5] bg-gray-200 group">
+                             <!-- Placeholder for GIF/JPG -->
+                             <div class="absolute inset-0 flex items-center justify-center bg-secondary/5 z-10">
+                                <div class="text-center">
+                                    <span class="text-secondary/20 font-bold text-xl uppercase tracking-widest block rotate-12">GIF / JPG Slot</span>
+                                    <span class="text-secondary/10 text-xs uppercase tracking-tighter block mt-2">Replace with media</span>
+                                </div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1544551763-77ef2d011504?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kayaking" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40">
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-20">01</div>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="text-2xl font-bold text-secondary mb-3">Kayaking & Paddle Board</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">Glide across calm waters on our premium boards at your own pace.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Point 2: Activity 2 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[400px]">
+                    <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 h-full">
+                        <div class="relative aspect-[4/5] bg-gray-200 group">
+                             <!-- Placeholder for GIF/JPG -->
+                             <div class="absolute inset-0 flex items-center justify-center bg-secondary/5 z-10">
+                                <div class="text-center">
+                                    <span class="text-secondary/20 font-bold text-xl uppercase tracking-widest block rotate-12">GIF / JPG Slot</span>
+                                    <span class="text-secondary/10 text-xs uppercase tracking-tighter block mt-2">Replace with media</span>
+                                </div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Banana Boat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40">
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-20">02</div>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="text-2xl font-bold text-secondary mb-3">Extreme Banana Boat</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">Experience the thrill of being pulled across ocean waves.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Point 2: Activity 3 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[400px]">
+                    <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 h-full">
+                        <div class="relative aspect-[4/5] bg-gray-200 group">
+                             <!-- Placeholder for GIF/JPG -->
+                             <div class="absolute inset-0 flex items-center justify-center bg-secondary/5 z-10">
+                                <div class="text-center">
+                                    <span class="text-secondary/20 font-bold text-xl uppercase tracking-widest block rotate-12">GIF / JPG Slot</span>
+                                    <span class="text-secondary/10 text-xs uppercase tracking-tighter block mt-2">Replace with media</span>
+                                </div>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Gun Party" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40">
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-20">03</div>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="text-2xl font-bold text-secondary mb-3">Island Water Gun Party</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">Let the games begin with an epic water gun battle lead by crew.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

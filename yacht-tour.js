@@ -69,26 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Timeline Progress Logic ---
-    const timelineSection = document.getElementById('timeline');
-    const timelineProgress = document.getElementById('timeline-progress');
-
-    function updateTimeline() {
-        if (!timelineSection || !timelineProgress) return;
-        
-        const rect = timelineSection.getBoundingClientRect();
-        const sectionHeight = rect.height;
-        const viewHeight = window.innerHeight;
-        
-        // Calculate how much of the section is visible
-        let progress = (viewHeight - rect.top) / (sectionHeight + viewHeight * 0.2);
-        progress = Math.max(0, Math.min(1, progress));
-        
-        timelineProgress.style.height = `${progress * 100}%`;
-    }
-
-    window.addEventListener('scroll', updateTimeline);
-
     // --- Intersection Observer for Reveal Animations ---
     const observerOptions = {
         root: null,
@@ -100,8 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Optional: Stop observing after animation
-                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);

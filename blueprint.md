@@ -28,14 +28,17 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Land Tour Detailed Page Implementation
-*   **Product Title:** Boracay Land Tour (Scenic Viewpoints & Hidden Gems).
-*   **Final Itinerary:** Diniwid Beach, Puka Beach, Keyhole, and Mangrove Sanctuary.
-*   **Video Integration:** Embedding the requested YouTube Short (https://youtube.com/shorts/1V1qTHf3pmg) into the page.
-*   **Style Consistency:** Matching the premium aesthetic and interactive elements of the Yacht Tour page.
-*   **Links:** Connecting the Land Tour card in `index.html` to the new page.
+## 4. Current Task: Horizontal Itinerary Overhaul (Yacht Tour)
+*   **Section:** "The Elite Itinerary" in `yacht-tour.html`.
+*   **Layout Change:** Transition from a vertical timeline to a horizontal card-based or slider layout.
+*   **Image Placeholders:** Add specific slots for GIF/JPG content for each itinerary point and activity.
+*   **Visual Polish:** Use modern CSS (Grid/Flex) to ensure the horizontal flow is responsive and aesthetically pleasing.
 
 ## 5. Project History
+### Horizontal Itinerary Overhaul (In Progress)
+*   **Task Started:** Redesigning "The Elite Itinerary" for horizontal orientation.
+*   **Objective:** Improve visual flow and provide dedicated media slots for GIFs and images.
+
 ### Hopping Tour Layout & Itinerary Overhaul
 *   **Section Reordering:** Swapped "The Elite Itinerary" and "Captured Moments" sections for better narrative flow.
 *   **Detailed Itinerary:** Implemented a new, feature-rich itinerary structure:

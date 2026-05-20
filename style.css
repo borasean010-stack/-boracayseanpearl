@@ -110,6 +110,15 @@
     scrollbar-width: none;
 }
 
+/* Horizontal bounce for hints */
+@keyframes bounceX {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+.animate-bounce-x {
+    animation: bounceX 1s infinite;
+}
+
 /* --- Video Cover Engine --- */
 .video-cover {
     width: 100vw;
