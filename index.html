@@ -266,9 +266,18 @@
             <!-- New: Ultimate Combo Package -->
             <div class="fade-up mt-20" style="transition-delay: 400ms;">
                 <div class="relative rounded-[3rem] overflow-hidden bg-secondary text-white shadow-2xl group">
-                    <div class="absolute inset-0 opacity-40">
-                        <img src="Pearl of sean 4.png" alt="Boracay Combo Package" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/80 to-transparent"></div>
+                    <!-- Split Background -->
+                    <div class="absolute inset-0 flex">
+                        <div class="w-1/2 h-full relative">
+                            <img src="land.jpg" alt="Land Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-secondary/40"></div>
+                        </div>
+                        <div class="w-1/2 h-full relative">
+                            <img src="Pearl of sean 4.png" alt="Hopping Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-secondary/40"></div>
+                        </div>
+                        <!-- Centered Overlay to blend the split and ensure text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/60 to-transparent"></div>
                     </div>
                     
                     <div class="relative z-10 p-10 md:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
