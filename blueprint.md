@@ -36,6 +36,8 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 
 ## 5. Project History
 ### Yacht Tour Content Expansion
+*   **Coral Garden Media Overhaul:** Replaced static image placeholders with high-performance, looping MP4 videos for a dynamic "GIF" effect.
+    *   Updated: Snorkeling, Giant Slide (formerly Ocean Slide), Rooftop Diving, and Free Diving.
 *   **Complimentary Service Section:** Added a dedicated "Unlimited Refreshments" banner between point 1 and 2, highlighting unlimited pika-pika, fruits, cup noodles, and beverages.
 *   **Balinghai Beach Expansion:** Reconfigured the activity grid to 8 items, including new focus on:
     *   Kayaking & Paddleboarding
