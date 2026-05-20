@@ -28,20 +28,23 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Hopping Tour Detailed Content Updates
-*   **Product Title:** Updated to "Pearl of Sean Yacht Hopping (Free GoPro Photo, Water Slide, Kayak & Unlimited Cocktails)".
-*   **Narrative Description:** Added "The ultimate and most luxurious way..." narrative with sections for Snorkeling, Floating Playground, and Endless Treats.
-*   **Feature Grid:** Implemented 4-pillar highlights: Luxury Yacht, Water Playground, GoPro Photos, and Unlimited Party.
-*   **Lists:** Created structured Inclusions and Exclusions sections with 100 PHP Environment Fee clearly noted.
+## 4. Current Task: Land Tour Detailed Page Implementation
+*   **Product Title:** Boracay Land Tour (Scenic Viewpoints & Hidden Gems).
+*   **Final Itinerary:** Diniwid Beach, Puka Beach, Keyhole, and Mangrove Sanctuary.
+*   **Video Integration:** Embedding the requested YouTube Short (https://youtube.com/shorts/1V1qTHf3pmg) into the page.
+*   **Style Consistency:** Matching the premium aesthetic and interactive elements of the Yacht Tour page.
+*   **Links:** Connecting the Land Tour card in `index.html` to the new page.
 
 ## 5. Project History
-### Detailed Content & Narrative Implementation (Current)
-*   **Brand Voice:** Infused the page with a premium, welcoming narrative that distinguishes the yacht experience from ordinary boat tours.
-*   **Activity Focus:** Highlighted the massive water slide, diving platform, and complimentary kayaks to emphasize the "Floating Playground" aspect.
-*   **Service Excellence:** Integrated details about the multilingual (English/Korean) crew and the free professional GoPro photo service.
-*   **Clear Information Architecture:** Reorganized inclusion and exclusion lists for better transparency, specifically highlighting on-site fees.
+### Hopping Tour Layout & Itinerary Overhaul
+*   **Section Reordering:** Swapped "The Elite Itinerary" and "Captured Moments" sections for better narrative flow.
+*   **Detailed Itinerary:** Implemented a new, feature-rich itinerary structure:
+    *   **First Point (Coral Garden):** Added focus on luxury amenities (cookies, drinks, hair braiding) and activities (snorkeling, rooftop diving, mermaid photos).
+    *   **Second Point (Balinghai Beach):** Added focus on island playground adventure (banana boat, water gun party, kayaking) and family comfort (babysitter service, live DJ).
+*   **Visual Polish:** Integrated point-specific imagery and grid layouts for highlights and activities.
 
-### Add Logo to Header
+### Land Tour Detailed Page Implementation
+
 *   Integrated "Pearl Of Sean" logo image into the fixed header and footer.
 *   Ensured responsive sizing and color transitions on scroll.
 
