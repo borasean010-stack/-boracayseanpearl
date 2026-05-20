@@ -41,6 +41,7 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Detailed Itinerary:** Implemented a new, feature-rich itinerary structure:
     *   **First Point (Coral Garden):** Added focus on luxury amenities (cookies, drinks, hair braiding) and activities (snorkeling, rooftop diving, mermaid photos).
     *   **Second Point (Balinghai Beach):** Added focus on island playground adventure (banana boat, water gun party, kayaking) and family comfort (babysitter service, live DJ).
+*   **Visual Activity Grid:** Transformed activity bullet points into "side-by-side" visual cards with icons and bold typography, ensuring high visibility for Kayaking, Paddleboarding, Snorkeling, etc.
 *   **Visual Polish:** Integrated point-specific imagery and grid layouts for highlights and activities.
 
 ### Land Tour Detailed Page Implementation
