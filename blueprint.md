@@ -54,6 +54,10 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
     *   Dance Party and Onboard Performances
 *   **Visual Grid:** Updated to a 4-column responsive grid to accommodate the increased activity count.
 
+### Media Format Optimization
+*   **HEIC to JPG Conversion:** Converted key refreshment and snack images (`fruits.heic`, `unlimited_drinks.heic`, `snacks2.heic`) to JPG format for better browser compatibility.
+*   **Updated References:** Updated `yacht-tour.html` to use the new `.jpg` files for the Premium Refreshments section.
+
 ### Horizontal Itinerary Overhaul (In Progress)
 *   **Task Started:** Redesigning "The Elite Itinerary" for horizontal orientation.
 *   **Objective:** Improve visual flow and provide dedicated media slots for GIFs and images.
