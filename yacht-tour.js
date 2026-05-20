@@ -86,4 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-zoom, .fade-left, .fade-right');
     animatedElements.forEach(el => observer.observe(el));
+
+    // --- Video Playback Optimization ---
+    const videos = document.querySelectorAll('video');
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.play().catch(error => {
+                    console.log("Autoplay prevented:", error);
+                });
+            } else {
+                entry.target.pause();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    videos.forEach(video => {
+        videoObserver.observe(video);
+        // Ensure videos are muted for autoplay
+        video.muted = true;
+    });
 });
