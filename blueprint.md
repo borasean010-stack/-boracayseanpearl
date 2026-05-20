@@ -35,6 +35,15 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Visual Polish:** Use modern CSS (Grid/Flex) to ensure the horizontal flow is responsive and aesthetically pleasing.
 
 ## 5. Project History
+### Yacht Tour Content Expansion
+*   **Complimentary Service Section:** Added a dedicated "Unlimited Refreshments" banner between point 1 and 2, highlighting unlimited pika-pika, fruits, cup noodles, and beverages.
+*   **Balinghai Beach Expansion:** Reconfigured the activity grid to 8 items, including new focus on:
+    *   Kayaking & Paddleboarding
+    *   Snorkeling, Diving, and Free Diving
+    *   Water Slide
+    *   Dance Party and Onboard Performances
+*   **Visual Grid:** Updated to a 4-column responsive grid to accommodate the increased activity count.
+
 ### Horizontal Itinerary Overhaul (In Progress)
 *   **Task Started:** Redesigning "The Elite Itinerary" for horizontal orientation.
 *   **Objective:** Improve visual flow and provide dedicated media slots for GIFs and images.
