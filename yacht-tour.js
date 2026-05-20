@@ -91,19 +91,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const videos = document.querySelectorAll('video');
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const video = entry.target;
             if (entry.isIntersecting) {
-                entry.target.play().catch(error => {
-                    console.log("Autoplay prevented:", error);
+                // Preload and play when in view
+                video.play().catch(error => {
+                    // Autoplay might be blocked until user interaction
+                    console.log("Autoplay check:", error);
                 });
             } else {
-                entry.target.pause();
+                // Pause when out of view to save resources
+                video.pause();
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 }); // Lower threshold for earlier trigger
 
     videos.forEach(video => {
         videoObserver.observe(video);
-        // Ensure videos are muted for autoplay
-        video.muted = true;
+        video.muted = true; // Extra insurance for autoplay
     });
 });
