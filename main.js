@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileToggleIcon = document.querySelector('#mobile-toggle i');
     
     window.addEventListener('scroll', () => {
+        if (!header || !logoText || !mobileToggleIcon) return;
         if (window.scrollY > 50) {
             header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
             header.classList.remove('bg-transparent', 'py-6');
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isMenuOpen = false;
 
     function toggleMenu() {
+        if (!mobileMenu || !mobileToggleIcon || !logoText) return;
         isMenuOpen = !isMenuOpen;
         if (isMenuOpen) {
             mobileMenu.classList.remove('-translate-y-full');
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    mobileToggleBtn.addEventListener('click', toggleMenu);
+    if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleMenu);
 
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
