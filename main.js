@@ -73,29 +73,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 const videos = entry.target.querySelectorAll('video');
                 videos.forEach(video => {
                     video.muted = true;
-                    video.play().catch(() => {
-                        // Handled by interaction unlock
-                    });
+                    video.play().catch(() => {});
                 });
             }
         });
     }, observerOptions);
 
-    // Global interaction unlock for mobile
-    const unlockVideos = () => {
-        const allVideos = document.querySelectorAll('video');
+    // Bulletproof interaction unlock for all mobile browsers
+    const forcePlayVideos = () => {
+        const allVideos = document.querySelectorAll('video[autoplay]');
         allVideos.forEach(video => {
-            if (video.hasAttribute('autoplay')) {
-                video.muted = true;
-                video.play().catch(() => {});
+            video.muted = true;
+            video.playsInline = true;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Fail silently, browser may still be blocking
+                });
             }
         });
-        document.removeEventListener('touchstart', unlockVideos);
-        document.removeEventListener('click', unlockVideos);
     };
 
+    const unlockVideos = () => {
+        forcePlayVideos();
+        document.removeEventListener('touchstart', unlockVideos);
+        document.removeEventListener('click', unlockVideos);
+        document.removeEventListener('scroll', unlockVideos);
+    };
+
+    // Add multiple triggers for unlocking
     document.addEventListener('touchstart', unlockVideos, { passive: true });
     document.addEventListener('click', unlockVideos, { passive: true });
+    document.addEventListener('scroll', unlockVideos, { passive: true });
+
+    // Handle visibility changes (e.g. coming back from another tab or unlocking phone)
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+            forcePlayVideos();
+        }
+    });
 
     // Select all elements with animation classes
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-zoom, .fade-left, .fade-right');
