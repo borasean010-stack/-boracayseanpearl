@@ -201,7 +201,7 @@
                 <p class="fade-up text-gray-400 text-lg delay-100">One package, two days of unforgettable island memories.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                 <!-- Day 1: Land Tour Highlights -->
                 <div class="fade-right bg-white/5 border border-white/10 p-12 rounded-[3rem] relative group overflow-hidden flex flex-col h-full">
                     <div class="absolute top-0 right-0 p-8 opacity-5 text-9xl group-hover:scale-110 transition-transform duration-700 z-0">
@@ -214,7 +214,7 @@
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
                             <video id="land-preview-video" autoplay muted playsinline preload="metadata" class="w-full h-full object-cover">
-                                <source src="보라카이 랜드투어.mp4" type="video/mp4">
+                                <source src="land_tour_highlights.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="land-video-label">Land Tour Highlights</div>
@@ -558,14 +558,14 @@
     <script>
         // Sequential Video Switcher for Combo Page
         const landVideos = [
-            { src: '보라카이 랜드투어.mp4', label: 'Boracay Land Tour' },
-            { src: '푸카비치.mp4', label: 'Puka Beach' },
-            { src: '뉴코스트.mp4', label: 'Boracay Newcoast' },
-            { src: '뉴코스트 키홀.mp4', label: 'Newcoast Keyhole' },
-            { src: '맹그로브.mp4', label: 'Mangrove Eco Park' },
-            { src: '시낙빠.mp4', label: 'Sinagpa Beach' },
-            { src: '블라복.mp4', label: 'Bulabog Beach' },
-            { src: '블라복 나무.mp4', label: 'Leaning Coconut Tree' }
+            { src: 'land_tour_highlights.mp4', label: 'Boracay Land Tour' },
+            { src: 'puka_beach.mp4', label: 'Puka Beach' },
+            { src: 'newcoast.mp4', label: 'Boracay Newcoast' },
+            { src: 'newcoast_keyhole.mp4', label: 'Newcoast Keyhole' },
+            { src: 'mangrove.mp4', label: 'Mangrove Eco Park' },
+            { src: 'sinagpa.mp4', label: 'Sinagpa Beach' },
+            { src: 'bulabog.mp4', label: 'Bulabog Beach' },
+            { src: 'leaning_coconut.mp4', label: 'Leaning Coconut Tree' }
         ];
 
         const yachtVideos = [

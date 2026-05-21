@@ -95,9 +95,23 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Layout Cleanup:** Removed the "Pearl Of Sean Moments" gallery section from the home page to maintain a cleaner, more focused user experience.
 *   **Global Sync:** Updated `index.html` to ensure the Land Tour highlights, description, and pricing are consistent with the detail page.
 
-### Thumbnail & Deployment Fixes
-*   **Fixed Broken Thumbnails:** Restored `land.jpg` and `hopping.jpg` by copying them from existing assets (`land0.jpg`, `hopping0.jpg`), fixing the "broken image" issue on the main `index.html` page.
-*   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
+### Mobile Video Compatibility & Layout Optimization
+*   **Video Filename Standardization (ASCII):** Renamed all Korean video files to ASCII names to eliminate path encoding issues on mobile browsers (especially Safari/iOS).
+    *   `보라카이 랜드투어.mp4` → `land_tour_highlights.mp4`
+    *   `푸카비치.mp4` → `puka_beach.mp4`
+    *   `뉴코스트.mp4` → `newcoast.mp4`
+    *   `뉴코스트 키홀.mp4` → `newcoast_keyhole.mp4`
+    *   `맹그로브.mp4` → `mangrove.mp4`
+    *   `시낙빠.mp4` → `sinagpa.mp4`
+    *   `블라복.mp4` → `bulabog.mp4`
+    *   `블라복 나무.mp4` → `leaning_coconut.mp4`
+*   **Mobile-First Itinerary Layout:** Updated the grid layout for tour itineraries in `land-tour.html` and `package-tour.html` to be single-column on mobile while preserving the 2-column layout on desktop. This ensures videos are large enough to be engaging on small screens.
+*   **Intelligent Video Playback (Intersection Observer):** Enhanced `main.js`, `land-tour.js`, and `yacht-tour.js` with intersection-based playback. Videos now automatically `play()` when entering the viewport and `pause()` when leaving, saving mobile data and battery life.
+*   **Autoplay Reliability:** Ensured all video elements have `muted`, `playsinline`, and `autoplay` attributes to bypass aggressive mobile autoplay restrictions.
+
+### Project Tracking & Maintenance
+*   **Git Cleanup:** Removed legacy Korean-named files from the repository to maintain a clean workspace.
+*   **PC Layout Preservation:** Verified that all mobile-specific changes use responsive Tailwind classes (e.g., `grid-cols-1 md:grid-cols-2`) to ensure zero impact on the desktop experience.
 
 ### Quality Guarantee & UX Refinement
 *   **Restored Floating Price CTAs:** Brought back the floating "Price & Booking" boxes (Desktop CTA) and sticky mobile bars to the `land-tour.html` and `yacht-tour.html` pages. This ensures the price (700 PHP for Land / 1,900 PHP for Hopping) is always visible to the user as they scroll, as per the "old version" layout.

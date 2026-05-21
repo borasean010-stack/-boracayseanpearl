@@ -78,35 +78,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const video = entry.target.querySelector('video');
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                if (video) {
+                    video.play().catch(() => {
+                        video.muted = true;
+                        video.play();
+                    });
+                }
+            } else {
+                if (video) {
+                    video.pause();
+                }
             }
         });
     }, observerOptions);
 
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-zoom, .fade-left, .fade-right');
     animatedElements.forEach(el => observer.observe(el));
-
-    // --- Video Playback Optimization ---
-    const videos = document.querySelectorAll('video');
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                // Preload and play when in view
-                video.play().catch(error => {
-                    // Autoplay might be blocked until user interaction
-                    console.log("Autoplay check:", error);
-                });
-            } else {
-                // Pause when out of view to save resources
-                video.pause();
-            }
-        });
-    }, { threshold: 0.05 }); // Lower threshold for earlier trigger
-
-    videos.forEach(video => {
-        videoObserver.observe(video);
-        video.muted = true; // Extra insurance for autoplay
-    });
 });

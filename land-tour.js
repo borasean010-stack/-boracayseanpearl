@@ -98,10 +98,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const video = entry.target.querySelector('video');
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Optional: Stop observing after animation
-                // observer.unobserve(entry.target);
+                if (video) {
+                    video.play().catch(() => {
+                        // Fallback for some browsers that require interaction
+                        video.muted = true;
+                        video.play();
+                    });
+                }
+            } else {
+                if (video) {
+                    video.pause();
+                }
             }
         });
     }, observerOptions);
