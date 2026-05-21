@@ -79,7 +79,7 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Highlight Video Optimization:** Removed the `max-w-sm` and `mx-auto` constraints from the "Tour Highlights" video embed. This ensures the video fills its grid space symmetrically with the Hopping Tour page, providing a consistent "premium" visual scale across both products.
 
 ### Land Tour Hero Image Update
-*   **Hero Section:** Updated the main hero image to `랜드 히어로.jpg` to provide a fresh and more relevant visual for the Land Tour experience.
+*   **Hero Section:** Updated the main hero image to `I-Love-Boracay-at-Bulabog-Beach-1536x1024.jpg` to provide a vibrant and iconic visual of Bulabog Beach for the Land Tour experience.
 *   **Consistency:** Also updated the Final CTA background image to use the same asset, ensuring a unified visual theme throughout the page.
 
 ### Land Tour Inclusions & Itinerary Update
