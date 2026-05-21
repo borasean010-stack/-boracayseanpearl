@@ -76,7 +76,10 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 
 ### Land Tour Video Layout Standardization
 *   **Hero Section:** Maintained the original high-quality static background image as requested, ensuring a clean and focused entry point.
-*   **Highlight Video Optimization:** Removed the `max-w-sm` and `mx-auto` constraints from the "Tour Highlights" video embed. This ensures the video fills its grid space symmetrically with the Hopping Tour page, providing a consistent "premium" visual scale across both products.
+*   **Visual Itinerary Overhaul:** Replaced the vertical timeline with a visually rich, sectioned itinerary similar to the Yacht Tour.
+    *   **Looping Videos (GIF effect):** Integrated 8 looping videos for key destinations, including Puka Beach, Newcoast Keyhole, Mangrove Eco Park, and Bulabog's Leaning Coconut Tree.
+    *   **English Localization:** All labels, headings, and descriptions have been translated to English for a premium global appeal.
+    *   **Grouped Points:** Organized the tour into 4 main "Points" (Scenic Discovery, Modern Landscapes, Hidden Treasures, and Coastal Icons) to improve the narrative flow.
 
 ### Land Tour Hero Image Update
 *   **Hero Section:** Updated the main hero image to `I-Love-Boracay-at-Bulabog-Beach-1536x1024.jpg` to provide a vibrant and iconic visual of Bulabog Beach for the Land Tour experience.

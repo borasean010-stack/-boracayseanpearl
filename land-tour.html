@@ -406,89 +406,140 @@
         </div>
     </section>
 
-    <!-- Experience Timeline -->
+    <!-- Experience Timeline (Visual Itinerary) -->
     <section id="timeline" class="py-32 bg-light overflow-hidden">
-        <div class="container mx-auto px-6 max-w-4xl">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-24">
                 <h2 class="fade-up text-4xl md:text-6xl font-heading font-bold text-secondary mb-4">
-                    The Scenic <span class="text-primary italic">Route</span>
+                    The Scenic <span class="text-primary italic">Itinerary</span>
                 </h2>
-                <p class="fade-up text-gray-500 text-lg delay-100">A flexible half-day exploration of the island's best spots.</p>
+                <p class="fade-up text-gray-500 text-lg delay-100">A visually stunning journey through Boracay's hidden corners.</p>
             </div>
 
-            <div class="relative">
-                <!-- Vertical Line -->
-                <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gray-200 rounded-full overflow-hidden">
-                    <div id="timeline-progress" class="w-full h-0 bg-primary transition-all duration-1000 ease-out"></div>
+            <!-- POINT 1: Scenic Discovery -->
+            <div class="mb-32">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b border-gray-200 pb-8">
+                    <div class="fade-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-2">📍 POINT 1</span>
+                        <h3 class="text-4xl md:text-5xl font-heading font-bold text-secondary">Scenic Discovery</h3>
+                    </div>
+                    <p class="fade-left text-gray-500 max-w-md md:text-right italic">Begin your exploration with the ultimate island vibe and the pristine sands of Puka Beach.</p>
                 </div>
 
-                <!-- Step 1 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">PICKUP</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Hotel Pick-up</h3>
-                        <p class="text-gray-500">Our friendly driver meets you at your hotel lobby to begin the adventure.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Boracay Land Tour -->
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="보라카이 랜드투어.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Boracay Land Tour</div>
+                        </div>
+                    </div>
+                    <!-- Puka Beach -->
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="푸카비치.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Puka Beach</div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Step 2 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-left md:w-[45%] md:ml-auto pl-12 md:pl-12">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">STOP 1</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Mangrove Eco Park</h3>
-                        <p class="text-gray-500">Visit the peaceful mangrove forest and learn about the island's vital conservation efforts.</p>
+            <!-- POINT 2: Modern Landscapes -->
+            <div class="mb-32">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b border-gray-200 pb-8">
+                    <div class="fade-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-2">📍 POINT 2</span>
+                        <h3 class="text-4xl md:text-5xl font-heading font-bold text-secondary">Modern Landscapes</h3>
                     </div>
+                    <p class="fade-left text-gray-500 max-w-md md:text-right italic">Witness the architectural beauty and natural wonders of the Newcoast area.</p>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">STOP 2</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Bolabog Beach</h3>
-                        <p class="text-gray-500">Explore the vibrant Bolabog coast and snap a photo with the iconic Leaning Coconut Tree.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Boracay Newcoast -->
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="뉴코스트.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Boracay Newcoast</div>
+                        </div>
+                    </div>
+                    <!-- Newcoast Keyhole -->
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="뉴코스트 키홀.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Newcoast Keyhole</div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Step 4 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-left md:w-[45%] md:ml-auto pl-12 md:pl-12">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">STOP 3</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Newcoast Keyhole</h3>
-                        <p class="text-gray-500">Marvel at the natural rock formations and take iconic photos at this majestic viewpoint.</p>
+            <!-- POINT 3: Hidden Treasures -->
+            <div class="mb-32">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b border-gray-200 pb-8">
+                    <div class="fade-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-2">📍 POINT 3</span>
+                        <h3 class="text-4xl md:text-5xl font-heading font-bold text-secondary">Hidden Treasures</h3>
                     </div>
+                    <p class="fade-left text-gray-500 max-w-md md:text-right italic">Discover the island's ecological heart and the serene beauty of Sinagpa.</p>
                 </div>
 
-                <!-- Step 5 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">STOP 4</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Puka & Sinagpa Beach</h3>
-                        <p class="text-gray-500">Relax on the unique shell sands of Puka Beach and enjoy the tranquil beauty of Sinagpa Beach.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Mangrove Eco Park -->
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="맹그로브.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Mangrove Eco Park</div>
+                        </div>
+                    </div>
+                    <!-- Sinagpa Beach -->
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="시낙빠.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Sinagpa Beach</div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Step 6 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-left md:w-[45%] md:ml-auto pl-12 md:pl-12">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">STOP 5</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Station 1 Groto</h3>
-                        <p class="text-gray-500">Visit the famous Willy's Rock (Groto), the most photographed landmark on Boracay's White Beach.</p>
+            <!-- POINT 4: Coastal Icons -->
+            <div>
+                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 border-b border-gray-200 pb-8">
+                    <div class="fade-right">
+                        <span class="text-primary font-bold text-sm uppercase tracking-[0.3em] block mb-2">📍 POINT 4</span>
+                        <h3 class="text-4xl md:text-5xl font-heading font-bold text-secondary">Coastal Icons</h3>
                     </div>
+                    <p class="fade-left text-gray-500 max-w-md md:text-right italic">Capture the most iconic photographic spots on the island's vibrant eastern side.</p>
                 </div>
 
-                <!-- Step 7 -->
-                <div class="relative mb-24 flex flex-col md:flex-row items-start md:items-center">
-                    <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-light bg-primary z-10 shadow-[0_0_15px_rgba(41,211,208,0.5)]"></div>
-                    <div class="fade-right md:w-[45%] pl-12 md:pl-0 md:text-right">
-                        <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-2">RETURN</span>
-                        <h3 class="text-2xl font-bold text-secondary mb-3">Hotel Drop-off</h3>
-                        <p class="text-gray-500">Head back to your hotel or be dropped off at your preferred location after the tour.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Bulabog Beach -->
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="블라복.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Bulabog Beach</div>
+                        </div>
+                    </div>
+                    <!-- Leaning Coconut Tree -->
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
+                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <source src="블라복 나무.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Leaning Coconut Tree</div>
+                        </div>
                     </div>
                 </div>
             </div>
