@@ -52,7 +52,6 @@
                 <ul class="flex gap-8">
                     <li><a href="index.html" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
                     <li><a href="#about" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Why Us</a></li>
-                    <li><a href="#gallery" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Gallery</a></li>
                     <li><a href="#timeline" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Itinerary</a></li>
                 </ul>
             </nav>
@@ -67,7 +66,6 @@
         <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 transform -translate-y-full transition-transform duration-500 ease-in-out">
             <a href="index.html" class="mobile-link text-2xl font-heading font-semibold text-secondary">Home</a>
             <a href="#about" class="mobile-link text-2xl font-heading font-semibold text-secondary">Why Us</a>
-            <a href="#gallery" class="mobile-link text-2xl font-heading font-semibold text-secondary">Gallery</a>
             <a href="#timeline" class="mobile-link text-2xl font-heading font-semibold text-secondary">Itinerary</a>
         </div>
     </header>
@@ -804,24 +802,8 @@
     </footer>
     </div>
 
-    <!-- Sticky Navigation & Booking Tab (Right Side) -->
-    <div class="fixed right-0 top-1/2 -translate-y-1/2 z-[60] hidden lg:flex flex-col gap-2 items-end">
-        <!-- Navigation Links -->
-        <div class="bg-white/90 backdrop-blur-xl p-4 rounded-l-3xl shadow-2xl border border-gray-100 flex flex-col gap-4 transform translate-x-2 hover:translate-x-0 transition-transform duration-300">
-            <a href="index.html" class="p-2 hover:text-primary transition-colors text-secondary flex items-center gap-3 group">
-                <span class="text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Home</span>
-                <i class="ph ph-house text-xl"></i>
-            </a>
-            <a href="#about" class="p-2 hover:text-primary transition-colors text-secondary flex items-center gap-3 group">
-                <span class="text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Why Us</span>
-                <i class="ph ph-info text-xl"></i>
-            </a>
-            <a href="#timeline" class="p-2 hover:text-primary transition-colors text-secondary flex items-center gap-3 group">
-                <span class="text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Itinerary</span>
-                <i class="ph ph-map-trifold text-xl"></i>
-            </a>
-        </div>
-        
+    <!-- Sticky Booking Tab (Right Side) -->
+    <div class="fixed right-0 top-1/2 -translate-y-1/2 z-[60] hidden lg:block">
         <!-- Book Now Tab -->
         <a href="#booking" class="bg-primary text-white py-8 px-4 rounded-l-3xl shadow-2xl flex flex-col items-center gap-4 group hover:pr-8 transition-all duration-300">
             <i class="ph-bold ph-calendar text-2xl group-hover:scale-110 transition-transform"></i>

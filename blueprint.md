@@ -100,8 +100,9 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
 
 ### Quality Guarantee & UX Refinement
-*   **Header Navigation Cleanup:** Removed the "Book Now" / "Book Package" / "Book Tour" buttons from the top navigation bar and mobile menu across all pages. This was done to reduce visual clutter in the fixed header while prioritizing the more persistent side/sticky booking CTAs.
-*   **Sticky Reservation UX Restoration:** Reconfirmed and restored the fixed vertical booking tabs and sticky CTA cards, ensuring the primary conversion points remain easily accessible as the user scrolls.
+*   **Header Navigation Cleanup:** Removed the "Book Now" / "Book Package" / "Book Tour" buttons from the top navigation bar and mobile menu across all pages. Also removed the "Gallery", "Reviews", and "Contact" links to prioritize the most critical paths (Home, Tours, Itinerary).
+*   **Sticky Reservation UX Optimization:** Removed the recently added navigation icon box from the right fixed sidebar to maintain a clean, focused, and non-intrusive UI, while keeping the primary "Book Now" vertical tab accessible.
+*   **Hero Visual Polish:** Removed the scroll indicators from the center of the hero section on all pages to ensure a completely unobstructed view of the cinematic background media.
 
 ### Combo Package (Land + Hopping) Detail Page
 *   **New Page (`package-tour.html`):** Created a dedicated landing page for the Ultimate Combo Package.
