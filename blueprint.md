@@ -78,6 +78,16 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Hero Section:** Maintained the original high-quality static background image as requested, ensuring a clean and focused entry point.
 *   **Highlight Video Optimization:** Removed the `max-w-sm` and `mx-auto` constraints from the "Tour Highlights" video embed. This ensures the video fills its grid space symmetrically with the Hopping Tour page, providing a consistent "premium" visual scale across both products.
 
+### Land Tour Hero Image Update
+*   **Hero Section:** Updated the main hero image to `랜드 히어로.jpg` to provide a fresh and more relevant visual for the Land Tour experience.
+*   **Consistency:** Also updated the Final CTA background image to use the same asset, ensuring a unified visual theme throughout the page.
+
+### Land Tour Inclusions & Itinerary Update
+*   **New Inclusions:** Updated the package to include a fully air-conditioned van for a 3-hour tour and complimentary bottled mineral water.
+*   **Updated Pricing:** Adjusted the price to ₱600 per person, specifying it for shared/joiner trips.
+*   **Itinerary Refresh:** Overhauled the tour destinations to include Mangrove Eco Park, Bolabog Beach (Leaning Coconut Tree), Newcoast Keyhole, Puka Shell Beach, Sinagpa Beach, and Station 1 Groto (Willy's Rock).
+*   **Global Sync:** Updated `index.html` to ensure the Land Tour highlights, description, and pricing are consistent with the detail page.
+
 ### Thumbnail & Deployment Fixes
 *   **Fixed Broken Thumbnails:** Restored `land.jpg` and `hopping.jpg` by copying them from existing assets (`land0.jpg`, `hopping0.jpg`), fixing the "broken image" issue on the main `index.html` page.
 *   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
