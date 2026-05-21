@@ -99,6 +99,10 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Fixed Broken Thumbnails:** Restored `land.jpg` and `hopping.jpg` by copying them from existing assets (`land0.jpg`, `hopping0.jpg`), fixing the "broken image" issue on the main `index.html` page.
 *   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
 
+### Quality Guarantee & UX Refinement
+*   **Removed Sticky CTAs:** Removed all fixed/sticky "Book Now" tabs and floating CTA buttons that appeared on scroll across all pages (`land-tour.html`, `yacht-tour.html`, `package-tour.html`). This was done to provide a cleaner, less intrusive browsing experience while keeping the primary booking links in the header and section-specific CTAs.
+*   **JS Cleanup:** Removed the supporting scroll logic for sticky elements from `land-tour.js` and `yacht-tour.js`.
+
 ### Combo Package (Land + Hopping) Detail Page
 *   **New Page (`package-tour.html`):** Created a dedicated landing page for the Ultimate Combo Package.
 *   **Hero Section:** Reverted to the high-end **YouTube premium yacht video** (`9bDWdocKn9I`) for a more consistent and cinematic luxury feel.
