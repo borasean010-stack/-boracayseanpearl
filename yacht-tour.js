@@ -69,32 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Intersection Observer for Reveal Animations ---
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target.querySelector('video');
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                if (video) {
-                    video.play().catch(() => {
-                        video.muted = true;
-                        video.play();
-                    });
-                }
-            } else {
-                if (video) {
-                    video.pause();
-                }
-            }
-        });
-    }, observerOptions);
-
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-zoom, .fade-left, .fade-right');
-    animatedElements.forEach(el => observer.observe(el));
+    // Observer is now handled globally in main.js
 });

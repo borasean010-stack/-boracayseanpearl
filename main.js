@@ -55,30 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Intersection Observer for Scroll Animations ---
+    // --- Intersection Observer for Scroll Animations & Video Autoplay ---
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 
-                // If it's a video container or a video, try to play it
+                // Video Autoplay Logic
                 const video = entry.target.tagName === 'VIDEO' ? entry.target : entry.target.querySelector('video');
                 if (video) {
-                    video.play().catch(() => {
-                        video.muted = true;
-                        video.play();
-                    });
+                    video.muted = true;
+                    video.playsInline = true;
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {
+                            // Autoplay was prevented
+                            console.log("Autoplay prevented, waiting for interaction");
+                        });
+                    }
                 }
-                
-                // observer.unobserve(entry.target); // Optional: keep observing if you want to pause/play
             } else {
-                // Pause video when out of view
+                // Pause video when out of view to save resources
                 const video = entry.target.tagName === 'VIDEO' ? entry.target : entry.target.querySelector('video');
                 if (video) {
                     video.pause();
@@ -86,6 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
+
+    // Global interaction unlock for mobile (especially for Low Power Mode)
+    const unlockVideos = () => {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            if (video.paused && video.getAttribute('autoplay') !== null) {
+                video.muted = true;
+                video.play().catch(() => {});
+            }
+        });
+        document.removeEventListener('touchstart', unlockVideos);
+        document.removeEventListener('click', unlockVideos);
+    };
+
+    document.addEventListener('touchstart', unlockVideos);
+    document.addEventListener('click', unlockVideos);
 
     // Select all elements with animation classes
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-zoom, .fade-left, .fade-right');
