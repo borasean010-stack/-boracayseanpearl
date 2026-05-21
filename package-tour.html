@@ -223,13 +223,13 @@
                         <span class="inline-block px-4 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">PART 1</span>
                         <h3 class="text-3xl font-heading font-bold mb-8">Scenic Land Exploration</h3>
                         
-                        <!-- GIF Preview -->
+                        <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover">
+                            <video id="land-preview-video" autoplay muted playsinline preload="metadata" class="w-full h-full object-cover">
                                 <source src="보라카이 랜드투어.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm">Land Tour Highlights</div>
+                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="land-video-label">Land Tour Highlights</div>
                         </div>
 
                         <ul class="space-y-6 mb-10">
@@ -261,13 +261,13 @@
                         <span class="inline-block px-4 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">PART 2</span>
                         <h3 class="text-3xl font-heading font-bold mb-8">Luxury Yacht Adventure</h3>
 
-                        <!-- GIF Preview -->
+                        <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover">
+                            <video id="yacht-preview-video" autoplay muted playsinline preload="metadata" class="w-full h-full object-cover">
                                 <source src="snorkeling.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm">Yacht Tour Highlights</div>
+                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="yacht-video-label">Yacht Tour Highlights</div>
                         </div>
 
                         <ul class="space-y-6 mb-10">
@@ -475,5 +475,63 @@
     </footer>
 
     <script src="main.js"></script>
+    <script>
+        // Sequential Video Switcher for Combo Page
+        const landVideos = [
+            { src: '보라카이 랜드투어.mp4', label: 'Boracay Land Tour' },
+            { src: '푸카비치.mp4', label: 'Puka Beach' },
+            { src: '뉴코스트.mp4', label: 'Boracay Newcoast' },
+            { src: '뉴코스트 키홀.mp4', label: 'Newcoast Keyhole' },
+            { src: '맹그로브.mp4', label: 'Mangrove Eco Park' },
+            { src: '시낙빠.mp4', label: 'Sinagpa Beach' },
+            { src: '블라복.mp4', label: 'Bulabog Beach' },
+            { src: '블라복 나무.mp4', label: 'Leaning Coconut Tree' }
+        ];
+
+        const yachtVideos = [
+            { src: 'snorkeling.mp4', label: 'Premium Snorkeling' },
+            { src: 'slide.mp4', label: 'Giant Water Slide' },
+            { src: 'diving.mp4', label: 'Rooftop Diving' },
+            { src: 'freediving.mp4', label: 'Free Diving' },
+            { src: 'kayak.mp4', label: 'Crystal Kayaking' },
+            { src: 'paddleboard.mp4', label: 'Paddleboarding' },
+            { src: 'slide_balinghai.mp4', label: 'Balinghai Adventure' },
+            { src: 'dance.mp4', label: 'Onboard Dance Party' },
+            { src: 'song.mp4', label: 'Live Performance' }
+        ];
+
+        function createVideoSwitcher(videoId, labelId, videoList) {
+            const videoElem = document.getElementById(videoId);
+            const labelElem = document.getElementById(labelId);
+            let currentIndex = 0;
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % videoList.length;
+                const nextVideo = videoList[currentIndex];
+                
+                // Fade effect using CSS opacity if desired, or simple source switch
+                videoElem.style.opacity = '0';
+                
+                setTimeout(() => {
+                    videoElem.src = nextVideo.src;
+                    labelElem.textContent = nextVideo.label;
+                    videoElem.play();
+                    videoElem.style.opacity = '1';
+                }, 500);
+            }, 4000); // Switch every 4 seconds
+        }
+
+        // Initialize switchers when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createVideoSwitcher('land-preview-video', 'land-video-label', landVideos);
+            createVideoSwitcher('yacht-preview-video', 'yacht-video-label', yachtVideos);
+            
+            // Add smooth transition style to videos
+            const videos = document.querySelectorAll('#land-preview-video, #yacht-preview-video');
+            videos.forEach(v => {
+                v.style.transition = 'opacity 0.5s ease-in-out';
+            });
+        });
+    </script>
 </body>
 </html>
