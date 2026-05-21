@@ -168,9 +168,9 @@
     <!-- Tour Highlights Section -->
     <section class="py-24 bg-secondary text-white overflow-hidden relative">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch">
                 <div class="fade-left relative">
-                    <div class="aspect-[9/16] rounded-[3rem] overflow-hidden shadow-2xl bg-black">
+                    <div class="h-full min-h-[500px] md:min-h-0 rounded-[3rem] overflow-hidden shadow-2xl bg-black">
                         <iframe 
                             class="w-full h-full"
                             src="https://www.youtube.com/embed/fuMdnDUH2aY?autoplay=1&mute=1&loop=1&playlist=fuMdnDUH2aY&controls=0&modestbranding=1&start=0" 
@@ -179,46 +179,48 @@
                         </iframe>
                     </div>
                 </div>
-                <div class="fade-right">
-                    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8">Premium <span class="text-primary italic">Inclusions</span></h2>
-                    <ul class="space-y-6 mb-12">
-                        <li class="flex items-start gap-4">
-                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
-                                <i class="ph-bold ph-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl mb-1">Luxury Yacht Admission</h4>
-                                <p class="text-gray-400">Entry to our multi-deck yacht including all fuel and terminal costs.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
-                                <i class="ph-bold ph-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl mb-1">Pro Gear & Amenities</h4>
-                                <p class="text-gray-400">Snorkeling equipment, life jackets, water slide, kayaks, and paddleboards.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
-                                <i class="ph-bold ph-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl mb-1">Unlimited Refreshments</h4>
-                                <p class="text-gray-400">Signature cocktails, juices, bottled water, seasonal fruits, and local snacks.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
-                                <i class="ph-bold ph-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl mb-1">Hot Korean Ramen</h4>
-                                <p class="text-primary font-medium">A comforting bowl of hot ramen served fresh after your swim.</p>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="fade-right flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8">Premium <span class="text-primary italic">Inclusions</span></h2>
+                        <ul class="space-y-6 mb-12">
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                    <i class="ph-bold ph-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Luxury Yacht Admission</h4>
+                                    <p class="text-gray-400">Entry to our multi-deck yacht including all fuel and terminal costs.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                    <i class="ph-bold ph-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Pro Gear & Amenities</h4>
+                                    <p class="text-gray-400">Snorkeling equipment, life jackets, water slide, kayaks, and paddleboards.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                    <i class="ph-bold ph-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Unlimited Refreshments</h4>
+                                    <p class="text-gray-400">Signature cocktails, juices, bottled water, seasonal fruits, and local snacks.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0 mt-1">
+                                    <i class="ph-bold ph-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Hot Korean Ramen</h4>
+                                    <p class="text-primary font-medium">A comforting bowl of hot ramen served fresh after your swim.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-gray-400 font-medium uppercase tracking-widest text-sm">Investment</span>
@@ -235,10 +237,10 @@
     <!-- Detailed Description -->
     <section class="py-32 bg-light">
         <div class="container mx-auto px-6">
-            <div class="w-full">
+            <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-20">
                     <h2 class="fade-up text-4xl md:text-5xl font-heading font-bold text-secondary mb-8 italic">"The ultimate and most luxurious way to experience Boracay’s ocean"</h2>
-                    <p class="fade-up text-gray-600 text-lg leading-relaxed delay-100 max-w-4xl mx-auto">
+                    <p class="fade-up text-gray-600 text-lg leading-relaxed delay-100">
                         Step away from ordinary speedboats and experience a whole new level of island hopping! Our signature luxury yacht features a wide deck, a scenic second-floor rooftop, and a clean onboard restroom, ensuring a comfortable and premium experience for couples, friends, and families alike.
                     </p>
                 </div>
@@ -419,41 +421,41 @@
                 </div>
 
                 <!-- 2x2 Grid for Coral Garden -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Snorkeling -->
-                    <div class="fade-up bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="snorkeling.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Snorkeling</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Snorkeling</div>
                         </div>
                     </div>
                     <!-- Giant Slide -->
-                    <div class="fade-up delay-100 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="slide.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Giant Slide</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Giant Slide</div>
                         </div>
                     </div>
                     <!-- Rooftop Diving -->
-                    <div class="fade-up delay-200 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-200 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="diving.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Rooftop Diving</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Rooftop Diving</div>
                         </div>
                     </div>
                     <!-- Free Diving -->
-                    <div class="fade-up delay-300 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-300 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="freediving.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Free Diving</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Free Diving</div>
                         </div>
                     </div>
                 </div>
@@ -514,77 +516,77 @@
                 </div>
 
                 <!-- Grid for Balinghai (Larger Layout) -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <!-- Kayaking -->
-                    <div class="fade-up bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="kayak.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Kayaking</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Kayaking</div>
                         </div>
                     </div>
                     <!-- Paddleboard -->
-                    <div class="fade-up delay-100 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="paddleboard.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Paddleboard</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Paddleboard</div>
                         </div>
                     </div>
                     <!-- Snorkeling -->
-                    <div class="fade-up delay-200 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-200 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="snorkeling.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Snorkeling</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Snorkeling</div>
                         </div>
                     </div>
                     <!-- Diving -->
-                    <div class="fade-up delay-300 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-300 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="diving.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Diving</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Diving</div>
                         </div>
                     </div>
                     <!-- Giant Slide -->
-                    <div class="fade-up bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="slide_balinghai.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Giant Slide</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Giant Slide</div>
                         </div>
                     </div>
                     <!-- Free Diving -->
-                    <div class="fade-up delay-100 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="freediving.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Free Diving</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Free Diving</div>
                         </div>
                     </div>
                     <!-- Dance Party -->
-                    <div class="fade-up delay-200 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-200 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="dance.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Dance Party</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Dance Party</div>
                         </div>
                     </div>
                     <!-- Onboard Song Performance -->
-                    <div class="fade-up delay-300 bg-white rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
-                        <div class="relative aspect-[3/4] bg-gray-200">
+                    <div class="fade-up delay-300 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
+                        <div class="relative aspect-video bg-gray-200">
                             <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="song.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-sm shadow-lg z-20">Onboard Song Performance</div>
+                            <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Onboard Song Performance</div>
                         </div>
                     </div>
                 </div>
