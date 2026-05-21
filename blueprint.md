@@ -99,6 +99,14 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Fixed Broken Thumbnails:** Restored `land.jpg` and `hopping.jpg` by copying them from existing assets (`land0.jpg`, `hopping0.jpg`), fixing the "broken image" issue on the main `index.html` page.
 *   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
 
+### Combo Package (Land + Hopping) Detail Page
+*   **New Page (`package-tour.html`):** Created a dedicated landing page for the Ultimate Combo Package.
+*   **Hero Section:** Reused the high-end YouTube video background from the Yacht Tour to establish immediate premium value.
+*   **Value Proposition:** Added a dedicated section immediately below the hero that breaks down the individual costs (1,900 + 700 = 2,600) vs. the discounted package price (2,500 PHP), emphasizing the 100 PHP per person saving.
+*   **Split Highlights:** Implemented a side-by-side comparison of "Part 1: Land" and "Part 2: Yacht" highlights to showcase the full island coverage.
+*   **Quality Guarantee:** Integrated the "Al-Jal-Ttak-Kkal-Sen" (알잘딱깔센) service philosophy into the copy to emphasize professional, seamless coordination.
+*   **Home Page Integration:** Linked the "Ultimate Combo Package" section on `index.html` directly to this new detail page.
+
 ### Affiliate Section Optimization
 *   **Removed Detailed View Link:** Deleted the "전체 제휴사 및 할인 혜택 상세 보기" link as requested, streamlining the Membership section.
 *   **HTML Structure Cleanup:** Identified and removed a significant block of orphaned and redundant partner icons that were outside the section container, fixing a layout bug.
