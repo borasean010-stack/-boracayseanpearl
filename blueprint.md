@@ -101,7 +101,7 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 
 ### Combo Package (Land + Hopping) Detail Page
 *   **New Page (`package-tour.html`):** Created a dedicated landing page for the Ultimate Combo Package.
-*   **Hero Section:** Integrated a dynamic **YouTube Shorts** background video (`fuMdnDUH2aY`) for a modern, mobile-first visual impact.
+*   **Hero Section:** Reverted to the high-end **YouTube premium yacht video** (`9bDWdocKn9I`) for a more consistent and cinematic luxury feel.
 *   **Value Proposition:** Added a dedicated section immediately below the hero that breaks down the individual costs (1,900 + 700 = 2,600) vs. the discounted package price (2,500 PHP), emphasizing the 100 PHP per person saving.
 *   **Split Highlights:** Implemented a side-by-side comparison of "Part 1: Land" and "Part 2: Yacht" highlights to showcase the full island coverage, including looping "GIF-style" video previews.
 *   **Expanded Social Proof:** Increased the number of testimonials in the "Elite Guestbook" to 6, including specific feedback from Korean and international guests to boost credibility and appeal.
