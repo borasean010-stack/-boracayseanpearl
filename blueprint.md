@@ -100,6 +100,8 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
 
 ### Quality Guarantee & UX Refinement
+*   **Restored Floating Price CTAs:** Brought back the floating "Price & Booking" boxes (Desktop CTA) and sticky mobile bars to the `land-tour.html` and `yacht-tour.html` pages. This ensures the price (700 PHP for Land / 1,900 PHP for Hopping) is always visible to the user as they scroll, as per the "old version" layout.
+*   **JS Scroll Logic Restoration:** Re-implemented the JavaScript scroll-triggered visibility for the floating CTAs in `land-tour.js` and `yacht-tour.js`.
 *   **Layout Expansion:** Expanded the content width for the "Detailed Description" and "Logistics" sections on both `land-tour.html` and `yacht-tour.html`. Removed restrictive max-width classes to ensure the layout matches the broader scale of the overall application.
 *   **Itinerary Video Optimization (Shorts Style):** Resized the tour highlight videos on both detailed pages. Changed the aspect ratio from 16:9 to a portrait 3:4 ratio and increased the grid columns (up to 4 columns on desktop). Also reduced internal label text sizes to ensure the videos feel like "shorts" and match the surrounding text scale.
 *   **Header Navigation Cleanup:** Removed the "Book Now" / "Book Package" / "Book Tour" buttons from the top navigation bar and mobile menu across all pages. Also removed the "Gallery", "Reviews", and "Contact" links to prioritize the most critical paths (Home, Tours, Itinerary).
