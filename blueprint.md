@@ -84,8 +84,9 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 
 ### Land Tour Inclusions & Itinerary Update
 *   **New Inclusions:** Updated the package to include a fully air-conditioned van for a 3-hour tour and complimentary bottled mineral water.
-*   **Updated Pricing:** Adjusted the price to ₱600 per person, specifying it for shared/joiner trips.
+*   **Pricing Correction:** Reverted the price to ₱700 per person as per the latest update.
 *   **Itinerary Refresh:** Overhauled the tour destinations to include Mangrove Eco Park, Bolabog Beach (Leaning Coconut Tree), Newcoast Keyhole, Puka Shell Beach, Sinagpa Beach, and Station 1 Groto (Willy's Rock).
+*   **Layout Cleanup:** Removed the "Pearl Of Sean Moments" gallery section from the home page to maintain a cleaner, more focused user experience.
 *   **Global Sync:** Updated `index.html` to ensure the Land Tour highlights, description, and pricing are consistent with the detail page.
 
 ### Thumbnail & Deployment Fixes
