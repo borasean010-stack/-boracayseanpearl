@@ -106,6 +106,20 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Itinerary Video Optimization (Shorts Style):** Resized the tour highlight videos on both detailed pages. Changed the aspect ratio from 16:9 to a portrait 3:4 ratio and increased the grid columns (up to 4 columns on desktop). Also reduced internal label text sizes to ensure the videos feel like "shorts" and match the surrounding text scale.
 *   **Header Navigation Cleanup:** Removed the "Book Now" / "Book Package" / "Book Tour" buttons from the top navigation bar and mobile menu across all pages. Also removed the "Gallery", "Reviews", and "Contact" links to prioritize the most critical paths (Home, Tours, Itinerary).
 
+### Dedicated Booking Page Implementation (Current Task)
+*   **Purpose:** Create a professional, dedicated booking page (`booking.html`) to replace inline booking sections and external chat links, providing a more structured and premium booking experience.
+*   **Form Structure:**
+    *   **Guest Details:** Name, Phone/Email, Messenger ID (Kakao/WhatsApp), and Number of Guests (Adults/Children).
+    *   **Tour Selection:** Dropdown to choose between Boracay Land Tour, Pearl of Sean Hopping Tour, or the Ultimate Combo Package.
+    *   **Date Selection:** Visual calendar input for selecting the tour date.
+*   **Conversion Logic:** 
+    *   The "Submit" button will process the form data via JavaScript.
+    *   It will generate a structured, pre-filled booking message (e.g., "Hi Pearl of Sean, I'd like to book [Tour] for [Date] for [Pax] people. My Kakao/WA ID is [ID]...")
+    *   The user will be redirected to WhatsApp to send the final message for immediate confirmation.
+*   **Integration:**
+    *   Update all "Book Now", "Reserve Now", and "Website Booking" buttons across the entire site to link to `booking.html`.
+    *   Use URL parameters (e.g., `?tour=land`) to pre-populate the tour selection when users click from a specific detail page.
+
 ### Combo Package (Land + Hopping) Detail Page
 *   **New Page (`package-tour.html`):** Created a dedicated landing page for the Ultimate Combo Package.
 *   **Hero Section:** Reverted to the high-end **YouTube premium yacht video** (`9bDWdocKn9I`) for a more consistent and cinematic luxury feel.
