@@ -96,17 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const unlockVideos = () => {
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
-            if (video.paused && video.getAttribute('autoplay') !== null) {
+            if (video.paused && (video.hasAttribute('autoplay') || video.autoplay)) {
                 video.muted = true;
-                video.play().catch(() => {});
+                video.play().catch(() => {
+                    // Still blocked, but we tried
+                });
             }
         });
         document.removeEventListener('touchstart', unlockVideos);
         document.removeEventListener('click', unlockVideos);
     };
 
-    document.addEventListener('touchstart', unlockVideos);
-    document.addEventListener('click', unlockVideos);
+    document.addEventListener('touchstart', unlockVideos, { passive: true });
+    document.addEventListener('click', unlockVideos, { passive: true });
 
     // Select all elements with animation classes
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-zoom, .fade-left, .fade-right');

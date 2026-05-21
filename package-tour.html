@@ -214,8 +214,7 @@
                         
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video id="land-preview-video" autoplay muted playsinline preload="metadata" class="w-full h-full object-cover">
-                                <source src="land_tour_highlights.mp4" type="video/mp4">
+                            <video id="land-preview-video" muted autoplay playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover" src="land_tour_highlights.mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="land-video-label">Land Tour Highlights</div>
@@ -252,8 +251,7 @@
 
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video id="yacht-preview-video" autoplay muted playsinline preload="metadata" class="w-full h-full object-cover">
-                                <source src="snorkeling.mp4" type="video/mp4">
+                            <video id="yacht-preview-video" muted autoplay playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover" src="snorkeling.mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="yacht-video-label">Yacht Tour Highlights</div>
@@ -596,6 +594,7 @@
                 setTimeout(() => {
                     videoElem.src = nextVideo.src;
                     labelElem.textContent = nextVideo.label;
+                    videoElem.muted = true;
                     videoElem.play();
                     videoElem.style.opacity = '1';
                 }, 500);
