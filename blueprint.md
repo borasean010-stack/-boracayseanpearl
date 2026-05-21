@@ -100,9 +100,9 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Git Deployment:** Committed and pushed all recent changes to the `main` branch to trigger the production deployment.
 
 ### Quality Guarantee & UX Refinement
+*   **Layout Expansion:** Expanded the content width for the "Detailed Description" and "Logistics" sections on both `land-tour.html` and `yacht-tour.html`. Removed restrictive max-width classes to ensure the layout matches the broader scale of the overall application.
+*   **Itinerary Video Optimization (Shorts Style):** Resized the tour highlight videos on both detailed pages. Changed the aspect ratio from 16:9 to a portrait 3:4 ratio and increased the grid columns (up to 4 columns on desktop). Also reduced internal label text sizes to ensure the videos feel like "shorts" and match the surrounding text scale.
 *   **Header Navigation Cleanup:** Removed the "Book Now" / "Book Package" / "Book Tour" buttons from the top navigation bar and mobile menu across all pages. Also removed the "Gallery", "Reviews", and "Contact" links to prioritize the most critical paths (Home, Tours, Itinerary).
-*   **Sticky Reservation UX Optimization:** Removed the recently added navigation icon box from the right fixed sidebar to maintain a clean, focused, and non-intrusive UI, while keeping the primary "Book Now" vertical tab accessible.
-*   **Hero Visual Polish:** Removed the scroll indicators from the center of the hero section on all pages to ensure a completely unobstructed view of the cinematic background media.
 
 ### Combo Package (Land + Hopping) Detail Page
 *   **New Page (`package-tour.html`):** Created a dedicated landing page for the Ultimate Combo Package.
