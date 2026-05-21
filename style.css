@@ -165,13 +165,8 @@
     transform: translate(-50%, -50%) scale(1.05); /* Slight scale to hide edges */
 }
 
-/* Hide native mobile play buttons and controls to ensure GIF effect */
-video::-webkit-media-controls-start-playback-button,
-video::-webkit-media-controls-play-button,
-video::-webkit-media-controls-panel {
-    display: none !important;
-    -webkit-appearance: none;
-}
+/* Ensure looping videos act like GIFs on mobile */
 video {
-    pointer-events: none;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix for rounded corners on some Safari versions */
 }
+

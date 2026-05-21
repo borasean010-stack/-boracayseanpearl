@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Intersection Observer for Scroll Animations & Video Autoplay ---
+    // --- Intersection Observer for Scroll Animations ---
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -69,38 +69,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 
-                // Video Autoplay Logic
-                const video = entry.target.tagName === 'VIDEO' ? entry.target : entry.target.querySelector('video');
-                if (video) {
+                // Try to play videos when they enter view
+                const videos = entry.target.querySelectorAll('video');
+                videos.forEach(video => {
                     video.muted = true;
-                    video.playsInline = true;
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(() => {
-                            // Autoplay was prevented
-                            console.log("Autoplay prevented, waiting for interaction");
-                        });
-                    }
-                }
-            } else {
-                // Pause video when out of view to save resources
-                const video = entry.target.tagName === 'VIDEO' ? entry.target : entry.target.querySelector('video');
-                if (video) {
-                    video.pause();
-                }
+                    video.play().catch(() => {
+                        // Handled by interaction unlock
+                    });
+                });
             }
         });
     }, observerOptions);
 
-    // Global interaction unlock for mobile (especially for Low Power Mode)
+    // Global interaction unlock for mobile
     const unlockVideos = () => {
-        const videos = document.querySelectorAll('video');
-        videos.forEach(video => {
-            if (video.paused && (video.hasAttribute('autoplay') || video.autoplay)) {
+        const allVideos = document.querySelectorAll('video');
+        allVideos.forEach(video => {
+            if (video.hasAttribute('autoplay')) {
                 video.muted = true;
-                video.play().catch(() => {
-                    // Still blocked, but we tried
-                });
+                video.play().catch(() => {});
             }
         });
         document.removeEventListener('touchstart', unlockVideos);
