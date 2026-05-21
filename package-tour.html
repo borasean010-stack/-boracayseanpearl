@@ -55,9 +55,6 @@
                     <li><a href="land-tour.html" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Land</a></li>
                     <li><a href="#value" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Pricing</a></li>
                 </ul>
-                <a href="#booking" class="bg-primary text-white px-6 py-2 rounded-full font-medium hover:shadow-[0_0_20px_rgba(41,211,208,0.4)] transition-all">
-                    Book Package
-                </a>
             </nav>
 
             <!-- Mobile Toggle -->
@@ -72,7 +69,6 @@
             <a href="yacht-tour.html" class="mobile-link text-2xl font-heading font-semibold text-secondary">Hopping Tour</a>
             <a href="land-tour.html" class="mobile-link text-2xl font-heading font-semibold text-secondary">Land Tour</a>
             <a href="#value" class="mobile-link text-2xl font-heading font-semibold text-secondary">Special Pricing</a>
-            <a href="#booking" class="mobile-link bg-primary text-white px-8 py-3 rounded-full font-medium text-lg shadow-lg">Book Now</a>
         </div>
     </header>
 
@@ -535,6 +531,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Sticky Booking Tab (Right Side) -->
+    <div class="fixed right-0 top-1/2 -translate-y-1/2 z-[60] hidden lg:block">
+        <a href="#booking" class="bg-primary text-white py-8 px-4 rounded-l-3xl shadow-2xl flex flex-col items-center gap-4 group hover:pr-8 transition-all duration-300">
+            <i class="ph-bold ph-calendar text-2xl group-hover:scale-110 transition-transform"></i>
+            <span class="[writing-mode:vertical-lr] font-bold tracking-widest uppercase text-sm">Book Now</span>
+        </a>
+    </div>
 
     <script src="main.js"></script>
     <script>
