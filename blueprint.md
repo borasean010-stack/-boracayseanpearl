@@ -104,12 +104,15 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Hero Section:** Reverted to the high-end **YouTube premium yacht video** (`9bDWdocKn9I`) for a more consistent and cinematic luxury feel.
 *   **Value Proposition:** Added a dedicated section immediately below the hero that breaks down the individual costs (1,900 + 700 = 2,600) vs. the discounted package price (2,500 PHP), emphasizing the 100 PHP per person saving.
 *   **Dynamic Video Previews:** Implemented a JavaScript-based video switcher for the "Double the Adventure" section.
-    *   **Land Tour:** Cycles through 8 videos (Mangrove, Puka, Keyhole, etc.) every 4 seconds.
-    *   **Yacht Tour:** Cycles through 9 videos (Snorkeling, Slide, Diving, Party, etc.) every 4 seconds.
-    *   **Visual Polish:** Added smooth fade-out/fade-in transitions and dynamic labels for each video.
-*   **Expanded Social Proof:** Increased the number of testimonials in the "Elite Guestbook" to 6, including specific feedback from Korean and international guests to boost credibility and appeal.
-*   **Quality Guarantee:** Integrated the "Al-Jal-Ttak-Kkal-Sen" (알잘딱깔센) service philosophy into the copy to emphasize professional, seamless coordination.
+*   **Essential Info Cards:** Added integrated logistics cards for both tours (Meeting times, locations, and preparation guides).
+*   **Sticky Reservation UX:** Implemented a fixed vertical booking tab on the right side of the screen for desktop users, ensuring the primary conversion goal is always accessible.
+*   **Expanded Social Proof:** Increased the number of testimonials in the "Elite Guestbook" to 6.
+*   **Quality Guarantee:** Integrated the "Al-Jal-Ttak-Kkal-Sen" (알잘딱깔센) service philosophy into the copy.
 *   **Home Page Integration:** Linked the "Ultimate Combo Package" section on `index.html` directly to this new detail page.
+
+### Tour Detail Page Enhancements
+*   **Meeting Logistics:** Added "Essential Tour Information" cards to both `land-tour.html` and `yacht-tour.html` containing meeting times, starting times, specific points (Front/Back Beach), and preparation checklists.
+*   **Anniversary Events:** Added a promotional card for the **Black Pearl Special Event Service** (Birthday, Proposal, Anniversary celebrations) on the Yacht Tour page, highlighting it as a free, pre-requested luxury service.
 
 ### Thumbnail & Deployment Fixes
 *   **Removed Detailed View Link:** Deleted the "전체 제휴사 및 할인 혜택 상세 보기" link as requested, streamlining the Membership section.
