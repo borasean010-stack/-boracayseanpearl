@@ -38,30 +38,31 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .booking-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 50px 100px -20px rgba(6, 43, 67, 0.15), 0 30px 60px -30px rgba(0, 0, 0, 0.2);
+            background: rgba(6, 43, 67, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
         }
 
         .input-luxury {
-            background: #F8F9FA;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            color: #062B43;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
             transition: all 0.3s ease;
         }
 
         .input-luxury:focus {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.1);
             border-color: #29D3D0;
-            box-shadow: 0 0 15px rgba(41, 211, 208, 0.15);
+            box-shadow: 0 0 15px rgba(41, 211, 208, 0.2);
         }
 
-        /* Custom Calendar Styling */
+        /* Custom Calendar Styling - Dark Theme */
         .calendar-container {
-            background: #F8F9FA;
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 2rem;
             padding: 1.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .calendar-header {
             display: flex;
@@ -78,9 +79,9 @@
         .calendar-day-label {
             text-align: center;
             font-size: 10px;
-            font-bold;
+            font-weight: 800;
             text-transform: uppercase;
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.3);
             padding: 0.5rem 0;
             letter-spacing: 0.1em;
         }
@@ -90,27 +91,27 @@
             align-items: center;
             justify-content: center;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             border-radius: 0.75rem;
             transition: all 0.2s;
-            color: #062B43;
+            color: rgba(255, 255, 255, 0.8);
         }
         .calendar-day:hover:not(.empty):not(.disabled) {
-            background: rgba(41, 211, 208, 0.1);
+            background: rgba(41, 211, 208, 0.2);
             color: #29D3D0;
         }
         .calendar-day.selected {
             background: #29D3D0 !important;
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(41, 211, 208, 0.3);
+            color: #062B43 !important;
+            box-shadow: 0 4px 12px rgba(41, 211, 208, 0.4);
         }
         .calendar-day.today {
-            border: 2px solid rgba(41, 211, 208, 0.3);
+            border: 2px solid rgba(41, 211, 208, 0.5);
             color: #29D3D0;
         }
         .calendar-day.disabled {
-            opacity: 0.3;
+            opacity: 0.2;
             cursor: not-allowed;
         }
         .calendar-day.empty {
@@ -119,9 +120,9 @@
 
         /* Custom radio styling for payment */
         .payment-option input:checked + div {
-            background: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.1) !important;
             border-color: #29D3D0 !important;
-            box-shadow: 0 10px 30px rgba(41, 211, 208, 0.1);
+            box-shadow: 0 10px 30px rgba(41, 211, 208, 0.2);
         }
         .payment-option input:checked + div > div:last-child {
             background: #29D3D0;
@@ -240,17 +241,17 @@
                                         <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">01</span>
                                         Selected Experience
                                     </h3>
-                                    <div class="bg-[#F8F9FA] rounded-[2rem] p-6 border border-black/5 flex items-center justify-between">
+                                    <div class="bg-white/5 rounded-[2rem] p-6 border border-white/10 flex items-center justify-between">
                                         <div class="flex items-center gap-4">
-                                            <div id="tour-icon" class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary text-2xl">
+                                            <div id="tour-icon" class="w-14 h-14 rounded-2xl bg-white/10 shadow-sm flex items-center justify-center text-primary text-2xl border border-white/10">
                                                 <i class="ph ph-sailboat"></i>
                                             </div>
                                             <div>
-                                                <h4 id="tour-name" class="font-bold text-xl">Pearl Hopping Tour</h4>
+                                                <h4 id="tour-name" class="font-bold text-xl text-white">Pearl Hopping Tour</h4>
                                                 <p id="tour-price" class="text-primary font-bold text-sm tracking-widest uppercase">1,900 PHP</p>
                                             </div>
                                         </div>
-                                        <a href="index.html#tours" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary transition-colors">Change</a>
+                                        <a href="index.html#tours" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-primary transition-colors">Change</a>
                                     </div>
                                     <input type="hidden" name="tour" id="tour-input">
                                 </div>
@@ -263,15 +264,15 @@
                                     </h3>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div class="space-y-2">
-                                            <label class="text-[10px] uppercase font-bold text-slate-400 ml-2 tracking-widest">Full Name</label>
+                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Full Name</label>
                                             <input type="text" name="name" required placeholder="Enter your name" class="w-full input-luxury rounded-2xl px-6 py-4 outline-none font-medium">
                                         </div>
                                         <div class="space-y-2">
-                                            <label class="text-[10px] uppercase font-bold text-slate-400 ml-2 tracking-widest">Phone Number</label>
+                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Phone Number</label>
                                             <input type="tel" name="phone" required placeholder="010-0000-0000" class="w-full input-luxury rounded-2xl px-6 py-4 outline-none font-medium">
                                         </div>
                                         <div class="space-y-2">
-                                            <label class="text-[10px] uppercase font-bold text-slate-400 ml-2 tracking-widest">Email Address</label>
+                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Email Address</label>
                                             <input type="email" name="email" required placeholder="example@email.com" class="w-full input-luxury rounded-2xl px-6 py-4 outline-none font-medium">
                                         </div>
                                     </div>
@@ -286,14 +287,14 @@
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <!-- Custom Calendar -->
                                         <div class="space-y-4">
-                                            <label class="text-[10px] uppercase font-bold text-slate-400 ml-2 tracking-widest">Select Date</label>
+                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
                                             <div class="calendar-container">
                                                 <div class="calendar-header">
-                                                    <button type="button" id="prev-month" class="p-2 hover:bg-black/5 rounded-full transition-colors text-slate-400 hover:text-primary">
+                                                    <button type="button" id="prev-month" class="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-primary">
                                                         <i class="ph ph-caret-left-bold"></i>
                                                     </button>
-                                                    <span id="current-month" class="font-bold text-sm uppercase tracking-widest">May 2026</span>
-                                                    <button type="button" id="next-month" class="p-2 hover:bg-black/5 rounded-full transition-colors text-slate-400 hover:text-primary">
+                                                    <span id="current-month" class="font-bold text-sm uppercase tracking-widest text-white">May 2026</span>
+                                                    <button type="button" id="next-month" class="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-primary">
                                                         <i class="ph ph-caret-right-bold"></i>
                                                     </button>
                                                 </div>
@@ -314,31 +315,31 @@
 
                                         <div class="space-y-8 flex flex-col justify-center">
                                             <div class="space-y-2">
-                                                <label class="text-[10px] uppercase font-bold text-slate-400 ml-2 tracking-widest flex items-center gap-2">
+                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
                                                     Adults
                                                     <span class="lowercase font-normal opacity-60">(36mo+)</span>
                                                 </label>
                                                 <div class="flex items-center gap-4">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-[#F8F9FA] border border-black/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" data-type="adults" data-action="minus">
+                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus">
                                                         <i class="ph ph-minus-bold"></i>
                                                     </button>
-                                                    <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-[#F8F9FA] border border-black/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" data-type="adults" data-action="plus">
+                                                    <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
+                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus">
                                                         <i class="ph ph-plus-bold"></i>
                                                     </button>
                                                 </div>
                                             </div>
                                             <div class="space-y-2">
-                                                <label class="text-[10px] uppercase font-bold text-slate-400 ml-2 tracking-widest flex items-center gap-2">
+                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
                                                     Child
                                                     <span class="lowercase font-normal opacity-60">(<36mo)</span>
                                                 </label>
                                                 <div class="flex items-center gap-4">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-[#F8F9FA] border border-black/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" data-type="children" data-action="minus">
+                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus">
                                                         <i class="ph ph-minus-bold"></i>
                                                     </button>
-                                                    <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-[#F8F9FA] border border-black/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" data-type="children" data-action="plus">
+                                                    <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
+                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus">
                                                         <i class="ph ph-plus-bold"></i>
                                                     </button>
                                                 </div>
@@ -352,7 +353,7 @@
                                     <button type="button" id="proceed-to-payment" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
                                         Proceed to Payment <i class="ph-bold ph-arrow-right text-2xl"></i>
                                     </button>
-                                    <p class="text-center text-[10px] text-slate-400 mt-8 uppercase tracking-[0.2em] font-medium leading-relaxed">
+                                    <p class="text-center text-[10px] text-gray-500 mt-8 uppercase tracking-[0.2em] font-medium leading-relaxed">
                                         Policy: Children under 36 months are Child. <br>
                                         Guests 36 months and older are considered Adults.
                                     </p>
@@ -360,40 +361,40 @@
                             </form>
 
                             <!-- Step 5: Payment Section (Initially Hidden) -->
-                            <div id="payment-section" class="hidden relative z-10 space-y-10 text-secondary">
+                            <div id="payment-section" class="hidden relative z-10 space-y-10">
                                 <div class="space-y-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
                                             <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">04</span>
                                             Checkout Summary
                                         </h3>
-                                        <button type="button" id="back-to-form" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary transition-colors">Edit Details</button>
+                                        <button type="button" id="back-to-form" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-primary transition-colors">Edit Details</button>
                                     </div>
                                     
                                     <!-- Order Summary Card -->
-                                    <div class="bg-[#F8F9FA] rounded-[2rem] p-8 border border-black/5 space-y-6">
-                                        <div class="flex justify-between items-start border-b border-black/5 pb-6">
+                                    <div class="bg-white/5 rounded-[2rem] p-8 border border-white/10 space-y-6">
+                                        <div class="flex justify-between items-start border-b border-white/10 pb-6">
                                             <div>
-                                                <h4 id="summary-tour-name" class="font-bold text-xl mb-1">Pearl Hopping Tour</h4>
-                                                <p id="summary-date" class="text-slate-400 text-sm font-medium">May 24, 2026</p>
+                                                <h4 id="summary-tour-name" class="font-bold text-xl mb-1 text-white">Pearl Hopping Tour</h4>
+                                                <p id="summary-date" class="text-gray-400 text-sm font-medium">May 24, 2026</p>
                                             </div>
                                             <div class="text-right">
-                                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Pax</p>
-                                                <p id="summary-pax" class="font-bold text-lg text-secondary">2 Adults</p>
+                                                <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Total Pax</p>
+                                                <p id="summary-pax" class="font-bold text-lg text-white">2 Adults</p>
                                             </div>
                                         </div>
                                         
                                         <div class="space-y-3">
                                             <div class="flex justify-between text-sm">
-                                                <span class="text-slate-500">Subtotal</span>
-                                                <span id="summary-subtotal" class="font-semibold">3,800 PHP</span>
+                                                <span class="text-gray-400">Subtotal</span>
+                                                <span id="summary-subtotal" class="font-semibold text-white">3,800 PHP</span>
                                             </div>
                                             <div class="flex justify-between text-sm">
-                                                <span class="text-slate-500">Service Fee</span>
-                                                <span class="font-semibold">0 PHP</span>
+                                                <span class="text-gray-400">Service Fee</span>
+                                                <span class="font-semibold text-white">0 PHP</span>
                                             </div>
-                                            <div class="flex justify-between text-xl font-bold pt-3 border-t border-black/5">
-                                                <span class="text-secondary">Grand Total</span>
+                                            <div class="flex justify-between text-xl font-bold pt-3 border-t border-white/10">
+                                                <span class="text-white">Grand Total</span>
                                                 <span id="summary-total" class="text-primary text-glow">3,800 PHP</span>
                                             </div>
                                         </div>
@@ -409,16 +410,16 @@
                                         <!-- GCash -->
                                         <label class="payment-option cursor-pointer group">
                                             <input type="radio" name="payment_method" value="GCash" class="hidden" checked>
-                                            <div class="bg-[#F8F9FA] border-2 border-transparent rounded-[2rem] p-6 transition-all duration-300 flex items-center justify-between group-hover:bg-white group-hover:border-primary/20">
+                                            <div class="bg-white/5 border-2 border-transparent rounded-[2rem] p-6 transition-all duration-300 flex items-center justify-between group-hover:bg-white/10 group-hover:border-primary/20">
                                                 <div class="flex items-center gap-5">
                                                     <div class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-white text-3xl font-black italic shadow-lg shadow-blue-600/20">G</div>
                                                     <div>
-                                                        <span class="block font-bold text-lg">GCash</span>
-                                                        <span class="block text-xs text-slate-400">Pay with GCash wallet</span>
+                                                        <span class="block font-bold text-lg text-white">GCash</span>
+                                                        <span class="block text-xs text-gray-400">Pay with GCash wallet</span>
                                                     </div>
                                                 </div>
-                                                <div class="w-6 h-6 rounded-full border-2 border-slate-200 flex items-center justify-center transition-all group-checked:bg-primary group-checked:border-primary">
-                                                    <div class="w-2 h-2 rounded-full bg-white opacity-0 group-checked:opacity-100"></div>
+                                                <div class="w-6 h-6 rounded-full border-2 border-white/10 flex items-center justify-center transition-all group-checked:bg-primary group-checked:border-primary">
+                                                    <div class="w-2 h-2 rounded-full bg-secondary opacity-0 group-checked:opacity-100"></div>
                                                 </div>
                                             </div>
                                         </label>
@@ -426,18 +427,18 @@
                                         <!-- PayPal -->
                                         <label class="payment-option cursor-pointer group">
                                             <input type="radio" name="payment_method" value="PayPal" class="hidden">
-                                            <div class="bg-[#F8F9FA] border-2 border-transparent rounded-[2rem] p-6 transition-all duration-300 flex items-center justify-between group-hover:bg-white group-hover:border-primary/20">
+                                            <div class="bg-white/5 border-2 border-transparent rounded-[2rem] p-6 transition-all duration-300 flex items-center justify-between group-hover:bg-white/10 group-hover:border-primary/20">
                                                 <div class="flex items-center gap-5">
                                                     <div class="w-14 h-14 rounded-2xl bg-[#003087] flex items-center justify-center text-white text-3xl shadow-lg shadow-blue-900/20">
                                                         <i class="ph ph-paypal-logo"></i>
                                                     </div>
                                                     <div>
-                                                        <span class="block font-bold text-lg">PayPal</span>
-                                                        <span class="block text-xs text-slate-400">Pay with PayPal or Card</span>
+                                                        <span class="block font-bold text-lg text-white">PayPal</span>
+                                                        <span class="block text-xs text-gray-400">Pay with PayPal or Card</span>
                                                     </div>
                                                 </div>
-                                                <div class="w-6 h-6 rounded-full border-2 border-slate-200 flex items-center justify-center transition-all group-checked:bg-primary group-checked:border-primary">
-                                                    <div class="w-2 h-2 rounded-full bg-white opacity-0 group-checked:opacity-100"></div>
+                                                <div class="w-6 h-6 rounded-full border-2 border-white/10 flex items-center justify-center transition-all group-checked:bg-primary group-checked:border-primary">
+                                                    <div class="w-2 h-2 rounded-full bg-secondary opacity-0 group-checked:opacity-100"></div>
                                                 </div>
                                             </div>
                                         </label>
@@ -445,10 +446,10 @@
                                 </div>
 
                                 <!-- Final Pay Button -->
-                                <button type="button" id="pay-now" class="w-full bg-secondary text-white py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-secondary/20 hover:shadow-secondary/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                                    Complete Payment <i class="ph-bold ph-lock text-2xl text-primary"></i>
+                                <button type="button" id="pay-now" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                                    Complete Payment <i class="ph-bold ph-lock text-2xl"></i>
                                 </button>
-                                <p class="text-center text-[10px] text-slate-400 mt-8 uppercase tracking-[0.2em] font-medium leading-relaxed">
+                                <p class="text-center text-[10px] text-gray-500 mt-8 uppercase tracking-[0.2em] font-medium leading-relaxed">
                                     Secure SSL Encrypted Transaction <br>
                                     Payments are currently in test mode.
                                 </p>
