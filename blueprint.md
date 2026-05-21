@@ -125,3 +125,10 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Styling Fix:** Resolved the "square edges" issue by switching from `object-contain` with padding to `object-cover`. This ensures images fill the circular containers perfectly.
 *   **Background Color Adjustment:** Removed white backgrounds from icons as requested, ensuring the circular container's aesthetic matches the provided logos.
 *   **Full English Translation:** Conducted a project-wide sweep to ensure all user-facing text, labels, and alt tags are in English.
+
+### Land Tour Logistics Overhaul
+*   **Section:** "Explore Boracay's Natural Wonders" in `land-tour.html`.
+*   **Layout Change:** Consolidated "Meeting Information", "Preparation", and "Inclusions & Exclusions" into a single 3-column responsive grid located immediately below the section's introductory description.
+*   **Aesthetics:** Maintained consistency with the existing premium design, using rounded containers, soft shadows, and Phosphor icons for each category.
+*   **Content Optimization:** Streamlined the lists for better readability in a column-based layout, ensuring all essential details are preserved while reducing vertical scrolling.
+
