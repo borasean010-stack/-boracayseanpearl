@@ -80,6 +80,7 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
     *   **Looping Videos (GIF effect):** Integrated 8 looping videos for key destinations, including Puka Beach, Newcoast Keyhole, Mangrove Eco Park, and Bulabog's Leaning Coconut Tree.
     *   **English Localization:** All labels, headings, and descriptions have been translated to English for a premium global appeal.
     *   **Grouped Points:** Organized the tour into 4 main "Points" (Scenic Discovery, Modern Landscapes, Hidden Treasures, and Coastal Icons) to improve the narrative flow.
+*   **Filipino Guest Testimonials:** Added a new social proof section featuring reviews from Filipino guests (Maria Santos, Juan Dela Cruz, Ana Reyes) to build trust with the local market, maintaining the same aesthetic as the main landing page.
 *   **Layout Cleanup:** Removed the "Land Tour Views" masonry gallery section to prioritize the new video-based itinerary.
 
 ### Land Tour Hero Image Update
