@@ -164,7 +164,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[60vh] w-full flex items-center justify-center overflow-hidden mb-20">
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <!-- Background Video (YouTube Optimized) -->
             <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -183,16 +183,21 @@
         </div>
 
         <div class="container mx-auto px-6 relative z-10 text-center text-white mt-20">
-            <h1 class="fade-up text-5xl md:text-7xl font-heading font-bold mb-4">
+            <h1 class="fade-up text-5xl md:text-8xl font-heading font-bold mb-6 leading-tight">
                 Secure Your <span class="text-primary italic">Adventure</span>
             </h1>
-            <p class="fade-up text-gray-300 max-w-xl mx-auto text-lg delay-100">
+            <p class="fade-up text-gray-300 max-w-xl mx-auto text-xl delay-100 mb-12">
                 Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.
             </p>
+            <div class="fade-up delay-200">
+                <a href="#booking-form-start" class="inline-flex items-center gap-2 bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-secondary transition-all transform hover:scale-105 shadow-2xl">
+                    Start Booking <i class="ph ph-arrow-down"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <div class="container mx-auto px-6 max-w-6xl flex-grow flex flex-col items-center justify-center">
+    <div id="booking-form-start" class="container mx-auto px-6 max-w-6xl flex-grow flex flex-col items-center justify-center py-32">
         <div class="w-full">
             <!-- Booking Stepper -->
             <div class="hidden md:flex justify-center items-center gap-4 mb-12 fade-up">
@@ -388,14 +393,14 @@
                                     </div>
                                 </label>
                                 <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
-                                    <input type="radio" name="payment_method" value="Credit Card" class="w-5 h-5 accent-primary">
+                                    <input type="radio" name="payment_method" value="PayPal" class="w-5 h-5 accent-primary">
                                     <div class="flex items-center gap-4">
                                         <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2">
                                             <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" class="w-full h-auto object-contain">
                                         </div>
                                         <div>
-                                            <p class="font-bold text-sm text-white">Credit Card / PayPal</p>
-                                            <p class="text-[10px] text-gray-500">Global Payments (VISA/MasterCard)</p>
+                                            <p class="font-bold text-sm text-white">PayPal / Cards</p>
+                                            <p class="text-[10px] text-gray-500">Secure Online Payment</p>
                                         </div>
                                     </div>
                                 </label>
@@ -585,9 +590,9 @@
                     const paymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value || 'GCash';
                     
                     const bookingPayload = {
-                        customerName: document.querySelector('input[name="name"]').value || "Guest",
-                        contactPhone: document.querySelector('input[name="phone"]').value || "N/A",
-                        contactEmail: document.querySelector('input[name="email"]').value || "N/A",
+                        customerName: document.getElementsByName('name')[0].value || "Guest",
+                        contactPhone: document.getElementsByName('phone')[0].value || "N/A",
+                        contactEmail: document.getElementsByName('email')[0].value || "N/A",
                         paxAdult: adults,
                         paxChild: children,
                         paymentMethod: paymentMethod,
