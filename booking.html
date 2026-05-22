@@ -558,32 +558,51 @@
             const payNowBtn = document.getElementById('pay-now');
             payNowBtn.addEventListener('click', async () => {
                 try {
+                    // Validation check
+                    if (!cal1.selectedDate) {
+                        alert('Please select a tour date.');
+                        return;
+                    }
+
                     payNowBtn.disabled = true;
-                    payNowBtn.innerHTML = `Processing...`;
+                    payNowBtn.innerHTML = `<i class="ph ph-circle-notch animate-spin"></i> Processing...`;
+                    
                     await signInAnonymously(auth);
-                    const formData = new FormData(bookingForm);
+                    
+                    const adults = parseInt(document.getElementById('pax-adults').value) || 1;
+                    const children = parseInt(document.getElementById('pax-children').value) || 0;
+                    const totalPrice = adults * tour.price;
+                    const paymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value || 'GCash';
+                    
                     const bookingPayload = {
-                        customerName: formData.get('name') || "Guest",
-                        contactPhone: formData.get('phone') || "N/A",
-                        contactEmail: formData.get('email') || "N/A",
-                        paxAdult: parseInt(document.getElementById('pax-adults').value) || 1,
-                        paxChild: parseInt(document.getElementById('pax-children').value) || 0,
-                        paymentMethod: document.querySelector('input[name="payment_method"]:checked').value,
+                        customerName: document.querySelector('input[name="name"]').value || "Guest",
+                        contactPhone: document.querySelector('input[name="phone"]').value || "N/A",
+                        contactEmail: document.querySelector('input[name="email"]').value || "N/A",
+                        paxAdult: adults,
+                        paxChild: children,
+                        paymentMethod: paymentMethod,
                         status: 'Confirmed',
                         tourId: tour.id,
-                        tourDate: cal1.selectedDate ? new Date(cal1.selectedDate.getTime()) : new Date(),
-                        totalPrice: (parseInt(document.getElementById('pax-adults').value) || 1) * tour.price,
+                        tourName: tour.name,
+                        tourDate: cal1.selectedDate,
+                        totalPrice: totalPrice,
                         createdAt: serverTimestamp()
                     };
 
-                    addDoc(collection(db, "bookings"), bookingPayload).catch(e => console.error(e));
+                    // Handle combo tour dates
+                    if (tour.isCombo && cal2.selectedDate) {
+                        bookingPayload.tourDate_2 = cal2.selectedDate;
+                    }
+
+                    const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
+                    console.log("Booking saved with ID: ", docRef.id);
                     
-                    setTimeout(() => {
-                        window.location.href = 'thank-you.html';
-                    }, 1000);
-                } catch (err) {
-                    console.error(err);
                     window.location.href = 'thank-you.html';
+                } catch (err) {
+                    console.error("Submission error:", err);
+                    alert("Submission failed. Please try again or contact support.");
+                    payNowBtn.disabled = false;
+                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
                 }
             });
         });
