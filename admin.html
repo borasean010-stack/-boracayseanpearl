@@ -69,6 +69,10 @@
     </style>
 </head>
 <body class="bg-light text-secondary antialiased font-sans">
+    <!-- Version Banner -->
+    <div style="background: #ff4757; color: white; text-align: center; font-size: 10px; font-weight: bold; padding: 4px; position: fixed; top: 0; width: 100%; z-index: 9999;">
+        ADMIN SYSTEM VER 4.0 - ACTIVE
+    </div>
 
     <!-- Login Screen -->
     <div id="login-screen" class="fixed inset-0 z-[100] flex items-center justify-center p-6">
@@ -119,7 +123,10 @@
         <main class="lg:ml-64 flex-grow flex flex-col">
             <!-- Top Header -->
             <header class="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-30">
-                <h2 id="current-tab-title" class="text-xl font-heading font-bold">Booking Reservations</h2>
+                <div class="flex items-center gap-4">
+                    <h2 id="current-tab-title" class="text-xl font-heading font-bold">Booking Reservations</h2>
+                    <button id="db-test-btn" class="bg-accent text-accent-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all">DB Connection Test</button>
+                </div>
                 <div class="flex items-center gap-6">
                     <span id="admin-user-email" class="text-sm font-medium text-gray-400">admin@pearl.of.sean</span>
                     <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">AD</div>
@@ -259,6 +266,24 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+
+        // --- DB Test Logic ---
+        document.getElementById('db-test-btn').addEventListener('click', async () => {
+            alert("Starting DB Write Test...");
+            try {
+                const testDoc = await addDoc(collection(db, "bookings"), {
+                    customerName: "TEST_USER",
+                    tourId: "test",
+                    status: "Confirmed",
+                    createdAt: serverTimestamp(),
+                    isTest: true
+                });
+                alert("WRITE SUCCESS! Doc ID: " + testDoc.id + "\nRefreshing list...");
+                loadBookings();
+            } catch (e) {
+                alert("WRITE FAILED: " + e.message);
+            }
+        });
 
         // --- Auth Protection ---
         const loginScreen = document.getElementById('login-screen');

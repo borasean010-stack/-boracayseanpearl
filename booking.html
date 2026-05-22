@@ -145,6 +145,10 @@
     </style>
 </head>
 <body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col pt-32 pb-20">
+    <!-- Version Banner -->
+    <div style="background: #29D3D0; color: #062B43; text-align: center; font-size: 10px; font-weight: bold; padding: 4px; position: fixed; top: 0; width: 100%; z-index: 9999;">
+        BOOKING SYSTEM VER 4.0 - ACTIVE
+    </div>
 
     <!-- Sticky Navbar -->
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
@@ -171,8 +175,8 @@
                 <p class="text-gray-400 max-w-xl mx-auto text-lg">Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.</p>
             </div>
 
-            <!-- Booking Stepper (Hidden on small screens) -->
-            <div class="hidden md:flex justify-center items-center gap-4 mb-12 fade-up" style="transition-delay: 100ms;">
+            <!-- Booking Stepper -->
+            <div class="hidden md:flex justify-center items-center gap-4 mb-12 fade-up">
                 <div class="flex items-center gap-3 text-primary">
                     <div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center font-bold text-sm">1</div>
                     <span class="font-bold text-xs uppercase tracking-widest">Details</span>
@@ -185,14 +189,13 @@
             </div>
 
             <!-- Main Form Card -->
-            <div class="booking-card rounded-[3rem] p-8 md:p-16 fade-up" style="transition-delay: 200ms;">
+            <div class="booking-card rounded-[3rem] p-8 md:p-16 fade-up">
                 <form id="booking-form" class="space-y-12">
                     <input type="hidden" name="tour_id" id="tour-input">
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                        <!-- Left Column: User Info & Calendar -->
+                        <!-- Left Column -->
                         <div class="space-y-12">
-                            <!-- Contact Information -->
                             <div class="space-y-8">
                                 <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                                     <i class="ph ph-identification-card text-lg"></i> Contact Information
@@ -213,7 +216,6 @@
                                 </div>
                             </div>
 
-                            <!-- Date Selection -->
                             <div class="space-y-8">
                                 <label id="calendar-1-label" class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                                     <i class="ph ph-calendar text-lg"></i> Select Tour Date
@@ -240,7 +242,6 @@
                                     <input type="hidden" name="date_1" id="date-1-input">
                                 </div>
 
-                                <!-- Secondary Calendar for Combo -->
                                 <div id="calendar-2-wrapper" class="hidden space-y-8 pt-8 border-t border-white/5">
                                     <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                                         <i class="ph ph-calendar text-lg"></i> Select Land Tour Date
@@ -269,14 +270,11 @@
                             </div>
                         </div>
 
-                        <!-- Right Column: Pax & Pricing -->
+                        <!-- Right Column -->
                         <div class="space-y-12">
-                            <!-- Selected Tour Summary Card -->
                             <div class="bg-primary p-8 md:p-10 rounded-[2.5rem] text-secondary">
                                 <div class="flex justify-between items-start mb-10">
-                                    <div id="tour-icon" class="text-4xl">
-                                        <i class="ph ph-sailboat"></i>
-                                    </div>
+                                    <div id="tour-icon" class="text-4xl"><i class="ph ph-sailboat"></i></div>
                                     <span class="text-[10px] uppercase font-black tracking-[0.2em] opacity-40">Luxury Selection</span>
                                 </div>
                                 <h3 id="tour-name" class="text-3xl md:text-4xl font-heading font-bold mb-2">Tour Name</h3>
@@ -287,7 +285,6 @@
                                 </div>
                             </div>
 
-                            <!-- Pax & Total Calculation -->
                             <div class="space-y-8">
                                 <div class="bg-white/5 p-6 md:p-8 rounded-[2.5rem] border border-white/10 space-y-8">
                                     <div class="space-y-4">
@@ -301,13 +298,9 @@
                                                     <p class="text-[9px] text-gray-500 uppercase tracking-tighter">36 months +</p>
                                                 </div>
                                                 <div class="flex items-center gap-3">
-                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus">
-                                                        <i class="ph ph-minus text-xs"></i>
-                                                    </button>
-                                                    <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
-                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus">
-                                                        <i class="ph ph-plus text-xs"></i>
-                                                    </button>
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus"><i class="ph ph-minus text-xs"></i></button>
+                                                    <input type="number" id="pax-adults" min="1" value="1" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus"><i class="ph ph-plus text-xs"></i></button>
                                                 </div>
                                             </div>
                                             <div class="flex items-center justify-between">
@@ -316,18 +309,13 @@
                                                     <p class="text-[9px] text-gray-500 uppercase tracking-tighter">Under 36 months</p>
                                                 </div>
                                                 <div class="flex items-center gap-3">
-                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus">
-                                                        <i class="ph ph-minus text-xs"></i>
-                                                    </button>
-                                                    <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
-                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus">
-                                                        <i class="ph ph-plus text-xs"></i>
-                                                    </button>
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus"><i class="ph ph-minus text-xs"></i></button>
+                                                    <input type="number" id="pax-children" min="0" value="0" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus"><i class="ph ph-plus text-xs"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="pt-6 border-t border-white/10">
                                         <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Final Investment</p>
                                         <div class="flex items-baseline gap-2">
@@ -336,7 +324,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <button type="button" id="proceed-to-payment" class="w-full bg-white text-secondary py-5 rounded-2xl font-bold text-lg hover:bg-primary hover:text-white transition-all transform hover:scale-[1.02] shadow-xl flex items-center justify-center gap-3">
                                     Proceed to Confirmation <i class="ph-bold ph-arrow-right"></i>
                                 </button>
@@ -345,30 +332,18 @@
                     </div>
                 </form>
 
-                <!-- Payment Confirmation View (Hidden) -->
                 <div id="payment-section" class="hidden space-y-12">
                     <div class="text-center">
                         <h3 class="text-3xl font-heading font-bold mb-4">Confirm Reservation</h3>
                         <p class="text-gray-400">Please review your journey details and select a payment method.</p>
                     </div>
-
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <!-- Summary -->
                         <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 space-y-8">
                             <h4 class="text-[10px] uppercase font-bold text-primary tracking-widest">Journey Summary</h4>
                             <div class="space-y-6">
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5">
-                                    <p class="text-gray-400 text-sm">Experience</p>
-                                    <p id="summary-tour-name" class="font-bold text-right">Tour Name</p>
-                                </div>
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5">
-                                    <p class="text-gray-400 text-sm">Scheduled Date</p>
-                                    <p id="summary-date" class="font-bold text-right italic">Date</p>
-                                </div>
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5">
-                                    <p class="text-gray-400 text-sm">Guest Count</p>
-                                    <p id="summary-pax" class="font-bold text-right">Adults, Children</p>
-                                </div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Experience</p><p id="summary-tour-name" class="font-bold text-right">Tour Name</p></div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Scheduled Date</p><p id="summary-date" class="font-bold text-right italic">Date</p></div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Guest Count</p><p id="summary-pax" class="font-bold text-right">Adults, Children</p></div>
                                 <div class="flex justify-between items-start pt-4">
                                     <p class="text-white font-bold">Total Investment</p>
                                     <div class="text-right">
@@ -378,44 +353,27 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Payment Methods -->
                         <div class="space-y-8">
                             <h4 class="text-[10px] uppercase font-bold text-primary tracking-widest">Payment Method</h4>
                             <div class="grid grid-cols-1 gap-4">
                                 <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
                                     <input type="radio" name="payment_method" value="GCash" checked class="w-5 h-5 accent-primary">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-[#007DFE]/10 rounded-xl flex items-center justify-center text-[#007DFE] text-xl">
-                                            <i class="ph-fill ph-wallet"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-bold text-sm">GCash / Local Bank</p>
-                                            <p class="text-[10px] text-gray-500">Fast & Secure Local Transfer</p>
-                                        </div>
+                                        <div class="w-10 h-10 bg-[#007DFE]/10 rounded-xl flex items-center justify-center text-[#007DFE] text-xl"><i class="ph-fill ph-wallet"></i></div>
+                                        <div><p class="font-bold text-sm">GCash / Local Bank</p><p class="text-[10px] text-gray-500">Fast & Secure Local Transfer</p></div>
                                     </div>
                                 </label>
                                 <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
                                     <input type="radio" name="payment_method" value="Credit Card" class="w-5 h-5 accent-primary">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center text-accent text-xl">
-                                            <i class="ph-fill ph-credit-card"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-bold text-sm">International Card / PayPal</p>
-                                            <p class="text-[10px] text-gray-500">Global Payments (VISA/MasterCard)</p>
-                                        </div>
+                                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center text-accent text-xl"><i class="ph-fill ph-credit-card"></i></div>
+                                        <div><p class="font-bold text-sm">International Card / PayPal</p><p class="text-[10px] text-gray-500">Global Payments (VISA/MasterCard)</p></div>
                                     </div>
                                 </label>
                             </div>
-
                             <div class="flex gap-4">
-                                <button type="button" id="back-to-form" class="flex-1 bg-white/5 text-white py-5 rounded-2xl font-bold hover:bg-white/10 transition-all">
-                                    Edit Details
-                                </button>
-                                <button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
-                                    Complete Payment <i class="ph-bold ph-lock text-2xl"></i>
-                                </button>
+                                <button type="button" id="back-to-form" class="flex-1 bg-white/5 text-white py-5 rounded-2xl font-bold hover:bg-white/10 transition-all">Edit Details</button>
+                                <button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3">Complete Payment <i class="ph-bold ph-lock text-2xl"></i></button>
                             </div>
                         </div>
                     </div>
@@ -424,7 +382,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-secondary text-white py-12">
         <div class="container mx-auto px-6 text-center text-gray-600 text-sm">
             <p>&copy; 2026 Pearl Of Sean. Premium Boracay Experiences. All Rights Reserved.</p>
@@ -432,9 +389,9 @@
     </footer>
 
     <script type="module">
-        // --- Firebase Configuration ---
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ",
@@ -447,32 +404,15 @@
         };
 
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // --- Tour Configuration ---
         const tourMap = {
-            'land': {
-                id: 'land',
-                name: 'Boracay Land Tour',
-                price: 700,
-                icon: 'ph-jeep'
-            },
-            'yacht': {
-                id: 'yacht-hopping',
-                name: 'Pearl Hopping Tour',
-                price: 1900,
-                icon: 'ph-sailboat'
-            },
-            'combo': {
-                id: 'combo',
-                name: 'Ultimate Combo Package',
-                price: 2500,
-                icon: 'ph-sparkles',
-                isCombo: true
-            }
+            'land': { id: 'land', name: 'Boracay Land Tour', price: 700, icon: 'ph-jeep' },
+            'yacht': { id: 'yacht-hopping', name: 'Pearl Hopping Tour', price: 1900, icon: 'ph-sailboat' },
+            'combo': { id: 'combo', name: 'Ultimate Combo Package', price: 2500, icon: 'ph-sparkles', isCombo: true }
         };
 
-        // --- Calendar Class ---
         class Calendar {
             constructor(containerId, inputId, labelId, tourName) {
                 this.container = document.getElementById(containerId);
@@ -482,66 +422,43 @@
                 this.monthDisplay = this.container.querySelector('.current-month');
                 this.prevBtn = this.container.querySelector('.prev-month');
                 this.nextBtn = this.container.querySelector('.next-month');
-                
                 this.tourName = tourName;
                 this.currentViewDate = new Date();
                 this.selectedDate = null;
-
                 this.init();
             }
-
             init() {
-                this.prevBtn.addEventListener('click', () => {
-                    this.currentViewDate.setMonth(this.currentViewDate.getMonth() - 1);
-                    this.render();
-                });
-                this.nextBtn.addEventListener('click', () => {
-                    this.currentViewDate.setMonth(this.currentViewDate.getMonth() + 1);
-                    this.render();
-                });
+                this.prevBtn.addEventListener('click', () => { this.currentViewDate.setMonth(this.currentViewDate.getMonth() - 1); this.render(); });
+                this.nextBtn.addEventListener('click', () => { this.currentViewDate.setMonth(this.currentViewDate.getMonth() + 1); this.render(); });
                 this.render();
             }
-
             render() {
                 const year = this.currentViewDate.getFullYear();
                 const month = this.currentViewDate.getMonth();
-                
                 this.monthDisplay.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(this.currentViewDate);
                 this.daysContainer.innerHTML = '';
-
                 const firstDay = new Date(year, month, 1).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
-                const today = new Date();
-                today.setHours(0,0,0,0);
-
-                // Add empty slots for the first week
+                const today = new Date(); today.setHours(0,0,0,0);
                 for (let i = 0; i < firstDay; i++) {
                     const empty = document.createElement('div');
                     empty.className = 'calendar-day empty pointer-events-none opacity-0';
                     this.daysContainer.appendChild(empty);
                 }
-
                 for (let day = 1; day <= daysInMonth; day++) {
                     const dayEl = document.createElement('div');
                     dayEl.className = 'calendar-day';
                     dayEl.textContent = day;
-
                     const dateObj = new Date(year, month, day);
-                    if (dateObj < today) {
-                        dayEl.classList.add('disabled');
-                    } else {
+                    if (dateObj < today) { dayEl.classList.add('disabled'); }
+                    else {
                         dayEl.addEventListener('click', () => this.selectDate(dateObj));
-                        if (this.selectedDate && dateObj.getTime() === this.selectedDate.getTime()) {
-                            dayEl.classList.add('selected');
-                        }
-                        if (dateObj.getTime() === today.getTime()) {
-                            dayEl.classList.add('today');
-                        }
+                        if (this.selectedDate && dateObj.getTime() === this.selectedDate.getTime()) dayEl.classList.add('selected');
+                        if (dateObj.getTime() === today.getTime()) dayEl.classList.add('today');
                     }
                     this.daysContainer.appendChild(dayEl);
                 }
             }
-
             selectDate(date) {
                 this.selectedDate = date;
                 this.input.value = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -551,42 +468,19 @@
         }
 
         let cal1, cal2;
-
         function updateTotal() {
             const urlParams = new URLSearchParams(window.location.search);
             const tourKey = urlParams.get('tour') || 'yacht';
             const tour = tourMap[tourKey] || tourMap['yacht'];
-            
             const adults = parseInt(document.getElementById('pax-adults').value);
-            const children = parseInt(document.getElementById('pax-children').value);
             const totalPrice = adults * tour.price;
-            
             document.getElementById('estimated-total').textContent = `${totalPrice.toLocaleString()} PHP`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const header = document.getElementById('header');
-            const logoText = document.getElementById('logo-text');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-                    header.classList.remove('bg-transparent', 'py-6');
-                    logoText.classList.replace('text-white', 'text-secondary');
-                    navLinks.forEach(link => link.classList.replace('text-white', 'text-secondary'));
-                } else {
-                    header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-                    header.classList.add('bg-transparent', 'py-6');
-                    logoText.classList.replace('text-secondary', 'text-white');
-                    navLinks.forEach(link => link.classList.replace('text-secondary', 'text-white'));
-                }
-            });
-
             const urlParams = new URLSearchParams(window.location.search);
             const tourKey = urlParams.get('tour') || 'yacht';
             const tour = tourMap[tourKey] || tourMap['yacht'];
-
             document.getElementById('tour-name').textContent = tour.name;
             document.getElementById('tour-price').textContent = `${tour.price} PHP`;
             document.getElementById('tour-icon').innerHTML = `<i class="ph ${tour.icon}"></i>`;
@@ -601,8 +495,7 @@
                 cal1 = new Calendar('calendar-1', 'date-1-input', 'calendar-1-label', tour.name);
             }
 
-            const paxBtns = document.querySelectorAll('.pax-btn');
-            paxBtns.forEach(btn => {
+            document.querySelectorAll('.pax-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const type = btn.dataset.type;
                     const action = btn.dataset.action;
@@ -624,105 +517,49 @@
             const backBtn = document.getElementById('back-to-form');
 
             proceedBtn.addEventListener('click', () => {
-                const requiredInputs = bookingForm.querySelectorAll('input[required]');
-                let isValid = true;
-                requiredInputs.forEach(input => {
-                    if (!input.value) { isValid = false; input.classList.add('border-red-500'); }
-                    else { input.classList.remove('border-red-500'); }
-                });
-
-                if (!cal1.selectedDate || (tour.isCombo && !cal2.selectedDate)) {
-                    alert('Please select all required tour dates on the calendars.');
-                    return;
-                }
-
-                if (!isValid) { alert('Please fill in all required fields.'); return; }
-
+                if (!cal1.selectedDate || (tour.isCombo && !cal2.selectedDate)) { alert('Please select tour dates.'); return; }
                 const adults = parseInt(document.getElementById('pax-adults').value);
                 const children = parseInt(document.getElementById('pax-children').value);
                 const totalPrice = adults * tour.price;
-
                 document.getElementById('summary-tour-name').textContent = tour.name;
-                document.getElementById('summary-date').innerHTML = tour.isCombo ? 
-                    `Yacht: ${cal1.selectedDate.toLocaleDateString()}<br>Land: ${cal2.selectedDate.toLocaleDateString()}` :
-                    cal1.selectedDate.toLocaleDateString();
+                document.getElementById('summary-date').innerHTML = tour.isCombo ? `Yacht: ${cal1.selectedDate.toLocaleDateString()}<br>Land: ${cal2.selectedDate.toLocaleDateString()}` : cal1.selectedDate.toLocaleDateString();
                 document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children (Free)` : ''}`;
-                document.getElementById('summary-subtotal').textContent = `${totalPrice.toLocaleString()} PHP`;
                 document.getElementById('summary-total').textContent = `${totalPrice.toLocaleString()} PHP`;
-
                 bookingForm.classList.add('hidden');
                 paymentSection.classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            backBtn.addEventListener('click', () => {
-                paymentSection.classList.add('hidden');
-                bookingForm.classList.remove('hidden');
-            });
+            backBtn.addEventListener('click', () => { paymentSection.classList.add('hidden'); bookingForm.classList.remove('hidden'); });
 
             const payNowBtn = document.getElementById('pay-now');
-            
-            window.addEventListener('error', (event) => {
-                console.error("Global Error:", event.message);
-            });
-
             payNowBtn.addEventListener('click', async () => {
                 try {
-                    alert("ULTRA-DEBUG 1: Start");
-                    const method = document.querySelector('input[name="payment_method"]:checked').value;
-                    payNowBtn.disabled = true;
-                    payNowBtn.innerHTML = `Processing...`;
-
-                    alert("ULTRA-DEBUG 2: Data Extraction");
-                    const nameVal = document.querySelector('input[name="name"]').value;
-                    const phoneVal = document.querySelector('input[name="phone"]').value;
-                    const emailVal = document.querySelector('input[name="email"]').value;
-                    const adultsVal = parseInt(document.getElementById('pax-adults').value || 1);
-                    const childrenVal = parseInt(document.getElementById('pax-children').value || 0);
-                    
-                    alert("ULTRA-DEBUG 3: Tour/Date Check");
-                    const tourIdVal = tour.id;
-                    const tourPriceVal = tour.price;
-                    // Force date to a plain Date object to avoid serialization issues
-                    const rawDate = cal1.selectedDate;
-                    if (!rawDate) { alert("ERROR: Date missing!"); return; }
-                    const finalDate = new Date(rawDate.getTime());
-
+                    alert("VER 4.0: Starting...");
+                    await signInAnonymously(auth);
+                    const formData = new FormData(bookingForm);
                     const bookingPayload = {
-                        customerName: nameVal,
-                        contactPhone: phoneVal,
-                        contactEmail: emailVal,
-                        paxAdult: adultsVal,
-                        paxChild: childrenVal,
-                        paymentMethod: method,
+                        customerName: formData.get('name'),
+                        contactPhone: formData.get('phone'),
+                        contactEmail: formData.get('email'),
+                        paxAdult: parseInt(document.getElementById('pax-adults').value),
+                        paxChild: parseInt(document.getElementById('pax-children').value),
+                        paymentMethod: document.querySelector('input[name="payment_method"]:checked').value,
                         status: 'Confirmed',
-                        tourId: tourIdVal,
-                        tourDate: finalDate,
-                        totalPrice: adultsVal * tourPriceVal,
+                        tourId: tour.id,
+                        tourDate: cal1.selectedDate,
+                        totalPrice: parseInt(document.getElementById('pax-adults').value) * tour.price,
                         createdAt: serverTimestamp()
                     };
-
-                    alert("ULTRA-DEBUG 4: Attempting Firebase addDoc...");
-                    
-                    try {
-                        const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
-                        alert("ULTRA-DEBUG SUCCESS: Doc ID is " + docRef.id);
-                        window.location.href = 'thank-you.html';
-                    } catch (dbErr) {
-                        alert("ULTRA-DEBUG DB ERROR: " + dbErr.message);
-                        window.location.href = 'thank-you.html';
-                    }
-
-                } catch (critErr) {
-                    alert("ULTRA-DEBUG CRITICAL: " + critErr.message);
+                    alert("VER 4.0: Sending...");
+                    const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
+                    alert("SUCCESS: ID " + docRef.id);
+                    window.location.href = 'thank-you.html';
+                } catch (e) {
+                    alert("ERROR: " + e.message);
                     window.location.href = 'thank-you.html';
                 }
             });
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
         });
     </script>
 </body>
