@@ -668,75 +668,53 @@
 
             payNowBtn.addEventListener('click', async () => {
                 try {
-                    alert("DEBUG: Click detected. Preparing data...");
+                    alert("ULTRA-DEBUG 1: Start");
                     const method = document.querySelector('input[name="payment_method"]:checked').value;
                     payNowBtn.disabled = true;
-                    payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
+                    payNowBtn.innerHTML = `Processing...`;
 
-                    const formData = new FormData(bookingForm);
-                    const baseBooking = {
-                        customerName: formData.get('name'),
-                        contactPhone: formData.get('phone'),
-                        contactEmail: formData.get('email'),
-                        paxAdult: parseInt(formData.get('adults') || 0),
-                        paxChild: parseInt(formData.get('children') || 0),
+                    alert("ULTRA-DEBUG 2: Data Extraction");
+                    const nameVal = document.querySelector('input[name="name"]').value;
+                    const phoneVal = document.querySelector('input[name="phone"]').value;
+                    const emailVal = document.querySelector('input[name="email"]').value;
+                    const adultsVal = parseInt(document.getElementById('pax-adults').value || 1);
+                    const childrenVal = parseInt(document.getElementById('pax-children').value || 0);
+                    
+                    alert("ULTRA-DEBUG 3: Tour/Date Check");
+                    const tourIdVal = tour.id;
+                    const tourPriceVal = tour.price;
+                    // Force date to a plain Date object to avoid serialization issues
+                    const rawDate = cal1.selectedDate;
+                    if (!rawDate) { alert("ERROR: Date missing!"); return; }
+                    const finalDate = new Date(rawDate.getTime());
+
+                    const bookingPayload = {
+                        customerName: nameVal,
+                        contactPhone: phoneVal,
+                        contactEmail: emailVal,
+                        paxAdult: adultsVal,
+                        paxChild: childrenVal,
                         paymentMethod: method,
-                        status: 'Confirmed', 
+                        status: 'Confirmed',
+                        tourId: tourIdVal,
+                        tourDate: finalDate,
+                        totalPrice: adultsVal * tourPriceVal,
                         createdAt: serverTimestamp()
                     };
 
-                    alert("DEBUG: Data ready for: " + baseBooking.customerName + ". Attempting Firebase write...");
-
+                    alert("ULTRA-DEBUG 4: Attempting Firebase addDoc...");
+                    
                     try {
-                        if (tour.id === 'combo') {
-                            alert("DEBUG: Writing COMBO to collection 'bookings'...");
-                            await Promise.all([
-                                addDoc(collection(db, "bookings"), {
-                                    ...baseBooking,
-                                    tourId: 'yacht-hopping',
-                                    tourDate: cal1.selectedDate,
-                                    totalPrice: baseBooking.paxAdult * 1900,
-                                    parentTour: 'Combo'
-                                }),
-                                addDoc(collection(db, "bookings"), {
-                                    ...baseBooking,
-                                    tourId: 'land',
-                                    tourDate: cal2.selectedDate,
-                                    totalPrice: baseBooking.paxAdult * 700,
-                                    parentTour: 'Combo'
-                                })
-                            ]);
-                        } else {
-                            alert("DEBUG: Single Tour Path. Tour ID: " + tour.id);
-                            alert("DEBUG: Checking Data: Date=" + (cal1.selectedDate ? cal1.selectedDate.toLocaleDateString() : 'MISSING') + ", Price=" + tour.price);
-                            
-                            try {
-                                const bookingPayload = {
-                                    ...baseBooking,
-                                    tourId: tour.id,
-                                    tourDate: cal1.selectedDate,
-                                    totalPrice: baseBooking.paxAdult * tour.price
-                                };
-                                alert("DEBUG: Payload Ready. Calling addDoc...");
-                                
-                                const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
-                                alert("DEBUG: Write SUCCESS! Doc ID: " + docRef.id);
-                            } catch (innerError) {
-                                alert("INNER FIREBASE ERROR: " + innerError.message);
-                                throw innerError;
-                            }
-                        }
-                        
-                        alert("DEBUG: Redirecting to thank-you.html...");
+                        const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
+                        alert("ULTRA-DEBUG SUCCESS: Doc ID is " + docRef.id);
                         window.location.href = 'thank-you.html';
-                    } catch (e) {
-                        alert("FIREBASE SAVE ERROR: " + e.message);
-                        console.error("Firestore Save Error:", e);
+                    } catch (dbErr) {
+                        alert("ULTRA-DEBUG DB ERROR: " + dbErr.message);
                         window.location.href = 'thank-you.html';
                     }
-                } catch (err) {
-                    alert("CRITICAL SCRIPT ERROR: " + err.message);
-                    console.error("Button Click Error:", err);
+
+                } catch (critErr) {
+                    alert("ULTRA-DEBUG CRITICAL: " + critErr.message);
                     window.location.href = 'thank-you.html';
                 }
             });
