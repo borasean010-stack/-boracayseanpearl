@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gallery | Pearl Of Sean Boracay</title>
+    <meta name="description" content="Explore the beautiful moments captured during Pearl Of Sean tours in Boracay.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#29D3D0",
+                        secondary: "#062B43",
+                        accent: "#F2C94C",
+                        light: "#F8F9FA",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        heading: ["Montserrat", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light text-secondary antialiased overflow-x-hidden font-sans flex min-h-screen flex-col">
+
+    <!-- Navbar -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
+        <div class="w-full px-8 flex justify-between items-center">
+            <a href="index.html" class="z-50 flex items-center gap-3 group">
+                <img loading="lazy" src="pearl_of_sean_logo.png" alt="Pearl Of Sean" class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <span id="logo-text" class="text-xl md:text-2xl font-heading font-bold text-white transition-colors duration-300">Pearl Of Sean</span>
+            </a>
+
+            <!-- Nav (Right Side) -->
+            <nav class="flex items-center gap-6 md:gap-8">
+                <ul class="flex gap-6 md:gap-8">
+                    <li><a href="index.html" class="nav-link text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="index.html#tours" class="nav-link text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Tours</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img loading="lazy" src="pearl_of_sean_7.jpg" alt="Gallery Hero" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-secondary/50 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-secondary/60 via-transparent to-secondary/90"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center text-white pt-20">
+            <div class="fade-up">
+                <span class="inline-block px-4 py-1 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-md text-primary text-xs font-bold uppercase tracking-[0.3em] mb-6">
+                    Visual Journey
+                </span>
+                <h1 class="text-5xl md:text-8xl font-heading font-extrabold mb-6 leading-[1.1] tracking-tight">
+                    Captured <br> <span class="text-primary italic font-light">Moments</span>
+                </h1>
+                <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+                    A complete collection of memories from our Hopping, Land, and Yacht tours.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-scaled">
+        <!-- Gallery Navigation -->
+        <div class="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4 mb-16">
+            <div class="container mx-auto px-6">
+                <div class="flex justify-center gap-8 md:gap-12">
+                    <a href="#hopping" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">Hopping</a>
+                    <a href="#land" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">Land</a>
+                    <a href="#yacht" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">Yacht</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hopping Tour Gallery -->
+        <section id="hopping" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center gap-6 mb-16">
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-secondary">Hopping <span class="text-primary italic">Tour</span></h2>
+                    <div class="h-[2px] flex-grow bg-primary/20"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="hopping0.jpg" alt="Hopping 0" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-100 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="hopping1.jpg" alt="Hopping 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-200 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="hopping2.jpg" alt="Hopping 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-300 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="hopping3.jpg" alt="Hopping 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="hopping4.jpg" alt="Hopping 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-100 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="hopping.jpg" alt="Hopping Full" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Land Tour Gallery -->
+        <section id="land" class="py-20 bg-light">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center gap-6 mb-16">
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-secondary">Land <span class="text-primary italic">Tour</span></h2>
+                    <div class="h-[2px] flex-grow bg-primary/20"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land0.jpg" alt="Land 0" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-100 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land1.jpg" alt="Land 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-200 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land2.jpg" alt="Land 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-300 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land3.jpg" alt="Land 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land4.jpg" alt="Land 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-100 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land.jpg" alt="Land Full" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-200 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="land_hero.jpg" alt="Land Hero" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yacht Tour Gallery -->
+        <section id="yacht" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center gap-6 mb-16">
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-secondary">Yacht <span class="text-primary italic">Tour</span></h2>
+                    <div class="h-[2px] flex-grow bg-primary/20"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_1.jpg" alt="Yacht 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-100 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_2.jpg" alt="Yacht 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-200 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_3.jpg" alt="Yacht 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-300 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_4.jpg" alt="Yacht 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_5.jpg" alt="Yacht 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-100 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_6.jpg" alt="Yacht 6" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-200 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_7.jpg" alt="Yacht 7" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up delay-300 relative group rounded-3xl overflow-hidden aspect-square shadow-lg">
+                        <img loading="lazy" src="pearl_of_sean_9.jpg" alt="Yacht 9" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="fade-up relative group rounded-3xl overflow-hidden aspect-square shadow-lg col-span-2 md:col-span-1 lg:col-span-1">
+                        <img loading="lazy" src="pearl_of_sean_10.jpg" alt="Yacht 10" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <img loading="lazy" src="pearl_of_sean_logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain">
+                <h3 class="text-3xl font-heading font-bold">Pearl Of Sean</h3>
+            </div>
+            <p class="text-gray-400 mb-8 max-w-lg mx-auto">Premium Boracay island hopping tours, sunset cruises, and unforgettable ocean experiences.</p>
+            <div class="pt-10 border-t border-white/5 text-gray-600 text-sm">
+                <p>&copy; 2026 Pearl Of Sean. Premium Boracay Experiences. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

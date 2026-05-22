@@ -33,6 +33,11 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Mobile UX Improvement:** Simplified the mobile navigation by removing the hidden menu and displaying primary links directly, improving accessibility.
 *   **Code Cleanup:** Removed unused mobile menu toggle scripts and IDs from `main.js` and `booking.html`.
 
+### Dedicated Gallery Page
+*   **Comprehensive Visual Showcase:** Created `gallery.html` to house all tour-related photography in one place, organized by tour type (Hopping, Land, Yacht).
+*   **Categorized Layout:** Implemented distinct sections for each tour category with high-quality grid displays.
+*   **Main Page Integration:** Added "View All" links to individual categories in the main page gallery section and a global "View Full Gallery" button to drive traffic to the new page.
+
 ## 5. Project History
 ### Navigation Header Standardization
 *   **Header Unification:** Standardized the navigation header across all pages (`index.html`, `land-tour.html`, `yacht-tour.html`, `package-tour.html`, `booking.html`).
