@@ -177,7 +177,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, query, orderBy, getDocs, updateDoc, doc, where, addDoc, serverTimestamp, initializeFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, query, orderBy, getDocs, updateDoc, deleteDoc, doc, where, addDoc, serverTimestamp, initializeFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ",
@@ -273,7 +273,20 @@
                 const snap = await getDocs(query(collection(db, "bookings"), where("__name__", "==", id)));
                 const data = snap.docs[0].data();
                 body.innerHTML = `<h3 class="text-2xl font-bold mb-8">Reservation Detail</h3><div class="grid grid-cols-2 gap-8 mb-10 text-sm"><div><label class="text-gray-400 block mb-1">Customer</label><p class="font-bold">${data.customerName}</p><p>${data.contactPhone}</p></div><div><label class="text-gray-400 block mb-1">Tour</label><p class="font-bold">${data.tourId.toUpperCase()}</p><p>${data.paxAdult}A, ${data.paxChild}C</p></div><div><label class="text-gray-400 block mb-1">Payment</label><p class="font-bold">${(data.totalPrice||0).toLocaleString()} PHP</p><p class="text-xs text-primary">${data.paymentMethod || 'GCash'}</p></div><div><label class="text-gray-400 block mb-1">Status</label><span class="status-badge ${getStatusClass(data.status)}">${data.status}</span></div></div><div class="flex gap-2"><button class="upd-btn bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold" data-status="Confirmed">Confirm</button><button class="upd-btn bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold" data-status="Cancelled">Cancel</button></div>`;
-                document.querySelectorAll('.upd-btn').forEach(b => b.addEventListener('click', async () => { await updateDoc(doc(db, "bookings", id), { status: b.dataset.status }); modal.classList.add('hidden'); loadBookings(); }));
+                document.querySelectorAll('.upd-btn').forEach(b => b.addEventListener('click', async () => { 
+                    const status = b.dataset.status;
+                    if (status === 'Cancelled') {
+                        if (confirm('Are you sure you want to PERMANENTLY DELETE this booking?')) {
+                            await deleteDoc(doc(db, "bookings", id));
+                        } else {
+                            return;
+                        }
+                    } else {
+                        await updateDoc(doc(db, "bookings", id), { status: status }); 
+                    }
+                    modal.classList.add('hidden'); 
+                    loadBookings(); 
+                }));
             } catch(e) {}
         }
 
