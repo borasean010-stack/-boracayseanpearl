@@ -274,36 +274,53 @@
                                         <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">03</span>
                                         Schedule & Guests
                                     </h3>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <!-- Custom Calendar -->
-                                        <div class="space-y-4">
-                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
-                                            <div class="calendar-container">
-                                                <div class="calendar-header">
-                                                    <button type="button" id="prev-month" class="p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                        <i class="ph ph-bold ph-caret-left"></i>
-                                                    </button>
-                                                    <span id="current-month" class="flex-1 text-center font-bold text-sm uppercase tracking-widest text-white">May 2026</span>
-                                                    <button type="button" id="next-month" class="p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                        <i class="ph ph-bold ph-caret-right"></i>
-                                                    </button>
+                                    
+                                    <div id="calendar-wrapper" class="grid grid-cols-1 gap-8">
+                                        <!-- Calendar Section -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="calendars-container">
+                                            <!-- Calendar 1 -->
+                                            <div class="space-y-4" id="cal-1-box">
+                                                <label id="label-cal-1" class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
+                                                <div class="calendar-container" id="calendar-1">
+                                                    <div class="calendar-header">
+                                                        <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-left"></i>
+                                                        </button>
+                                                        <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white">Month</span>
+                                                        <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-right"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="calendar-grid days-container">
+                                                        <div class="calendar-day-label">S</div><div class="calendar-day-label">M</div><div class="calendar-day-label">T</div><div class="calendar-day-label">W</div><div class="calendar-day-label">T</div><div class="calendar-day-label">F</div><div class="calendar-day-label">S</div>
+                                                    </div>
                                                 </div>
-                                                <div class="calendar-grid" id="calendar-days">
-                                                    <!-- Labels -->
-                                                    <div class="calendar-day-label">S</div>
-                                                    <div class="calendar-day-label">M</div>
-                                                    <div class="calendar-day-label">T</div>
-                                                    <div class="calendar-day-label">W</div>
-                                                    <div class="calendar-day-label">T</div>
-                                                    <div class="calendar-day-label">F</div>
-                                                    <div class="calendar-day-label">S</div>
-                                                    <!-- Days injected by JS -->
-                                                </div>
+                                                <input type="hidden" name="date_1" id="date-1-input" required>
                                             </div>
-                                            <input type="hidden" name="date" id="selected-date-input" required>
+
+                                            <!-- Calendar 2 (Combo Only) -->
+                                            <div class="space-y-4 hidden" id="cal-2-box">
+                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Hopping Tour Date</label>
+                                                <div class="calendar-container" id="calendar-2">
+                                                    <div class="calendar-header">
+                                                        <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-left"></i>
+                                                        </button>
+                                                        <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white">Month</span>
+                                                        <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-right"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="calendar-grid days-container">
+                                                        <div class="calendar-day-label">S</div><div class="calendar-day-label">M</div><div class="calendar-day-label">T</div><div class="calendar-day-label">W</div><div class="calendar-day-label">T</div><div class="calendar-day-label">F</div><div class="calendar-day-label">S</div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="date_2" id="date-2-input">
+                                            </div>
                                         </div>
 
-                                        <div class="space-y-8 flex flex-col justify-center">
+                                        <!-- Pax Section -->
+                                        <div class="space-y-8 flex flex-row items-center justify-center gap-12 border-t border-white/5 pt-8">
                                             <div class="space-y-2">
                                                 <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
                                                     Adults
@@ -526,59 +543,79 @@
                 });
             });
 
-            // --- Custom Calendar Logic ---
-            const calendarDays = document.getElementById('calendar-days');
-            const currentMonthDisplay = document.getElementById('current-month');
-            const prevMonthBtn = document.getElementById('prev-month');
-            const nextMonthBtn = document.getElementById('next-month');
-            const dateInput = document.getElementById('selected-date-input');
+            // --- Reusable Calendar Class ---
+            class Calendar {
+                constructor(containerId, inputId) {
+                    this.container = document.getElementById(containerId);
+                    this.input = document.getElementById(inputId);
+                    this.monthDisplay = this.container.querySelector('.current-month');
+                    this.daysContainer = this.container.querySelector('.days-container');
+                    this.prevBtn = this.container.querySelector('.prev-month');
+                    this.nextBtn = this.container.querySelector('.next-month');
+                    
+                    this.viewDate = new Date();
+                    this.selectedDate = null;
 
-            let currentViewDate = new Date();
-            let selectedDate = null;
-
-            function renderCalendar() {
-                const year = currentViewDate.getFullYear();
-                const month = currentViewDate.getMonth();
-                currentMonthDisplay.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(currentViewDate);
-
-                const labels = Array.from(calendarDays.querySelectorAll('.calendar-day-label'));
-                calendarDays.innerHTML = '';
-                labels.forEach(label => calendarDays.appendChild(label));
-
-                const firstDay = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                const today = new Date(); today.setHours(0,0,0,0);
-
-                for (let i = 0; i < firstDay; i++) {
-                    const empty = document.createElement('div');
-                    empty.className = 'calendar-day empty';
-                    calendarDays.appendChild(empty);
+                    this.prevBtn.onclick = () => { this.viewDate.setMonth(this.viewDate.getMonth() - 1); this.render(); };
+                    this.nextBtn.onclick = () => { this.viewDate.setMonth(this.viewDate.getMonth() + 1); this.render(); };
+                    this.render();
                 }
 
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dayEl = document.createElement('div');
-                    dayEl.className = 'calendar-day';
-                    dayEl.textContent = day;
-                    const dateObj = new Date(year, month, day);
-                    if (dateObj < today) dayEl.classList.add('disabled');
-                    else {
-                        dayEl.addEventListener('click', () => selectDate(dateObj));
-                        if (selectedDate && dateObj.getTime() === selectedDate.getTime()) dayEl.classList.add('selected');
-                        if (dateObj.getTime() === today.getTime()) dayEl.classList.add('today');
+                render() {
+                    const year = this.viewDate.getFullYear();
+                    const month = this.viewDate.getMonth();
+                    this.monthDisplay.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(this.viewDate);
+
+                    // Clear previous days (except labels)
+                    const labels = Array.from(this.daysContainer.querySelectorAll('.calendar-day-label'));
+                    this.daysContainer.innerHTML = '';
+                    labels.forEach(label => this.daysContainer.appendChild(label));
+
+                    const firstDay = new Date(year, month, 1).getDay();
+                    const daysInMonth = new Date(year, month + 1, 0).getDate();
+                    const today = new Date(); today.setHours(0,0,0,0);
+
+                    for (let i = 0; i < firstDay; i++) {
+                        const empty = document.createElement('div');
+                        empty.className = 'calendar-day empty';
+                        this.daysContainer.appendChild(empty);
                     }
-                    calendarDays.appendChild(dayEl);
+
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        const dayEl = document.createElement('div');
+                        dayEl.className = 'calendar-day';
+                        dayEl.textContent = day;
+                        const dateObj = new Date(year, month, day);
+                        if (dateObj < today) dayEl.classList.add('disabled');
+                        else {
+                            dayEl.onclick = () => {
+                                this.selectedDate = dateObj;
+                                this.input.value = dateObj.toISOString();
+                                this.render();
+                            };
+                            if (this.selectedDate && dateObj.getTime() === this.selectedDate.getTime()) dayEl.classList.add('selected');
+                            if (dateObj.getTime() === today.getTime()) dayEl.classList.add('today');
+                        }
+                        this.daysContainer.appendChild(dayEl);
+                    }
                 }
             }
 
-            function selectDate(date) {
-                selectedDate = date;
-                dateInput.value = date.toISOString();
-                renderCalendar();
+            let cal1, cal2;
+            if (tour.isCombo) {
+                document.getElementById('cal-2-box').classList.remove('hidden');
+                document.getElementById('label-cal-1').textContent = 'Land Tour Date';
+                document.getElementById('calendars-container').classList.add('md:grid-cols-2');
+                document.getElementById('calendars-container').classList.remove('md:flex', 'md:justify-center');
+                cal1 = new Calendar('calendar-1', 'date-1-input');
+                cal2 = new Calendar('calendar-2', 'date-2-input');
+            } else {
+                document.getElementById('cal-2-box').classList.add('hidden');
+                document.getElementById('label-cal-1').textContent = tour.name + ' Date';
+                document.getElementById('calendars-container').classList.remove('md:grid-cols-2');
+                document.getElementById('calendars-container').classList.add('md:flex', 'md:justify-center');
+                cal1 = new Calendar('calendar-1', 'date-1-input');
             }
-
-            prevMonthBtn.addEventListener('click', () => { currentViewDate.setMonth(currentViewDate.getMonth() - 1); renderCalendar(); });
-            nextMonthBtn.addEventListener('click', () => { currentViewDate.setMonth(currentViewDate.getMonth() + 1); renderCalendar(); });
-            renderCalendar();
 
             // --- Multi-step Flow Logic ---
             const bookingForm = document.getElementById('booking-form');
@@ -591,8 +628,8 @@
                 const phone = document.getElementsByName('phone')[0].value;
                 const email = document.getElementsByName('email')[0].value;
 
-                if (!name || !phone || !email || !selectedDate) {
-                    alert('Please fill in all guest information and select a date on the calendar.');
+                if (!name || !phone || !email || !cal1.selectedDate || (tour.isCombo && !cal2.selectedDate)) {
+                    alert('Please fill in all guest information and select ' + (tour.isCombo ? 'both dates' : 'the date') + ' on the calendar.');
                     return;
                 }
 
@@ -601,7 +638,10 @@
                 const totalPrice = (adults + children) * tour.price;
 
                 document.getElementById('summary-tour-name').textContent = tour.name;
-                document.getElementById('summary-date').textContent = selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                const dateText = tour.isCombo 
+                    ? `Land: ${cal1.selectedDate.toLocaleDateString()}<br>Hopping: ${cal2.selectedDate.toLocaleDateString()}` 
+                    : cal1.selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                document.getElementById('summary-date').innerHTML = dateText;
                 document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children` : ''}`;
                 document.getElementById('summary-subtotal').textContent = `${totalPrice.toLocaleString()} PHP`;
                 document.getElementById('summary-total').textContent = `${totalPrice.toLocaleString()} PHP`;
@@ -634,10 +674,14 @@
                         status: 'Pending Payment',
                         tourId: tour.id,
                         tourName: tour.name,
-                        tourDate: selectedDate,
+                        tourDate: cal1.selectedDate,
                         totalPrice: (parseInt(document.getElementById('pax-adults').value) + parseInt(document.getElementById('pax-children').value)) * tour.price,
                         createdAt: serverTimestamp()
                     };
+
+                    if (tour.isCombo) {
+                        payload.tourDate_2 = cal2.selectedDate;
+                    }
 
                     await addDoc(collection(db, "bookings"), payload);
                     window.location.href = 'thank-you.html';
