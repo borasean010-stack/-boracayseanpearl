@@ -269,26 +269,27 @@
                                 </div>
 
                                 <!-- Step 3: Date & Pax -->
-                                <div class="space-y-6">
+                                <div class="space-y-8">
                                     <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
                                         <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">03</span>
                                         Schedule & Guests
                                     </h3>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <!-- Custom Calendar -->
-                                        <div class="space-y-4">
-                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
-                                            <div class="calendar-container">
+                                    
+                                    <div id="dual-calendar-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <!-- Calendar 1 (Yacht / Standard) -->
+                                        <div class="space-y-4" id="calendar-1-wrapper">
+                                            <label id="calendar-1-label" class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
+                                            <div class="calendar-container" id="calendar-1">
                                                 <div class="calendar-header">
-                                                    <button type="button" id="prev-month" class="p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                    <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
                                                         <i class="ph ph-bold ph-caret-left"></i>
                                                     </button>
-                                                    <span id="current-month" class="flex-1 text-center font-bold text-sm uppercase tracking-widest text-white">May 2026</span>
-                                                    <button type="button" id="next-month" class="p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                    <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
+                                                    <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
                                                         <i class="ph ph-bold ph-caret-right"></i>
                                                     </button>
                                                 </div>
-                                                <div class="calendar-grid" id="calendar-days">
+                                                <div class="calendar-grid">
                                                     <!-- Labels -->
                                                     <div class="calendar-day-label">S</div>
                                                     <div class="calendar-day-label">M</div>
@@ -297,17 +298,47 @@
                                                     <div class="calendar-day-label">T</div>
                                                     <div class="calendar-day-label">F</div>
                                                     <div class="calendar-day-label">S</div>
-                                                    <!-- Days injected by JS -->
+                                                    <div class="days-container contents"></div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="date" id="selected-date-input" required>
+                                            <input type="hidden" name="date_1" id="date-1-input" required>
                                         </div>
 
-                                        <div class="space-y-8 flex flex-col justify-center">
+                                        <!-- Calendar 2 (Land - Only for Combo) -->
+                                        <div class="space-y-4 hidden" id="calendar-2-wrapper">
+                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Land Tour Date</label>
+                                            <div class="calendar-container" id="calendar-2">
+                                                <div class="calendar-header">
+                                                    <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                        <i class="ph ph-bold ph-caret-left"></i>
+                                                    </button>
+                                                    <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
+                                                    <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                        <i class="ph ph-bold ph-caret-right"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="calendar-grid">
+                                                    <!-- Labels -->
+                                                    <div class="calendar-day-label">S</div>
+                                                    <div class="calendar-day-label">M</div>
+                                                    <div class="calendar-day-label">T</div>
+                                                    <div class="calendar-day-label">W</div>
+                                                    <div class="calendar-day-label">T</div>
+                                                    <div class="calendar-day-label">F</div>
+                                                    <div class="calendar-day-label">S</div>
+                                                    <div class="days-container contents"></div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="date_2" id="date-2-input">
+                                        </div>
+                                    </div>
+
+                                    <!-- Pax Selection -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                                        <div class="space-y-6">
                                             <div class="space-y-2">
                                                 <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
-                                                    Adults
-                                                    <span class="lowercase font-normal opacity-60">(36mo+)</span>
+                                                    Adults <span class="lowercase font-normal opacity-60">(36mo+)</span>
                                                 </label>
                                                 <div class="flex items-center gap-4">
                                                     <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="minus">
@@ -321,8 +352,7 @@
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
-                                                    Child
-                                                    <span class="lowercase font-normal opacity-60">(<36mo)</span>
+                                                    Child <span class="lowercase font-normal opacity-60">(<36mo)</span>
                                                 </label>
                                                 <div class="flex items-center gap-4">
                                                     <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="minus">
@@ -334,6 +364,11 @@
                                                     </button>
                                                 </div>
                                             </div>
+                                        </div>
+                                        
+                                        <div class="p-6 rounded-2xl bg-primary/10 border border-primary/20">
+                                            <p class="text-xs text-primary font-bold uppercase tracking-widest mb-1">Estimated Total</p>
+                                            <p id="estimated-total" class="text-3xl font-bold text-white">1,900 PHP</p>
                                         </div>
                                     </div>
                                 </div>
@@ -464,57 +499,178 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        // --- Firebase Configuration (User: Please fill this in!) ---
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Placeholder config - replace with your actual Firebase project config
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // --- Tour Configuration ---
+        const tourMap = {
+            'land': {
+                id: 'land',
+                name: 'Boracay Land Tour',
+                price: 700,
+                icon: 'ph-jeep'
+            },
+            'yacht': {
+                id: 'yacht-hopping',
+                name: 'Pearl Hopping Tour',
+                price: 1900,
+                icon: 'ph-sailboat'
+            },
+            'combo': {
+                id: 'combo',
+                name: 'Ultimate Combo Package',
+                price: 2500,
+                icon: 'ph-sparkles',
+                isCombo: true
+            }
+        };
+
+        // --- Calendar Class ---
+        class Calendar {
+            constructor(containerId, inputId, labelId, tourName) {
+                this.container = document.getElementById(containerId);
+                this.input = document.getElementById(inputId);
+                this.label = document.getElementById(labelId);
+                this.daysContainer = this.container.querySelector('.days-container');
+                this.monthDisplay = this.container.querySelector('.current-month');
+                this.prevBtn = this.container.querySelector('.prev-month');
+                this.nextBtn = this.container.querySelector('.next-month');
+                
+                this.tourName = tourName;
+                this.currentViewDate = new Date();
+                this.selectedDate = null;
+
+                this.init();
+            }
+
+            init() {
+                this.prevBtn.addEventListener('click', () => {
+                    this.currentViewDate.setMonth(this.currentViewDate.getMonth() - 1);
+                    this.render();
+                });
+                this.nextBtn.addEventListener('click', () => {
+                    this.currentViewDate.setMonth(this.currentViewDate.getMonth() + 1);
+                    this.render();
+                });
+                this.render();
+            }
+
+            render() {
+                const year = this.currentViewDate.getFullYear();
+                const month = this.currentViewDate.getMonth();
+                
+                this.monthDisplay.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(this.currentViewDate);
+                this.daysContainer.innerHTML = '';
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const today = new Date();
+                today.setHours(0,0,0,0);
+
+                for (let i = 0; i < firstDay; i++) {
+                    const empty = document.createElement('div');
+                    empty.className = 'calendar-day empty';
+                    this.daysContainer.appendChild(empty);
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'calendar-day';
+                    dayEl.textContent = day;
+
+                    const dateObj = new Date(year, month, day);
+                    if (dateObj < today) {
+                        dayEl.classList.add('disabled');
+                    } else {
+                        dayEl.addEventListener('click', () => this.selectDate(dateObj));
+                        if (this.selectedDate && dateObj.getTime() === this.selectedDate.getTime()) {
+                            dayEl.classList.add('selected');
+                        }
+                        if (dateObj.getTime() === today.getTime()) {
+                            dayEl.classList.add('today');
+                        }
+                    }
+                    this.daysContainer.appendChild(dayEl);
+                }
+            }
+
+            selectDate(date) {
+                this.selectedDate = date;
+                this.input.value = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                this.render();
+                updateTotal();
+            }
+        }
+
+        let cal1, cal2;
+
+        function updateTotal() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tourKey = urlParams.get('tour') || 'yacht';
+            const tour = tourMap[tourKey] || tourMap['yacht'];
+            
+            const adults = parseInt(document.getElementById('pax-adults').value);
+            const children = parseInt(document.getElementById('pax-children').value);
+            const totalPax = adults + children;
+            const totalPrice = totalPax * tour.price;
+            
+            document.getElementById('estimated-total').textContent = `${totalPrice.toLocaleString()} PHP`;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Sticky Header Scroll Effect ---
+            // --- Sticky Header ---
             const header = document.getElementById('header');
             const logoText = document.getElementById('logo-text');
             const navLinks = document.querySelectorAll('.nav-link');
-            const mobileToggle = document.getElementById('mobile-toggle');
 
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
                     header.classList.remove('bg-transparent', 'py-6');
                     logoText.classList.replace('text-white', 'text-secondary');
-                    mobileToggle.classList.replace('text-white', 'text-secondary');
                     navLinks.forEach(link => link.classList.replace('text-white', 'text-secondary'));
                 } else {
                     header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
                     header.classList.add('bg-transparent', 'py-6');
                     logoText.classList.replace('text-secondary', 'text-white');
-                    mobileToggle.classList.replace('text-secondary', 'text-white');
                     navLinks.forEach(link => link.classList.replace('text-secondary', 'text-white'));
                 }
             });
 
-            // --- Tour Content Logic ---
-            const tourMap = {
-                'land': {
-                    name: 'Boracay Land Tour',
-                    price: '700 PHP',
-                    icon: 'ph-jeep'
-                },
-                'yacht': {
-                    name: 'Pearl Hopping Tour',
-                    price: '1,900 PHP',
-                    icon: 'ph-sailboat'
-                },
-                'combo': {
-                    name: 'Ultimate Combo Package',
-                    price: '2,500 PHP',
-                    icon: 'ph-sparkles'
-                }
-            };
-
+            // --- Tour Initialization ---
             const urlParams = new URLSearchParams(window.location.search);
             const tourKey = urlParams.get('tour') || 'yacht';
             const tour = tourMap[tourKey] || tourMap['yacht'];
 
             document.getElementById('tour-name').textContent = tour.name;
-            document.getElementById('tour-price').textContent = tour.price;
+            document.getElementById('tour-price').textContent = `${tour.price} PHP`;
             document.getElementById('tour-icon').innerHTML = `<i class="ph ${tour.icon}"></i>`;
-            document.getElementById('tour-input').value = tour.name;
+            document.getElementById('tour-input').value = tour.id;
+
+            // --- Calendar Instantiation ---
+            if (tour.isCombo) {
+                document.getElementById('calendar-1-label').textContent = 'Select Yacht Hopping Date';
+                document.getElementById('calendar-2-wrapper').classList.remove('hidden');
+                cal1 = new Calendar('calendar-1', 'date-1-input', 'calendar-1-label', 'Yacht Hopping');
+                cal2 = new Calendar('calendar-2', 'date-2-input', null, 'Land Tour');
+            } else {
+                cal1 = new Calendar('calendar-1', 'date-1-input', 'calendar-1-label', tour.name);
+            }
 
             // --- Pax Controls ---
             const paxBtns = document.querySelectorAll('.pax-btn');
@@ -524,139 +680,50 @@
                     const action = btn.dataset.action;
                     const input = document.getElementById(`pax-${type}`);
                     let val = parseInt(input.value);
-
                     if (action === 'plus') val++;
                     else if (action === 'minus') {
                         if (type === 'adults' && val > 1) val--;
                         else if (type === 'children' && val > 0) val--;
                     }
                     input.value = val;
+                    updateTotal();
                 });
             });
 
-            // --- Custom Calendar Logic ---
-            const calendarDays = document.getElementById('calendar-days');
-            const currentMonthDisplay = document.getElementById('current-month');
-            const prevMonthBtn = document.getElementById('prev-month');
-            const nextMonthBtn = document.getElementById('next-month');
-            const dateInput = document.getElementById('selected-date-input');
-
-            let currentViewDate = new Date();
-            let selectedDate = null;
-
-            function renderCalendar() {
-                const year = currentViewDate.getFullYear();
-                const month = currentViewDate.getMonth();
-                
-                // Set Month Header
-                currentMonthDisplay.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(currentViewDate);
-
-                // Clear previous days (except labels)
-                const labels = Array.from(calendarDays.querySelectorAll('.calendar-day-label'));
-                calendarDays.innerHTML = '';
-                labels.forEach(label => calendarDays.appendChild(label));
-
-                const firstDay = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                const today = new Date();
-                today.setHours(0,0,0,0);
-
-                // Add Empty Spaces
-                for (let i = 0; i < firstDay; i++) {
-                    const empty = document.createElement('div');
-                    empty.className = 'calendar-day empty';
-                    calendarDays.appendChild(empty);
-                }
-
-                // Add Actual Days
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dayEl = document.createElement('div');
-                    dayEl.className = 'calendar-day';
-                    dayEl.textContent = day;
-
-                    const dateObj = new Date(year, month, day);
-                    
-                    if (dateObj < today) {
-                        dayEl.classList.add('disabled');
-                    } else {
-                        dayEl.addEventListener('click', () => selectDate(dateObj));
-                        if (selectedDate && dateObj.getTime() === selectedDate.getTime()) {
-                            dayEl.classList.add('selected');
-                        }
-                        if (dateObj.getTime() === today.getTime()) {
-                            dayEl.classList.add('today');
-                        }
-                    }
-
-                    calendarDays.appendChild(dayEl);
-                }
-            }
-
-            function selectDate(date) {
-                selectedDate = date;
-                dateInput.value = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                renderCalendar();
-            }
-
-            prevMonthBtn.addEventListener('click', () => {
-                currentViewDate.setMonth(currentViewDate.getMonth() - 1);
-                renderCalendar();
-            });
-
-            nextMonthBtn.addEventListener('click', () => {
-                currentViewDate.setMonth(currentViewDate.getMonth() + 1);
-                renderCalendar();
-            });
-
-            renderCalendar();
-
-            // --- Multi-step Flow Logic ---
+            // --- Multi-step Flow ---
             const bookingForm = document.getElementById('booking-form');
             const paymentSection = document.getElementById('payment-section');
             const proceedBtn = document.getElementById('proceed-to-payment');
             const backBtn = document.getElementById('back-to-form');
 
             proceedBtn.addEventListener('click', () => {
-                // Basic Validation
                 const requiredInputs = bookingForm.querySelectorAll('input[required]');
                 let isValid = true;
                 requiredInputs.forEach(input => {
-                    if (!input.value) {
-                        isValid = false;
-                        input.classList.add('border-red-500');
-                    } else {
-                        input.classList.remove('border-red-500');
-                    }
+                    if (!input.value) { isValid = false; input.classList.add('border-red-500'); }
+                    else { input.classList.remove('border-red-500'); }
                 });
 
-                if (!dateInput.value) {
-                    isValid = false;
-                    alert('Please select a tour date on the calendar.');
+                if (!cal1.selectedDate || (tour.isCombo && !cal2.selectedDate)) {
+                    alert('Please select all required tour dates on the calendars.');
                     return;
                 }
 
-                if (!isValid) {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
+                if (!isValid) { alert('Please fill in all required fields.'); return; }
 
-                // Update Summary
-                const tourData = tourMap[urlParams.get('tour') || 'yacht'];
+                // Summary
                 const adults = parseInt(document.getElementById('pax-adults').value);
                 const children = parseInt(document.getElementById('pax-children').value);
-                const totalPax = adults + children;
-                const priceNum = parseInt(tourData.price.replace(/[^0-9]/g, ''));
-                const totalPrice = totalPax * priceNum;
+                const totalPrice = (adults + children) * tour.price;
 
-                document.getElementById('summary-tour-name').textContent = tourData.name;
-                document.getElementById('summary-date').textContent = new Date(dateInput.value).toLocaleDateString('en-US', { 
-                    month: 'long', day: 'numeric', year: 'numeric' 
-                });
+                document.getElementById('summary-tour-name').textContent = tour.name;
+                document.getElementById('summary-date').innerHTML = tour.isCombo ? 
+                    `Yacht: ${cal1.selectedDate.toLocaleDateString()}<br>Land: ${cal2.selectedDate.toLocaleDateString()}` :
+                    cal1.selectedDate.toLocaleDateString();
                 document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children` : ''}`;
                 document.getElementById('summary-subtotal').textContent = `${totalPrice.toLocaleString()} PHP`;
                 document.getElementById('summary-total').textContent = `${totalPrice.toLocaleString()} PHP`;
 
-                // Switch Views
                 bookingForm.classList.add('hidden');
                 paymentSection.classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -665,34 +732,65 @@
             backBtn.addEventListener('click', () => {
                 paymentSection.classList.add('hidden');
                 bookingForm.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // --- Final Payment Submission ---
+            // --- Final Submission (Firebase) ---
             const payNowBtn = document.getElementById('pay-now');
-            payNowBtn.addEventListener('click', () => {
+            payNowBtn.addEventListener('click', async () => {
                 const method = document.querySelector('input[name="payment_method"]:checked').value;
-                
                 payNowBtn.disabled = true;
                 payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
 
-                setTimeout(() => {
-                    alert(`This is a placeholder for ${method} integration. In a production environment, this would redirect to the ${method} payment gateway.`);
+                const formData = new FormData(bookingForm);
+                const baseBooking = {
+                    customerName: formData.get('name'),
+                    contactPhone: formData.get('phone'),
+                    contactEmail: formData.get('email'),
+                    paxAdult: parseInt(formData.get('adults')),
+                    paxChild: parseInt(formData.get('children')),
+                    paymentMethod: method,
+                    status: 'Pending Payment',
+                    createdAt: serverTimestamp()
+                };
+
+                try {
+                    if (tour.id === 'combo') {
+                        // Split into two bookings
+                        await addDoc(collection(db, "bookings"), {
+                            ...baseBooking,
+                            tourId: 'yacht-hopping',
+                            tourDate: cal1.selectedDate,
+                            totalPrice: (baseBooking.paxAdult + baseBooking.paxChild) * 1900, // Hardcoded split prices or dynamic
+                            parentTour: 'Combo'
+                        });
+                        await addDoc(collection(db, "bookings"), {
+                            ...baseBooking,
+                            tourId: 'land',
+                            tourDate: cal2.selectedDate,
+                            totalPrice: (baseBooking.paxAdult + baseBooking.paxChild) * 700,
+                            parentTour: 'Combo'
+                        });
+                    } else {
+                        await addDoc(collection(db, "bookings"), {
+                            ...baseBooking,
+                            tourId: tour.id,
+                            tourDate: cal1.selectedDate,
+                            totalPrice: (baseBooking.paxAdult + baseBooking.paxChild) * tour.price
+                        });
+                    }
+                    window.location.href = 'thank-you.html';
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                    alert("Error saving reservation. Please try again or contact us via Facebook.");
                     payNowBtn.disabled = false;
-                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl text-primary"></i>`;
-                }, 2000);
+                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
+                }
             });
 
-            // --- Intersection Observer for Fade-Up ---
-            const observerOptions = { threshold: 0.1 };
+            // --- Animation ---
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, observerOptions);
-
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+            }, { threshold: 0.1 });
             document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
         });
     </script>

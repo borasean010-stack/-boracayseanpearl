@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Booking Success | Pearl Of Sean Boracay</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#29D3D0",
+                        secondary: "#062B43",
+                        accent: "#F2C94C",
+                        light: "#F8F9FA",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        heading: ["Montserrat", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light text-secondary antialiased overflow-x-hidden font-sans min-h-screen flex flex-col justify-center items-center py-20 px-6">
+
+    <div class="max-w-2xl w-full bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-center fade-up">
+        <!-- Success Icon -->
+        <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center text-primary text-5xl mx-auto mb-10">
+            <i class="ph-fill ph-check-circle"></i>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-secondary mb-6">Booking Submitted!</h1>
+        <p class="text-gray-500 text-lg mb-10">
+            Your reservation has been successfully received. To complete the confirmation process, we need to verify your payment.
+        </p>
+
+        <!-- Action Box -->
+        <div class="bg-secondary/5 rounded-[2rem] p-8 mb-12 border border-secondary/5">
+            <p class="text-secondary font-bold text-xl mb-6">
+                “송금자 이름을 아래 채널로 보내주세요”
+            </p>
+            <p class="text-gray-500 text-sm mb-8 leading-relaxed">
+                Please send your <span class="text-secondary font-bold underline">remitter's name</span> to one of our official channels below to verify your booking instantly.
+            </p>
+
+            <div class="flex flex-col gap-4">
+                <!-- Messenger Button -->
+                <a href="https://m.me/blackpearl.boracaysean" target="_blank" class="flex items-center justify-center gap-3 bg-[#0084FF] text-white py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-blue-500/20">
+                    <i class="ph-fill ph-messenger-logo text-2xl"></i> Facebook Messenger
+                </a>
+                <!-- WeChat Button -->
+                <a href="weixin://dl/chat?username=YOUR_WECHAT_ID" target="_blank" class="flex items-center justify-center gap-3 bg-[#07C160] text-white py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-green-500/20">
+                    <i class="ph-fill ph-wechat-logo text-2xl"></i> WeChat
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-center gap-6">
+            <a href="index.html" class="text-gray-400 hover:text-secondary font-bold transition-colors flex items-center gap-2">
+                <i class="ph ph-house"></i> Back to Home
+            </a>
+            <span class="hidden md:inline text-gray-200">|</span>
+            <a href="index.html#tours" class="text-gray-400 hover:text-secondary font-bold transition-colors flex items-center gap-2">
+                <i class="ph ph-compass"></i> Explore More Tours
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer-like credit -->
+    <div class="mt-12 text-gray-400 text-sm">
+        <p>&copy; 2026 Pearl Of Sean. Premium Boracay Experiences.</p>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
