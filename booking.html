@@ -319,43 +319,54 @@
                                             </div>
                                         </div>
 
-                                        <!-- Pax Section -->
-                                        <div class="space-y-8 flex flex-col justify-center">
-                                            <div class="space-y-2">
-                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
-                                                    Adults
-                                                    <span class="lowercase font-normal opacity-60">(36mo+)</span>
-                                                </label>
-                                                <div class="flex items-center gap-4">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="minus">
-                                                        <i class="ph ph-bold ph-minus"></i>
-                                                    </button>
-                                                    <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="plus">
-                                                        <i class="ph ph-bold ph-plus"></i>
-                                                    </button>
+                                        <!-- Pax & Payment Combo Section -->
+                                        <div class="flex flex-col md:flex-row items-stretch justify-center gap-8 border-t border-white/5 pt-8">
+                                            <!-- Pax Section -->
+                                            <div class="space-y-8 flex flex-col justify-center flex-1">
+                                                <div class="space-y-2">
+                                                    <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
+                                                        Adults
+                                                        <span class="lowercase font-normal opacity-60">(36mo+)</span>
+                                                    </label>
+                                                    <div class="flex items-center gap-4">
+                                                        <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="minus">
+                                                            <i class="ph ph-bold ph-minus"></i>
+                                                        </button>
+                                                        <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
+                                                        <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="plus">
+                                                            <i class="ph ph-bold ph-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="space-y-2">
+                                                    <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
+                                                        Children
+                                                        <span class="lowercase font-normal opacity-60">(<36mo)</span>
+                                                    </label>
+                                                    <div class="flex items-center gap-4">
+                                                        <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="minus">
+                                                            <i class="ph ph-bold ph-minus"></i>
+                                                        </button>
+                                                        <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
+                                                        <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="plus">
+                                                            <i class="ph ph-bold ph-plus"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="space-y-2">
-                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
-                                                    Children
-                                                    <span class="lowercase font-normal opacity-60">(<36mo)</span>
-                                                </label>
-                                                <div class="flex items-center gap-4">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="minus">
-                                                        <i class="ph ph-bold ph-minus"></i>
-                                                    </button>
-                                                    <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="plus">
-                                                        <i class="ph ph-bold ph-plus"></i>
-                                                    </button>
-                                                </div>
+
+                                            <!-- Square Payment Button for Combo -->
+                                            <div id="combo-payment-container" class="hidden flex-1 flex items-center justify-center">
+                                                <button type="button" id="proceed-to-payment-combo" class="aspect-square w-full max-w-[180px] bg-primary text-secondary rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex flex-col items-center justify-center gap-4 p-6">
+                                                    <i class="ph-bold ph-arrow-right text-4xl"></i>
+                                                    <span class="text-center leading-tight">Proceed to<br>Payment</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Step 4: Finalize -->
+                                <!-- Step 4: Finalize (Visible only for Single Tours) -->
                                 <div class="pt-4" id="submit-step">
                                     <button type="button" id="proceed-to-payment" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
                                         Proceed to Payment <i class="ph-bold ph-arrow-right text-2xl"></i>
@@ -609,6 +620,11 @@
                 document.getElementById('calendars-container').classList.remove('md:flex', 'md:justify-center');
                 document.getElementById('calendar-wrapper').classList.add('grid-cols-1');
                 document.getElementById('calendar-wrapper').classList.remove('md:grid-cols-2');
+                
+                // Show Combo Payment Button, Hide Standard Submit Step
+                document.getElementById('combo-payment-container').classList.remove('hidden');
+                document.getElementById('submit-step').classList.add('hidden');
+                
                 cal1 = new Calendar('calendar-1', 'date-1-input');
                 cal2 = new Calendar('calendar-2', 'date-2-input');
             } else {
@@ -618,6 +634,11 @@
                 document.getElementById('calendars-container').classList.add('md:flex', 'md:justify-center');
                 document.getElementById('calendar-wrapper').classList.remove('grid-cols-1');
                 document.getElementById('calendar-wrapper').classList.add('md:grid-cols-2');
+                
+                // Hide Combo Payment Button, Show Standard Submit Step
+                document.getElementById('combo-payment-container').classList.add('hidden');
+                document.getElementById('submit-step').classList.remove('hidden');
+                
                 cal1 = new Calendar('calendar-1', 'date-1-input');
             }
 
@@ -625,9 +646,10 @@
             const bookingForm = document.getElementById('booking-form');
             const paymentSection = document.getElementById('payment-section');
             const proceedBtn = document.getElementById('proceed-to-payment');
+            const proceedBtnCombo = document.getElementById('proceed-to-payment-combo');
             const backBtn = document.getElementById('back-to-form');
 
-            proceedBtn.addEventListener('click', () => {
+            const handleProceed = () => {
                 const name = document.getElementsByName('name')[0].value;
                 const phone = document.getElementsByName('phone')[0].value;
                 const email = document.getElementsByName('email')[0].value;
@@ -653,7 +675,10 @@
                 bookingForm.classList.add('hidden');
                 paymentSection.classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            };
+
+            proceedBtn.addEventListener('click', handleProceed);
+            proceedBtnCombo.addEventListener('click', handleProceed);
 
             backBtn.addEventListener('click', () => {
                 paymentSection.classList.add('hidden');
