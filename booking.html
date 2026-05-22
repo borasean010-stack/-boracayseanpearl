@@ -206,140 +206,140 @@
 
             <!-- Main Form Card -->
             <div class="booking-card rounded-[3rem] p-8 md:p-16 fade-up">
-                <form id="booking-form" class="space-y-16">
+                <form id="booking-form" class="space-y-12">
                     <input type="hidden" name="tour_id" id="tour-input">
                     
-                    <!-- 1. Contact Information (Top) -->
-                    <div class="space-y-8">
-                        <label class="text-lg uppercase font-bold text-primary tracking-widest flex items-center gap-3">
-                            <i class="ph ph-identification-card text-2xl"></i> Contact Information
-                        </label>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="space-y-3">
-                                <p class="text-sm text-gray-400 uppercase font-bold ml-1">Full Name</p>
-                                <input type="text" name="name" required placeholder="Ex: John Doe" class="input-luxury w-full px-6 py-5 rounded-2xl outline-none text-lg">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <!-- Left Column -->
+                        <div class="space-y-12">
+                            <div class="space-y-8">
+                                <label class="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                    <i class="ph ph-identification-card text-lg"></i> Contact Information
+                                </label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <p class="text-xs text-gray-400 uppercase font-bold ml-1">Full Name</p>
+                                        <input type="text" name="name" required placeholder="Ex: John Doe" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none text-lg">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <p class="text-xs text-gray-400 uppercase font-bold ml-1">Phone Number</p>
+                                        <input type="tel" name="phone" required placeholder="+63 XXX XXX XXXX" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none text-lg">
+                                    </div>
+                                    <div class="space-y-2 md:col-span-2">
+                                        <p class="text-xs text-gray-400 uppercase font-bold ml-1">Email Address</p>
+                                        <input type="email" name="email" required placeholder="john@example.com" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none text-lg">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="space-y-3">
-                                <p class="text-sm text-gray-400 uppercase font-bold ml-1">Phone Number</p>
-                                <input type="tel" name="phone" required placeholder="+63 XXX XXX XXXX" class="input-luxury w-full px-6 py-5 rounded-2xl outline-none text-lg">
-                            </div>
-                            <div class="space-y-3">
-                                <p class="text-sm text-gray-400 uppercase font-bold ml-1">Email Address</p>
-                                <input type="email" name="email" required placeholder="john@example.com" class="input-luxury w-full px-6 py-5 rounded-2xl outline-none text-lg">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="h-px bg-white/10 w-full"></div>
+                            <div class="space-y-8">
+                                <label id="calendar-1-label" class="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                    <i class="ph ph-calendar text-lg"></i> Select Tour Date
+                                </label>
+                                
+                                <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+                                    <div id="calendar-1" class="calendar-wrapper space-y-2">
+                                        <div class="flex items-center justify-between mb-6 px-2">
+                                            <h4 class="current-month font-bold text-lg">Month Year</h4>
+                                            <div class="flex gap-2">
+                                                <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-left-bold"></i></button>
+                                                <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-7 gap-2">
+                                            <div class="calendar-header-day">Su</div>
+                                            <div class="calendar-header-day">Mo</div>
+                                            <div class="calendar-header-day">Tu</div>
+                                            <div class="calendar-header-day">We</div>
+                                            <div class="calendar-header-day">Th</div>
+                                            <div class="calendar-header-day">Fr</div>
+                                            <div class="calendar-header-day">Sa</div>
+                                        </div>
+                                        <div class="days-container"></div>
+                                        <input type="hidden" name="date_1" id="date-1-input">
+                                    </div>
 
-                    <!-- 2. Calendars (Middle - Side by Side) -->
-                    <div class="space-y-10">
-                        <label class="text-lg uppercase font-bold text-primary tracking-widest flex items-center gap-3">
-                            <i class="ph ph-calendar text-2xl"></i> Select Voyage Dates
-                        </label>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                            <!-- Calendar 1 (Always Visible) -->
-                            <div class="space-y-6">
-                                <p id="calendar-1-label" class="text-sm text-gray-400 uppercase font-bold ml-1">Select Tour Date</p>
-                                <div id="calendar-1" class="calendar-wrapper space-y-4">
-                                    <div class="flex items-center justify-between mb-4 px-2">
-                                        <h4 class="current-month font-bold text-xl">Month Year</h4>
-                                        <div class="flex gap-2">
-                                            <button type="button" class="prev-month w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-left-bold"></i></button>
-                                            <button type="button" class="next-month w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                    <div id="calendar-2-wrapper" class="hidden space-y-2">
+                                        <div id="calendar-2" class="calendar-wrapper space-y-2">
+                                            <div class="flex items-center justify-between mb-6 px-2">
+                                                <h4 class="current-month font-bold text-lg">Month Year</h4>
+                                                <div class="flex gap-2">
+                                                    <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-left-bold"></i></button>
+                                                    <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-7 gap-2">
+                                                <div class="calendar-header-day">Su</div>
+                                                <div class="calendar-header-day">Mo</div>
+                                                <div class="calendar-header-day">Tu</div>
+                                                <div class="calendar-header-day">We</div>
+                                                <div class="calendar-header-day">Th</div>
+                                                <div class="calendar-header-day">Fr</div>
+                                                <div class="calendar-header-day">Sa</div>
+                                            </div>
+                                            <div class="days-container"></div>
+                                            <input type="hidden" name="date_2" id="date-2-input">
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-7 gap-2">
-                                        <div class="calendar-header-day text-xs">Su</div>
-                                        <div class="calendar-header-day text-xs">Mo</div>
-                                        <div class="calendar-header-day text-xs">Tu</div>
-                                        <div class="calendar-header-day text-xs">We</div>
-                                        <div class="calendar-header-day text-xs">Th</div>
-                                        <div class="calendar-header-day text-xs">Fr</div>
-                                        <div class="calendar-header-day text-xs">Sa</div>
-                                    </div>
-                                    <div class="days-container"></div>
-                                    <input type="hidden" name="date_1" id="date-1-input">
-                                </div>
-                            </div>
-
-                            <!-- Calendar 2 (Combo Only) -->
-                            <div id="calendar-2-wrapper" class="hidden space-y-6">
-                                <p id="calendar-2-label" class="text-sm text-gray-400 uppercase font-bold ml-1">Select Tour Date</p>
-                                <div id="calendar-2" class="calendar-wrapper space-y-4">
-                                    <div class="flex items-center justify-between mb-4 px-2">
-                                        <h4 class="current-month font-bold text-xl">Month Year</h4>
-                                        <div class="flex gap-2">
-                                            <button type="button" class="prev-month w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-left-bold"></i></button>
-                                            <button type="button" class="next-month w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-right-bold"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-7 gap-2">
-                                        <div class="calendar-header-day text-xs">Su</div>
-                                        <div class="calendar-header-day text-xs">Mo</div>
-                                        <div class="calendar-header-day text-xs">Tu</div>
-                                        <div class="calendar-header-day text-xs">We</div>
-                                        <div class="calendar-header-day text-xs">Th</div>
-                                        <div class="calendar-header-day text-xs">Fr</div>
-                                        <div class="calendar-header-day text-xs">Sa</div>
-                                    </div>
-                                    <div class="days-container"></div>
-                                    <input type="hidden" name="date_2" id="date-2-input">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="h-px bg-white/10 w-full"></div>
-
-                    <!-- 3. Guest Selection & Summary (Bottom) -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                        <div class="space-y-8">
-                            <label class="text-lg uppercase font-bold text-primary tracking-widest flex items-center gap-3">
-                                <i class="ph ph-users text-2xl"></i> Number of Guests
-                            </label>
-                            <div class="bg-white/5 p-8 rounded-[2.5rem] border border-white/10 space-y-8">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-bold text-xl text-white">Adults</p>
-                                        <p class="text-sm text-gray-500 uppercase tracking-tighter">36 months +</p>
-                                    </div>
-                                    <div class="flex items-center gap-5">
-                                        <button type="button" class="pax-btn w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus"><i class="ph ph-minus text-lg"></i></button>
-                                        <input type="number" id="pax-adults" min="1" value="1" readonly class="w-10 bg-transparent text-center font-bold text-2xl outline-none text-white">
-                                        <button type="button" class="pax-btn w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus"><i class="ph ph-plus text-lg"></i></button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-bold text-xl text-white">Children <span class="text-primary text-sm ml-1">(Free)</span></p>
-                                        <p class="text-sm text-gray-500 uppercase tracking-tighter">Under 36 months</p>
-                                    </div>
-                                    <div class="flex items-center gap-5">
-                                        <button type="button" class="pax-btn w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus"><i class="ph ph-minus text-lg"></i></button>
-                                        <input type="number" id="pax-children" min="0" value="0" readonly class="w-10 bg-transparent text-center font-bold text-2xl outline-none text-white">
-                                        <button type="button" class="pax-btn w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus"><i class="ph ph-plus text-lg"></i></button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="space-y-8">
-                            <div class="bg-primary p-10 rounded-[2.5rem] text-secondary shadow-2xl">
+                        <!-- Right Column -->
+                        <div class="space-y-12">
+                            <div class="bg-primary p-8 md:p-10 rounded-[2.5rem] text-secondary">
                                 <div class="flex justify-between items-start mb-10">
-                                    <div id="tour-icon" class="text-5xl"><i class="ph ph-sailboat"></i></div>
-                                    <span class="text-sm uppercase font-black tracking-[0.2em] opacity-40">Luxury Selection</span>
+                                    <div id="tour-icon" class="text-4xl"><i class="ph ph-sailboat"></i></div>
+                                    <span class="text-xs uppercase font-black tracking-[0.2em] opacity-40">Luxury Selection</span>
                                 </div>
-                                <h3 id="tour-name" class="text-4xl font-heading font-bold mb-4">Tour Name</h3>
-                                <div class="space-y-2 mb-10">
-                                    <div class="flex items-baseline gap-2">
-                                        <span id="estimated-total" class="text-5xl font-black">0 PHP</span>
-                                        <span class="text-sm font-bold uppercase opacity-40">Total</span>
+                                <h3 id="tour-name" class="text-3xl md:text-4xl font-heading font-bold mb-2">Tour Name</h3>
+                                <p class="text-secondary/60 text-base font-medium mb-8">Premium Island Experience</p>
+                                <div class="flex items-baseline gap-2">
+                                    <span id="tour-price" class="text-4xl font-black">0 PHP</span>
+                                    <span class="text-xs font-bold uppercase tracking-widest opacity-40">Per Adult</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-8">
+                                <div class="bg-white/5 p-6 md:p-8 rounded-[2.5rem] border border-white/10 space-y-8">
+                                    <div class="space-y-4">
+                                        <label class="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                            <i class="ph ph-users text-lg"></i> Number of Guests
+                                        </label>
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <p class="font-bold text-lg text-white">Adults</p>
+                                                    <p class="text-xs text-gray-500 uppercase tracking-tighter">36 months +</p>
+                                                </div>
+                                                <div class="flex items-center gap-3">
+                                                    <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus"><i class="ph ph-minus text-sm"></i></button>
+                                                    <input type="number" id="pax-adults" min="1" value="1" readonly class="w-8 bg-transparent text-center font-bold text-xl outline-none text-white">
+                                                    <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus"><i class="ph ph-plus text-sm"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <p class="font-bold text-lg text-white">Children <span class="text-primary text-xs ml-1">(Free)</span></p>
+                                                    <p class="text-xs text-gray-500 uppercase tracking-tighter">Under 36 months</p>
+                                                </div>
+                                                <div class="flex items-center gap-3">
+                                                    <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus"><i class="ph ph-minus text-sm"></i></button>
+                                                    <input type="number" id="pax-children" min="0" value="0" readonly class="w-8 bg-transparent text-center font-bold text-xl outline-none text-white">
+                                                    <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus"><i class="ph ph-plus text-sm"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="text-secondary/60 text-sm font-medium">Includes all premium services and equipment.</p>
+                                    <div class="pt-6 border-t border-white/10">
+                                        <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Final Investment</p>
+                                        <div class="flex items-baseline gap-2">
+                                            <span id="estimated-total" class="text-4xl font-heading font-black text-primary text-glow">0 PHP</span>
+                                            <span class="text-xs text-gray-500 uppercase">Total</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button type="button" id="proceed-to-payment" class="w-full bg-secondary text-white py-6 rounded-2xl font-bold text-xl hover:bg-white hover:text-secondary transition-all transform hover:scale-[1.02] shadow-xl flex items-center justify-center gap-3">
+                                <button type="button" id="proceed-to-payment" class="w-full bg-white text-secondary py-5 rounded-2xl font-bold text-xl hover:bg-primary hover:text-white transition-all transform hover:scale-[1.02] shadow-xl flex items-center justify-center gap-3">
                                     Proceed to Confirmation <i class="ph-bold ph-arrow-right"></i>
                                 </button>
                             </div>
