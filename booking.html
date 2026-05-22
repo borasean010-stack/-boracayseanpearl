@@ -275,100 +275,101 @@
                                         Schedule & Guests
                                     </h3>
                                     
-                                    <div id="dual-calendar-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <!-- Calendar 1 (Yacht / Standard) -->
-                                        <div class="space-y-4" id="calendar-1-wrapper">
-                                            <label id="calendar-1-label" class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
-                                            <div class="calendar-container" id="calendar-1">
-                                                <div class="calendar-header">
-                                                    <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                        <i class="ph ph-bold ph-caret-left"></i>
-                                                    </button>
-                                                    <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
-                                                    <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                        <i class="ph ph-bold ph-caret-right"></i>
-                                                    </button>
+                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                                        <!-- Left Column: Calendars -->
+                                        <div class="space-y-8">
+                                            <!-- Calendar 1 -->
+                                            <div class="space-y-4" id="calendar-1-wrapper">
+                                                <label id="calendar-1-label" class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
+                                                <div class="calendar-container" id="calendar-1">
+                                                    <div class="calendar-header">
+                                                        <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-left"></i>
+                                                        </button>
+                                                        <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
+                                                        <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-right"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="calendar-grid">
+                                                        <div class="calendar-day-label">S</div><div class="calendar-day-label">M</div><div class="calendar-day-label">T</div><div class="calendar-day-label">W</div><div class="calendar-day-label">T</div><div class="calendar-day-label">F</div><div class="calendar-day-label">S</div>
+                                                        <div class="days-container contents"></div>
+                                                    </div>
                                                 </div>
-                                                <div class="calendar-grid">
-                                                    <!-- Labels -->
-                                                    <div class="calendar-day-label">S</div>
-                                                    <div class="calendar-day-label">M</div>
-                                                    <div class="calendar-day-label">T</div>
-                                                    <div class="calendar-day-label">W</div>
-                                                    <div class="calendar-day-label">T</div>
-                                                    <div class="calendar-day-label">F</div>
-                                                    <div class="calendar-day-label">S</div>
-                                                    <div class="days-container contents"></div>
-                                                </div>
+                                                <input type="hidden" name="date_1" id="date-1-input" required>
                                             </div>
-                                            <input type="hidden" name="date_1" id="date-1-input" required>
+
+                                            <!-- Calendar 2 (Combo Only) -->
+                                            <div class="space-y-4 hidden" id="calendar-2-wrapper">
+                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Land Tour Date</label>
+                                                <div class="calendar-container" id="calendar-2">
+                                                    <div class="calendar-header">
+                                                        <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-left"></i>
+                                                        </button>
+                                                        <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
+                                                        <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
+                                                            <i class="ph ph-bold ph-caret-right"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="calendar-grid">
+                                                        <div class="calendar-day-label">S</div><div class="calendar-day-label">M</div><div class="calendar-day-label">T</div><div class="calendar-day-label">W</div><div class="calendar-day-label">T</div><div class="calendar-day-label">F</div><div class="calendar-day-label">S</div>
+                                                        <div class="days-container contents"></div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="date_2" id="date-2-input">
+                                            </div>
                                         </div>
 
-                                        <!-- Calendar 2 (Land - Only for Combo) -->
-                                        <div class="space-y-4 hidden" id="calendar-2-wrapper">
-                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Land Tour Date</label>
-                                            <div class="calendar-container" id="calendar-2">
-                                                <div class="calendar-header">
-                                                    <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                        <i class="ph ph-bold ph-caret-left"></i>
-                                                    </button>
-                                                    <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
-                                                    <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                        <i class="ph ph-bold ph-caret-right"></i>
-                                                    </button>
+                                        <!-- Right Column: Pax & Total -->
+                                        <div class="space-y-10">
+                                            <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 space-y-10">
+                                                <div class="space-y-6">
+                                                    <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                                        <i class="ph ph-users text-lg"></i> Number of Guests
+                                                    </label>
+                                                    <div class="space-y-6">
+                                                        <div class="flex items-center justify-between">
+                                                            <div>
+                                                                <p class="font-bold text-white">Adults</p>
+                                                                <p class="text-[10px] text-gray-500 uppercase tracking-tighter">36 months +</p>
+                                                            </div>
+                                                            <div class="flex items-center gap-4">
+                                                                <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus">
+                                                                    <i class="ph ph-minus"></i>
+                                                                </button>
+                                                                <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-8 bg-transparent text-center font-bold text-lg outline-none text-white">
+                                                                <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus">
+                                                                    <i class="ph ph-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between">
+                                                            <div>
+                                                                <p class="font-bold text-white">Children</p>
+                                                                <p class="text-[10px] text-gray-500 uppercase tracking-tighter">Under 36 months</p>
+                                                            </div>
+                                                            <div class="flex items-center gap-4">
+                                                                <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus">
+                                                                    <i class="ph ph-minus"></i>
+                                                                </button>
+                                                                <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-8 bg-transparent text-center font-bold text-lg outline-none text-white">
+                                                                <button type="button" class="pax-btn w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus">
+                                                                    <i class="ph ph-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="calendar-grid">
-                                                    <!-- Labels -->
-                                                    <div class="calendar-day-label">S</div>
-                                                    <div class="calendar-day-label">M</div>
-                                                    <div class="calendar-day-label">T</div>
-                                                    <div class="calendar-day-label">W</div>
-                                                    <div class="calendar-day-label">T</div>
-                                                    <div class="calendar-day-label">F</div>
-                                                    <div class="calendar-day-label">S</div>
-                                                    <div class="days-container contents"></div>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="date_2" id="date-2-input">
-                                        </div>
-                                    </div>
 
-                                    <!-- Pax Selection -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
-                                        <div class="space-y-6">
-                                            <div class="space-y-2">
-                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
-                                                    Adults <span class="lowercase font-normal opacity-60">(36mo+)</span>
-                                                </label>
-                                                <div class="flex items-center gap-4">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="minus">
-                                                        <i class="ph ph-bold ph-minus"></i>
-                                                    </button>
-                                                    <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="adults" data-action="plus">
-                                                        <i class="ph ph-bold ph-plus"></i>
-                                                    </button>
+                                                <div class="pt-8 border-t border-white/10">
+                                                    <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-2">Final Investment</p>
+                                                    <div class="flex items-baseline gap-2">
+                                                        <span id="estimated-total" class="text-4xl font-heading font-black text-primary text-glow">0 PHP</span>
+                                                        <span class="text-xs text-gray-500 uppercase">Total</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="space-y-2">
-                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
-                                                    Child <span class="lowercase font-normal opacity-60">(<36mo)</span>
-                                                </label>
-                                                <div class="flex items-center gap-4">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="minus">
-                                                        <i class="ph ph-bold ph-minus"></i>
-                                                    </button>
-                                                    <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-16 bg-transparent text-center font-bold text-xl outline-none text-white">
-                                                    <button type="button" class="pax-btn w-12 h-12 rounded-xl bg-white/20 border-2 border-white/60 flex items-center justify-center hover:bg-white/40 transition-all text-white shadow-lg" data-type="children" data-action="plus">
-                                                        <i class="ph ph-bold ph-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="p-6 rounded-2xl bg-primary/10 border border-primary/20">
-                                            <p class="text-xs text-primary font-bold uppercase tracking-widest mb-1">Estimated Total</p>
-                                            <p id="estimated-total" class="text-3xl font-bold text-white">1,900 PHP</p>
                                         </div>
                                     </div>
                                 </div>
