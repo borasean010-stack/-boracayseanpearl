@@ -78,11 +78,10 @@
             <p class="text-gray-500 text-sm mb-8">Administrative portal for Pearl Of Sean</p>
             
             <form id="login-form" class="space-y-4">
-                <input type="email" id="login-id" placeholder="Admin ID (e.g., luca)" required class="w-full bg-light border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-primary transition-all">
-                <input type="password" id="login-password" placeholder="Password" required class="w-full bg-light border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-primary transition-all">
+                <input type="text" id="login-id" placeholder="Admin ID (e.g., luca)" required class="w-full bg-light border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-primary transition-all">
                 <button type="submit" class="w-full bg-secondary text-white py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-lg mt-4">Login to Dashboard</button>
             </form>
-            <p id="login-error" class="text-red-500 text-xs mt-4 hidden">Invalid credentials. Please try again.</p>
+            <p id="login-error" class="text-red-500 text-xs mt-4 hidden">Invalid Admin ID.</p>
         </div>
     </div>
 
@@ -221,24 +220,31 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 loginScreen.classList.add('hidden');
-                dashboard.classList.remove('flex');
+                dashboard.classList.remove('hidden');
                 dashboard.classList.add('flex');
                 document.getElementById('admin-user-email').textContent = user.email;
                 loadBookings();
             } else {
                 loginScreen.classList.remove('hidden');
+                dashboard.classList.remove('flex');
                 dashboard.classList.add('hidden');
             }
         });
 
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const adminId = document.getElementById('login-id').value; const email = adminId.includes('@') ? adminId : `${adminId}@pearl.of.sean`;
-            const pass = document.getElementById('login-password').value;
+            const adminId = document.getElementById('login-id').value; 
+            
+            // Map simple ID to email and fixed internal password for Firebase
+            const email = adminId.includes('@') ? adminId : `${adminId}@pearl.of.sean`;
+            const pass = adminId === 'luca' ? 'luca123' : adminId.padEnd(6, '0');
+            
             try {
                 await signInWithEmailAndPassword(auth, email, pass);
             } catch (e) {
-                loginError.textContent = "Invalid ID or Password. (Note: Password must be min 6 chars)"; loginError.classList.remove('hidden');
+                console.error(e);
+                loginError.textContent = "Access Denied. Invalid Admin ID."; 
+                loginError.classList.remove('hidden');
             }
         });
 
@@ -315,7 +321,6 @@
             body.innerHTML = '<p class="text-center py-20">Loading details...</p>';
 
             try {
-                const docRef = doc(db, "bookings", id);
                 const snap = await getDocs(query(collection(db, "bookings"), where("__name__", "==", id)));
                 const data = snap.docs[0].data();
 
@@ -372,6 +377,13 @@
             document.getElementById('modal-overlay').classList.add('hidden');
         });
 
+        function getStatusClass(status) {
+            if (status === 'Pending Payment') return 'status-pending';
+            if (status === 'Payment Complete') return 'status-paid';
+            if (status === 'Confirmed') return 'status-confirmed';
+            return 'status-cancelled';
+        }
+
         async function loadTours() {
             const list = document.getElementById('tours-list');
             list.innerHTML = '';
@@ -400,7 +412,6 @@
                 list.appendChild(card);
             });
         }
-
     </script>
 </body>
 </html>
