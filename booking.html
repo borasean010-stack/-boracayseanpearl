@@ -163,14 +163,37 @@
         </div>
     </header>
 
-    <div class="container mx-auto px-6 max-w-6xl flex-grow flex items-center justify-center">
-        <div class="w-full">
-            <!-- Header -->
-            <div class="text-center mb-16 fade-up">
-                <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4">Secure Your <span class="text-primary italic">Adventure</span></h1>
-                <p class="text-gray-400 max-w-xl mx-auto text-lg">Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.</p>
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] w-full flex items-center justify-center overflow-hidden mb-20">
+        <div class="absolute inset-0 z-0">
+            <!-- Background Video (YouTube Optimized) -->
+            <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+                <iframe 
+                    class="video-cover absolute top-1/2 left-1/2 pointer-events-none"
+                    src="https://www.youtube.com/embed/JLUPK8g5BZs?autoplay=1&mute=1&loop=1&playlist=JLUPK8g5BZs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
+            
+            <!-- Overlay for readability -->
+            <div class="absolute inset-0 bg-secondary/50"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-secondary/40 via-transparent to-secondary"></div>
+        </div>
 
+        <div class="container mx-auto px-6 relative z-10 text-center text-white mt-20">
+            <h1 class="fade-up text-5xl md:text-7xl font-heading font-bold mb-4">
+                Secure Your <span class="text-primary italic">Adventure</span>
+            </h1>
+            <p class="fade-up text-gray-300 max-w-xl mx-auto text-lg delay-100">
+                Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.
+            </p>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-6 max-w-6xl flex-grow flex flex-col items-center justify-center">
+        <div class="w-full">
             <!-- Booking Stepper -->
             <div class="hidden md:flex justify-center items-center gap-4 mb-12 fade-up">
                 <div class="flex items-center gap-3 text-primary">
