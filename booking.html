@@ -755,11 +755,13 @@
                     createdAt: serverTimestamp()
                 };
 
-                // Perform redirect immediately after a tiny delay to allow the "Processing" state to be seen,
-                // or just redirect immediately if we don't care about the write finishing.
-                // The user wants it to go to welcome page now.
-                
-                const saveBooking = async () => {
+                // Function to perform the save and then redirect
+                const performSaveAndRedirect = async () => {
+                    const timeout = setTimeout(() => {
+                        console.warn("Save operation timed out. Redirecting anyway...");
+                        window.location.href = 'thank-you.html';
+                    }, 4000); // 4 second fallback
+
                     try {
                         if (tour.id === 'combo') {
                             await Promise.all([
@@ -786,16 +788,17 @@
                                 totalPrice: baseBooking.paxAdult * tour.price
                             });
                         }
+                        clearTimeout(timeout);
+                        console.log("Booking saved successfully. Redirecting...");
+                        window.location.href = 'thank-you.html';
                     } catch (e) {
                         console.error("Firebase save failed:", e);
+                        clearTimeout(timeout);
+                        window.location.href = 'thank-you.html'; // Redirect even on error for testing
                     }
                 };
 
-                // Start saving in background and redirect
-                saveBooking();
-                setTimeout(() => {
-                    window.location.href = 'thank-you.html';
-                }, 500); 
+                performSaveAndRedirect();
             });
 
             // --- Animation ---

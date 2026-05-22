@@ -283,19 +283,28 @@
                 querySnapshot.forEach((docSnap) => {
                     const data = docSnap.data();
                     const row = document.createElement('tr');
-                    const date = data.tourDate ? data.tourDate.toDate().toLocaleDateString() : 'N/A';
+                    
+                    // Safe data access
+                    const date = data.tourDate ? (typeof data.tourDate.toDate === 'function' ? data.tourDate.toDate().toLocaleDateString() : 'Invalid Date') : 'N/A';
+                    const customerName = data.customerName || 'Unknown Customer';
+                    const contactPhone = data.contactPhone || 'No Phone';
+                    const tourId = data.tourId || 'N/A';
+                    const paxAdult = data.paxAdult || 0;
+                    const paxChild = data.paxChild || 0;
+                    const totalPrice = data.totalPrice !== undefined ? data.totalPrice.toLocaleString() : '0';
+                    const status = data.status || 'Unknown';
                     
                     row.innerHTML = `
                         <td class="px-6 py-4 font-medium">${date}</td>
                         <td class="px-6 py-4">
-                            <p class="font-bold">${data.customerName}</p>
-                            <p class="text-xs text-gray-400">${data.contactPhone}</p>
+                            <p class="font-bold">${customerName}</p>
+                            <p class="text-xs text-gray-400">${contactPhone}</p>
                         </td>
-                        <td class="px-6 py-4"><span class="text-xs font-bold uppercase tracking-wider">${data.tourId}</span></td>
-                        <td class="px-6 py-4 text-sm text-gray-500">${data.paxAdult}A, ${data.paxChild}C</td>
-                        <td class="px-6 py-4 font-bold">${data.totalPrice.toLocaleString()} PHP</td>
+                        <td class="px-6 py-4"><span class="text-xs font-bold uppercase tracking-wider">${tourId}</span></td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${paxAdult}A, ${paxChild}C</td>
+                        <td class="px-6 py-4 font-bold">${totalPrice} PHP</td>
                         <td class="px-6 py-4">
-                            <span class="status-badge ${getStatusClass(data.status)}">${data.status}</span>
+                            <span class="status-badge ${getStatusClass(status)}">${status}</span>
                         </td>
                         <td class="px-6 py-4">
                             <button class="view-detail-btn text-primary hover:underline font-bold text-xs" data-id="${docSnap.id}">Manage</button>
