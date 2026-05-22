@@ -206,12 +206,14 @@
 
             <!-- Main Form Card -->
             <div class="booking-card rounded-[3rem] p-8 md:p-16 fade-up">
+                <!-- FORM START -->
                 <form id="booking-form" class="space-y-12">
                     <input type="hidden" name="tour_id" id="tour-input">
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                        <!-- Left Column -->
+                        <!-- Left Column (Info & Dates) -->
                         <div class="space-y-12">
+                            <!-- Contact Information -->
                             <div class="space-y-8">
                                 <label class="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                                     <i class="ph ph-identification-card text-lg"></i> Contact Information
@@ -232,18 +234,19 @@
                                 </div>
                             </div>
 
+                            <!-- Dates Section -->
                             <div class="space-y-8">
                                 <label id="calendar-1-label" class="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                                     <i class="ph ph-calendar text-lg"></i> Select Tour Date
                                 </label>
                                 
-                                <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+                                <div id="calendar-grid" class="grid grid-cols-1 gap-8 items-start">
                                     <div id="calendar-1" class="calendar-wrapper space-y-2">
                                         <div class="flex items-center justify-between mb-6 px-2">
-                                            <h4 class="current-month font-bold text-lg">Month Year</h4>
+                                            <h4 class="current-month font-bold text-lg text-white">Month Year</h4>
                                             <div class="flex gap-2">
-                                                <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-left-bold"></i></button>
-                                                <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                                <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-left-bold"></i></button>
+                                                <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-right-bold"></i></button>
                                             </div>
                                         </div>
                                         <div class="grid grid-cols-7 gap-2">
@@ -259,13 +262,13 @@
                                         <input type="hidden" name="date_1" id="date-1-input">
                                     </div>
 
-                                    <div id="calendar-2-wrapper" class="hidden space-y-2">
+                                    <div id="calendar-2-wrapper" class="hidden">
                                         <div id="calendar-2" class="calendar-wrapper space-y-2">
                                             <div class="flex items-center justify-between mb-6 px-2">
-                                                <h4 class="current-month font-bold text-lg">Month Year</h4>
+                                                <h4 class="current-month font-bold text-lg text-white">Month Year</h4>
                                                 <div class="flex gap-2">
-                                                    <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-left-bold"></i></button>
-                                                    <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                                    <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-left-bold"></i></button>
+                                                    <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-right-bold"></i></button>
                                                 </div>
                                             </div>
                                             <div class="grid grid-cols-7 gap-2">
@@ -285,14 +288,14 @@
                             </div>
                         </div>
 
-                        <!-- Right Column -->
+                        <!-- Right Column (Tour Details & Summary) -->
                         <div class="space-y-12">
                             <div class="bg-primary p-8 md:p-10 rounded-[2.5rem] text-secondary">
                                 <div class="flex justify-between items-start mb-10">
                                     <div id="tour-icon" class="text-4xl"><i class="ph ph-sailboat"></i></div>
                                     <span class="text-xs uppercase font-black tracking-[0.2em] opacity-40">Luxury Selection</span>
                                 </div>
-                                <h3 id="tour-name" class="text-3xl md:text-4xl font-heading font-bold mb-2">Tour Name</h3>
+                                <h3 id="tour-name" class="text-3xl md:text-4xl font-heading font-bold mb-2 text-secondary">Tour Name</h3>
                                 <p class="text-secondary/60 text-base font-medium mb-8">Premium Island Experience</p>
                                 <div class="flex items-baseline gap-2">
                                     <span id="tour-price" class="text-4xl font-black">0 PHP</span>
@@ -346,8 +349,9 @@
                         </div>
                     </div>
                 </form>
-                </form>
+                <!-- FORM END -->
 
+                <!-- PAYMENT SECTION START -->
                 <div id="payment-section" class="hidden space-y-12">
                     <div class="text-center">
                         <h3 class="text-3xl font-heading font-bold mb-4">Confirm Reservation</h3>
@@ -355,11 +359,11 @@
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 space-y-8">
-                            <h4 class="text-[10px] uppercase font-bold text-primary tracking-widest">Journey Summary</h4>
+                            <h4 class="text-sm uppercase font-bold text-primary tracking-widest">Journey Summary</h4>
                             <div class="space-y-6">
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Experience</p><p id="summary-tour-name" class="font-bold text-right">Tour Name</p></div>
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Scheduled Date</p><p id="summary-date" class="font-bold text-right italic">Date</p></div>
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Guest Count</p><p id="summary-pax" class="font-bold text-right">Adults, Children</p></div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Experience</p><p id="summary-tour-name" class="font-bold text-right text-white">Tour Name</p></div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Scheduled Date</p><p id="summary-date" class="font-bold text-right italic text-white text-sm">Date</p></div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Guest Count</p><p id="summary-pax" class="font-bold text-right text-white">Adults, Children</p></div>
                                 <div class="flex justify-between items-start pt-4">
                                     <p class="text-white font-bold">Total Investment</p>
                                     <div class="text-right">
@@ -370,7 +374,7 @@
                             </div>
                         </div>
                         <div class="space-y-8">
-                            <h4 class="text-[10px] uppercase font-bold text-primary tracking-widest">Payment Method</h4>
+                            <h4 class="text-sm uppercase font-bold text-primary tracking-widest">Payment Method</h4>
                             <div class="grid grid-cols-1 gap-4">
                                 <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
                                     <input type="radio" name="payment_method" value="GCash" checked class="w-5 h-5 accent-primary">
@@ -399,11 +403,12 @@
                             </div>
                             <div class="flex gap-4">
                                 <button type="button" id="back-to-form" class="flex-1 bg-white/5 text-white py-5 rounded-2xl font-bold hover:bg-white/10 transition-all">Edit Details</button>
-                                <button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3">Complete Payment <i class="ph-bold ph-lock text-2xl"></i></button>
+                                <button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-5 rounded-2xl font-bold text-xl hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3">결제하기 <i class="ph-bold ph-lock text-2xl"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- PAYMENT SECTION END -->
             </div>
         </div>
     </div>
@@ -520,6 +525,8 @@
                 document.getElementById('calendar-1-label').innerHTML = '<i class="ph ph-calendar text-lg"></i> Select Land Tour Date';
                 document.getElementById('calendar-2-wrapper').classList.remove('hidden');
                 document.getElementById('calendar-2-label').innerHTML = '<i class="ph ph-calendar text-lg"></i> Select Yacht Hopping Date';
+                // Add grid-cols-2 class for combo
+                document.getElementById('calendar-grid').classList.add('xl:grid-cols-2');
                 cal1 = new Calendar('calendar-1', 'date-1-input', 'calendar-1-label', 'Land Tour');
                 cal2 = new Calendar('calendar-2', 'date-2-input', 'calendar-2-label', 'Yacht Hopping');
             } else {
@@ -564,7 +571,6 @@
             backBtn.addEventListener('click', () => { paymentSection.classList.add('hidden'); bookingForm.classList.remove('hidden'); });
 
             const payNowBtn = document.getElementById('pay-now');
-            payNowBtn.innerHTML = `결제하기 <i class="ph-bold ph-lock text-2xl"></i>`;
             payNowBtn.addEventListener('click', async () => {
                 try {
                     // Validation check
@@ -607,7 +613,7 @@
                     console.error("Submission error:", err);
                     alert("Submission failed. Details: " + err.message);
                     payNowBtn.disabled = false;
-                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
+                    payNowBtn.innerHTML = `결제하기 <i class="ph-bold ph-lock text-2xl"></i>`;
                 }
             });
         });
