@@ -256,13 +256,13 @@
                     
                     // Format dates (handle combo)
                     const date1 = data.tourDate ? (data.tourDate.toDate ? data.tourDate.toDate().toLocaleDateString() : new Date(data.tourDate.seconds*1000).toLocaleDateString()) : 'N/A';
-                    let dateDisplay = `<p class="font-bold">${date1}</p>`;
+                    let dateDisplay = `<p class="font-bold text-lg">${date1}</p>`;
                     if (data.tourId === 'combo' && data.tourDate_2) {
                         const date2 = data.tourDate_2.toDate ? data.tourDate_2.toDate().toLocaleDateString() : new Date(data.tourDate_2.seconds*1000).toLocaleDateString();
                         dateDisplay = `
                             <div class="space-y-1">
-                                <p class="text-[10px] text-primary font-bold uppercase">🚢 Yacht: ${date1}</p>
-                                <p class="text-[10px] text-accent-700 font-bold uppercase">🚐 Land: ${date2}</p>
+                                <p class="text-xs text-primary font-bold uppercase">Yacht: ${date1}</p>
+                                <p class="text-xs text-accent-700 font-bold uppercase">Land: ${date2}</p>
                             </div>
                         `;
                     }
