@@ -43,7 +43,7 @@
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent py-6">
         <div class="w-full px-8 flex justify-between items-center">
             <a href="index.html" class="z-50 flex items-center gap-3 group">
-                <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img loading="lazy" src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 <span id="logo-text" class="text-xl font-heading font-bold text-white">Pearl Of Sean</span>
             </a>
 
@@ -74,7 +74,7 @@
     <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <!-- Background Image (Land Tour Style) -->
-            <img src="I-Love-Boracay-at-Bulabog-Beach-1536x1024.jpg" alt="Boracay Land Tour" class="w-full h-full object-cover">
+            <img loading="lazy" src="I-Love-Boracay-at-Bulabog-Beach-1536x1024.jpg" alt="Boracay Land Tour" class="w-full h-full object-cover">
             
             <!-- Overlay & Glass Effect -->
             <div class="absolute inset-0 bg-secondary/30 backdrop-blur-[2px]"></div>
@@ -163,17 +163,16 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch">
                 <div class="fade-left relative flex justify-center">
-                    <div class="w-full max-w-[280px] md:max-w-[320px] aspect-[9/16] mx-auto rounded-[3rem] overflow-hidden shadow-2xl bg-black border-[8px] border-white/5 md:border-0">
-                        <iframe 
-                            class="w-full h-full object-cover scale-[1.01] md:scale-100"
-                            src="https://www.youtube.com/embed/1V1qTHf3pmg?autoplay=1&mute=1&loop=1&playlist=1V1qTHf3pmg&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1&origin=https://boracaysean.com" 
-                            frameborder="0" 
+                    <div class="w-[calc(100%+3rem)] -mx-6 md:mx-auto md:w-full max-w-none md:max-w-[320px] aspect-video md:aspect-[9/16] md:rounded-[3rem] overflow-hidden shadow-2xl bg-black md:border-0">
+                        <iframe
+                            class="w-full h-full object-cover md:scale-100"
+                            src="https://www.youtube.com/embed/1V1qTHf3pmg?autoplay=1&mute=1&loop=1&playlist=1V1qTHf3pmg&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1&origin=https://boracaysean.com"
+                            frameborder="0"
                             allow="autoplay; encrypted-media; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
-                </div>
-                <div class="fade-right flex flex-col justify-between">
+                </div>                <div class="fade-right flex flex-col justify-between">
                     <div>
                         <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8">Land Tour <span class="text-primary italic">Highlights</span></h2>
                         <ul class="space-y-6 mb-12">
@@ -257,7 +256,11 @@
                                 </div>
                                 <div>
                                     <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Time</p>
-                                    <p class="text-lg font-bold text-secondary leading-tight">10:15 AM / 10:30 AM</p>
+                                    <p class="hidden md:block text-lg font-bold text-secondary leading-tight">10:15 AM / 10:30 AM</p>
+                                    <div class="block md:hidden text-lg font-bold text-secondary leading-tight">
+                                        <p>10:15 Meeting Time</p>
+                                        <p>10:30 Start Time</p>
+                                    </div>
                                 </div>
                             </li>
                             <li class="flex items-center gap-4">
@@ -401,7 +404,7 @@
                     <!-- Boracay Land Tour -->
                     <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="land_tour_highlights.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Boracay Land Tour</div>
@@ -410,7 +413,7 @@
                     <!-- Puka Beach -->
                     <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="puka_beach.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Puka Beach</div>
@@ -433,7 +436,7 @@
                     <!-- Boracay Newcoast -->
                     <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="newcoast.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Boracay Newcoast</div>
@@ -442,7 +445,7 @@
                     <!-- Newcoast Keyhole -->
                     <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="newcoast_keyhole.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Newcoast Keyhole</div>
@@ -465,7 +468,7 @@
                     <!-- Mangrove Eco Park -->
                     <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="mangrove.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Mangrove Eco Park</div>
@@ -474,7 +477,7 @@
                     <!-- Sinagpa Beach -->
                     <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="sinagpa.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Sinagpa Beach</div>
@@ -497,7 +500,7 @@
                     <!-- Bulabog Beach -->
                     <div class="fade-up bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="bulabog.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Bulabog Beach</div>
@@ -506,7 +509,7 @@
                     <!-- Leaning Coconut Tree -->
                     <div class="fade-up delay-100 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 group">
                         <div class="relative aspect-video bg-gray-200">
-                            <video muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <video muted autoplay loop playsinline webkit-playsinline muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <source src="leaning_coconut.mp4" type="video/mp4">
                             </video>
                             <div class="absolute top-6 left-6 px-4 py-2 bg-primary/90 backdrop-blur-md rounded-full text-white font-bold text-lg shadow-lg z-20">Leaning Coconut Tree</div>
@@ -520,7 +523,7 @@
     <!-- Review Section -->
     <section id="reviews" class="py-32 bg-secondary text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
-            <img src="I-Love-Boracay-at-Bulabog-Beach-1536x1024.jpg" alt="Background" class="w-full h-full object-cover">
+            <img loading="lazy" src="I-Love-Boracay-at-Bulabog-Beach-1536x1024.jpg" alt="Background" class="w-full h-full object-cover">
         </div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-20">
@@ -615,7 +618,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain">
+                        <img loading="lazy" src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain">
                         <h3 class="text-3xl font-heading font-bold">Pearl Of Sean</h3>
                     </div>
                     <p class="text-gray-300 max-w-sm">
