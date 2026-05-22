@@ -743,8 +743,6 @@
                 payNowBtn.disabled = true;
                 payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
 
-                console.log("Starting booking submission...");
-
                 const formData = new FormData(bookingForm);
                 const baseBooking = {
                     customerName: formData.get('name'),
@@ -753,49 +751,51 @@
                     paxAdult: parseInt(formData.get('adults')),
                     paxChild: parseInt(formData.get('children')),
                     paymentMethod: method,
-                    status: 'Confirmed (Test Mode)', // Assume payment success
+                    status: 'Confirmed (Test Mode)',
                     createdAt: serverTimestamp()
                 };
 
-                try {
-                    console.log("Saving to Firebase:", baseBooking);
-                    
-                    if (tour.id === 'combo') {
-                        // Split into two bookings for Combo
-                        await Promise.all([
-                            addDoc(collection(db, "bookings"), {
+                // Perform redirect immediately after a tiny delay to allow the "Processing" state to be seen,
+                // or just redirect immediately if we don't care about the write finishing.
+                // The user wants it to go to welcome page now.
+                
+                const saveBooking = async () => {
+                    try {
+                        if (tour.id === 'combo') {
+                            await Promise.all([
+                                addDoc(collection(db, "bookings"), {
+                                    ...baseBooking,
+                                    tourId: 'yacht-hopping',
+                                    tourDate: cal1.selectedDate,
+                                    totalPrice: baseBooking.paxAdult * 1900,
+                                    parentTour: 'Combo'
+                                }),
+                                addDoc(collection(db, "bookings"), {
+                                    ...baseBooking,
+                                    tourId: 'land',
+                                    tourDate: cal2.selectedDate,
+                                    totalPrice: baseBooking.paxAdult * 700,
+                                    parentTour: 'Combo'
+                                })
+                            ]);
+                        } else {
+                            await addDoc(collection(db, "bookings"), {
                                 ...baseBooking,
-                                tourId: 'yacht-hopping',
+                                tourId: tour.id,
                                 tourDate: cal1.selectedDate,
-                                totalPrice: baseBooking.paxAdult * 1900,
-                                parentTour: 'Combo'
-                            }),
-                            addDoc(collection(db, "bookings"), {
-                                ...baseBooking,
-                                tourId: 'land',
-                                tourDate: cal2.selectedDate,
-                                totalPrice: baseBooking.paxAdult * 700,
-                                parentTour: 'Combo'
-                            })
-                        ]);
-                    } else {
-                        await addDoc(collection(db, "bookings"), {
-                            ...baseBooking,
-                            tourId: tour.id,
-                            tourDate: cal1.selectedDate,
-                            totalPrice: baseBooking.paxAdult * tour.price
-                        });
+                                totalPrice: baseBooking.paxAdult * tour.price
+                            });
+                        }
+                    } catch (e) {
+                        console.error("Firebase save failed:", e);
                     }
-                    
-                    console.log("Booking saved successfully. Redirecting...");
+                };
+
+                // Start saving in background and redirect
+                saveBooking();
+                setTimeout(() => {
                     window.location.href = 'thank-you.html';
-                } catch (e) {
-                    console.error("Error adding document: ", e);
-                    // Even if Firebase fails, we redirect for now as requested (simulate success)
-                    // But we log it so we can see why it failed in the console
-                    console.log("Redirecting anyway for testing purposes...");
-                    window.location.href = 'thank-you.html';
-                }
+                }, 500); 
             });
 
             // --- Animation ---
