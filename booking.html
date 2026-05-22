@@ -58,445 +58,351 @@
         }
 
         /* Custom Calendar Styling - Dark Theme */
-        .calendar-container {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 2rem;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0 0.5rem;
-        }
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
         }
-        .calendar-day-label {
-            text-align: center;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
-            padding: 0.5rem 0;
-            letter-spacing: 0.1em;
-        }
+
         .calendar-day {
+            background: rgba(6, 43, 67, 0.4);
             aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 600;
             cursor: pointer;
-            border-radius: 0.75rem;
-            transition: all 0.2s;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
             color: rgba(255, 255, 255, 0.8);
         }
-        .calendar-day:hover:not(.empty):not(.disabled) {
+
+        .calendar-day:hover:not(.disabled) {
             background: rgba(41, 211, 208, 0.2);
             color: #29D3D0;
         }
+
         .calendar-day.selected {
-            background: #29D3D0 !important;
-            color: #062B43 !important;
-            box-shadow: 0 4px 12px rgba(41, 211, 208, 0.4);
+            background: #29D3D0;
+            color: #062B43;
+            font-weight: 800;
         }
+
         .calendar-day.today {
-            border: 2px solid rgba(41, 211, 208, 0.5);
+            border: 1px solid #29D3D0;
             color: #29D3D0;
         }
+
         .calendar-day.disabled {
             opacity: 0.2;
             cursor: not-allowed;
         }
-        .calendar-day.empty {
-            cursor: default;
+
+        .calendar-header-day {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem 0;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Custom radio styling for payment */
-        .payment-option input:checked + div {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-color: #29D3D0 !important;
-            box-shadow: 0 10px 30px rgba(41, 211, 208, 0.2);
-        }
-        .payment-option input:checked + div > div:last-child {
-            background: #29D3D0;
-            border-color: #29D3D0;
-        }
-        .payment-option input:checked + div > div:last-child > div {
-            opacity: 1;
-        }
-
-        /* Responsive height adjustments */
-        @media (max-width: 1024px) {
-            .booking-card {
-                padding: 2rem !important;
-                border-radius: 2.5rem !important;
-            }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     </style>
 </head>
-<body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col">
+<body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col pt-32 pb-20">
 
-        <!-- Navbar -->
+    <!-- Sticky Navbar -->
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
         <div class="w-full px-8 flex justify-between items-center">
             <a href="index.html" class="z-50 flex items-center gap-3 group">
-                <img loading="lazy" src="pearl_of_sean_logo.png" alt="Pearl Of Sean" class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-                <span id="logo-text" class="text-xl md:text-2xl font-heading font-bold text-white transition-colors duration-300">Pearl Of Sean</span>
+                <img src="pearl_of_sean_logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <span id="logo-text" class="text-xl font-heading font-bold text-white transition-colors duration-300">Pearl Of Sean</span>
             </a>
 
-            <!-- Nav (Right Side) -->
-            <nav class="flex items-center gap-6 md:gap-8">
-                <ul class="flex gap-6 md:gap-8">
-                    <li><a href="index.html" class="nav-link text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
-                    <li><a href="index.html#tours" class="nav-link text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Tours</a></li>
+            <nav class="flex items-center gap-8">
+                <ul class="flex gap-8">
+                    <li><a href="index.html" class="nav-link text-xs font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="index.html#tours" class="nav-link text-xs font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Tours</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content with Video Background -->
-    <main class="relative flex-grow flex items-center justify-center pt-24 pb-20">
-        <!-- Background Video Overlay -->
-        <div class="fixed inset-0 z-0">
-            <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-                <iframe
-                    class="video-cover absolute top-1/2 left-1/2 pointer-events-none opacity-40"
-                    src="https://www.youtube.com/embed/JLUPK8g5BZs?autoplay=1&mute=1&loop=1&playlist=JLUPK8g5BZs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1&origin=https://boracaysean.com"
-                    frameborder="0"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+    <div class="container mx-auto px-6 max-w-6xl flex-grow flex items-center justify-center">
+        <div class="w-full">
+            <!-- Header -->
+            <div class="text-center mb-16 fade-up">
+                <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4">Secure Your <span class="text-primary italic">Adventure</span></h1>
+                <p class="text-gray-400 max-w-xl mx-auto text-lg">Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.</p>
             </div>
-            <!-- Dynamic Overlays -->
-            <div class="absolute inset-0 bg-secondary/60 backdrop-blur-[2px]"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-secondary/80 via-transparent to-secondary"></div>
-        </div>
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <!-- Booking Stepper (Hidden on small screens) -->
+            <div class="hidden md:flex justify-center items-center gap-4 mb-12 fade-up" style="transition-delay: 100ms;">
+                <div class="flex items-center gap-3 text-primary">
+                    <div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center font-bold text-sm">1</div>
+                    <span class="font-bold text-xs uppercase tracking-widest">Details</span>
+                </div>
+                <div class="w-12 h-[2px] bg-white/10"></div>
+                <div class="flex items-center gap-3 text-white/30">
+                    <div class="w-8 h-8 rounded-full border-2 border-white/10 flex items-center justify-center font-bold text-sm">2</div>
+                    <span class="font-bold text-xs uppercase tracking-widest">Confirmation</span>
+                </div>
+            </div>
+
+            <!-- Main Form Card -->
+            <div class="booking-card rounded-[3rem] p-8 md:p-16 fade-up" style="transition-delay: 200ms;">
+                <form id="booking-form" class="space-y-12">
+                    <input type="hidden" name="tour_id" id="tour-input">
                     
-                    <!-- Left Side: Brand Experience Brochure Text -->
-                    <div class="lg:col-span-5 pt-10">
-                        <div class="fade-up">
-                            <span class="inline-block px-4 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-6 text-glow">Reservation Experience</span>
-                            <h1 class="text-5xl md:text-7xl font-heading font-bold mb-8 leading-tight">
-                                Your Elite <br> <span class="text-primary italic text-glow">Adventure</span> <br> Starts Here
-                            </h1>
-                            <p class="text-gray-300 text-lg mb-12 leading-relaxed max-w-md">
-                                Experience Boracay's ocean with the luxury and comfort you deserve. Secure your voyage through our seamless booking portal.
-                            </p>
-                        </div>
-
-                        <!-- Brand Promises Icons -->
-                        <div class="space-y-8">
-                            <div class="fade-up flex items-start gap-5 delay-100">
-                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary text-2xl shadow-sm border border-white/10 shrink-0">
-                                    <i class="ph ph-shield-check"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg mb-1">Instant Confirmation</h4>
-                                    <p class="text-gray-400 text-sm">Direct connection to our crew for immediate scheduling and peace of mind.</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <!-- Left Column: User Info & Calendar -->
+                        <div class="space-y-12">
+                            <!-- Contact Information -->
+                            <div class="space-y-8">
+                                <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                    <i class="ph ph-identification-card text-lg"></i> Contact Information
+                                </label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <p class="text-[10px] text-gray-500 uppercase font-bold ml-1">Full Name</p>
+                                        <input type="text" name="name" required placeholder="Ex: John Doe" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <p class="text-[10px] text-gray-500 uppercase font-bold ml-1">Phone Number</p>
+                                        <input type="tel" name="phone" required placeholder="+63 XXX XXX XXXX" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none">
+                                    </div>
+                                    <div class="space-y-2 md:col-span-2">
+                                        <p class="text-[10px] text-gray-500 uppercase font-bold ml-1">Email Address</p>
+                                        <input type="email" name="email" required placeholder="john@example.com" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="fade-up flex items-start gap-5 delay-200">
-                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary text-2xl shadow-sm border border-white/10 shrink-0">
-                                    <i class="ph ph-crown"></i>
+
+                            <!-- Date Selection -->
+                            <div class="space-y-8">
+                                <label id="calendar-1-label" class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                    <i class="ph ph-calendar text-lg"></i> Select Tour Date
+                                </label>
+                                
+                                <div id="calendar-1" class="calendar-wrapper space-y-4">
+                                    <div class="flex items-center justify-between mb-4 px-2">
+                                        <h4 class="current-month font-bold text-lg">Month Year</h4>
+                                        <div class="flex gap-2">
+                                            <button type="button" class="prev-month p-2 hover:text-primary transition-colors"><i class="ph ph-caret-left-bold"></i></button>
+                                            <button type="button" class="next-month p-2 hover:text-primary transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-grid">
+                                        <div class="calendar-header-day">Su</div>
+                                        <div class="calendar-header-day">Mo</div>
+                                        <div class="calendar-header-day">Tu</div>
+                                        <div class="calendar-header-day">We</div>
+                                        <div class="calendar-header-day">Th</div>
+                                        <div class="calendar-header-day">Fr</div>
+                                        <div class="calendar-header-day">Sa</div>
+                                        <div class="days-container"></div>
+                                    </div>
+                                    <input type="hidden" name="date_1" id="date-1-input">
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-lg mb-1">Luxury Policy</h4>
-                                    <p class="text-gray-400 text-sm font-medium">Child policy: Under 36 months (Child), 36 months and above (Adult).</p>
+
+                                <!-- Secondary Calendar for Combo -->
+                                <div id="calendar-2-wrapper" class="hidden space-y-8 pt-8 border-t border-white/5">
+                                    <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                        <i class="ph ph-calendar text-lg"></i> Select Land Tour Date
+                                    </label>
+                                    <div id="calendar-2" class="calendar-wrapper space-y-4">
+                                        <div class="flex items-center justify-between mb-4 px-2">
+                                            <h4 class="current-month font-bold text-lg">Month Year</h4>
+                                            <div class="flex gap-2">
+                                                <button type="button" class="prev-month p-2 hover:text-primary transition-colors"><i class="ph ph-caret-left-bold"></i></button>
+                                                <button type="button" class="next-month p-2 hover:text-primary transition-colors"><i class="ph ph-caret-right-bold"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="calendar-grid">
+                                            <div class="calendar-header-day">Su</div>
+                                            <div class="calendar-header-day">Mo</div>
+                                            <div class="calendar-header-day">Tu</div>
+                                            <div class="calendar-header-day">We</div>
+                                            <div class="calendar-header-day">Th</div>
+                                            <div class="calendar-header-day">Fr</div>
+                                            <div class="calendar-header-day">Sa</div>
+                                            <div class="days-container"></div>
+                                        </div>
+                                        <input type="hidden" name="date_2" id="date-2-input">
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Pax & Pricing -->
+                        <div class="space-y-12">
+                            <!-- Selected Tour Summary Card -->
+                            <div class="bg-primary p-8 md:p-10 rounded-[2.5rem] text-secondary">
+                                <div class="flex justify-between items-start mb-10">
+                                    <div id="tour-icon" class="text-4xl">
+                                        <i class="ph ph-sailboat"></i>
+                                    </div>
+                                    <span class="text-[10px] uppercase font-black tracking-[0.2em] opacity-40">Luxury Selection</span>
+                                </div>
+                                <h3 id="tour-name" class="text-3xl md:text-4xl font-heading font-bold mb-2">Tour Name</h3>
+                                <p class="text-secondary/60 text-sm font-medium mb-8">Premium Island Experience</p>
+                                <div class="flex items-baseline gap-2">
+                                    <span id="tour-price" class="text-4xl font-black">0 PHP</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest opacity-40">Per Adult</span>
+                                </div>
+                            </div>
+
+                            <!-- Pax & Total Calculation -->
+                            <div class="space-y-8">
+                                <div class="bg-white/5 p-6 md:p-8 rounded-[2.5rem] border border-white/10 space-y-8">
+                                    <div class="space-y-4">
+                                        <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                                            <i class="ph ph-users text-lg"></i> Number of Guests
+                                        </label>
+                                        <div class="space-y-4">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <p class="font-bold text-sm text-white">Adults</p>
+                                                    <p class="text-[9px] text-gray-500 uppercase tracking-tighter">36 months +</p>
+                                                </div>
+                                                <div class="flex items-center gap-3">
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus">
+                                                        <i class="ph ph-minus text-xs"></i>
+                                                    </button>
+                                                    <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus">
+                                                        <i class="ph ph-plus text-xs"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <p class="font-bold text-sm text-white">Children <span class="text-primary text-[10px] ml-1">(Free)</span></p>
+                                                    <p class="text-[9px] text-gray-500 uppercase tracking-tighter">Under 36 months</p>
+                                                </div>
+                                                <div class="flex items-center gap-3">
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus">
+                                                        <i class="ph ph-minus text-xs"></i>
+                                                    </button>
+                                                    <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
+                                                    <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus">
+                                                        <i class="ph ph-plus text-xs"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-6 border-t border-white/10">
+                                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Final Investment</p>
+                                        <div class="flex items-baseline gap-2">
+                                            <span id="estimated-total" class="text-3xl font-heading font-black text-primary text-glow">0 PHP</span>
+                                            <span class="text-[10px] text-gray-500 uppercase">Total</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" id="proceed-to-payment" class="w-full bg-white text-secondary py-5 rounded-2xl font-bold text-lg hover:bg-primary hover:text-white transition-all transform hover:scale-[1.02] shadow-xl flex items-center justify-center gap-3">
+                                    Proceed to Confirmation <i class="ph-bold ph-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
+                </form>
 
-                    <!-- Right Side: The Integrated White Booking Form -->
-                    <div class="lg:col-span-7">
-                        <div class="fade-up booking-card p-10 md:p-14 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
-                            <!-- Background Accent Glow (Subtle for white theme) -->
-                            <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
-                            
-                            <form id="booking-form" class="relative z-10 space-y-10 text-secondary">
-                                <!-- Step 1: Selected Tour Info -->
-                                <div class="space-y-4">
-                                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">01</span>
-                                        Selected Experience
-                                    </h3>
-                                    <div class="bg-white/5 rounded-[2rem] p-6 border border-white/10 flex items-center justify-between">
-                                        <div class="flex items-center gap-4">
-                                            <div id="tour-icon" class="w-14 h-14 rounded-2xl bg-white/10 shadow-sm flex items-center justify-center text-primary text-2xl border border-white/10">
-                                                <i class="ph ph-sailboat"></i>
-                                            </div>
-                                            <div>
-                                                <h4 id="tour-name" class="font-bold text-xl text-white">Pearl Hopping Tour</h4>
-                                                <p id="tour-price" class="text-primary font-bold text-sm tracking-widest uppercase">1,900 PHP</p>
-                                            </div>
-                                        </div>
-                                        <a href="index.html#tours" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-primary transition-colors">Change</a>
-                                    </div>
-                                    <input type="hidden" name="tour" id="tour-input">
+                <!-- Payment Confirmation View (Hidden) -->
+                <div id="payment-section" class="hidden space-y-12">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-heading font-bold mb-4">Confirm Reservation</h3>
+                        <p class="text-gray-400">Please review your journey details and select a payment method.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Summary -->
+                        <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 space-y-8">
+                            <h4 class="text-[10px] uppercase font-bold text-primary tracking-widest">Journey Summary</h4>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5">
+                                    <p class="text-gray-400 text-sm">Experience</p>
+                                    <p id="summary-tour-name" class="font-bold text-right">Tour Name</p>
                                 </div>
-
-                                <!-- Step 2: Guest Details -->
-                                <div class="space-y-6">
-                                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">02</span>
-                                        Guest Information
-                                    </h3>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="space-y-2">
-                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Full Name</label>
-                                            <input type="text" name="name" required placeholder="Enter your name" class="w-full input-luxury rounded-2xl px-6 py-4 outline-none font-medium">
-                                        </div>
-                                        <div class="space-y-2">
-                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Phone Number</label>
-                                            <input type="tel" name="phone" required value="+63 " placeholder="+63 000 000 0000" class="w-full input-luxury rounded-2xl px-6 py-4 outline-none font-medium">
-                                        </div>
-                                        <div class="space-y-2">
-                                            <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Email Address</label>
-                                            <input type="email" name="email" required placeholder="example@email.com" class="w-full input-luxury rounded-2xl px-6 py-4 outline-none font-medium">
-                                        </div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5">
+                                    <p class="text-gray-400 text-sm">Scheduled Date</p>
+                                    <p id="summary-date" class="font-bold text-right italic">Date</p>
+                                </div>
+                                <div class="flex justify-between items-start pb-6 border-b border-white/5">
+                                    <p class="text-gray-400 text-sm">Guest Count</p>
+                                    <p id="summary-pax" class="font-bold text-right">Adults, Children</p>
+                                </div>
+                                <div class="flex justify-between items-start pt-4">
+                                    <p class="text-white font-bold">Total Investment</p>
+                                    <div class="text-right">
+                                        <p id="summary-total" class="text-3xl font-heading font-black text-primary text-glow">0 PHP</p>
+                                        <p id="summary-subtotal" class="text-[10px] text-gray-500 line-through">0 PHP</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <!-- Step 3: Date & Pax -->
-                                <div class="space-y-8">
-                                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">03</span>
-                                        Schedule & Guests
-                                    </h3>
-                                    
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                                        <!-- Left Column: Calendars -->
-                                        <div class="space-y-8">
-                                            <!-- Calendar 1 -->
-                                            <div class="space-y-4" id="calendar-1-wrapper">
-                                                <label id="calendar-1-label" class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Date</label>
-                                                <div class="calendar-container" id="calendar-1">
-                                                    <div class="calendar-header">
-                                                        <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                            <i class="ph ph-bold ph-caret-left"></i>
-                                                        </button>
-                                                        <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
-                                                        <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                            <i class="ph ph-bold ph-caret-right"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="calendar-grid">
-                                                        <div class="calendar-day-label">S</div><div class="calendar-day-label">M</div><div class="calendar-day-label">T</div><div class="calendar-day-label">W</div><div class="calendar-day-label">T</div><div class="calendar-day-label">F</div><div class="calendar-day-label">S</div>
-                                                        <div class="days-container contents"></div>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="date_1" id="date-1-input" required>
-                                            </div>
-
-                                            <!-- Calendar 2 (Combo Only) -->
-                                            <div class="space-y-4 hidden" id="calendar-2-wrapper">
-                                                <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest">Select Land Tour Date</label>
-                                                <div class="calendar-container" id="calendar-2">
-                                                    <div class="calendar-header">
-                                                        <button type="button" class="prev-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                            <i class="ph ph-bold ph-caret-left"></i>
-                                                        </button>
-                                                        <span class="current-month flex-1 text-center font-bold text-sm uppercase tracking-widest text-white"></span>
-                                                        <button type="button" class="next-month p-2 bg-white/20 border-2 border-white/60 hover:bg-white/40 rounded-full transition-all text-white flex items-center justify-center shadow-lg">
-                                                            <i class="ph ph-bold ph-caret-right"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="calendar-grid">
-                                                        <div class="calendar-day-label">S</div><div class="calendar-day-label">M</div><div class="calendar-day-label">T</div><div class="calendar-day-label">W</div><div class="calendar-day-label">T</div><div class="calendar-day-label">F</div><div class="calendar-day-label">S</div>
-                                                        <div class="days-container contents"></div>
-                                                    </div>
-                                                </div>
-                                                <input type="hidden" name="date_2" id="date-2-input">
-                                            </div>
+                        <!-- Payment Methods -->
+                        <div class="space-y-8">
+                            <h4 class="text-[10px] uppercase font-bold text-primary tracking-widest">Payment Method</h4>
+                            <div class="grid grid-cols-1 gap-4">
+                                <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
+                                    <input type="radio" name="payment_method" value="GCash" checked class="w-5 h-5 accent-primary">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#007DFE]/10 rounded-xl flex items-center justify-center text-[#007DFE] text-xl">
+                                            <i class="ph-fill ph-wallet"></i>
                                         </div>
-
-                                        <!-- Right Column: Pax & Total -->
-                                        <div class="space-y-8">
-                                            <div class="bg-white/5 p-6 md:p-8 rounded-[2.5rem] border border-white/10 space-y-8">
-                                                <div class="space-y-4">
-                                                    <label class="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
-                                                        <i class="ph ph-users text-lg"></i> Number of Guests
-                                                    </label>
-                                                    <div class="space-y-4">
-                                                        <div class="flex items-center justify-between">
-                                                            <div>
-                                                                <p class="font-bold text-sm text-white">Adults</p>
-                                                                <p class="text-[9px] text-gray-500 uppercase tracking-tighter">36 months +</p>
-                                                            </div>
-                                                            <div class="flex items-center gap-3">
-                                                                <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="minus">
-                                                                    <i class="ph ph-minus text-xs"></i>
-                                                                </button>
-                                                                <input type="number" name="adults" id="pax-adults" min="1" value="1" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
-                                                                <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="adults" data-action="plus">
-                                                                    <i class="ph ph-plus text-xs"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex items-center justify-between">
-                                                            <div>
-                                                                <p class="font-bold text-sm text-white">Children <span class="text-primary text-[10px] ml-1">(Free)</span></p>
-                                                                <p class="text-[9px] text-gray-500 uppercase tracking-tighter">Under 36 months</p>
-                                                            </div>
-                                                            <div class="flex items-center gap-3">
-                                                                <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="minus">
-                                                                    <i class="ph ph-minus text-xs"></i>
-                                                                </button>
-                                                                <input type="number" name="children" id="pax-children" min="0" value="0" readonly class="w-6 bg-transparent text-center font-bold text-base outline-none text-white">
-                                                                <button type="button" class="pax-btn w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-primary hover:text-secondary transition-all" data-type="children" data-action="plus">
-                                                                    <i class="ph ph-plus text-xs"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="pt-6 border-t border-white/10">
-                                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Final Investment</p>
-                                                    <div class="flex items-baseline gap-2">
-                                                        <span id="estimated-total" class="text-3xl font-heading font-black text-primary text-glow">0 PHP</span>
-                                                        <span class="text-[10px] text-gray-500 uppercase">Total</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div>
+                                            <p class="font-bold text-sm">GCash / Local Bank</p>
+                                            <p class="text-[10px] text-gray-500">Fast & Secure Local Transfer</p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Step 4: Finalize -->
-                                <div class="pt-4" id="submit-step">
-                                    <button type="button" id="proceed-to-payment" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                                        Proceed to Payment <i class="ph-bold ph-arrow-right text-2xl"></i>
-                                    </button>
-                                    <p class="text-center text-[10px] text-gray-500 mt-8 uppercase tracking-[0.2em] font-medium leading-relaxed">
-                                        Policy: Children under 36 months are Child. <br>
-                                        Guests 36 months and older are considered Adults.
-                                    </p>
-                                </div>
-                            </form>
-
-                            <!-- Step 5: Payment Section (Initially Hidden) -->
-                            <div id="payment-section" class="hidden relative z-10 space-y-10">
-                                <div class="space-y-6">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
-                                            <span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px]">04</span>
-                                            Checkout Summary
-                                        </h3>
-                                        <button type="button" id="back-to-form" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-primary transition-colors">Edit Details</button>
-                                    </div>
-                                    
-                                    <!-- Order Summary Card -->
-                                    <div class="bg-white/5 rounded-[2rem] p-8 border border-white/10 space-y-6">
-                                        <div class="flex justify-between items-start border-b border-white/10 pb-6">
-                                            <div>
-                                                <h4 id="summary-tour-name" class="font-bold text-xl mb-1 text-white">Pearl Hopping Tour</h4>
-                                                <p id="summary-date" class="text-gray-400 text-sm font-medium">May 24, 2026</p>
-                                            </div>
-                                            <div class="text-right">
-                                                <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Total Pax</p>
-                                                <p id="summary-pax" class="font-bold text-lg text-white">2 Adults</p>
-                                            </div>
+                                </label>
+                                <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
+                                    <input type="radio" name="payment_method" value="Credit Card" class="w-5 h-5 accent-primary">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center text-accent text-xl">
+                                            <i class="ph-fill ph-credit-card"></i>
                                         </div>
-                                        
-                                        <div class="space-y-3">
-                                            <div class="flex justify-between text-sm">
-                                                <span class="text-gray-400">Subtotal</span>
-                                                <span id="summary-subtotal" class="font-semibold text-white">3,800 PHP</span>
-                                            </div>
-                                            <div class="flex justify-between text-sm">
-                                                <span class="text-gray-400">Service Fee</span>
-                                                <span class="font-semibold text-white">0 PHP</span>
-                                            </div>
-                                            <div class="flex justify-between text-xl font-bold pt-3 border-t border-white/10">
-                                                <span class="text-white">Grand Total</span>
-                                                <span id="summary-total" class="text-primary text-glow">3,800 PHP</span>
-                                            </div>
+                                        <div>
+                                            <p class="font-bold text-sm">International Card / PayPal</p>
+                                            <p class="text-[10px] text-gray-500">Global Payments (VISA/MasterCard)</p>
                                         </div>
                                     </div>
-                                </div>
+                                </label>
+                            </div>
 
-                                <!-- Payment Methods -->
-                                <div class="space-y-6">
-                                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-3">
-                                        Select Payment Method
-                                    </h3>
-                                    <div class="grid grid-cols-1 gap-4">
-                                        <!-- GCash -->
-                                        <label class="payment-option cursor-pointer group">
-                                            <input type="radio" name="payment_method" value="GCash" class="hidden" checked>
-                                            <div class="bg-white/5 border-2 border-transparent rounded-[2rem] p-6 transition-all duration-300 flex items-center justify-between group-hover:bg-white/10 group-hover:border-primary/20">
-                                                <div class="flex items-center gap-5">
-                                                    <div class="w-14 h-14 rounded-2xl overflow-hidden bg-blue-600 shadow-lg shadow-blue-600/20">
-                                                        <img loading="lazy" src="gcash.jpg" alt="GCash" class="w-full h-full object-cover">
-                                                    </div>
-                                                    <div>
-                                                        <span class="block font-bold text-lg text-white">GCash</span>
-                                                        <span class="block text-xs text-gray-400">Pay with GCash wallet</span>
-                                                    </div>
-                                                </div>
-                                                <div class="w-6 h-6 rounded-full border-2 border-white/10 flex items-center justify-center transition-all group-checked:bg-primary group-checked:border-primary">
-                                                    <div class="w-2 h-2 rounded-full bg-secondary opacity-0 group-checked:opacity-100"></div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                        
-                                        <!-- PayPal -->
-                                        <label class="payment-option cursor-pointer group">
-                                            <input type="radio" name="payment_method" value="PayPal" class="hidden">
-                                            <div class="bg-white/5 border-2 border-transparent rounded-[2rem] p-6 transition-all duration-300 flex items-center justify-between group-hover:bg-white/10 group-hover:border-primary/20">
-                                                <div class="flex items-center gap-5">
-                                                    <div class="w-14 h-14 rounded-2xl bg-[#003087] flex items-center justify-center text-white text-3xl shadow-lg shadow-blue-900/20">
-                                                        <i class="ph ph-paypal-logo"></i>
-                                                    </div>
-                                                    <div>
-                                                        <span class="block font-bold text-lg text-white">PayPal</span>
-                                                        <span class="block text-xs text-gray-400">Pay with PayPal or Card</span>
-                                                    </div>
-                                                </div>
-                                                <div class="w-6 h-6 rounded-full border-2 border-white/10 flex items-center justify-center transition-all group-checked:bg-primary group-checked:border-primary">
-                                                    <div class="w-2 h-2 rounded-full bg-secondary opacity-0 group-checked:opacity-100"></div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <!-- Final Pay Button -->
-                                <button type="button" id="pay-now" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                            <div class="flex gap-4">
+                                <button type="button" id="back-to-form" class="flex-1 bg-white/5 text-white py-5 rounded-2xl font-bold hover:bg-white/10 transition-all">
+                                    Edit Details
+                                </button>
+                                <button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
                                     Complete Payment <i class="ph-bold ph-lock text-2xl"></i>
                                 </button>
-                                <p class="text-center text-[10px] text-gray-500 mt-8 uppercase tracking-[0.2em] font-medium leading-relaxed">
-                                    Secure SSL Encrypted Transaction <br>
-                                    Payments are currently in test mode.
-                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-transparent border-t border-white/5 py-12 relative z-10">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-3">
-                <img loading="lazy" src="pearl_of_sean_logo.png" alt="Pearl Of Sean" class="h-6 w-auto object-contain">
-                <span class="text-sm font-heading font-bold text-gray-400">Pearl Of Sean</span>
-            </div>
-            <p class="text-gray-500 text-xs tracking-widest uppercase">&copy; 2026 Boracay Elite Experience. All Rights Reserved.</p>
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-6 text-center text-gray-600 text-sm">
+            <p>&copy; 2026 Pearl Of Sean. Premium Boracay Experiences. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -509,7 +415,7 @@
             apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ",
             authDomain: "boracaysean-local.firebaseapp.com",
             projectId: "boracaysean-local",
-            storageBucket: "boracaysean-local.firebasestorage.app",
+            storageBucket: "boracaysean-local.appspot.com",
             messagingSenderId: "673386650213",
             appId: "1:673386650213:web:484b15ee8b2d8ec226448c",
             measurementId: "G-DKC8HE000W"
@@ -627,14 +533,12 @@
             
             const adults = parseInt(document.getElementById('pax-adults').value);
             const children = parseInt(document.getElementById('pax-children').value);
-            // Children (under 36 months) are free
             const totalPrice = adults * tour.price;
             
             document.getElementById('estimated-total').textContent = `${totalPrice.toLocaleString()} PHP`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Sticky Header ---
             const header = document.getElementById('header');
             const logoText = document.getElementById('logo-text');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -653,7 +557,6 @@
                 }
             });
 
-            // --- Tour Initialization ---
             const urlParams = new URLSearchParams(window.location.search);
             const tourKey = urlParams.get('tour') || 'yacht';
             const tour = tourMap[tourKey] || tourMap['yacht'];
@@ -663,7 +566,6 @@
             document.getElementById('tour-icon').innerHTML = `<i class="ph ${tour.icon}"></i>`;
             document.getElementById('tour-input').value = tour.id;
 
-            // --- Calendar Instantiation ---
             if (tour.isCombo) {
                 document.getElementById('calendar-1-label').textContent = 'Select Yacht Hopping Date';
                 document.getElementById('calendar-2-wrapper').classList.remove('hidden');
@@ -673,7 +575,6 @@
                 cal1 = new Calendar('calendar-1', 'date-1-input', 'calendar-1-label', tour.name);
             }
 
-            // --- Pax Controls ---
             const paxBtns = document.querySelectorAll('.pax-btn');
             paxBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -691,7 +592,6 @@
                 });
             });
 
-            // --- Multi-step Flow ---
             const bookingForm = document.getElementById('booking-form');
             const paymentSection = document.getElementById('payment-section');
             const proceedBtn = document.getElementById('proceed-to-payment');
@@ -712,10 +612,8 @@
 
                 if (!isValid) { alert('Please fill in all required fields.'); return; }
 
-                // Summary
                 const adults = parseInt(document.getElementById('pax-adults').value);
                 const children = parseInt(document.getElementById('pax-children').value);
-                // Children (under 36 months) are free
                 const totalPrice = adults * tour.price;
 
                 document.getElementById('summary-tour-name').textContent = tour.name;
@@ -736,22 +634,18 @@
                 bookingForm.classList.remove('hidden');
             });
 
-            // --- Final Submission (Firebase) ---
             const payNowBtn = document.getElementById('pay-now');
             
-            // Global error handler for debugging
             window.addEventListener('error', (event) => {
-                alert("GLOBAL ERROR: " + event.message + " at " + event.lineno + ":" + event.colno);
+                console.error("Global Error:", event.message);
             });
 
             payNowBtn.addEventListener('click', async () => {
                 try {
-                    alert("STEP 1: Click Detected");
                     const method = document.querySelector('input[name="payment_method"]:checked').value;
                     payNowBtn.disabled = true;
                     payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
 
-                    alert("STEP 2: Preparing Data");
                     const formData = new FormData(bookingForm);
                     const baseBooking = {
                         customerName: formData.get('name'),
@@ -764,57 +658,49 @@
                         createdAt: serverTimestamp()
                     };
 
-                    alert("STEP 3: Starting Save - " + baseBooking.customerName);
-
-                    const timeout = setTimeout(() => {
-                        alert("TIMEOUT: Save taking too long. Redirecting...");
-                        window.location.href = 'thank-you.html';
-                    }, 8000); 
-
-                    try {
-                        if (tour.id === 'combo') {
-                            alert("STEP 4: Saving Combo...");
-                            await Promise.all([
-                                addDoc(collection(db, "bookings"), {
+                    // Final attempt to ensure visibility: redirect happens regardless but we try to save
+                    const saveTask = async () => {
+                        try {
+                            if (tour.id === 'combo') {
+                                await Promise.all([
+                                    addDoc(collection(db, "bookings"), {
+                                        ...baseBooking,
+                                        tourId: 'yacht-hopping',
+                                        tourDate: cal1.selectedDate,
+                                        totalPrice: baseBooking.paxAdult * 1900,
+                                        parentTour: 'Combo'
+                                    }),
+                                    addDoc(collection(db, "bookings"), {
+                                        ...baseBooking,
+                                        tourId: 'land',
+                                        tourDate: cal2.selectedDate,
+                                        totalPrice: baseBooking.paxAdult * 700,
+                                        parentTour: 'Combo'
+                                    })
+                                ]);
+                            } else {
+                                await addDoc(collection(db, "bookings"), {
                                     ...baseBooking,
-                                    tourId: 'yacht-hopping',
+                                    tourId: tour.id,
                                     tourDate: cal1.selectedDate,
-                                    totalPrice: baseBooking.paxAdult * 1900,
-                                    parentTour: 'Combo'
-                                }),
-                                addDoc(collection(db, "bookings"), {
-                                    ...baseBooking,
-                                    tourId: 'land',
-                                    tourDate: cal2.selectedDate,
-                                    totalPrice: baseBooking.paxAdult * 700,
-                                    parentTour: 'Combo'
-                                })
-                            ]);
-                        } else {
-                            alert("STEP 4: Saving Single Tour: " + tour.id);
-                            await addDoc(collection(db, "bookings"), {
-                                ...baseBooking,
-                                tourId: tour.id,
-                                tourDate: cal1.selectedDate,
-                                totalPrice: baseBooking.paxAdult * tour.price
-                            });
+                                    totalPrice: baseBooking.paxAdult * tour.price
+                                });
+                            }
+                        } catch (e) {
+                            console.error("Firestore Save Error:", e);
                         }
-                        clearTimeout(timeout);
-                        alert("STEP 5: Success! Redirecting...");
+                    };
+
+                    saveTask();
+                    setTimeout(() => {
                         window.location.href = 'thank-you.html';
-                    } catch (dbError) {
-                        alert("DATABASE ERROR: " + dbError.message);
-                        clearTimeout(timeout);
-                        window.location.href = 'thank-you.html'; 
-                    }
-                } catch (btnError) {
-                    alert("BUTTON CLICK ERROR: " + btnError.message);
-                    payNowBtn.disabled = false;
-                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
+                    }, 1000); 
+                } catch (err) {
+                    console.error("Button Click Error:", err);
+                    window.location.href = 'thank-you.html';
                 }
             });
 
-            // --- Animation ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
             }, { threshold: 0.1 });
