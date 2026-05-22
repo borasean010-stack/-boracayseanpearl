@@ -668,6 +668,7 @@
 
             payNowBtn.addEventListener('click', async () => {
                 try {
+                    alert("DEBUG: Click detected. Preparing data...");
                     const method = document.querySelector('input[name="payment_method"]:checked').value;
                     payNowBtn.disabled = true;
                     payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
@@ -684,44 +685,47 @@
                         createdAt: serverTimestamp()
                     };
 
-                    // Final attempt to ensure visibility: redirect happens regardless but we try to save
-                    const saveTask = async () => {
-                        try {
-                            if (tour.id === 'combo') {
-                                await Promise.all([
-                                    addDoc(collection(db, "bookings"), {
-                                        ...baseBooking,
-                                        tourId: 'yacht-hopping',
-                                        tourDate: cal1.selectedDate,
-                                        totalPrice: baseBooking.paxAdult * 1900,
-                                        parentTour: 'Combo'
-                                    }),
-                                    addDoc(collection(db, "bookings"), {
-                                        ...baseBooking,
-                                        tourId: 'land',
-                                        tourDate: cal2.selectedDate,
-                                        totalPrice: baseBooking.paxAdult * 700,
-                                        parentTour: 'Combo'
-                                    })
-                                ]);
-                            } else {
-                                await addDoc(collection(db, "bookings"), {
-                                    ...baseBooking,
-                                    tourId: tour.id,
-                                    tourDate: cal1.selectedDate,
-                                    totalPrice: baseBooking.paxAdult * tour.price
-                                });
-                            }
-                        } catch (e) {
-                            console.error("Firestore Save Error:", e);
-                        }
-                    };
+                    alert("DEBUG: Data ready for: " + baseBooking.customerName + ". Attempting Firebase write...");
 
-                    saveTask();
-                    setTimeout(() => {
+                    try {
+                        if (tour.id === 'combo') {
+                            alert("DEBUG: Writing COMBO to collection 'bookings'...");
+                            await Promise.all([
+                                addDoc(collection(db, "bookings"), {
+                                    ...baseBooking,
+                                    tourId: 'yacht-hopping',
+                                    tourDate: cal1.selectedDate,
+                                    totalPrice: baseBooking.paxAdult * 1900,
+                                    parentTour: 'Combo'
+                                }),
+                                addDoc(collection(db, "bookings"), {
+                                    ...baseBooking,
+                                    tourId: 'land',
+                                    tourDate: cal2.selectedDate,
+                                    totalPrice: baseBooking.paxAdult * 700,
+                                    parentTour: 'Combo'
+                                })
+                            ]);
+                        } else {
+                            alert("DEBUG: Writing SINGLE TOUR to collection 'bookings'...");
+                            const docRef = await addDoc(collection(db, "bookings"), {
+                                ...baseBooking,
+                                tourId: tour.id,
+                                tourDate: cal1.selectedDate,
+                                totalPrice: baseBooking.paxAdult * tour.price
+                            });
+                            alert("DEBUG: Write SUCCESS! Doc ID: " + docRef.id);
+                        }
+                        
+                        alert("DEBUG: Redirecting to thank-you.html...");
                         window.location.href = 'thank-you.html';
-                    }, 1000); 
+                    } catch (e) {
+                        alert("FIREBASE SAVE ERROR: " + e.message);
+                        console.error("Firestore Save Error:", e);
+                        window.location.href = 'thank-you.html';
+                    }
                 } catch (err) {
+                    alert("CRITICAL SCRIPT ERROR: " + err.message);
                     console.error("Button Click Error:", err);
                     window.location.href = 'thank-you.html';
                 }
