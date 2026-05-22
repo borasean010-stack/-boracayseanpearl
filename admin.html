@@ -142,6 +142,7 @@
                                 <option value="Pending Payment">Pending</option>
                                 <option value="Payment Complete">Paid</option>
                                 <option value="Confirmed">Confirmed</option>
+                                <option value="Confirmed (Test Mode)">Test Mode</option>
                                 <option value="Cancelled">Cancelled</option>
                             </select>
                         </div>
@@ -270,14 +271,30 @@
             });
         });
 
-        // --- Data Loading ---
+        // --- Filtering ---
+        const filterTour = document.getElementById('filter-tour');
+        const filterStatus = document.getElementById('filter-status');
+
+        filterTour.addEventListener('change', loadBookings);
+        filterStatus.addEventListener('change', loadBookings);
+
         async function loadBookings() {
             const list = document.getElementById('bookings-list');
             list.innerHTML = '<tr><td colspan="7" class="px-6 py-10 text-center text-gray-400">Loading reservations...</td></tr>';
             
             try {
-                const q = query(collection(db, "bookings"), orderBy("createdAt", "desc"));
-                const querySnapshot = await getDocs(q);
+                let q = collection(db, "bookings");
+                
+                // Add Filters
+                const tourVal = filterTour.value;
+                const statusVal = filterStatus.value;
+                
+                let constraints = [orderBy("createdAt", "desc")];
+                if (tourVal !== 'all') constraints.push(where("tourId", "==", tourVal));
+                if (statusVal !== 'all') constraints.push(where("status", "==", statusVal));
+                
+                const finalQuery = query(q, ...constraints);
+                const querySnapshot = await getDocs(finalQuery);
                 list.innerHTML = '';
                 
                 querySnapshot.forEach((docSnap) => {
@@ -393,7 +410,7 @@
         function getStatusClass(status) {
             if (status === 'Pending Payment') return 'status-pending';
             if (status === 'Payment Complete') return 'status-paid';
-            if (status === 'Confirmed') return 'status-confirmed';
+            if (status === 'Confirmed' || status === 'Confirmed (Test Mode)') return 'status-confirmed';
             return 'status-cancelled';
         }
 
