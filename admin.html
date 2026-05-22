@@ -332,27 +332,15 @@
             list.innerHTML = '<tr><td colspan="7" class="px-6 py-10 text-center text-gray-400">Loading reservations...</td></tr>';
             
             try {
-                let q = collection(db, "bookings");
-                
-                // Add Filters
-                const tourVal = filterTour.value;
-                const statusVal = filterStatus.value;
-                
-                let constraints = [];
-                // If filters are used with orderBy, an index is required.
-                // We'll simplify this to always use orderBy and only add filters if they don't break the simple query rule
-                // For now, let's keep it simple to ensure data shows up at all.
-                if (tourVal === 'all' && statusVal === 'all') {
-                    constraints.push(orderBy("createdAt", "desc"));
-                } else {
-                    if (tourVal !== 'all') constraints.push(where("tourId", "==", tourVal));
-                    if (statusVal !== 'all') constraints.push(where("status", "==", statusVal));
-                }
-                
-                const finalQuery = query(q, ...constraints);
+                // ABSOLUTE BASIC QUERY: No filters, no ordering, to check if data exists at all
+                const finalQuery = query(collection(db, "bookings"));
                 const querySnapshot = await getDocs(finalQuery);
                 list.innerHTML = '';
                 
+                if (querySnapshot.empty) {
+                    list.innerHTML = '<tr><td colspan="7" class="px-6 py-20 text-center text-gray-400">No reservations found in the database. (Count: 0)</td></tr>';
+                }
+
                 let totalBookings = 0;
                 let totalRevenue = 0;
                 let totalGuests = 0;

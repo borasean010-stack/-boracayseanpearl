@@ -790,11 +790,13 @@
                         }
                         clearTimeout(timeout);
                         console.log("Booking saved successfully. Redirecting...");
+                        alert("Reservation Successful! Your data has been saved to the database. Redirecting to confirmation page...");
                         window.location.href = 'thank-you.html';
                     } catch (e) {
                         console.error("Firebase save failed:", e);
+                        alert("DEBUG: Firebase save failed! Error: " + e.message);
                         clearTimeout(timeout);
-                        window.location.href = 'thank-you.html'; // Redirect even on error for testing
+                        window.location.href = 'thank-you.html'; 
                     }
                 };
 
