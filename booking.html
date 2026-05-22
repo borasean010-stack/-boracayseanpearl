@@ -145,10 +145,6 @@
     </style>
 </head>
 <body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col pt-32 pb-20">
-    <!-- Version Banner -->
-    <div style="background: #29D3D0; color: #062B43; text-align: center; font-size: 10px; font-weight: bold; padding: 4px; position: fixed; top: 0; width: 100%; z-index: 9999;">
-        BOOKING SYSTEM VER 4.0 - ACTIVE
-    </div>
 
     <!-- Sticky Navbar -->
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
@@ -535,13 +531,12 @@
             const payNowBtn = document.getElementById('pay-now');
             payNowBtn.addEventListener('click', async () => {
                 try {
-                    alert("FINAL ATTEMPT: Sending...");
                     payNowBtn.disabled = true;
                     payNowBtn.innerHTML = `Processing...`;
-
+                    await signInAnonymously(auth);
                     const formData = new FormData(bookingForm);
                     const bookingPayload = {
-                        customerName: formData.get('name') || "Anonymous",
+                        customerName: formData.get('name') || "Guest",
                         contactPhone: formData.get('phone') || "N/A",
                         contactEmail: formData.get('email') || "N/A",
                         paxAdult: parseInt(document.getElementById('pax-adults').value) || 1,
@@ -554,20 +549,11 @@
                         createdAt: serverTimestamp()
                     };
 
-                    // Non-blocking save
-                    addDoc(collection(db, "bookings"), bookingPayload)
-                        .then((docRef) => {
-                            console.log("Success:", docRef.id);
-                        })
-                        .catch((e) => {
-                            console.error("Save failed:", e);
-                        });
-
-                    // Redirect after 1.5 seconds regardless of result
+                    addDoc(collection(db, "bookings"), bookingPayload).catch(e => console.error(e));
+                    
                     setTimeout(() => {
                         window.location.href = 'thank-you.html';
-                    }, 1500);
-
+                    }, 1000);
                 } catch (err) {
                     console.error(err);
                     window.location.href = 'thank-you.html';
