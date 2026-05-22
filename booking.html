@@ -346,7 +346,7 @@
                                                         </div>
                                                         <div class="flex items-center justify-between">
                                                             <div>
-                                                                <p class="font-bold text-sm text-white">Children</p>
+                                                                <p class="font-bold text-sm text-white">Children <span class="text-primary text-[10px] ml-1">(Free)</span></p>
                                                                 <p class="text-[9px] text-gray-500 uppercase tracking-tighter">Under 36 months</p>
                                                             </div>
                                                             <div class="flex items-center gap-3">
@@ -627,8 +627,8 @@
             
             const adults = parseInt(document.getElementById('pax-adults').value);
             const children = parseInt(document.getElementById('pax-children').value);
-            const totalPax = adults + children;
-            const totalPrice = totalPax * tour.price;
+            // Children (under 36 months) are free
+            const totalPrice = adults * tour.price;
             
             document.getElementById('estimated-total').textContent = `${totalPrice.toLocaleString()} PHP`;
         }
@@ -715,13 +715,14 @@
                 // Summary
                 const adults = parseInt(document.getElementById('pax-adults').value);
                 const children = parseInt(document.getElementById('pax-children').value);
-                const totalPrice = (adults + children) * tour.price;
+                // Children (under 36 months) are free
+                const totalPrice = adults * tour.price;
 
                 document.getElementById('summary-tour-name').textContent = tour.name;
                 document.getElementById('summary-date').innerHTML = tour.isCombo ? 
                     `Yacht: ${cal1.selectedDate.toLocaleDateString()}<br>Land: ${cal2.selectedDate.toLocaleDateString()}` :
                     cal1.selectedDate.toLocaleDateString();
-                document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children` : ''}`;
+                document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children (Free)` : ''}`;
                 document.getElementById('summary-subtotal').textContent = `${totalPrice.toLocaleString()} PHP`;
                 document.getElementById('summary-total').textContent = `${totalPrice.toLocaleString()} PHP`;
 
@@ -761,14 +762,16 @@
                             ...baseBooking,
                             tourId: 'yacht-hopping',
                             tourDate: cal1.selectedDate,
-                            totalPrice: (baseBooking.paxAdult + baseBooking.paxChild) * 1900, // Hardcoded split prices or dynamic
+                            // Children are free
+                            totalPrice: baseBooking.paxAdult * 1900, 
                             parentTour: 'Combo'
                         });
                         await addDoc(collection(db, "bookings"), {
                             ...baseBooking,
                             tourId: 'land',
                             tourDate: cal2.selectedDate,
-                            totalPrice: (baseBooking.paxAdult + baseBooking.paxChild) * 700,
+                            // Children are free
+                            totalPrice: baseBooking.paxAdult * 700,
                             parentTour: 'Combo'
                         });
                     } else {
@@ -776,7 +779,8 @@
                             ...baseBooking,
                             tourId: tour.id,
                             tourDate: cal1.selectedDate,
-                            totalPrice: (baseBooking.paxAdult + baseBooking.paxChild) * tour.price
+                            // Children are free
+                            totalPrice: baseBooking.paxAdult * tour.price
                         });
                     }
                     window.location.href = 'thank-you.html';
