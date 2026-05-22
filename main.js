@@ -3,58 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('header');
     const logoText = document.getElementById('logo-text');
     const navLinks = document.querySelectorAll('.nav-link');
-    const mobileToggleIcon = document.querySelector('#mobile-toggle i');
     
     window.addEventListener('scroll', () => {
-        if (!header || !logoText || !mobileToggleIcon) return;
+        if (!header || !logoText) return;
         if (window.scrollY > 50) {
             header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
             header.classList.remove('bg-transparent', 'py-6');
             logoText.classList.replace('text-white', 'text-secondary');
-            mobileToggleIcon.classList.replace('text-white', 'text-secondary');
             navLinks.forEach(link => link.classList.replace('text-white', 'text-secondary'));
         } else {
             header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
             header.classList.add('bg-transparent', 'py-6');
             logoText.classList.replace('text-secondary', 'text-white');
-            mobileToggleIcon.classList.replace('text-secondary', 'text-white');
             navLinks.forEach(link => link.classList.replace('text-secondary', 'text-white'));
         }
-    });
-
-    // --- Mobile Menu Toggle ---
-    const mobileToggleBtn = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    let isMenuOpen = false;
-
-    function toggleMenu() {
-        if (!mobileMenu || !mobileToggleIcon || !logoText) return;
-        isMenuOpen = !isMenuOpen;
-        if (isMenuOpen) {
-            mobileMenu.classList.remove('-translate-y-full');
-            mobileToggleIcon.classList.replace('ph-list', 'ph-x');
-            // Ensure elements are secondary color when menu is open on white bg
-            mobileToggleIcon.classList.replace('text-white', 'text-secondary'); 
-            logoText.classList.replace('text-white', 'text-secondary');
-        } else {
-            mobileMenu.classList.add('-translate-y-full');
-            mobileToggleIcon.classList.replace('ph-x', 'ph-list');
-            // Revert colors based on scroll position
-            if (window.scrollY <= 50) {
-                mobileToggleIcon.classList.replace('text-secondary', 'text-white');
-                logoText.classList.replace('text-secondary', 'text-white');
-            }
-        }
-    }
-
-    if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleMenu);
-
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (isMenuOpen) toggleMenu();
-        });
     });
 
     // --- Intersection Observer for Scroll Animations ---

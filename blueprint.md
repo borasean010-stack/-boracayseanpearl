@@ -28,13 +28,17 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Horizontal Itinerary Overhaul (Yacht Tour)
-*   **Section:** "The Elite Itinerary" in `yacht-tour.html`.
-*   **Layout Change:** Transition from a vertical timeline to a horizontal card-based or slider layout.
-*   **Image Placeholders:** Add specific slots for GIF/JPG content for each itinerary point and activity.
-*   **Visual Polish:** Use modern CSS (Grid/Flex) to ensure the horizontal flow is responsive and aesthetically pleasing.
+## 4. Current Task: Navigation & Header Refinement
+*   **Header Unification:** Synchronized the `<header>` structure in all HTML files to ensure a consistent look and feel throughout the site.
+*   **Mobile UX Improvement:** Simplified the mobile navigation by removing the hidden menu and displaying primary links directly, improving accessibility.
+*   **Code Cleanup:** Removed unused mobile menu toggle scripts and IDs from `main.js` and `booking.html`.
 
 ## 5. Project History
+### Navigation Header Standardization
+*   **Header Unification:** Standardized the navigation header across all pages (`index.html`, `land-tour.html`, `yacht-tour.html`, `package-tour.html`, `booking.html`).
+*   **Mobile Navigation:** Removed the hamburger menu (mobile toggle) and made the core navigation links ("Home" and "Tours") visible directly on mobile devices for a more streamlined user experience.
+*   **Robust Sticky Header:** Updated the scroll logic in `main.js` to ensure visual transitions (background blur, color changes) work reliably across all pages without requiring mobile menu elements.
+*   **Structure Fixes:** Corrected HTML structural issues (nested tag closures) in `index.html`.
 ### Global UI Scaling & Zoom Lock
 *   **Default Zoom Level:** Set the global zoom to 90% via CSS (`zoom: 0.9`) for a more compact and balanced visual experience across all pages.
 *   **Scaling Lock:** Updated `viewport` meta tags in `index.html`, `land-tour.html`, and `yacht-tour.html` to disable user scaling (`user-scalable=no`), ensuring the layout remains fixed and consistent.

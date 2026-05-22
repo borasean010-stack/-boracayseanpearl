@@ -39,32 +39,21 @@
 </head>
 <body class="bg-light text-secondary antialiased overflow-x-hidden font-sans flex min-h-screen flex-col">
 
-    <!-- Navbar -->
+        <!-- Navbar -->
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
         <div class="w-full px-8 flex justify-between items-center">
-            <a href="#home" class="z-50 flex items-center gap-3 group">
-                <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+            <a href="index.html" class="z-50 flex items-center gap-3 group">
+                <img loading="lazy" src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 <span id="logo-text" class="text-xl md:text-2xl font-heading font-bold text-white transition-colors duration-300">Pearl Of Sean</span>
             </a>
 
-            <!-- Desktop Nav (Right Side) -->
-            <nav class="hidden md:flex items-center gap-8">
-                <ul class="flex gap-8">
-                    <li><a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
-                    <li><a href="#tours" class="nav-link text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Tours</a></li>
+            <!-- Nav (Right Side) -->
+            <nav class="flex items-center gap-6 md:gap-8">
+                <ul class="flex gap-6 md:gap-8">
+                    <li><a href="index.html" class="nav-link text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="index.html#tours" class="nav-link text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Tours</a></li>
                 </ul>
             </nav>
-
-            <!-- Mobile Toggle -->
-            <button id="mobile-toggle" class="md:hidden z-50 text-white transition-colors duration-300">
-                <i class="ph ph-list text-3xl"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Nav -->
-        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 transform -translate-y-full transition-transform duration-500 ease-in-out">
-            <a href="#home" class="mobile-link text-2xl font-heading font-semibold text-secondary hover:text-primary">Home</a>
-            <a href="#tours" class="mobile-link text-2xl font-heading font-semibold text-secondary hover:text-primary">Tours</a>
         </div>
     </header>
 
@@ -153,10 +142,6 @@
             </div>
         </div>
     </section>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <div class="content-scaled">
         <!-- Tours Section -->
@@ -175,7 +160,7 @@
                 <!-- Tour 1: Boracay Land Tour -->
                 <div class="fade-up bg-white rounded-3xl overflow-hidden shadow-lg group flex flex-col h-full" style="transition-delay: 100ms;">
                     <div class="relative h-64 overflow-hidden shrink-0">
-                        <img src="land.jpg" alt="Boracay Land Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <img loading="lazy" src="land.jpg" alt="Boracay Land Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full font-bold text-secondary">
                             700 PHP <span class="text-sm font-normal text-gray-500">/ pax</span>
                         </div>
@@ -199,7 +184,7 @@
                 <!-- Tour 2: Pearl of Sean Hopping tour -->
                 <div class="fade-up bg-white rounded-3xl overflow-hidden shadow-lg group flex flex-col h-full" style="transition-delay: 200ms;">
                     <div class="relative h-64 overflow-hidden shrink-0">
-                        <img src="Pearl of sean 9.jpg" alt="Pearl of Sean Hopping tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <img loading="lazy" src="Pearl of sean 9.jpg" alt="Pearl of Sean Hopping tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full font-bold text-secondary">
                             1,900 PHP <span class="text-sm font-normal text-gray-500">/ pax</span>
                         </div>
@@ -223,7 +208,7 @@
                 <!-- Tour 3: Bltmpc tour (Coming Soon) -->
                 <div class="fade-up bg-white rounded-3xl overflow-hidden shadow-lg group flex flex-col h-full opacity-80" style="transition-delay: 300ms;">
                     <div class="relative h-64 overflow-hidden shrink-0">
-                        <img src="KakaoTalk_Photo_2026-05-14-18-00-26.jpeg" alt="Bltmpc tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.5]" />
+                        <img loading="lazy" src="KakaoTalk_Photo_2026-05-14-18-00-26.jpeg" alt="Bltmpc tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.5]" />
                         <div class="absolute inset-0 bg-secondary/20 flex items-center justify-center">
                             <span class="bg-white/90 backdrop-blur-md text-secondary font-bold px-6 py-2 rounded-full shadow-lg border border-secondary/10">COMING SOON</span>
                         </div>
@@ -254,11 +239,11 @@
                     <!-- Split Background -->
                     <div class="absolute inset-0 flex">
                         <div class="w-1/2 h-full relative">
-                            <img src="land.jpg" alt="Land Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img loading="lazy" src="land.jpg" alt="Land Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-secondary/20"></div>
                         </div>
                         <div class="w-1/2 h-full relative">
-                            <img src="hopping3.jpg" alt="Hopping Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img loading="lazy" src="hopping3.jpg" alt="Hopping Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-secondary/20"></div>
                         </div>
                         <!-- Centered Overlay to blend the split and ensure text readability -->
@@ -335,35 +320,35 @@
                 <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 overflow-x-auto md:overflow-x-visible hide-scrollbar pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
                     <!-- Photo 1 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
-                        <img src="hopping0.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="hopping0.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 2 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 100ms;">
-                        <img src="hopping1.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="hopping1.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 3 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 200ms;">
-                        <img src="hopping2.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="hopping2.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 4 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 300ms;">
-                        <img src="hopping3.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="hopping3.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 5 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 400ms;">
-                        <img src="hopping4.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="hopping4.jpg" alt="Boracay Hopping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
@@ -380,35 +365,35 @@
                 <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 overflow-x-auto md:overflow-x-visible hide-scrollbar pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
                     <!-- Photo 1 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
-                        <img src="land0.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="land0.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 2 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 100ms;">
-                        <img src="land1.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="land1.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 3 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 200ms;">
-                        <img src="land2.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="land2.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 4 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 300ms;">
-                        <img src="land3.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="land3.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
                     </div>
                     <!-- Photo 5 -->
                     <div class="fade-zoom relative group rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100" style="transition-delay: 400ms;">
-                        <img src="land4.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img loading="lazy" src="land4.jpg" alt="Boracay Land" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
                         </div>
@@ -437,147 +422,147 @@
                         <!-- Partner: Hallomango -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#E31E24]">
-                                <img src="hallomango.jpg" alt="Hallomango" class="w-full h-full object-cover">
+                                <img loading="lazy" src="hallomango.jpg" alt="Hallomango" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Hallomango</span>
                         </div>
                         <!-- Partner: Cafe del Sol -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#A66344]">
-                                <img src="cafedesol.jpg" alt="Cafe del Sol" class="w-full h-full object-cover">
+                                <img loading="lazy" src="cafedesol.jpg" alt="Cafe del Sol" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Cafe del Sol</span>
                         </div>
                         <!-- Partner: Gerry's Grill -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="gerrys.jpg" alt="Gerry's Grill" class="w-full h-full object-cover">
+                                <img loading="lazy" src="gerrys.jpg" alt="Gerry's Grill" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Gerry's Grill</span>
                         </div>
                         <!-- Partner: Jumbo Crab -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="jumbocrab.jpg" alt="Jumbo Crab" class="w-full h-full object-cover">
+                                <img loading="lazy" src="jumbocrab.jpg" alt="Jumbo Crab" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Jumbo Crab</span>
                         </div>
                         <!-- Partner: Epic -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="epic.jpg" alt="Epic" class="w-full h-full object-cover">
+                                <img loading="lazy" src="epic.jpg" alt="Epic" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Epic</span>
                         </div>
                         <!-- Partner: I Love BBQ -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#4A2C2A]">
-                                <img src="ilovebbq.jpg" alt="I Love BBQ" class="w-full h-full object-cover">
+                                <img loading="lazy" src="ilovebbq.jpg" alt="I Love BBQ" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">I Love BBQ</span>
                         </div>
                         <!-- Partner: Iceflake -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#FFD700]">
-                                <img src="iceflake.jpg" alt="Iceflake" class="w-full h-full object-cover">
+                                <img loading="lazy" src="iceflake.jpg" alt="Iceflake" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Iceflake</span>
                         </div>
                         <!-- Partner: Kumkangsan -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="kumkangsan.jpg" alt="Kumkangsan" class="w-full h-full object-cover">
+                                <img loading="lazy" src="kumkangsan.jpg" alt="Kumkangsan" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Kumkangsan</span>
                         </div>
                         <!-- Partner: Ditto -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="ditto.jpg" alt="Ditto" class="w-full h-full object-cover">
+                                <img loading="lazy" src="ditto.jpg" alt="Ditto" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Ditto</span>
                         </div>
                         <!-- Partner: Mayas -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#C2A385]">
-                                <img src="mayas.jpg" alt="Mayas" class="w-full h-full object-cover">
+                                <img loading="lazy" src="mayas.jpg" alt="Mayas" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Mayas</span>
                         </div>
                         <!-- Partner: Munimuni -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#FF4500]">
-                                <img src="munimuni.png" alt="Munimuni" class="w-full h-full object-cover">
+                                <img loading="lazy" src="munimuni.png" alt="Munimuni" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Munimuni</span>
                         </div>
                         <!-- Partner: Steampunk -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#3D0C11]">
-                                <img src="steampunk.jpg" alt="Steampunk" class="w-full h-full object-cover">
+                                <img loading="lazy" src="steampunk.jpg" alt="Steampunk" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Steampunk</span>
                         </div>
                         <!-- Partner: Aria -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#C2A385]">
-                                <img src="aria.jpg" alt="Aria" class="w-full h-full object-cover">
+                                <img loading="lazy" src="aria.jpg" alt="Aria" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Aria</span>
                         </div>
                         <!-- Partner: Aplaya -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="aplaya.jpg" alt="Aplaya" class="w-full h-full object-cover">
+                                <img loading="lazy" src="aplaya.jpg" alt="Aplaya" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Aplaya</span>
                         </div>
                         <!-- Partner: Obama Grill -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="obama.jpg" alt="Obama Grill" class="w-full h-full object-cover">
+                                <img loading="lazy" src="obama.jpg" alt="Obama Grill" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Obama Grill</span>
                         </div>
                         <!-- Partner: Ole -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#FFD700]">
-                                <img src="ole.jpg" alt="Ole" class="w-full h-full object-cover">
+                                <img loading="lazy" src="ole.jpg" alt="Ole" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Ole</span>
                         </div>
                         <!-- Partner: Giuseppe -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#2B2B2B]">
-                                <img src="giuseppe.jpg" alt="Giuseppe" class="w-full h-full object-cover">
+                                <img loading="lazy" src="giuseppe.jpg" alt="Giuseppe" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Giuseppe</span>
                         </div>
                         <!-- Partner: Cafe Maruza -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="cafemaruza.jpg" alt="Cafe Maruza" class="w-full h-full object-cover">
+                                <img loading="lazy" src="cafemaruza.jpg" alt="Cafe Maruza" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Cafe Maruza</span>
                         </div>
                         <!-- Partner: Two Brown Boys -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#1A120B]">
-                                <img src="twobrownboys.jpg" alt="Two Brown Boys" class="w-full h-full object-cover">
+                                <img loading="lazy" src="twobrownboys.jpg" alt="Two Brown Boys" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Two Brown Boys</span>
                         </div>
                         <!-- Partner: Pig Out -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-black">
-                                <img src="pigout.jpg" alt="Pig Out" class="w-full h-full object-cover">
+                                <img loading="lazy" src="pigout.jpg" alt="Pig Out" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Pig Out</span>
                         </div>
                         <!-- Partner: Hama -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#FFF176]">
-                                <img src="hama.jpg" alt="Hama" class="w-full h-full object-cover">
+                                <img loading="lazy" src="hama.jpg" alt="Hama" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Hama</span>
                         </div>
@@ -585,31 +570,31 @@
                         <!-- Duplicate for Seamless Scroll -->
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#E31E24]">
-                                <img src="hallomango.jpg" alt="Hallomango" class="w-full h-full object-cover">
+                                <img loading="lazy" src="hallomango.jpg" alt="Hallomango" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Hallomango</span>
                         </div>
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-[#A66344]">
-                                <img src="cafedesol.jpg" alt="Cafe del Sol" class="w-full h-full object-cover">
+                                <img loading="lazy" src="cafedesol.jpg" alt="Cafe del Sol" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Cafe del Sol</span>
                         </div>
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="gerrys.jpg" alt="Gerry's Grill" class="w-full h-full object-cover">
+                                <img loading="lazy" src="gerrys.jpg" alt="Gerry's Grill" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Gerry's Grill</span>
                         </div>
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="jumbocrab.jpg" alt="Jumbo Crab" class="w-full h-full object-cover">
+                                <img loading="lazy" src="jumbocrab.jpg" alt="Jumbo Crab" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Jumbo Crab</span>
                         </div>
                         <div class="flex flex-col items-center gap-4 shrink-0">
                             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform overflow-hidden bg-white">
-                                <img src="epic.jpg" alt="Epic" class="w-full h-full object-cover">
+                                <img loading="lazy" src="epic.jpg" alt="Epic" class="w-full h-full object-cover">
                             </div>
                             <span class="text-sm font-medium text-gray-300">Epic</span>
                         </div>
@@ -677,7 +662,7 @@
     <!-- Booking CTA Section -->
     <section id="contact" class="relative py-32 bg-secondary text-white overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Sunset Background" class="w-full h-full object-cover" />
+            <img loading="lazy" src="https://images.unsplash.com/photo-1510926880467-33eb9cc0350a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Sunset Background" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-secondary/80 mix-blend-multiply"></div>
         </div>
 
@@ -710,7 +695,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain">
+                        <img loading="lazy" src="Pearl Of Sean logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain">
                         <h3 class="text-3xl font-heading font-bold">Pearl Of Sean</h3>
                     </div>
                     <p class="text-gray-300 max-w-sm">
