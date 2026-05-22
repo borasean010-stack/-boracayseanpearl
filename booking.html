@@ -144,7 +144,25 @@
         }
     </style>
 </head>
-<body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col pt-32 pb-20">
+<body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col">
+
+    <!-- Hero Video Background (Fixed) -->
+    <div class="fixed inset-0 z-0">
+        <!-- Background Video (YouTube Optimized) -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+            <iframe 
+                class="video-cover absolute top-1/2 left-1/2 pointer-events-none"
+                src="https://www.youtube.com/embed/JLUPK8g5BZs?autoplay=1&mute=1&loop=1&playlist=JLUPK8g5BZs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <!-- Overlay for readability -->
+        <div class="absolute inset-0 bg-secondary/70 backdrop-blur-[2px]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-secondary/50 via-transparent to-secondary"></div>
+    </div>
 
     <!-- Sticky Navbar -->
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
@@ -163,42 +181,16 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <!-- Background Video (YouTube Optimized) -->
-            <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-                <iframe 
-                    class="video-cover absolute top-1/2 left-1/2 pointer-events-none"
-                    src="https://www.youtube.com/embed/JLUPK8g5BZs?autoplay=1&mute=1&loop=1&playlist=JLUPK8g5BZs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1" 
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
-            
-            <!-- Overlay for readability -->
-            <div class="absolute inset-0 bg-secondary/50"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-secondary/40 via-transparent to-secondary"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10 text-center text-white mt-20">
-            <h1 class="fade-up text-5xl md:text-8xl font-heading font-bold mb-6 leading-tight">
-                Secure Your <span class="text-primary italic">Adventure</span>
-            </h1>
-            <p class="fade-up text-gray-300 max-w-xl mx-auto text-xl delay-100 mb-12">
-                Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.
-            </p>
-            <div class="fade-up delay-200">
-                <a href="#booking-form-start" class="inline-flex items-center gap-2 bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-secondary transition-all transform hover:scale-105 shadow-2xl">
-                    Start Booking <i class="ph ph-arrow-down"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <div id="booking-form-start" class="container mx-auto px-6 max-w-6xl flex-grow flex flex-col items-center justify-center py-32">
+    <div class="relative z-10 container mx-auto px-6 max-w-6xl flex-grow flex flex-col items-center justify-center py-32">
         <div class="w-full">
+            <!-- Header -->
+            <div class="text-center mb-16 fade-up">
+                <h1 class="text-5xl md:text-8xl font-heading font-bold mb-6 leading-tight text-white">
+                    Secure Your <span class="text-primary italic">Adventure</span>
+                </h1>
+                <p class="text-gray-300 max-w-xl mx-auto text-xl">Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.</p>
+            </div>
+
             <!-- Booking Stepper -->
             <div class="hidden md:flex justify-center items-center gap-4 mb-12 fade-up">
                 <div class="flex items-center gap-3 text-primary">
@@ -582,17 +574,15 @@
                     payNowBtn.disabled = true;
                     payNowBtn.innerHTML = `<i class="ph ph-circle-notch animate-spin"></i> Processing...`;
                     
-                    await signInAnonymously(auth);
-                    
                     const adults = parseInt(document.getElementById('pax-adults').value) || 1;
                     const children = parseInt(document.getElementById('pax-children').value) || 0;
                     const totalPrice = adults * tour.price;
                     const paymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value || 'GCash';
                     
                     const bookingPayload = {
-                        customerName: document.getElementsByName('name')[0].value || "Guest",
-                        contactPhone: document.getElementsByName('phone')[0].value || "N/A",
-                        contactEmail: document.getElementsByName('email')[0].value || "N/A",
+                        customerName: document.querySelector('input[name="name"]').value || "Guest",
+                        contactPhone: document.querySelector('input[name="phone"]').value || "N/A",
+                        contactEmail: document.querySelector('input[name="email"]').value || "N/A",
                         paxAdult: adults,
                         paxChild: children,
                         paymentMethod: paymentMethod,
@@ -609,13 +599,11 @@
                         bookingPayload.tourDate_2 = cal2.selectedDate;
                     }
 
-                    const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
-                    console.log("Booking saved with ID: ", docRef.id);
-                    
+                    await addDoc(collection(db, "bookings"), bookingPayload);
                     window.location.href = 'thank-you.html';
                 } catch (err) {
                     console.error("Submission error:", err);
-                    alert("Submission failed. Please try again or contact support.");
+                    alert("Submission failed. Details: " + err.message);
                     payNowBtn.disabled = false;
                     payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
                 }
