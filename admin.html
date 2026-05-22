@@ -269,15 +269,22 @@
 
         // --- DB Test Logic ---
         document.getElementById('db-test-btn').addEventListener('click', async () => {
-            alert("Starting DB Write Test...");
+            alert("Starting DB Write Test (5s timeout)...");
+            
+            const timeoutPromise = new Promise((_, reject) => 
+                setTimeout(() => reject(new Error("Database connection timed out. Check your Firestore rules or Project ID.")), 5000)
+            );
+
             try {
-                const testDoc = await addDoc(collection(db, "bookings"), {
+                const writePromise = addDoc(collection(db, "bookings"), {
                     customerName: "TEST_USER",
                     tourId: "test",
                     status: "Confirmed",
                     createdAt: serverTimestamp(),
                     isTest: true
                 });
+
+                const testDoc = await Promise.race([writePromise, timeoutPromise]);
                 alert("WRITE SUCCESS! Doc ID: " + testDoc.id + "\nRefreshing list...");
                 loadBookings();
             } catch (e) {
