@@ -320,7 +320,7 @@
                                         </div>
 
                                         <!-- Pax Section -->
-                                        <div class="space-y-8 flex flex-row items-center justify-center gap-12 border-t border-white/5 pt-8">
+                                        <div class="space-y-8 flex flex-col justify-center">
                                             <div class="space-y-2">
                                                 <label class="text-[10px] uppercase font-bold text-gray-400 ml-2 tracking-widest flex items-center gap-2">
                                                     Adults
@@ -607,6 +607,8 @@
                 document.getElementById('label-cal-1').textContent = 'Land Tour Date';
                 document.getElementById('calendars-container').classList.add('md:grid-cols-2');
                 document.getElementById('calendars-container').classList.remove('md:flex', 'md:justify-center');
+                document.getElementById('calendar-wrapper').classList.add('grid-cols-1');
+                document.getElementById('calendar-wrapper').classList.remove('md:grid-cols-2');
                 cal1 = new Calendar('calendar-1', 'date-1-input');
                 cal2 = new Calendar('calendar-2', 'date-2-input');
             } else {
@@ -614,6 +616,8 @@
                 document.getElementById('label-cal-1').textContent = tour.name + ' Date';
                 document.getElementById('calendars-container').classList.remove('md:grid-cols-2');
                 document.getElementById('calendars-container').classList.add('md:flex', 'md:justify-center');
+                document.getElementById('calendar-wrapper').classList.remove('grid-cols-1');
+                document.getElementById('calendar-wrapper').classList.add('md:grid-cols-2');
                 cal1 = new Calendar('calendar-1', 'date-1-input');
             }
 
