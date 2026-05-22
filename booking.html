@@ -4,32 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Secure Your Voyage | Pearl Of Sean Boracay</title>
-    <meta name="description" content="Begin your premium Boracay adventure. A seamless booking experience for our elite island tours.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#29D3D0',
-                        secondary: '#062B43',
-                        accent: '#F2C94C',
-                        light: '#F8F9FA'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif']
-                    }
+                    colors: { primary: '#29D3D0', secondary: '#062B43' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Montserrat', 'sans-serif'] }
                 }
             }
         }
@@ -37,533 +24,311 @@
 
     <link rel="stylesheet" href="style.css">
     <style>
-        .booking-card {
-            background: rgba(6, 43, 67, 0.85);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.6);
-        }
-
-        .input-luxury {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #FFFFFF;
-            transition: all 0.3s ease;
-        }
-
-        .input-luxury:focus {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #29D3D0;
-            box-shadow: 0 0 15px rgba(41, 211, 208, 0.2);
-        }
-
-        /* Custom Calendar Styling - Luxury Theme */
-        .calendar-wrapper {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2rem;
-            padding: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .calendar-wrapper:focus-within {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(41, 211, 208, 0.3);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-        }
-
-        .days-container {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.6);
-            position: relative;
-        }
-
-        .calendar-day:hover:not(.disabled):not(.selected) {
-            background: rgba(41, 211, 208, 0.1);
-            color: #29D3D0;
-            transform: translateY(-2px);
-        }
-
-        .calendar-day.selected {
-            background: #29D3D0;
-            color: #062B43;
-            font-weight: 800;
-            box-shadow: 0 10px 20px -5px rgba(41, 211, 208, 0.5);
-            transform: scale(1.1);
-        }
-
-        .calendar-day.today {
-            color: #29D3D0;
-            font-weight: 700;
-        }
+        .booking-card { background: rgba(6, 43, 67, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .input-luxury { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #FFFFFF; }
         
-        .calendar-day.today::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            width: 4px;
-            height: 4px;
-            background: #29D3D0;
-            border-radius: 50%;
+        /* TINY Calendar Styling */
+        .calendar-wrapper { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 1rem; 
+            padding: 0.5rem;
+            width: 100%;
+            max-width: 240px;
         }
+        .days-container { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+        .calendar-day { 
+            aspect-ratio: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            font-size: 0.6rem; 
+            font-weight: 500; 
+            border-radius: 50%; 
+            color: rgba(255, 255, 255, 0.5); 
+        }
+        .calendar-day:hover:not(.disabled):not(.selected) { background: rgba(41, 211, 208, 0.2); color: #29D3D0; }
+        .calendar-day.selected { background: #29D3D0; color: #062B43; font-weight: 800; }
+        .calendar-day.today { border: 1px solid rgba(41, 211, 208, 0.3); }
+        .calendar-day.disabled { opacity: 0.1; cursor: not-allowed; }
+        .calendar-header-day { 
+            text-align: center; 
+            font-size: 0.5rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            color: rgba(255, 255, 255, 0.2); 
+            padding-bottom: 0.2rem; 
+        }
+        .current-month { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #FFFFFF; }
 
-        .calendar-day.disabled {
-            opacity: 0.15;
-            cursor: not-allowed;
-            text-decoration: line-through;
-        }
-
-        .calendar-header-day {
-            text-align: center;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.3);
-            padding-bottom: 1rem;
-        }
-
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
-<body class="bg-secondary text-white antialiased overflow-x-hidden font-sans flex min-h-screen flex-col">
+<body class="bg-secondary text-white antialiased overflow-x-hidden font-sans min-h-screen flex flex-col">
 
-    <!-- Hero Video Background (Fixed) -->
-    <div class="fixed inset-0 z-0">
-        <!-- Background Video (YouTube Optimized) -->
-        <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-            <iframe 
-                class="video-cover absolute top-1/2 left-1/2 pointer-events-none"
-                src="https://www.youtube.com/embed/JLUPK8g5BZs?autoplay=1&mute=1&loop=1&playlist=JLUPK8g5BZs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-        
-        <!-- Overlay for readability -->
+    <!-- Background Video -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <iframe class="video-cover absolute top-1/2 left-1/2" src="https://www.youtube.com/embed/JLUPK8g5BZs?autoplay=1&mute=1&loop=1&playlist=JLUPK8g5BZs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
         <div class="absolute inset-0 bg-secondary/70 backdrop-blur-[2px]"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-secondary/50 via-transparent to-secondary"></div>
     </div>
 
-    <!-- Sticky Navbar -->
-    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
-        <div class="w-full px-8 flex justify-between items-center">
-            <a href="index.html" class="z-50 flex items-center gap-3 group">
-                <img src="pearl_of_sean_logo.png" alt="Pearl Of Sean" class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-                <span id="logo-text" class="text-xl font-heading font-bold text-white transition-colors duration-300">Pearl Of Sean</span>
-            </a>
-
-            <nav class="flex items-center gap-8">
-                <ul class="flex gap-8">
-                    <li><a href="index.html" class="nav-link text-xs font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Home</a></li>
-                    <li><a href="index.html#tours" class="nav-link text-xs font-medium uppercase tracking-wider text-white hover:text-primary transition-colors">Tours</a></li>
-                </ul>
-            </nav>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-transparent py-4">
+        <div class="px-8 flex justify-between items-center">
+            <a href="index.html"><img src="pearl_of_sean_logo.png" alt="Logo" class="h-8"></a>
+            <a href="index.html" class="text-[10px] font-bold uppercase tracking-widest text-white">Home</a>
         </div>
     </header>
 
-    <div class="relative z-10 container mx-auto px-6 max-w-7xl flex-grow flex flex-col items-center justify-center py-32">
-        <div class="w-full">
-            <!-- Header -->
-            <div class="text-center mb-16 fade-up">
-                <h1 class="text-5xl md:text-8xl font-heading font-bold mb-6 leading-tight text-white">
-                    Secure Your <span class="text-primary italic">Adventure</span>
-                </h1>
-                <p class="text-gray-300 max-w-xl mx-auto text-xl font-medium">Experience the pinnacle of Boracay luxury. Complete the details below to finalize your premium voyage.</p>
-            </div>
+    <div class="relative z-10 container mx-auto px-6 max-w-6xl flex-grow flex items-center justify-center py-24">
+        <div class="booking-card rounded-[2.5rem] p-8 md:p-12 fade-up w-full">
+            <form id="booking-form" class="space-y-10">
+                <input type="hidden" name="tour_id" id="tour-input">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Left Column -->
+                    <div class="space-y-10">
+                        <!-- Contact Information -->
+                        <div class="space-y-4">
+                            <label class="text-[10px] font-black text-primary tracking-[0.2em] uppercase">Contact Information</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <p class="text-[9px] text-gray-500 uppercase font-bold ml-1">Full Name</p>
+                                    <input type="text" name="name" required class="input-luxury w-full px-5 py-3 rounded-xl outline-none text-base">
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-[9px] text-gray-500 uppercase font-bold ml-1">Phone Number</p>
+                                    <input type="tel" name="phone" required class="input-luxury w-full px-5 py-3 rounded-xl outline-none text-base">
+                                </div>
+                                <div class="md:col-span-2 space-y-1">
+                                    <p class="text-[9px] text-gray-500 uppercase font-bold ml-1">Email Address</p>
+                                    <input type="email" name="email" required class="input-luxury w-full px-5 py-3 rounded-xl outline-none text-base">
+                                </div>
+                            </div>
+                        </div>
 
-            <!-- Main Form Card -->
-            <div class="booking-card rounded-[3rem] p-8 md:p-16 fade-up">
-                <form id="booking-form" class="space-y-12">
-                    <input type="hidden" name="tour_id" id="tour-input">
-                    
-                    <!-- 1. Contact Information (Top) -->
-                    <div class="space-y-8">
-                        <label class="text-sm uppercase font-black text-primary tracking-[0.2em] flex items-center gap-2">
-                            <i class="ph ph-identification-card text-xl"></i> Contact Information
-                        </label>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="space-y-2">
-                                <p class="text-xs text-gray-400 uppercase font-bold ml-1">Full Name</p>
-                                <input type="text" name="name" required placeholder="Ex: John Doe" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none text-lg">
+                        <!-- Tiny Calendars -->
+                        <div class="space-y-4">
+                            <label id="calendar-label" class="text-[10px] font-black text-primary tracking-[0.2em] uppercase">Select Voyage Dates</label>
+                            <div id="calendar-grid" class="grid grid-cols-1 gap-6 items-start">
+                                <!-- Calendar 1 -->
+                                <div class="space-y-2">
+                                    <p id="label-cal-1" class="text-[9px] text-gray-500 uppercase font-bold text-center"></p>
+                                    <div id="calendar-1" class="calendar-wrapper">
+                                        <div class="flex items-center justify-center gap-6 mb-2">
+                                            <button type="button" class="prev-month text-white"><i class="ph ph-caret-left-bold text-base"></i></button>
+                                            <h4 class="current-month">Month</h4>
+                                            <button type="button" class="next-month text-white"><i class="ph ph-caret-right-bold text-base"></i></button>
+                                        </div>
+                                        <div class="grid grid-cols-7 mb-1">
+                                            <div class="calendar-header-day">S</div><div class="calendar-header-day">M</div><div class="calendar-header-day">T</div><div class="calendar-header-day">W</div><div class="calendar-header-day">T</div><div class="calendar-header-day">F</div><div class="calendar-header-day">S</div>
+                                        </div>
+                                        <div class="days-container"></div>
+                                        <input type="hidden" name="date_1" id="date-1-input">
+                                    </div>
+                                </div>
+
+                                <!-- Calendar 2 -->
+                                <div id="calendar-2-wrapper" class="hidden space-y-2">
+                                    <p class="text-[9px] text-gray-500 uppercase font-bold text-center">Yacht Hopping Date</p>
+                                    <div id="calendar-2" class="calendar-wrapper">
+                                        <div class="flex items-center justify-center gap-6 mb-2">
+                                            <button type="button" class="prev-month text-white"><i class="ph ph-caret-left-bold text-base"></i></button>
+                                            <h4 class="current-month">Month</h4>
+                                            <button type="button" class="next-month text-white"><i class="ph ph-caret-right-bold text-base"></i></button>
+                                        </div>
+                                        <div class="grid grid-cols-7 mb-1">
+                                            <div class="calendar-header-day">S</div><div class="calendar-header-day">M</div><div class="calendar-header-day">T</div><div class="calendar-header-day">W</div><div class="calendar-header-day">T</div><div class="calendar-header-day">F</div><div class="calendar-header-day">S</div>
+                                        </div>
+                                        <div class="days-container"></div>
+                                        <input type="hidden" name="date_2" id="date-2-input">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="space-y-2">
-                                <p class="text-xs text-gray-400 uppercase font-bold ml-1">Phone Number</p>
-                                <input type="tel" name="phone" required placeholder="+63 XXX XXX XXXX" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none text-lg">
+                        </div>
+
+                        <!-- Diagrammed Action Row -->
+                        <div class="flex items-stretch justify-between gap-4 pt-6 border-t border-white/5">
+                            <div class="space-y-2 flex-grow max-w-[200px]">
+                                <!-- 성인 -->
+                                <div class="flex items-center justify-between bg-white/5 px-4 py-2 rounded-xl border border-white/10">
+                                    <p class="text-[10px] font-bold text-gray-400">성인</p>
+                                    <div class="flex items-center gap-3">
+                                        <button type="button" class="pax-btn text-primary" data-type="adults" data-action="minus"><i class="ph-bold ph-minus"></i></button>
+                                        <input type="number" id="pax-adults" value="1" readonly class="w-4 bg-transparent text-center font-bold text-sm text-white outline-none">
+                                        <button type="button" class="pax-btn text-primary" data-type="adults" data-action="plus"><i class="ph-bold ph-plus"></i></button>
+                                    </div>
+                                </div>
+                                <!-- 소인 -->
+                                <div class="flex items-center justify-between bg-white/5 px-4 py-2 rounded-xl border border-white/10">
+                                    <p class="text-[10px] font-bold text-gray-400">소인</p>
+                                    <div class="flex items-center gap-3">
+                                        <button type="button" class="pax-btn text-primary" data-type="children" data-action="minus"><i class="ph-bold ph-minus"></i></button>
+                                        <input type="number" id="pax-children" value="0" readonly class="w-4 bg-transparent text-center font-bold text-sm text-white outline-none">
+                                        <button type="button" class="pax-btn text-primary" data-type="children" data-action="plus"><i class="ph-bold ph-plus"></i></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="space-y-2">
-                                <p class="text-xs text-gray-400 uppercase font-bold ml-1">Email Address</p>
-                                <input type="email" name="email" required placeholder="john@example.com" class="input-luxury w-full px-6 py-4 rounded-2xl outline-none text-lg">
-                            </div>
+                            <!-- Tall 결제하기 Button -->
+                            <button type="button" id="proceed-to-payment" class="bg-primary text-secondary px-10 rounded-2xl font-black text-xl hover:bg-white transition-all shadow-xl flex-shrink-0 flex items-center justify-center">결제하기</button>
                         </div>
                     </div>
 
-                    <div class="h-px bg-white/10 w-full"></div>
-
-                    <!-- 2. Calendars (Middle - Side by Side) -->
-                    <div class="space-y-8">
-                        <div id="calendar-header-wrapper" class="flex justify-between items-end">
-                            <label id="main-calendar-label" class="text-sm uppercase font-black text-primary tracking-[0.2em] flex items-center gap-2">
-                                <i class="ph ph-calendar text-xl"></i> Select Voyage Dates
-                            </label>
-                            <div id="combo-labels" class="hidden flex-1 grid grid-cols-2 gap-8 px-4">
-                                <p class="text-xs text-gray-400 uppercase font-bold text-center">Land Tour Date</p>
-                                <p class="text-xs text-gray-400 uppercase font-bold text-center">Yacht Hopping Date</p>
-                            </div>
-                        </div>
-                        
-                        <div id="calendar-grid" class="grid grid-cols-1 gap-8 items-start">
-                            <!-- Calendar 1 -->
-                            <div id="calendar-1" class="calendar-wrapper space-y-4">
-                                <div class="flex items-center justify-center gap-8 mb-6">
-                                    <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-left-bold text-xl"></i></button>
-                                    <h4 class="current-month font-bold text-xl text-white min-w-[150px] text-center">Month Year</h4>
-                                    <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-right-bold text-xl"></i></button>
-                                </div>
-                                <div class="grid grid-cols-7 gap-2">
-                                    <div class="calendar-header-day">Su</div>
-                                    <div class="calendar-header-day">Mo</div>
-                                    <div class="calendar-header-day">Tu</div>
-                                    <div class="calendar-header-day">We</div>
-                                    <div class="calendar-header-day">Th</div>
-                                    <div class="calendar-header-day">Fr</div>
-                                    <div class="calendar-header-day">Sa</div>
-                                </div>
-                                <div class="days-container"></div>
-                                <input type="hidden" name="date_1" id="date-1-input">
-                            </div>
-
-                            <!-- Calendar 2 (Combo Only) -->
-                            <div id="calendar-2-wrapper" class="hidden">
-                                <div id="calendar-2" class="calendar-wrapper space-y-4">
-                                    <div class="flex items-center justify-center gap-8 mb-6">
-                                        <button type="button" class="prev-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-left-bold text-xl"></i></button>
-                                        <h4 class="current-month font-bold text-xl text-white min-w-[150px] text-center">Month Year</h4>
-                                        <button type="button" class="next-month w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"><i class="ph ph-caret-right-bold text-xl"></i></button>
-                                    </div>
-                                    <div class="grid grid-cols-7 gap-2">
-                                        <div class="calendar-header-day">Su</div>
-                                        <div class="calendar-header-day">Mo</div>
-                                        <div class="calendar-header-day">Tu</div>
-                                        <div class="calendar-header-day">We</div>
-                                        <div class="calendar-header-day">Th</div>
-                                        <div class="calendar-header-day">Fr</div>
-                                        <div class="calendar-header-day">Sa</div>
-                                    </div>
-                                    <div class="days-container"></div>
-                                    <input type="hidden" name="date_2" id="date-2-input">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="h-px bg-white/10 w-full"></div>
-
-                    <!-- 3. Bottom Action Row (Guests & Button) -->
-                    <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-                        <!-- Guests Selection (Left Side of row) -->
-                        <div class="flex flex-wrap items-center gap-12">
-                            <div class="flex items-center gap-6">
-                                <div>
-                                    <p class="font-bold text-white uppercase text-[10px] tracking-widest opacity-50 mb-1">Adults</p>
-                                    <div class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-full px-4 py-2">
-                                        <button type="button" class="pax-btn w-8 h-8 rounded-full hover:bg-primary/20 transition-all text-primary" data-type="adults" data-action="minus"><i class="ph ph-minus-bold text-xs"></i></button>
-                                        <input type="number" id="pax-adults" min="1" value="1" readonly class="w-6 bg-transparent text-center font-bold text-lg text-white outline-none">
-                                        <button type="button" class="pax-btn w-8 h-8 rounded-full hover:bg-primary/20 transition-all text-primary" data-type="adults" data-action="plus"><i class="ph ph-plus-bold text-xs"></i></button>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-white uppercase text-[10px] tracking-widest opacity-50 mb-1">Children (Free)</p>
-                                    <div class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-full px-4 py-2">
-                                        <button type="button" class="pax-btn w-8 h-8 rounded-full hover:bg-primary/20 transition-all text-primary" data-type="children" data-action="minus"><i class="ph ph-minus-bold text-xs"></i></button>
-                                        <input type="number" id="pax-children" min="0" value="0" readonly class="w-6 bg-transparent text-center font-bold text-lg text-white outline-none">
-                                        <button type="button" class="pax-btn w-8 h-8 rounded-full hover:bg-primary/20 transition-all text-primary" data-type="children" data-action="plus"><i class="ph ph-plus-bold text-xs"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="h-12 w-px bg-white/10 hidden lg:block"></div>
-
+                    <!-- Right Column (Status/Price Card) -->
+                    <div class="space-y-6">
+                        <div class="bg-primary p-8 rounded-[2.5rem] text-secondary shadow-xl h-full flex flex-col justify-between">
                             <div>
-                                <p id="tour-name-display" class="font-heading font-black text-xl text-white uppercase italic tracking-tighter">Tour Name</p>
+                                <div id="tour-icon-box" class="text-4xl mb-6"><i class="ph ph-sparkles text-secondary"></i></div>
+                                <h3 id="tour-name-display" class="text-3xl font-heading font-black mb-2 uppercase italic tracking-tighter leading-none">Tour Name</h3>
+                                <p class="text-secondary/60 text-sm font-medium">Premium Experience</p>
+                            </div>
+                            <div class="pt-10 border-t border-secondary/10">
                                 <div class="flex items-baseline gap-2">
-                                    <span id="estimated-total" class="text-4xl font-black text-primary text-glow">0 PHP</span>
-                                    <span class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Total</span>
+                                    <span id="estimated-total" class="text-5xl font-black">0 PHP</span>
+                                    <span class="text-[10px] uppercase font-bold opacity-40">Total</span>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Action Button (Right Side of row) -->
-                        <button type="button" id="proceed-to-payment" class="w-full lg:w-auto min-w-[280px] bg-primary text-secondary px-12 py-6 rounded-3xl font-black text-xl hover:bg-white hover:text-secondary transition-all transform hover:scale-[1.05] shadow-2xl flex items-center justify-center gap-4 group">
-                            결제하기 <i class="ph-fill ph-arrow-circle-right text-3xl group-hover:translate-x-1 transition-transform"></i>
-                        </button>
                     </div>
-                </form>
+                </div>
+            </form>
 
-                <!-- PAYMENT SECTION -->
-                <div id="payment-section" class="hidden space-y-12">
-                    <div class="text-center">
-                        <h3 class="text-3xl font-heading font-bold mb-4">Confirm Reservation</h3>
-                        <p class="text-gray-400">Please review your journey details and select a payment method.</p>
+            <!-- Payment Section -->
+            <div id="payment-section" class="hidden space-y-10">
+                <div class="text-center"><h3 class="text-3xl font-bold text-white mb-2">Final Step</h3><p class="text-gray-400 text-sm">Secure your premium voyage</p></div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 text-white">
+                    <div class="bg-white/5 p-8 rounded-[2.5rem] border border-white/10 space-y-6">
+                        <h4 class="text-xs uppercase font-bold text-primary tracking-widest">Reservation Summary</h4>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-white/5 pb-2"><p class="text-gray-400">Experience</p><p id="summary-tour-name" class="font-bold"></p></div>
+                            <div class="flex justify-between border-b border-white/5 pb-2"><p class="text-gray-400">Date(s)</p><p id="summary-date" class="font-bold text-right text-xs"></p></div>
+                            <div class="flex justify-between text-primary pt-2"><p class="font-bold">Total Investment</p><p id="summary-total" class="text-2xl font-black"></p></div>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div class="bg-white/5 p-10 rounded-[3rem] border border-white/10 space-y-8">
-                            <h4 class="text-sm uppercase font-bold text-primary tracking-widest">Journey Summary</h4>
-                            <div class="space-y-6">
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Experience</p><p id="summary-tour-name" class="font-bold text-right text-white">Tour Name</p></div>
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Scheduled Date</p><p id="summary-date" class="font-bold text-right italic text-white text-sm">Date</p></div>
-                                <div class="flex justify-between items-start pb-6 border-b border-white/5"><p class="text-gray-400 text-sm">Guest Count</p><p id="summary-pax" class="font-bold text-right text-white">Adults, Children</p></div>
-                                <div class="flex justify-between items-start pt-4">
-                                    <p class="text-white font-bold">Total Investment</p>
-                                    <div class="text-right">
-                                        <p id="summary-total" class="text-3xl font-heading font-black text-primary text-glow">0 PHP</p>
-                                        <p id="summary-subtotal" class="text-[10px] text-gray-500 line-through">0 PHP</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 gap-3">
+                            <label class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all"><input type="radio" name="payment_method" value="GCash" checked class="accent-primary w-5 h-5"><div class="w-10 h-10 bg-white rounded-lg overflow-hidden"><img src="gcash.jpg" class="w-full h-full object-cover"></div><p class="font-bold text-sm">GCash / Local</p></label>
+                            <label class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all"><input type="radio" name="payment_method" value="PayPal" class="accent-primary w-5 h-5"><div class="w-10 h-10 bg-white rounded-lg p-1"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" class="w-full h-auto"></div><p class="font-bold text-sm">PayPal / Cards</p></label>
                         </div>
-                        <div class="space-y-8">
-                            <h4 class="text-sm uppercase font-bold text-primary tracking-widest">Payment Method</h4>
-                            <div class="grid grid-cols-1 gap-4">
-                                <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
-                                    <input type="radio" name="payment_method" value="GCash" checked class="w-5 h-5 accent-primary">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center overflow-hidden">
-                                            <img src="gcash.jpg" alt="GCash" class="w-full h-full object-cover">
-                                        </div>
-                                        <div>
-                                            <p class="font-bold text-sm text-white">GCash / Local Bank</p>
-                                            <p class="text-[10px] text-gray-500">Fast & Secure Local Transfer</p>
-                                        </div>
-                                    </div>
-                                </label>
-                                <label class="payment-option relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
-                                    <input type="radio" name="payment_method" value="PayPal" class="w-5 h-5 accent-primary">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2">
-                                            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" class="w-full h-auto object-contain">
-                                        </div>
-                                        <div>
-                                            <p class="font-bold text-sm text-white">PayPal / Cards</p>
-                                            <p class="text-[10px] text-gray-500">Secure Online Payment</p>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="flex gap-4">
-                                <button type="button" id="back-to-form" class="flex-1 bg-white/5 text-white py-5 rounded-2xl font-bold hover:bg-white/10 transition-all">Edit Details</button>
-                                <button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-5 rounded-2xl font-bold text-xl hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 text-secondary">결제하기 <i class="ph-bold ph-lock text-2xl text-secondary"></i></button>
-                            </div>
-                        </div>
+                        <div class="flex gap-4"><button type="button" id="back-to-form" class="flex-1 bg-white/5 text-white py-4 rounded-xl font-bold hover:bg-white/10">Edit</button><button type="button" id="pay-now" class="flex-[2] bg-primary text-secondary py-4 rounded-xl font-black hover:bg-white">결제하기</button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-secondary text-white py-12">
-        <div class="container mx-auto px-6 text-center text-gray-600 text-sm">
-            <p>&copy; 2026 Pearl Of Sean. Premium Boracay Experiences. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script src="main.js"></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp, initializeFirestore, persistentLocalCache } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, initializeFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ",
-            authDomain: "boracaysean-local.firebaseapp.com",
-            projectId: "boracaysean-local",
-            storageBucket: "boracaysean-local.appspot.com",
-            messagingSenderId: "673386650213",
-            appId: "1:673386650213:web:484b15ee8b2d8ec226448c",
-            measurementId: "G-DKC8HE000W"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+        const config = { apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ", authDomain: "boracaysean-local.firebaseapp.com", projectId: "boracaysean-local", storageBucket: "boracaysean-local.appspot.com", messagingSenderId: "673386650213", appId: "1:673386650213:web:484b15ee8b2d8ec226448c" };
+        const app = initializeApp(config);
         const db = initializeFirestore(app, { experimentalForceLongPolling: true });
 
-        const tourMap = {
-            'land': { id: 'land', name: 'Boracay Land Tour', price: 700, icon: 'ph-jeep' },
-            'yacht': { id: 'yacht-hopping', name: 'Pearl Hopping Tour', price: 1900, icon: 'ph-sailboat' },
-            'combo': { id: 'combo', name: 'Ultimate Combo Package', price: 2500, icon: 'ph-sparkles', isCombo: true }
-        };
+        const tourMap = { 'land': { id: 'land', name: 'Land Tour', price: 700 }, 'yacht': { id: 'yacht', name: 'Hopping Tour', price: 1900 }, 'combo': { id: 'combo', name: 'Combo Tour', price: 2500, isCombo: true } };
 
         class Calendar {
-            constructor(containerId, inputId, labelId, tourName) {
-                this.container = document.getElementById(containerId);
-                this.input = document.getElementById(inputId);
-                this.label = document.getElementById(labelId);
-                this.daysContainer = this.container.querySelector('.days-container');
-                this.monthDisplay = this.container.querySelector('.current-month');
-                this.prevBtn = this.container.querySelector('.prev-month');
-                this.nextBtn = this.container.querySelector('.next-month');
-                this.tourName = tourName;
-                this.currentViewDate = new Date();
-                this.selectedDate = null;
-                this.init();
+            constructor(cid, iid) {
+                this.c = document.getElementById(cid); this.i = document.getElementById(iid);
+                this.m = this.c.querySelector('.current-month'); this.d = this.c.querySelector('.days-container');
+                this.p = this.c.querySelector('.prev-month'); this.n = this.c.querySelector('.next-month');
+                this.v = new Date(); this.s = null;
+                this.p.onclick = (e) => { e.preventDefault(); this.v.setMonth(this.v.getMonth()-1); this.r(); };
+                this.n.onclick = (e) => { e.preventDefault(); this.v.setMonth(this.v.getMonth()+1); this.r(); };
+                this.r();
             }
-            init() {
-                this.prevBtn.addEventListener('click', (e) => { e.preventDefault(); this.currentViewDate.setMonth(this.currentViewDate.getMonth() - 1); this.render(); });
-                this.nextBtn.addEventListener('click', (e) => { e.preventDefault(); this.currentViewDate.setMonth(this.currentViewDate.getMonth() + 1); this.render(); });
-                this.render();
-            }
-            render() {
-                const year = this.currentViewDate.getFullYear();
-                const month = this.currentViewDate.getMonth();
-                this.monthDisplay.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(this.currentViewDate);
-                this.daysContainer.innerHTML = '';
-                const firstDay = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                const today = new Date(); today.setHours(0,0,0,0);
-                for (let i = 0; i < firstDay; i++) {
-                    const empty = document.createElement('div');
-                    empty.className = 'calendar-day empty pointer-events-none opacity-0';
-                    this.daysContainer.appendChild(empty);
-                }
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dayEl = document.createElement('div');
-                    dayEl.className = 'calendar-day';
-                    dayEl.textContent = day;
-                    const dateObj = new Date(year, month, day);
-                    if (dateObj < today) { dayEl.classList.add('disabled'); }
+            r() {
+                const y = this.v.getFullYear(), m = this.v.getMonth();
+                this.m.textContent = new Intl.DateTimeFormat('en-US', {month:'short', year:'numeric'}).format(this.v);
+                this.d.innerHTML = '';
+                const first = new Date(y, m, 1).getDay(), days = new Date(y, m+1, 0).getDate(), today = new Date(); today.setHours(0,0,0,0);
+                for (let i=0; i<first; i++) this.d.appendChild(document.createElement('div'));
+                for (let day=1; day<=days; day++) {
+                    const el = document.createElement('div'); el.className = 'calendar-day'; el.textContent = day;
+                    const date = new Date(y, m, day);
+                    if (date < today) el.classList.add('disabled');
                     else {
-                        dayEl.addEventListener('click', () => this.selectDate(dateObj));
-                        if (this.selectedDate && dateObj.getTime() === this.selectedDate.getTime()) dayEl.classList.add('selected');
-                        if (dateObj.getTime() === today.getTime()) dayEl.classList.add('today');
+                        el.onclick = () => { this.s = date; this.i.value = date.toISOString(); this.r(); upd(); };
+                        if (this.s && date.getTime() === this.s.getTime()) el.classList.add('selected');
+                        if (date.getTime() === today.getTime()) el.classList.add('today');
                     }
-                    this.daysContainer.appendChild(dayEl);
+                    this.d.appendChild(el);
                 }
-            }
-            selectDate(date) {
-                this.selectedDate = date;
-                this.input.value = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                this.render();
-                updateTotal();
             }
         }
 
-        let cal1, cal2;
-        function updateTotal() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const tourKey = urlParams.get('tour') || 'yacht';
-            const tour = tourMap[tourKey] || tourMap['yacht'];
-            const adults = parseInt(document.getElementById('pax-adults').value);
-            const totalPrice = adults * tour.price;
-            document.getElementById('estimated-total').textContent = `${totalPrice.toLocaleString()} PHP`;
+        let c1, c2;
+        function upd() {
+            const url = new URLSearchParams(window.location.search);
+            const tour = tourMap[url.get('tour') || 'yacht'];
+            const ad = parseInt(document.getElementById('pax-adults').value);
+            const tot = ad * tour.price;
+            document.getElementById('estimated-total').textContent = tot.toLocaleString() + ' PHP';
+            document.getElementById('summary-total').textContent = tot.toLocaleString() + ' PHP';
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const tourKey = urlParams.get('tour') || 'yacht';
-            const tour = tourMap[tourKey] || tourMap['yacht'];
+            const url = new URLSearchParams(window.location.search);
+            const tour = tourMap[url.get('tour') || 'yacht'];
             document.getElementById('tour-name-display').textContent = tour.name;
             document.getElementById('tour-input').value = tour.id;
 
             if (tour.isCombo) {
-                document.getElementById('calendar-grid').classList.add('lg:grid-cols-2');
+                document.getElementById('calendar-grid').classList.add('grid-cols-2');
                 document.getElementById('calendar-2-wrapper').classList.remove('hidden');
-                document.getElementById('combo-labels').classList.remove('hidden');
-                document.getElementById('main-calendar-label').classList.add('hidden');
-                cal1 = new Calendar('calendar-1', 'date-1-input', null, 'Land Tour');
-                cal2 = new Calendar('calendar-2', 'date-2-input', null, 'Yacht Hopping');
+                document.getElementById('label-cal-1').textContent = 'Land Tour Date';
+                c1 = new Calendar('calendar-1', 'date-1-input');
+                c2 = new Calendar('calendar-2', 'date-2-input');
             } else {
-                cal1 = new Calendar('calendar-1', 'date-1-input', 'main-calendar-label', tour.name);
+                document.getElementById('label-cal-1').textContent = tour.name + ' Date';
+                c1 = new Calendar('calendar-1', 'date-1-input');
             }
 
-            document.querySelectorAll('.pax-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const type = btn.dataset.type;
-                    const action = btn.dataset.action;
-                    const input = document.getElementById(`pax-${type}`);
-                    let val = parseInt(input.value);
-                    if (action === 'plus') val++;
-                    else if (action === 'minus') {
-                        if (type === 'adults' && val > 1) val--;
-                        else if (type === 'children' && val > 0) val--;
-                    }
-                    input.value = val;
-                    updateTotal();
-                });
+            document.querySelectorAll('.pax-btn').forEach(b => {
+                b.onclick = () => {
+                    const input = document.getElementById(`pax-${b.dataset.type}`);
+                    let v = parseInt(input.value);
+                    if (b.dataset.action === 'plus') v++;
+                    else if (v > (b.dataset.type === 'adults' ? 1 : 0)) v--;
+                    input.value = v; upd();
+                };
             });
 
-            const bookingForm = document.getElementById('booking-form');
-            const paymentSection = document.getElementById('payment-section');
-            const proceedBtn = document.getElementById('proceed-to-payment');
-            const backBtn = document.getElementById('back-to-form');
-
-            proceedBtn.addEventListener('click', () => {
-                if (!cal1.selectedDate || (tour.isCombo && !cal2.selectedDate)) { alert('Please select tour dates.'); return; }
-                const adults = parseInt(document.getElementById('pax-adults').value);
-                const children = parseInt(document.getElementById('pax-children').value);
-                const totalPrice = adults * tour.price;
+            document.getElementById('proceed-to-payment').onclick = () => {
+                if (!c1.s || (tour.isCombo && !c2.s)) { alert('Select dates!'); return; }
                 document.getElementById('summary-tour-name').textContent = tour.name;
-                document.getElementById('summary-date').innerHTML = tour.isCombo ? `Land: ${cal1.selectedDate.toLocaleDateString()}<br>Yacht: ${cal2.selectedDate.toLocaleDateString()}` : cal1.selectedDate.toLocaleDateString();
-                document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children (Free)` : ''}`;
-                document.getElementById('summary-total').textContent = `${totalPrice.toLocaleString()} PHP`;
-                bookingForm.classList.add('hidden');
-                paymentSection.classList.remove('hidden');
+                document.getElementById('summary-date').innerHTML = tour.isCombo ? `Land: ${c1.s.toLocaleDateString()}<br>Yacht: ${c2.s.toLocaleDateString()}` : c1.s.toLocaleDateString();
+                document.getElementById('booking-form').classList.add('hidden');
+                document.getElementById('payment-section').classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            };
 
-            backBtn.addEventListener('click', () => { paymentSection.classList.add('hidden'); bookingForm.classList.remove('hidden'); });
+            document.getElementById('back-to-form').onclick = () => { document.getElementById('payment-section').classList.add('hidden'); document.getElementById('booking-form').classList.remove('hidden'); };
 
-            const payNowBtn = document.getElementById('pay-now');
-            payNowBtn.addEventListener('click', async () => {
+            document.getElementById('pay-now').onclick = async () => {
                 try {
-                    payNowBtn.disabled = true;
-                    payNowBtn.innerHTML = `<i class="ph ph-circle-notch animate-spin"></i> Processing...`;
-                    const adults = parseInt(document.getElementById('pax-adults').value) || 1;
-                    const children = parseInt(document.getElementById('pax-children').value) || 0;
-                    const totalPrice = adults * tour.price;
-                    const paymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value || 'GCash';
-                    const bookingPayload = {
-                        customerName: document.querySelector('input[name="name"]').value || "Guest",
-                        contactPhone: document.querySelector('input[name="phone"]').value || "N/A",
-                        contactEmail: document.querySelector('input[name="email"]').value || "N/A",
-                        paxAdult: adults,
-                        paxChild: children,
-                        paymentMethod: paymentMethod,
+                    const btn = document.getElementById('pay-now'); btn.disabled = true; btn.innerHTML = "Processing...";
+                    const payload = {
+                        customerName: document.getElementsByName('name')[0].value,
+                        contactPhone: document.getElementsByName('phone')[0].value,
+                        contactEmail: document.getElementsByName('email')[0].value,
+                        paxAdult: parseInt(document.getElementById('pax-adults').value),
+                        paxChild: parseInt(document.getElementById('pax-children').value),
+                        paymentMethod: document.querySelector('input[name="payment_method"]:checked').value,
                         status: 'Pending Payment',
                         tourId: tour.id,
                         tourName: tour.name,
-                        tourDate: cal1.selectedDate,
-                        totalPrice: totalPrice,
+                        tourDate: c1.s,
+                        totalPrice: parseInt(document.getElementById('pax-adults').value) * tour.price,
                         createdAt: serverTimestamp()
                     };
-                    if (tour.isCombo && cal2.selectedDate) { bookingPayload.tourDate_2 = cal2.selectedDate; }
-                    await addDoc(collection(db, "bookings"), bookingPayload);
+                    if (tour.isCombo) payload.tourDate_2 = c2.s;
+                    await addDoc(collection(db, "bookings"), payload);
                     window.location.href = 'thank-you.html';
-                } catch (err) {
-                    alert("Submission failed: " + err.message);
-                    payNowBtn.disabled = false;
-                    payNowBtn.innerHTML = `결제하기 <i class="ph-bold ph-lock text-2xl"></i>`;
-                }
-            });
-            updateTotal();
+                } catch (e) { alert(e.message); document.getElementById('pay-now').disabled = false; }
+            };
+            upd();
         });
     </script>
 </body>
