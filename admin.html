@@ -78,7 +78,7 @@
             <p class="text-gray-500 text-sm mb-8">Administrative portal for Pearl Of Sean</p>
             
             <form id="login-form" class="space-y-4">
-                <input type="email" id="login-email" placeholder="Email Address" required class="w-full bg-light border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-primary transition-all">
+                <input type="email" id="login-id" placeholder="Admin ID (e.g., luca)" required class="w-full bg-light border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-primary transition-all">
                 <input type="password" id="login-password" placeholder="Password" required class="w-full bg-light border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-primary transition-all">
                 <button type="submit" class="w-full bg-secondary text-white py-4 rounded-2xl font-bold hover:bg-primary transition-all shadow-lg mt-4">Login to Dashboard</button>
             </form>
@@ -233,12 +233,12 @@
 
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('login-email').value;
+            const adminId = document.getElementById('login-id').value; const email = adminId.includes('@') ? adminId : `${adminId}@pearl.of.sean`;
             const pass = document.getElementById('login-password').value;
             try {
                 await signInWithEmailAndPassword(auth, email, pass);
             } catch (e) {
-                loginError.classList.remove('hidden');
+                loginError.textContent = "Invalid ID or Password. (Note: Password must be min 6 chars)"; loginError.classList.remove('hidden');
             }
         });
 
