@@ -738,32 +738,42 @@
 
             // --- Final Submission (Firebase) ---
             const payNowBtn = document.getElementById('pay-now');
+            
+            // Global error handler for debugging
+            window.addEventListener('error', (event) => {
+                alert("GLOBAL ERROR: " + event.message + " at " + event.lineno + ":" + event.colno);
+            });
+
             payNowBtn.addEventListener('click', async () => {
-                const method = document.querySelector('input[name="payment_method"]:checked').value;
-                payNowBtn.disabled = true;
-                payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
+                try {
+                    alert("STEP 1: Click Detected");
+                    const method = document.querySelector('input[name="payment_method"]:checked').value;
+                    payNowBtn.disabled = true;
+                    payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
 
-                const formData = new FormData(bookingForm);
-                const baseBooking = {
-                    customerName: formData.get('name'),
-                    contactPhone: formData.get('phone'),
-                    contactEmail: formData.get('email'),
-                    paxAdult: parseInt(formData.get('adults')),
-                    paxChild: parseInt(formData.get('children')),
-                    paymentMethod: method,
-                    status: 'Confirmed', // Simulate real payment success
-                    createdAt: serverTimestamp()
-                };
+                    alert("STEP 2: Preparing Data");
+                    const formData = new FormData(bookingForm);
+                    const baseBooking = {
+                        customerName: formData.get('name'),
+                        contactPhone: formData.get('phone'),
+                        contactEmail: formData.get('email'),
+                        paxAdult: parseInt(formData.get('adults') || 0),
+                        paxChild: parseInt(formData.get('children') || 0),
+                        paymentMethod: method,
+                        status: 'Confirmed', 
+                        createdAt: serverTimestamp()
+                    };
 
-                // Function to perform the save and then redirect
-                const performSaveAndRedirect = async () => {
+                    alert("STEP 3: Starting Save - " + baseBooking.customerName);
+
                     const timeout = setTimeout(() => {
-                        console.warn("Save operation timed out. Redirecting anyway...");
+                        alert("TIMEOUT: Save taking too long. Redirecting...");
                         window.location.href = 'thank-you.html';
-                    }, 4000); // 4 second fallback
+                    }, 8000); 
 
                     try {
                         if (tour.id === 'combo') {
+                            alert("STEP 4: Saving Combo...");
                             await Promise.all([
                                 addDoc(collection(db, "bookings"), {
                                     ...baseBooking,
@@ -781,6 +791,7 @@
                                 })
                             ]);
                         } else {
+                            alert("STEP 4: Saving Single Tour: " + tour.id);
                             await addDoc(collection(db, "bookings"), {
                                 ...baseBooking,
                                 tourId: tour.id,
@@ -789,18 +800,18 @@
                             });
                         }
                         clearTimeout(timeout);
-                        console.log("Booking saved successfully. Redirecting...");
-                        alert("Reservation Successful! Your data has been saved to the database. Redirecting to confirmation page...");
+                        alert("STEP 5: Success! Redirecting...");
                         window.location.href = 'thank-you.html';
-                    } catch (e) {
-                        console.error("Firebase save failed:", e);
-                        alert("DEBUG: Firebase save failed! Error: " + e.message);
+                    } catch (dbError) {
+                        alert("DATABASE ERROR: " + dbError.message);
                         clearTimeout(timeout);
                         window.location.href = 'thank-you.html'; 
                     }
-                };
-
-                performSaveAndRedirect();
+                } catch (btnError) {
+                    alert("BUTTON CLICK ERROR: " + btnError.message);
+                    payNowBtn.disabled = false;
+                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
+                }
             });
 
             // --- Animation ---

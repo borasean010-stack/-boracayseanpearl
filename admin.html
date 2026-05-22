@@ -329,16 +329,19 @@
 
         async function loadBookings() {
             const list = document.getElementById('bookings-list');
-            list.innerHTML = '<tr><td colspan="7" class="px-6 py-10 text-center text-gray-400">Loading reservations...</td></tr>';
+            list.innerHTML = '<tr><td colspan="7" class="px-6 py-10 text-center text-gray-400">Loading ALL reservations...</td></tr>';
             
             try {
-                // ABSOLUTE BASIC QUERY: No filters, no ordering, to check if data exists at all
-                const finalQuery = query(collection(db, "bookings"));
-                const querySnapshot = await getDocs(finalQuery);
+                // THE MOST BASIC QUERY POSSIBLE
+                const q = collection(db, "bookings");
+                const querySnapshot = await getDocs(q);
                 list.innerHTML = '';
                 
+                alert("DEBUG: Found " + querySnapshot.size + " documents in database.");
+
                 if (querySnapshot.empty) {
-                    list.innerHTML = '<tr><td colspan="7" class="px-6 py-20 text-center text-gray-400">No reservations found in the database. (Count: 0)</td></tr>';
+                    list.innerHTML = '<tr><td colspan="7" class="px-6 py-20 text-center text-gray-400">No reservations found in the database. (Total: 0)</td></tr>';
+                    return;
                 }
 
                 let totalBookings = 0;
@@ -354,7 +357,7 @@
                     const row = document.createElement('tr');
                     
                     // Safe data access
-                    const date = data.tourDate ? (typeof data.tourDate.toDate === 'function' ? data.tourDate.toDate().toLocaleDateString() : 'Invalid Date') : 'N/A';
+                    const date = data.tourDate ? (typeof data.tourDate.toDate === 'function' ? data.tourDate.toDate().toLocaleDateString() : (data.tourDate.seconds ? new Date(data.tourDate.seconds * 1000).toLocaleDateString() : 'N/A')) : 'N/A';
                     const customerName = data.customerName || 'Unknown Customer';
                     const contactPhone = data.contactPhone || 'No Phone';
                     const tourId = data.tourId || 'N/A';
@@ -396,11 +399,8 @@
 
             } catch (e) {
                 console.error(e);
-                let errorMsg = "Failed to load data.";
-                if (e.message && e.message.includes("index")) {
-                    errorMsg = "Firestore Index Required. Please check console for the link to create it.";
-                }
-                list.innerHTML = `<tr><td colspan="7" class="px-6 py-10 text-center text-red-400">${errorMsg}<br><span class="text-[10px] opacity-50">${e.message || ''}</span></td></tr>`;
+                alert("ADMIN ERROR: " + e.message);
+                list.innerHTML = `<tr><td colspan="7" class="px-6 py-10 text-center text-red-400">ERROR: ${e.message}</td></tr>`;
             }
         }
 
