@@ -707,14 +707,24 @@
                                 })
                             ]);
                         } else {
-                            alert("DEBUG: Writing SINGLE TOUR to collection 'bookings'...");
-                            const docRef = await addDoc(collection(db, "bookings"), {
-                                ...baseBooking,
-                                tourId: tour.id,
-                                tourDate: cal1.selectedDate,
-                                totalPrice: baseBooking.paxAdult * tour.price
-                            });
-                            alert("DEBUG: Write SUCCESS! Doc ID: " + docRef.id);
+                            alert("DEBUG: Single Tour Path. Tour ID: " + tour.id);
+                            alert("DEBUG: Checking Data: Date=" + (cal1.selectedDate ? cal1.selectedDate.toLocaleDateString() : 'MISSING') + ", Price=" + tour.price);
+                            
+                            try {
+                                const bookingPayload = {
+                                    ...baseBooking,
+                                    tourId: tour.id,
+                                    tourDate: cal1.selectedDate,
+                                    totalPrice: baseBooking.paxAdult * tour.price
+                                };
+                                alert("DEBUG: Payload Ready. Calling addDoc...");
+                                
+                                const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
+                                alert("DEBUG: Write SUCCESS! Doc ID: " + docRef.id);
+                            } catch (innerError) {
+                                alert("INNER FIREBASE ERROR: " + innerError.message);
+                                throw innerError;
+                            }
                         }
                         
                         alert("DEBUG: Redirecting to thank-you.html...");
