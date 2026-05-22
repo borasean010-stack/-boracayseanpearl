@@ -535,28 +535,41 @@
             const payNowBtn = document.getElementById('pay-now');
             payNowBtn.addEventListener('click', async () => {
                 try {
-                    alert("VER 4.0: Starting...");
-                    await signInAnonymously(auth);
+                    alert("FINAL ATTEMPT: Sending...");
+                    payNowBtn.disabled = true;
+                    payNowBtn.innerHTML = `Processing...`;
+
                     const formData = new FormData(bookingForm);
                     const bookingPayload = {
-                        customerName: formData.get('name'),
-                        contactPhone: formData.get('phone'),
-                        contactEmail: formData.get('email'),
-                        paxAdult: parseInt(document.getElementById('pax-adults').value),
-                        paxChild: parseInt(document.getElementById('pax-children').value),
+                        customerName: formData.get('name') || "Anonymous",
+                        contactPhone: formData.get('phone') || "N/A",
+                        contactEmail: formData.get('email') || "N/A",
+                        paxAdult: parseInt(document.getElementById('pax-adults').value) || 1,
+                        paxChild: parseInt(document.getElementById('pax-children').value) || 0,
                         paymentMethod: document.querySelector('input[name="payment_method"]:checked').value,
                         status: 'Confirmed',
                         tourId: tour.id,
-                        tourDate: cal1.selectedDate,
-                        totalPrice: parseInt(document.getElementById('pax-adults').value) * tour.price,
+                        tourDate: cal1.selectedDate ? new Date(cal1.selectedDate.getTime()) : new Date(),
+                        totalPrice: (parseInt(document.getElementById('pax-adults').value) || 1) * tour.price,
                         createdAt: serverTimestamp()
                     };
-                    alert("VER 4.0: Sending...");
-                    const docRef = await addDoc(collection(db, "bookings"), bookingPayload);
-                    alert("SUCCESS: ID " + docRef.id);
-                    window.location.href = 'thank-you.html';
-                } catch (e) {
-                    alert("ERROR: " + e.message);
+
+                    // Non-blocking save
+                    addDoc(collection(db, "bookings"), bookingPayload)
+                        .then((docRef) => {
+                            console.log("Success:", docRef.id);
+                        })
+                        .catch((e) => {
+                            console.error("Save failed:", e);
+                        });
+
+                    // Redirect after 1.5 seconds regardless of result
+                    setTimeout(() => {
+                        window.location.href = 'thank-you.html';
+                    }, 1500);
+
+                } catch (err) {
+                    console.error(err);
                     window.location.href = 'thank-you.html';
                 }
             });
