@@ -130,6 +130,37 @@
             <div id="tab-content" class="p-8">
                 <!-- Bookings Tab -->
                 <div id="tab-bookings" class="tab-pane">
+                    <!-- Quick Stats Summary -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl">
+                                <i class="ph ph-calendar-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Bookings</p>
+                                <h4 id="stat-total-bookings" class="text-2xl font-bold">0</h4>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-accent/10 text-accent-700 flex items-center justify-center text-2xl">
+                                <i class="ph ph-currency-circle-dollar"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Revenue</p>
+                                <h4 id="stat-total-revenue" class="text-2xl font-bold">0 PHP</h4>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center text-2xl">
+                                <i class="ph ph-users"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Guests</p>
+                                <h4 id="stat-total-guests" class="text-2xl font-bold">0</h4>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="flex flex-col md:flex-row gap-4 mb-8 justify-between items-start md:items-center">
                         <div class="flex gap-4">
                             <select id="filter-tour" class="bg-white border border-gray-100 rounded-xl px-4 py-2 text-sm font-medium outline-none focus:border-primary">
@@ -142,7 +173,6 @@
                                 <option value="Pending Payment">Pending</option>
                                 <option value="Payment Complete">Paid</option>
                                 <option value="Confirmed">Confirmed</option>
-                                <option value="Confirmed (Test Mode)">Test Mode</option>
                                 <option value="Cancelled">Cancelled</option>
                             </select>
                         </div>
@@ -177,6 +207,24 @@
                 <div id="tab-tours" class="tab-pane hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tours-list">
                         <!-- Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Stats Tab -->
+                <div id="tab-stats" class="tab-pane hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100">
+                            <h3 class="font-heading font-bold text-xl mb-8">Revenue by Tour</h3>
+                            <div id="stats-revenue-chart" class="space-y-6">
+                                <!-- Dynamic Stats -->
+                            </div>
+                        </div>
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100">
+                            <h3 class="font-heading font-bold text-xl mb-8">Booking Volume</h3>
+                            <div id="stats-volume-chart" class="space-y-6">
+                                <!-- Dynamic Stats -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,6 +316,7 @@
                 currentTabTitle.textContent = item.textContent.trim();
                 if (targetTab === 'bookings') loadBookings();
                 if (targetTab === 'tours') loadTours();
+                if (targetTab === 'stats') loadStats();
             });
         });
 
@@ -297,8 +346,16 @@
                 const querySnapshot = await getDocs(finalQuery);
                 list.innerHTML = '';
                 
+                let totalBookings = 0;
+                let totalRevenue = 0;
+                let totalGuests = 0;
+
                 querySnapshot.forEach((docSnap) => {
                     const data = docSnap.data();
+                    totalBookings++;
+                    totalRevenue += (data.totalPrice || 0);
+                    totalGuests += (data.paxAdult || 0) + (data.paxChild || 0);
+
                     const row = document.createElement('tr');
                     
                     // Safe data access
@@ -336,6 +393,11 @@
                 document.querySelectorAll('.view-detail-btn').forEach(btn => {
                     btn.addEventListener('click', () => viewBookingDetail(btn.dataset.id));
                 });
+
+                // Update Summary Stats UI
+                document.getElementById('stat-total-bookings').textContent = totalBookings;
+                document.getElementById('stat-total-revenue').textContent = `${totalRevenue.toLocaleString()} PHP`;
+                document.getElementById('stat-total-guests').textContent = totalGuests;
 
             } catch (e) {
                 console.error(e);
@@ -410,8 +472,70 @@
         function getStatusClass(status) {
             if (status === 'Pending Payment') return 'status-pending';
             if (status === 'Payment Complete') return 'status-paid';
-            if (status === 'Confirmed' || status === 'Confirmed (Test Mode)') return 'status-confirmed';
+            if (status === 'Confirmed') return 'status-confirmed';
             return 'status-cancelled';
+        }
+
+        async function loadStats() {
+            const revenueContainer = document.getElementById('stats-revenue-chart');
+            const volumeContainer = document.getElementById('stats-volume-chart');
+            revenueContainer.innerHTML = '<p class="text-center py-10 text-gray-400">Loading stats...</p>';
+            volumeContainer.innerHTML = '<p class="text-center py-10 text-gray-400">Loading stats...</p>';
+
+            try {
+                const querySnapshot = await getDocs(collection(db, "bookings"));
+                const stats = {};
+                
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const tour = data.tourId || 'Unknown';
+                    if (!stats[tour]) stats[tour] = { revenue: 0, count: 0 };
+                    stats[tour].revenue += (data.totalPrice || 0);
+                    stats[tour].count += 1;
+                });
+
+                revenueContainer.innerHTML = '';
+                volumeContainer.innerHTML = '';
+
+                const sortedTours = Object.keys(stats).sort((a, b) => stats[b].revenue - stats[a].revenue);
+                const maxRevenue = Math.max(...Object.values(stats).map(s => s.revenue), 1);
+                const maxCount = Math.max(...Object.values(stats).map(s => s.count), 1);
+
+                sortedTours.forEach(tour => {
+                    const s = stats[tour];
+                    
+                    // Revenue Bar
+                    const revPerc = (s.revenue / maxRevenue) * 100;
+                    revenueContainer.innerHTML += `
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-bold">
+                                <span>${tour.toUpperCase()}</span>
+                                <span class="text-primary">${s.revenue.toLocaleString()} PHP</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-3 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full transition-all duration-1000" style="width: ${revPerc}%"></div>
+                            </div>
+                        </div>
+                    `;
+
+                    // Volume Bar
+                    const volPerc = (s.count / maxCount) * 100;
+                    volumeContainer.innerHTML += `
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-bold">
+                                <span>${tour.toUpperCase()}</span>
+                                <span class="text-secondary">${s.count} Bookings</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-3 rounded-full overflow-hidden">
+                                <div class="bg-secondary h-full transition-all duration-1000" style="width: ${volPerc}%"></div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+            } catch (e) {
+                console.error(e);
+            }
         }
 
         async function loadTours() {
