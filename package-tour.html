@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Combo Package | Land + Hopping Tour | Pearl Of Sean Boracay</title>
-    <meta name="description" content="The ultimate Boracay experience. Combine our premium Land Tour with the luxury Yacht Hopping Tour at a special discounted price. Best value and full island coverage.">
+    <title>Ultimate Combo Package | Land & Yacht Hopping | Pearl Of Sean</title>
+    <meta name="description" content="The most complete way to experience Boracay. Combine our 3-hour Land Tour with the luxury Yacht Hopping Tour. Save more and see every iconic spot from land to sea.">
+    <meta name="keywords" content="Boracay tour package, land and sea tour Boracay, Pearl of Sean combo, Boracay vacation deals, Puka Beach, luxury yacht, Boracay sightseeing package">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.pearlofsean.com/package-tour.html">
+    <link rel="alternate" type="application/rss+xml" title="Pearl Of Sean RSS Feed" href="https://www.pearlofsean.com/rss.xml" />
+    <link rel="icon" href="pearl_of_sean_logo.png" type="image/png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.pearlofsean.com/package-tour.html">
+    <meta property="og:title" content="Ultimate Combo Package | Land & Yacht Hopping | Pearl Of Sean">
+    <meta property="og:description" content="Experience everything Boracay has to offer. Combine our Premium Land Tour with the Luxury Yacht Hopping Tour at a special discounted price.">
+    <meta property="og:image" content="https://www.pearlofsean.com/land.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.pearlofsean.com/package-tour.html">
+    <meta property="twitter:title" content="Ultimate Combo Package | Land & Yacht Hopping | Pearl Of Sean">
+    <meta property="twitter:description" content="Experience everything Boracay has to offer. Combine our Premium Land Tour with the Luxury Yacht Hopping Tour at a special discounted price.">
+    <meta property="twitter:image" content="https://www.pearlofsean.com/land.jpg">
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "name": "Ultimate Combo Package (Land + Hopping)",
+      "description": "Combine the scenic beauty of our Land Tour with the luxury adventure of the Pearl of Sean Hopping Tour for a complete Boracay experience.",
+      "touristType": "Sightseeing & Adventure",
+      "offers": {
+        "@type": "Offer",
+        "price": "2500",
+        "priceCurrency": "PHP",
+        "availability": "https://schema.org/InStock"
+      },
+      "provider": {
+        "@type": "TravelAgency",
+        "name": "Pearl Of Sean Boracay",
+        "url": "https://www.pearlofsean.com"
+      }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,7 +239,7 @@
                         
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video muted autoplay loop playsinline webkit-playsinline id="land-preview-video" muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover">
+                            <video autoplay muted loop playsinline preload="auto" id="land-preview-video" class="w-full h-full object-cover">
                                 <source src="land_tour_highlights.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
@@ -237,7 +277,7 @@
 
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video muted autoplay loop playsinline webkit-playsinline id="yacht-preview-video" muted autoplay loop playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover">
+                            <video autoplay muted loop playsinline preload="auto" id="yacht-preview-video" class="w-full h-full object-cover">
                                 <source src="hopping_tour_compressed.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
@@ -540,7 +580,7 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
     <script>
         // Sequential Video Switcher for Combo Page
         const landVideos = [

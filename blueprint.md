@@ -28,17 +28,12 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Navigation & Header Refinement
-*   **Header Unification:** Synchronized the `<header>` structure in all HTML files to ensure a consistent look and feel throughout the site.
-*   **Mobile UX Improvement:** Simplified the mobile navigation by removing the hidden menu and displaying primary links directly, improving accessibility.
-*   **Code Cleanup:** Removed unused mobile menu toggle scripts and IDs from `main.js` and `booking.html`.
-
-### Dedicated Gallery Page
-*   **Comprehensive Visual Showcase:** Created `gallery.html` to house all tour-related photography in one place, organized by tour type (Hopping, Land, Yacht).
-*   **Categorized Layout:** Implemented distinct sections for each tour category with high-quality grid displays.
-*   **Main Page Integration:** Added "View All" links to individual categories in the main page gallery section and a global "View Full Gallery" button to drive traffic to the new page.
+## 4. Current Task: Search Engine Optimization & Verification
+*   **Naver Site Verification:** Integrated the Naver site verification meta tag into the `<head>` section of `index.html` to allow the site to be registered and indexed by Naver Search Advisor.
 
 ## 5. Project History
+### SEO & Site Verification
+*   **Naver Verification:** Added `<meta name="naver-site-verification" content="5aad8aba9c3f537bae19fe3700a5e0cbf5f34131" />` to `index.html`.
 ### Navigation Header Standardization
 *   **Header Unification:** Standardized the navigation header across all pages (`index.html`, `land-tour.html`, `yacht-tour.html`, `package-tour.html`, `booking.html`).
 *   **Mobile Navigation:** Removed the hamburger menu (mobile toggle) and made the core navigation links ("Home" and "Tours") visible directly on mobile devices for a more streamlined user experience.
@@ -178,4 +173,13 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Layout Change:** Consolidated "Meeting Information", "Preparation", and "Inclusions & Exclusions" into a single 3-column responsive grid located immediately below the section's introductory description.
 *   **Aesthetics:** Maintained consistency with the existing premium design, using rounded containers, soft shadows, and Phosphor icons for each category.
 *   **Content Optimization:** Streamlined the lists for better readability in a column-based layout, ensuring all essential details are preserved while reducing vertical scrolling.
+
+### Domain Integration & DNS Configuration
+*   **Domain Re-registration:** Successfully re-registered `pearlofsean.com` and configured DNS records for Firebase Hosting.
+*   **DNS Settings (Verification in Progress):**
+    *   **A Record:** `@` pointed to `199.36.158.100` and `151.101.1.195`.
+    *   **CNAME Record:** `www` pointed to `boracaysean-local.web.app`.
+    *   **TXT Record:** `@` (Requires value from Firebase Console to complete verification).
+*   **Redirect Logic:** Configured `firebase.json` to redirect the root domain to `www.pearlofsean.com` for SEO consistency.
+*   **SEO & Metadata:** Verified that all HTML files, `sitemap.xml`, and `rss.xml` are correctly using `https://www.pearlofsean.com` as the canonical base URL.
 

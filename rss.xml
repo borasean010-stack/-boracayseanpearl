@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Pearl Of Sean Boracay</title>
+  <link>https://www.pearlofsean.com</link>
+  <description>Premium Boracay island hopping tours, snorkeling adventures, and luxury ocean experiences.</description>
+  <language>en-us</language>
+  <lastBuildDate>Sun, 24 May 2026 00:00:00 GMT</lastBuildDate>
+  <atom:link href="https://www.pearlofsean.com/rss.xml" rel="self" type="application/rss+xml" />
+  
+  <item>
+    <title>Pearl of Sean Hopping Tour</title>
+    <link>https://www.pearlofsean.com/yacht-tour.html</link>
+    <guid>https://www.pearlofsean.com/yacht-tour.html</guid>
+    <description>Boracay's ultimate luxury ocean adventure. Experience high-energy water sports, a massive giant slide, and elite onboard song performances.</description>
+    <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>Boracay Land Tour</title>
+    <link>https://www.pearlofsean.com/land-tour.html</link>
+    <guid>https://www.pearlofsean.com/land-tour.html</guid>
+    <description>Explore the island's best spots in a 3-hour guided tour. Visit Bolabog's Leaning Coconut Tree, the majestic Keyhole, and the serene Puka Beach.</description>
+    <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+  </item>
+  
+  <item>
+    <title>Ultimate Combo Package</title>
+    <link>https://www.pearlofsean.com/package-tour.html</link>
+    <guid>https://www.pearlofsean.com/package-tour.html</guid>
+    <description>Experience the best of both worlds! Combine the scenic beauty of our Land Tour with the luxury adventure of the Pearl of Sean Hopping Tour.</description>
+    <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>

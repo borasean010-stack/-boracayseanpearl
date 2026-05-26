@@ -1,3 +1,21 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ",
+  authDomain: "boracaysean-local.firebaseapp.com",
+  projectId: "boracaysean-local",
+  storageBucket: "boracaysean-local.firebasestorage.app",
+  messagingSenderId: "673386650213",
+  appId: "1:673386650213:web:484b15ee8b2d8ec226448c",
+  measurementId: "G-DKC8HE000W"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Sticky Header ---
     const header = document.getElementById('header');

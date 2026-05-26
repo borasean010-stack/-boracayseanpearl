@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "blueprint.md",
+      "README.md",
+      "GEMINI.md",
+      ".idx/**",
+      "update_headers.js"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "https://www.pearlofsean.com",
+        "type": 301
+      }
+    ]
+  }
+}
