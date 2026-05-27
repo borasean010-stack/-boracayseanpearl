@@ -174,6 +174,10 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Aesthetics:** Maintained consistency with the existing premium design, using rounded containers, soft shadows, and Phosphor icons for each category.
 *   **Content Optimization:** Streamlined the lists for better readability in a column-based layout, ensuring all essential details are preserved while reducing vertical scrolling.
 
+### Mangrove Park Integration
+*   **Land Tour Highlights:** Added Mangrove Eco Park to the primary "Highlights" section on `land-tour.html` to ensure all key destinations are represented at a glance.
+*   **Consistency Check:** Verified that Mangrove Park is consistently featured across the landing page and detailed itinerary sections.
+
 ### Domain Integration & DNS Configuration
 *   **Domain Re-registration:** Successfully re-registered `pearlofsean.com` and configured DNS records for Firebase Hosting.
 *   **DNS Settings (Verification in Progress):**
