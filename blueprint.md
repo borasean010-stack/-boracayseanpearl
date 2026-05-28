@@ -31,6 +31,11 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 ## 4. Current Task: Search Engine Optimization & Verification
 *   **Naver Site Verification:** Integrated the Naver site verification meta tag into the `<head>` section of `index.html` to allow the site to be registered and indexed by Naver Search Advisor.
 
+### Hopping Tour Gallery Expansion
+*   **Captured Moments Update:** Added 10 new high-quality images (`IMG_8512.jpg` through `IMG_8599.jpg`) to the "Captured Moments" gallery section in `yacht-tour.html`.
+*   **Gallery Page Sync:** Updated `gallery.html` to include the same 10 new images in the "Hopping Tour" section, ensuring consistency across the site.
+*   **Mobile Layout Optimization:** Maintained the 2-column mobile grid for the gallery to ensure a rich visual experience on smaller screens.
+
 ## 5. Project History
 ### SEO & Site Verification
 *   **Naver Verification:** Added `<meta name="naver-site-verification" content="5aad8aba9c3f537bae19fe3700a5e0cbf5f34131" />` to `index.html`.
