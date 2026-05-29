@@ -179,35 +179,8 @@
                         Experience Everything <br> Boracay Has to <span class="text-primary italic">Offer</span>
                     </h3>
                     
-                    <div class="space-y-10">
-                        <div class="flex gap-6">
-                            <div class="w-16 h-16 bg-light rounded-2xl flex items-center justify-center text-primary text-3xl shrink-0 shadow-sm">
-                                <i class="ph ph-clock"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-bold text-secondary mb-2">Seamless Coordination</h4>
-                                <p class="text-gray-600 leading-relaxed">Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-16 h-16 bg-light rounded-2xl flex items-center justify-center text-primary text-3xl shrink-0 shadow-sm">
-                                <i class="ph ph-map-trifold"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-bold text-secondary mb-2">Full Island Coverage</h4>
-                                <p class="text-gray-600 leading-relaxed">From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won't miss a single iconic spot in Boracay.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-16 h-16 bg-light rounded-2xl flex items-center justify-center text-primary text-3xl shrink-0 shadow-sm">
-                                <i class="ph ph-star"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-bold text-secondary mb-2">Consistent Quality</h4>
-                                <p class="text-gray-400 leading-relaxed italic text-sm mb-2">"Al-Jal-Ttak-Kkal-Sen" 서비스</p>
-                                <p class="text-gray-600 leading-relaxed">Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.</p>
-                            </div>
-                        </div>
+                    <div class="space-y-10" id="benefits-list">
+                        <!-- Dynamically populated -->
                     </div>
                 </div>
             </div>
@@ -525,6 +498,11 @@
                     hero: { type: 'video', videoId: '9bDWdocKn9I' },
                     price: 2500,
                     individualValue: 2600,
+                    benefits: [
+                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
+                        { icon: 'ph-map-trifold', title: 'Full Island Coverage', text: 'From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won\'t miss a single iconic spot in Boracay.' },
+                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.' }
+                    ],
                     items: [
                         { name: 'Pearl Hopping Tour', price: 1900 },
                         { name: 'Premium Land Tour', price: 700 }
@@ -550,6 +528,11 @@
                     hero: { type: 'image', src: 'libertad_hero.jpeg' },
                     price: 3500,
                     individualValue: 3600,
+                    benefits: [
+                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
+                        { icon: 'ph-map-trifold', title: 'Full Island Coverage', text: 'From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won\'t miss a single iconic spot in Boracay.' },
+                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.' }
+                    ],
                     items: [
                         { name: 'Whale Shark Tour', price: 2900 },
                         { name: 'Premium Land Tour', price: 700 }
@@ -575,6 +558,11 @@
                     hero: { type: 'image', src: 'libertad_hero.jpeg' },
                     price: 4500,
                     individualValue: 4800,
+                    benefits: [
+                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
+                        { icon: 'ph-waves', title: 'Elite Ocean Adventure', text: 'Experience the best of Boracay\'s waters, from the luxury of our yacht to the awe of the Libertad whale sharks.' },
+                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both water-based experiences.' }
+                    ],
                     items: [
                         { name: 'Whale Shark Tour', price: 2900 },
                         { name: 'Pearl Hopping Tour', price: 1900 }
@@ -622,6 +610,20 @@
                 heroImgBox.classList.remove('hidden');
                 heroImgSrc.src = data.hero.src;
             }
+
+            // Update Benefits
+            const benefitsList = document.getElementById('benefits-list');
+            benefitsList.innerHTML = data.benefits.map(b => `
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-light rounded-2xl flex items-center justify-center text-primary text-3xl shrink-0 shadow-sm">
+                        <i class="ph ${b.icon}"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-secondary mb-2">${b.title}</h4>
+                        <p class="text-gray-600 leading-relaxed">${b.text}</p>
+                    </div>
+                </div>
+            `).join('');
 
             // Update Sticky Elements
             document.getElementById('cta-booking-link').href = `/booking?tour=${type}`;
