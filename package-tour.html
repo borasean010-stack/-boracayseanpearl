@@ -100,11 +100,17 @@
     <!-- Hero Section -->
     <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
+            <!-- Background Image (Fallback/Static) -->
+            <div id="hero-bg-image" class="absolute inset-0 w-full h-full">
+                <img id="hero-img-src" src="land.jpg" alt="Hero Background" class="w-full h-full object-cover">
+            </div>
+
             <!-- Background Video (YouTube Optimized) -->
-            <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+            <div id="hero-bg-video" class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none hidden">
                 <iframe 
+                    id="hero-video-iframe"
                     class="video-cover absolute top-1/2 left-1/2 pointer-events-none"
-                    src="https://www.youtube.com/embed/9bDWdocKn9I?autoplay=1&mute=1&loop=1&playlist=9bDWdocKn9I&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1&origin=https://boracaysean.com" 
+                    src="" 
                     frameborder="0" 
                     allow="autoplay; encrypted-media; picture-in-picture"
                     allowfullscreen>
@@ -516,6 +522,7 @@
                 'combo1': {
                     title: 'Land + Hopping <br> <span class="text-primary italic">Combo Package</span>',
                     subtitle: 'Ultimate Land & Sea Bundle',
+                    hero: { type: 'video', videoId: '9bDWdocKn9I' },
                     price: 2500,
                     individualValue: 2600,
                     items: [
@@ -540,6 +547,7 @@
                 'combo2': {
                     title: 'Land + Whale Shark <br> <span class="text-primary italic">Combo Package</span>',
                     subtitle: 'Island & Wildlife Bundle',
+                    hero: { type: 'image', src: 'libertad_hero.jpeg' },
                     price: 3500,
                     individualValue: 3600,
                     items: [
@@ -564,6 +572,7 @@
                 'combo3': {
                     title: 'Yacht + Whale Shark <br> <span class="text-primary italic">Combo Package</span>',
                     subtitle: 'Luxury & Wildlife Bundle',
+                    hero: { type: 'image', src: 'libertad_hero.jpeg' },
                     price: 4500,
                     individualValue: 4800,
                     items: [
@@ -597,6 +606,22 @@
             document.getElementById('combo-booking-link').href = `/booking?tour=${type}`;
             document.getElementById('final-combo-price').innerHTML = `${data.price.toLocaleString()} <span class="text-2xl font-normal text-primary">PHP</span>`;
             document.getElementById('savings-text').textContent = `Save ${(data.individualValue - data.price).toLocaleString()} PHP per person instantly!`;
+
+            // Hero Toggle Logic
+            const heroImgBox = document.getElementById('hero-bg-image');
+            const heroVideoBox = document.getElementById('hero-bg-video');
+            const heroVideoIframe = document.getElementById('hero-video-iframe');
+            const heroImgSrc = document.getElementById('hero-img-src');
+
+            if (data.hero.type === 'video') {
+                heroImgBox.classList.add('hidden');
+                heroVideoBox.classList.remove('hidden');
+                heroVideoIframe.src = `https://www.youtube.com/embed/${data.hero.videoId}?autoplay=1&mute=1&loop=1&playlist=${data.hero.videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&vq=hd1080&enablejsapi=1&playsinline=1&origin=https://boracaysean.com`;
+            } else {
+                heroVideoBox.classList.add('hidden');
+                heroImgBox.classList.remove('hidden');
+                heroImgSrc.src = data.hero.src;
+            }
 
             // Update Sticky Elements
             document.getElementById('cta-booking-link').href = `/booking?tour=${type}`;
