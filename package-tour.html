@@ -521,66 +521,6 @@
             // --- Combo Content Definitions ---
             const comboData = {
                 'combo1': {
-                    title: 'Land + Hopping <br> <span class="text-primary italic">Combo Package</span>',
-                    subtitle: 'Ultimate Land & Sea Bundle',
-                    hero: { type: 'video', videoId: '9bDWdocKn9I' },
-                    price: 2500,
-                    individualValue: 2600,
-                    benefits: [
-                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
-                        { icon: 'ph-map-trifold', title: 'Full Island Coverage', text: 'From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won\'t miss a single iconic spot in Boracay.' },
-                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.' }
-                    ],
-                    items: [
-                        { name: 'Pearl Hopping Tour', price: 1900 },
-                        { name: 'Premium Land Tour', price: 700 }
-                    ],
-                    part1: {
-                        title: 'Scenic Land Exploration',
-                        icon: 'ph-jeep',
-                        videoList: landVideos,
-                        link: '/land-tour',
-                        highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
-                    },
-                    part2: {
-                        title: 'Luxury Yacht Adventure',
-                        icon: 'ph-sailboat',
-                        videoList: yachtVideos,
-                        link: '/yacht-tour',
-                        highlights: ['Yacht Admission & Snorkeling', 'Giant Slide & Rooftop Diving', 'Unlimited Drinks & Ramen', 'Free GoPro Photography']
-                    }
-                },
-                'combo2': {
-                    title: 'Land + Whale Shark <br> <span class="text-primary italic">Combo Package</span>',
-                    subtitle: 'Island & Wildlife Bundle',
-                    hero: { type: 'image', src: 'libertad_hero.jpeg' },
-                    price: 3500,
-                    individualValue: 3600,
-                    benefits: [
-                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
-                        { icon: 'ph-map-trifold', title: 'Full Island Coverage', text: 'From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won\'t miss a single iconic spot in Boracay.' },
-                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.' }
-                    ],
-                    items: [
-                        { name: 'Whale Shark Tour', price: 2900 },
-                        { name: 'Premium Land Tour', price: 700 }
-                    ],
-                    part1: {
-                        title: 'Scenic Land Exploration',
-                        icon: 'ph-jeep',
-                        videoList: landVideos,
-                        link: '/land-tour',
-                        highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
-                    },
-                    part2: {
-                        title: 'Whale Shark Encounter',
-                        icon: 'ph-fish',
-                        videoList: whaleVideos,
-                        link: '/whale-tour',
-                        highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
-                    }
-                },
-                'combo3': {
                     title: 'Yacht + Whale Shark <br> <span class="text-primary italic">Combo Package</span>',
                     subtitle: 'Luxury & Wildlife Bundle',
                     hero: { type: 'image', src: 'libertad_hero.jpeg' },
@@ -608,6 +548,66 @@
                         videoList: whaleVideos,
                         link: '/whale-tour',
                         highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
+                    }
+                },
+                'combo2': {
+                    title: 'Whale Shark + Land Tour <br> <span class="text-primary italic">Combo Package</span>',
+                    subtitle: 'Island & Wildlife Bundle',
+                    hero: { type: 'image', src: 'libertad_hero.jpeg' },
+                    price: 3500,
+                    individualValue: 3600,
+                    benefits: [
+                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
+                        { icon: 'ph-map-trifold', title: 'Full Island Coverage', text: 'From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won\'t miss a single iconic spot in Boracay.' },
+                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.' }
+                    ],
+                    items: [
+                        { name: 'Whale Shark Tour', price: 2900 },
+                        { name: 'Premium Land Tour', price: 700 }
+                    ],
+                    part1: {
+                        title: 'Whale Shark Encounter',
+                        icon: 'ph-fish',
+                        videoList: whaleVideos,
+                        link: '/whale-tour',
+                        highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
+                    },
+                    part2: {
+                        title: 'Scenic Land Exploration',
+                        icon: 'ph-jeep',
+                        videoList: landVideos,
+                        link: '/land-tour',
+                        highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
+                    }
+                },
+                'combo3': {
+                    title: 'Yacht + Land Tour <br> <span class="text-primary italic">Combo Package</span>',
+                    subtitle: 'Ultimate Land & Sea Bundle',
+                    hero: { type: 'video', videoId: '9bDWdocKn9I' },
+                    price: 2500,
+                    individualValue: 2600,
+                    benefits: [
+                        { icon: 'ph-clock', title: 'Seamless Coordination', text: 'Book both tours through a single point of contact. We coordinate your pickup and schedules so you can focus on the fun.' },
+                        { icon: 'ph-map-trifold', title: 'Full Island Coverage', text: 'From the deepest dive spots at Balinghai to the scenic keyhole of Newcoast. You won\'t miss a single iconic spot in Boracay.' },
+                        { icon: 'ph-star', title: 'Consistent Quality', text: 'Expect the same premium service, professional guides, and luxurious transport across both land and sea experiences.' }
+                    ],
+                    items: [
+                        { name: 'Pearl Hopping Tour', price: 1900 },
+                        { name: 'Premium Land Tour', price: 700 }
+                    ],
+                    part1: {
+                        title: 'Luxury Yacht Adventure',
+                        icon: 'ph-sailboat',
+                        videoList: yachtVideos,
+                        link: '/yacht-tour',
+                        highlights: ['Yacht Admission & Snorkeling', 'Giant Slide & Rooftop Diving', 'Unlimited Drinks & Ramen', 'Free GoPro Photography']
+                    },
+                    part2: {
+                        title: 'Scenic Land Exploration',
+                        icon: 'ph-jeep',
+                        videoList: landVideos,
+                        link: '/land-tour',
+                        highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
                     }
                 }
             };
