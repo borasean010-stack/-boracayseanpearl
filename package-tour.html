@@ -118,18 +118,18 @@
 
         <div class="container mx-auto px-6 relative z-10 text-center text-white pt-20">
             <div class="fade-up">
-                <span class="inline-block px-4 py-1 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-md text-primary text-xs font-bold uppercase tracking-[0.3em] mb-6">
+                <span id="combo-subtitle" class="inline-block px-4 py-1 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-md text-primary text-xs font-bold uppercase tracking-[0.3em] mb-6">
                     The Ultimate Experience
                 </span>
-                <h1 class="text-5xl md:text-8xl font-heading font-extrabold mb-8 leading-tight tracking-tight">
+                <h1 id="combo-title" class="text-5xl md:text-8xl font-heading font-extrabold mb-8 leading-tight tracking-tight">
                     Land + Hopping <br> <span class="text-primary italic">Combo Package</span>
                 </h1>
                 <p class="text-lg md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-                    The most complete way to experience Boracay. Combine the island's best land sights with our luxury yacht adventure and save more.
+                    The most complete way to experience Boracay. Combine the island's best sights and save more.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <a href="/booking?tour=combo" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-full font-bold text-xl hover:shadow-[0_0_30px_rgba(41,211,208,0.5)] transition-all transform hover:scale-105 flex items-center justify-center">
-                        View Special Offer
+                    <a id="combo-booking-link" href="/booking?tour=combo1" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-full font-bold text-xl hover:shadow-[0_0_30px_rgba(41,211,208,0.5)] transition-all transform hover:scale-105 flex items-center justify-center">
+                        Book This Combo
                     </a>
                     <a href="#itinerary" class="w-full sm:w-auto bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white/20 transition-all transform hover:scale-105 flex items-center justify-center">
                         See Full Itinerary
@@ -150,29 +150,18 @@
                             <i class="ph ph-seal-percent text-9xl"></i>
                         </div>
                         
-                        <h2 class="text-3xl md:text-5xl font-heading font-bold mb-8">Why Book <br> <span class="text-primary italic">Together?</span></h2>
+                        <h2 class="text-3xl md:text-5xl font-heading font-bold mb-8 text-glow">Why Book <br> <span class="text-primary italic">Together?</span></h2>
                         
-                        <div class="space-y-8 mb-12">
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                <span class="text-gray-400">Pearl of Sean Hopping Tour</span>
-                                <span class="font-bold text-sm md:text-xl">1,900 PHP</span>
-                            </div>
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                <span class="text-gray-400">Premium Land Tour</span>
-                                <span class="font-bold text-sm md:text-xl">700 PHP</span>
-                            </div>
-                            <div class="flex items-center justify-between pt-4">
-                                <span class="text-gray-400 uppercase tracking-widest text-sm font-bold">Total Individual Value</span>
-                                <span class="text-red-400 font-bold text-2xl line-through">2,600 PHP</span>
-                            </div>
+                        <div class="space-y-8 mb-12" id="pricing-list">
+                            <!-- Dynamically populated -->
                         </div>
 
                         <div class="bg-primary/20 border border-primary/30 p-8 rounded-3xl text-center">
                             <p class="text-primary font-bold uppercase tracking-widest text-sm mb-2">Exclusive Combo Price</p>
-                            <div class="text-6xl md:text-7xl font-black mb-4 flex items-center justify-center gap-3 text-glow">
+                            <div id="final-combo-price" class="text-6xl md:text-7xl font-black mb-4 flex items-center justify-center gap-3 text-glow">
                                 2,500 <span class="text-2xl font-normal text-primary">PHP</span>
                             </div>
-                            <p class="text-gray-300 italic text-sm">Save 100 PHP per person instantly!</p>
+                            <p id="savings-text" class="text-gray-300 italic text-sm">Save 100 PHP per person instantly!</p>
                         </div>
                     </div>
                 </div>
@@ -224,90 +213,60 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-24">
                 <h2 class="fade-up text-4xl md:text-6xl font-heading font-bold mb-4">Double the <span class="text-primary italic">Adventure</span></h2>
-                <p class="fade-up text-gray-400 text-lg delay-100">One package, two days of unforgettable island memories.</p>
+                <p id="combo-description" class="fade-up text-gray-400 text-lg delay-100">One package, two days of unforgettable island memories.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-                <!-- Day 1: Land Tour Highlights -->
-                <div class="fade-right bg-white/5 border border-white/10 p-12 rounded-[3rem] relative group overflow-hidden flex flex-col h-full">
+                <!-- Part 1 Highlights -->
+                <div id="part1-card" class="fade-right bg-white/5 border border-white/10 p-12 rounded-[3rem] relative group overflow-hidden flex flex-col h-full">
                     <div class="absolute top-0 right-0 p-8 opacity-5 text-9xl group-hover:scale-110 transition-transform duration-700 z-0">
-                        <i class="ph ph-jeep"></i>
+                        <i id="part1-icon" class="ph ph-jeep"></i>
                     </div>
                     <div class="relative z-10">
                         <span class="inline-block px-4 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">PART 1</span>
-                        <h3 class="text-3xl font-heading font-bold mb-8">Scenic Land Exploration</h3>
+                        <h3 id="part1-title" class="text-3xl font-heading font-bold mb-8">Scenic Land Exploration</h3>
                         
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video autoplay muted loop playsinline preload="auto" id="land-preview-video" class="w-full h-full object-cover">
-                                <source src="land_tour_highlights.mp4" type="video/mp4">
+                            <video autoplay muted loop playsinline preload="auto" id="part1-video" class="w-full h-full object-cover">
+                                <source id="part1-video-src" src="land_tour_highlights.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="land-video-label">Key Highlights</div>
+                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="part1-video-label">Key Highlights</div>
                         </div>
 
-                        <ul class="space-y-6 mb-10">
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Premium Air-conditioned Van</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Newcoast Keyhole & Viewpoint</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Puka Shell & Sinagpa Beach</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Mangrove Eco Park Sanctuary</span>
-                            </li>
+                        <ul id="part1-highlights" class="space-y-6 mb-10">
+                            <!-- Dynamically populated -->
                         </ul>
-                        <a href="/land-tour" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all mt-auto">
-                            Full Land Tour Details <i class="ph-bold ph-arrow-right"></i>
+                        <a id="part1-link" href="/land-tour" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all mt-auto">
+                            Full Details <i class="ph-bold ph-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Day 2: Hopping Tour Highlights -->
-                <div class="fade-left bg-white/5 border border-white/10 p-12 rounded-[3rem] relative group overflow-hidden flex flex-col h-full">
+                <!-- Part 2 Highlights -->
+                <div id="part2-card" class="fade-left bg-white/5 border border-white/10 p-12 rounded-[3rem] relative group overflow-hidden flex flex-col h-full">
                     <div class="absolute top-0 right-0 p-8 opacity-5 text-9xl group-hover:scale-110 transition-transform duration-700 z-0">
-                        <i class="ph ph-sailboat"></i>
+                        <i id="part2-icon" class="ph ph-sailboat"></i>
                     </div>
                     <div class="relative z-10">
                         <span class="inline-block px-4 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">PART 2</span>
-                        <h3 class="text-3xl font-heading font-bold mb-8">Luxury Yacht Adventure</h3>
+                        <h3 id="part2-title" class="text-3xl font-heading font-bold mb-8">Luxury Yacht Adventure</h3>
 
                         <!-- GIF Preview (Sequential) -->
                         <div class="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                            <video autoplay muted loop playsinline preload="auto" id="yacht-preview-video" class="w-full h-full object-cover">
-                                <source src="hopping_tour_compressed.mp4" type="video/mp4">
+                            <video autoplay muted loop playsinline preload="auto" id="part2-video" class="w-full h-full object-cover">
+                                <source id="part2-video-src" src="hopping_tour_compressed.mp4" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="yacht-video-label">Key Highlights</div>
+                            <div class="absolute bottom-4 left-4 text-white font-bold text-sm" id="part2-video-label">Key Highlights</div>
                         </div>
 
-                        <ul class="space-y-6 mb-10">
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Yacht Admission & Snorkeling</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Giant Slide & Rooftop Diving</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Unlimited Drinks, Ramen & Fruits</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <i class="ph-bold ph-check text-primary"></i>
-                                <span>Free GoPro Photography</span>
-                            </li>
+                        <ul id="part2-highlights" class="space-y-6 mb-10">
+                            <!-- Dynamically populated -->
                         </ul>
-                        <a href="/yacht-tour" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all mt-auto">
-                            Full Hopping Tour Details <i class="ph-bold ph-arrow-right"></i>
+                        <a id="part2-link" href="/yacht-tour" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all mt-auto">
+                            Full Details <i class="ph-bold ph-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -315,64 +274,11 @@
         </div>
     </section>
 
-    <!-- Essential Tour Information (Combined) -->
+    <!-- Logistics Section -->
     <section class="py-24 bg-light overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Land Tour Info -->
-                <div class="fade-right bg-white rounded-[3rem] p-10 md:p-12 shadow-xl border border-gray-100 h-full">
-                    <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">Land Tour Logistics</span>
-                    <h3 class="text-2xl font-bold text-secondary mb-8 flex items-center gap-3">
-                        <i class="ph ph-info text-primary"></i> Meeting Information
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Meeting / Start</p>
-                            <p class="text-lg font-bold text-secondary">10:15 AM / 10:30 AM</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Meeting Point</p>
-                            <p class="text-lg font-bold text-secondary">Boracay Sean Office</p>
-                        </div>
-                    </div>
-                    <div class="pt-8 border-t border-gray-100">
-                        <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-4">Preparation</p>
-                        <ul class="flex flex-wrap gap-4">
-                            <li class="bg-light px-4 py-2 rounded-xl text-sm font-medium text-gray-600 flex items-center gap-2">
-                                <i class="ph ph-check text-primary"></i> Comfortable clothes
-                            </li>
-                            <li class="bg-light px-4 py-2 rounded-xl text-sm font-medium text-gray-600 flex items-center gap-2">
-                                <i class="ph ph-check text-primary"></i> Personal items
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Yacht Tour Info -->
-                <div class="fade-left bg-white rounded-[3rem] p-10 md:p-12 shadow-xl border border-gray-100 h-full">
-                    <span class="inline-block px-4 py-1 rounded-full bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest mb-6">Yacht Tour Logistics</span>
-                    <h3 class="text-2xl font-bold text-secondary mb-8 flex items-center gap-3">
-                        <i class="ph ph-info text-primary"></i> Meeting Information
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Meeting / Start</p>
-                            <p class="text-lg font-bold text-secondary">13:15 PM / 13:30 PM</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Meeting Points</p>
-                            <p class="text-sm font-bold text-secondary"><span class="text-primary">Front:</span> 8bythebeach (S3)</p>
-                            <p class="text-sm font-bold text-secondary mt-1"><span class="text-primary">Back:</span> Bulabog Beach</p>
-                        </div>
-                    </div>
-                    <!-- Special Event Alert -->
-                    <div class="pt-8 border-t border-gray-100 bg-primary/5 -mx-10 -mb-10 p-10 rounded-b-[3rem]">
-                        <h4 class="text-lg font-bold text-secondary mb-2 flex items-center gap-2">
-                            <i class="ph-fill ph-gift text-primary"></i> Anniversary Celebration
-                        </h4>
-                        <p class="text-sm text-gray-600 italic">Birthday, Proposal, or Anniversary? Request in advance for a free surprise event!</p>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12" id="logistics-grid">
+                <!-- Dynamically populated -->
             </div>
         </div>
     </section>
@@ -492,11 +398,11 @@
             <h2 class="fade-up text-5xl md:text-7xl font-heading font-bold mb-10 max-w-5xl mx-auto leading-snug tracking-wide">
                 Ready for the <br> <span class="text-primary italic">Ultimate Adventure?</span>
             </h2>
-            <p class="fade-up text-xl text-gray-300 mb-12 max-w-2xl mx-auto delay-100">
-                Book the Land + Hopping Combo and secure your complete Boracay vacation today. Limited spots available daily.
+            <p id="cta-description" class="fade-up text-xl text-gray-300 mb-12 max-w-2xl mx-auto delay-100">
+                Book your premium combo bundle and secure your complete Boracay vacation today. Limited spots available daily.
             </p>
             <div class="fade-up flex flex-col sm:flex-row items-center justify-center gap-6 delay-200">
-                <a href="/booking?tour=combo" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-secondary transition-all transform hover:scale-105 shadow-2xl shadow-primary/40 flex items-center justify-center gap-3">
+                <a id="cta-booking-link" href="/booking?tour=combo1" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-secondary transition-all transform hover:scale-105 shadow-2xl shadow-primary/40 flex items-center justify-center gap-3">
                     Website Booking <i class="ph-bold ph-calendar"></i>
                 </a>
                 <a href="https://www.facebook.com/blackpearl.boracaysean/" target="_blank" class="w-full sm:w-auto bg-[#1877F2] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#166fe5] transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center gap-3">
@@ -559,9 +465,9 @@
         <div class="bg-white/80 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-2xl flex items-center justify-between gap-4">
             <div>
                 <span class="text-gray-400 text-xs font-bold uppercase block tracking-widest">Starts From</span>
-                <span class="text-secondary font-bold text-xl">2,500 PHP</span>
+                <span id="sticky-price" class="text-secondary font-bold text-xl">2,500 PHP</span>
             </div>
-            <a href="/booking?tour=combo" class="bg-primary text-white px-8 py-3 rounded-2xl font-bold flex-1 text-center shadow-lg shadow-primary/20">Book Now</a>
+            <a id="sticky-booking-link" href="/booking?tour=combo1" class="bg-primary text-white px-8 py-3 rounded-2xl font-bold flex-1 text-center shadow-lg shadow-primary/20">Book Now</a>
         </div>
     </div>
 
@@ -569,79 +475,269 @@
     <div id="desktop-cta" class="fixed top-24 right-8 z-50 hidden lg:block opacity-0 translate-x-10 transition-all duration-500">
         <div class="bg-white/90 backdrop-blur-xl p-6 rounded-[2rem] w-64 shadow-2xl border border-gray-100">
             <span class="text-primary font-bold text-[10px] uppercase tracking-[0.2em] mb-3 block">Best Value Offer</span>
-            <h4 class="text-secondary text-lg font-bold mb-2 leading-tight">Land + Hopping Combo</h4>
+            <h4 id="desktop-title" class="text-secondary text-lg font-bold mb-2 leading-tight">Elite Combo Bundle</h4>
             <div class="flex items-center gap-2 mb-4 text-accent text-sm">
                 <i class="ph-fill ph-star"></i>
                 <span class="text-secondary font-bold">5.0/5</span>
                 <span class="text-gray-500 text-xs">(Exclusive)</span>
             </div>
             <div class="mb-6">
-                <span class="text-secondary text-2xl font-bold">2,500 PHP</span>
+                <span id="desktop-price" class="text-secondary text-2xl font-bold">2,500 PHP</span>
             </div>
-            <a href="/booking?tour=combo" class="block w-full text-center bg-primary text-white py-3 rounded-xl font-bold text-sm hover:shadow-[0_0_20px_rgba(41,211,208,0.4)] transition-all">
+            <a id="desktop-booking-link" href="/booking?tour=combo1" class="block w-full text-center bg-primary text-white py-3 rounded-xl font-bold text-sm hover:shadow-[0_0_20px_rgba(41,211,208,0.4)] transition-all">
                 Reserve Now
             </a>
         </div>
     </div>
 
-    <script type="module" src="main.js"></script>
-    <script>
-        // Sequential Video Switcher for Combo Page
-        const landVideos = [
-            { src: 'land_tour_highlights.mp4', label: 'Boracay Land Tour' },
-            { src: 'puka_beach.mp4', label: 'Puka Beach' },
-            { src: 'newcoast.mp4', label: 'Boracay Newcoast' },
-            { src: 'newcoast_keyhole.mp4', label: 'Newcoast Keyhole' },
-            { src: 'mangrove.mp4', label: 'Mangrove Eco Park' },
-            { src: 'sinagpa.mp4', label: 'Sinagpa Beach' },
-            { src: 'bulabog.mp4', label: 'Bulabog Beach' },
-            { src: 'leaning_coconut.mp4', label: 'Leaning Coconut Tree' }
-        ];
-
-        const yachtVideos = [
-            { src: 'hopping_tour_compressed.mp4', label: 'Yacht Tour Highlights' },
-            { src: 'slide.mp4', label: 'Giant Water Slide' },
-            { src: 'diving.mp4', label: 'Rooftop Diving' },
-            { src: 'freediving.mp4', label: 'Free Diving' },
-            { src: 'kayak.mp4', label: 'Kayaking' },
-            { src: 'paddleboard.mp4', label: 'Paddleboarding' },
-            { src: 'slide_balinghai.mp4', label: 'Balinghai Adventure' },
-            { src: 'dance.mp4', label: 'Onboard Dance Party' },
-            { src: 'song.mp4', label: 'Live Performance' }
-        ];
-
-        function createVideoSwitcher(videoId, labelId, videoList) {
-            const videoElem = document.getElementById(videoId);
-            const labelElem = document.getElementById(labelId);
-            let currentIndex = 0;
-
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % videoList.length;
-                const nextVideo = videoList[currentIndex];
-                
-                // Fade effect using CSS opacity if desired, or simple source switch
-                videoElem.style.opacity = '0';
-                
-                setTimeout(() => {
-                    videoElem.src = nextVideo.src;
-                    labelElem.textContent = nextVideo.label;
-                    videoElem.muted = true;
-                    videoElem.play();
-                    videoElem.style.opacity = '1';
-                }, 500);
-            }, 4000); // Switch every 4 seconds
-        }
-
-        // Initialize switchers when DOM is loaded
+    <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
-            createVideoSwitcher('land-preview-video', 'land-video-label', landVideos);
-            createVideoSwitcher('yacht-preview-video', 'yacht-video-label', yachtVideos);
-            
-            // Add smooth transition style to videos
-            const videos = document.querySelectorAll('#land-preview-video, #yacht-preview-video');
-            videos.forEach(v => {
-                v.style.transition = 'opacity 0.5s ease-in-out';
+            // --- Sticky Header Scroll Effect ---
+            const header = document.getElementById('header');
+            const logoText = document.getElementById('logo-text');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                    header.classList.remove('bg-transparent', 'py-6');
+                    logoText.classList.replace('text-white', 'text-secondary');
+                    navLinks.forEach(link => link.classList.replace('text-white', 'text-secondary'));
+                } else {
+                    header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                    header.classList.add('bg-transparent', 'py-6');
+                    logoText.classList.replace('text-secondary', 'text-white');
+                    navLinks.forEach(link => link.classList.replace('text-secondary', 'text-white'));
+                }
             });
+
+            // --- Combo Content Definitions ---
+            const comboData = {
+                'combo1': {
+                    title: 'Land + Hopping <br> <span class="text-primary italic">Combo Package</span>',
+                    subtitle: 'Ultimate Land & Sea Bundle',
+                    price: 2500,
+                    individualValue: 2600,
+                    items: [
+                        { name: 'Pearl Hopping Tour', price: 1900 },
+                        { name: 'Premium Land Tour', price: 700 }
+                    ],
+                    part1: {
+                        title: 'Scenic Land Exploration',
+                        icon: 'ph-jeep',
+                        video: 'land_tour_highlights.mp4',
+                        link: '/land-tour',
+                        highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
+                    },
+                    part2: {
+                        title: 'Luxury Yacht Adventure',
+                        icon: 'ph-sailboat',
+                        video: 'hopping_tour_compressed.mp4',
+                        link: '/yacht-tour',
+                        highlights: ['Yacht Admission & Snorkeling', 'Giant Slide & Rooftop Diving', 'Unlimited Drinks & Ramen', 'Free GoPro Photography']
+                    }
+                },
+                'combo2': {
+                    title: 'Land + Whale Shark <br> <span class="text-primary italic">Combo Package</span>',
+                    subtitle: 'Island & Wildlife Bundle',
+                    price: 3500,
+                    individualValue: 3600,
+                    items: [
+                        { name: 'Whale Shark Tour', price: 2900 },
+                        { name: 'Premium Land Tour', price: 700 }
+                    ],
+                    part1: {
+                        title: 'Scenic Land Exploration',
+                        icon: 'ph-jeep',
+                        video: 'land_tour_highlights.mp4',
+                        link: '/land-tour',
+                        highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
+                    },
+                    part2: {
+                        title: 'Whale Shark Encounter',
+                        icon: 'ph-fish',
+                        video: 'whale_shark.mp4',
+                        link: '/whale-tour',
+                        highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
+                    }
+                },
+                'combo3': {
+                    title: 'Yacht + Whale Shark <br> <span class="text-primary italic">Combo Package</span>',
+                    subtitle: 'Luxury & Wildlife Bundle',
+                    price: 4500,
+                    individualValue: 4800,
+                    items: [
+                        { name: 'Whale Shark Tour', price: 2900 },
+                        { name: 'Pearl Hopping Tour', price: 1900 }
+                    ],
+                    part1: {
+                        title: 'Luxury Yacht Adventure',
+                        icon: 'ph-sailboat',
+                        video: 'hopping_tour_compressed.mp4',
+                        link: '/yacht-tour',
+                        highlights: ['Yacht Admission & Snorkeling', 'Giant Slide & Rooftop Diving', 'Unlimited Drinks & Ramen', 'Free GoPro Photography']
+                    },
+                    part2: {
+                        title: 'Whale Shark Encounter',
+                        icon: 'ph-fish',
+                        video: 'whale_shark.mp4',
+                        link: '/whale-tour',
+                        highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
+                    }
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type') || 'combo1';
+            const data = comboData[type] || comboData['combo1'];
+
+            // Update Hero & Core Info
+            document.getElementById('combo-title').innerHTML = data.title;
+            document.getElementById('combo-subtitle').textContent = data.subtitle;
+            document.getElementById('combo-booking-link').href = `/booking?tour=${type}`;
+            document.getElementById('final-combo-price').innerHTML = `${data.price.toLocaleString()} <span class="text-2xl font-normal text-primary">PHP</span>`;
+            document.getElementById('savings-text').textContent = `Save ${(data.individualValue - data.price).toLocaleString()} PHP per person instantly!`;
+
+            // Update Sticky Elements
+            document.getElementById('cta-booking-link').href = `/booking?tour=${type}`;
+            document.getElementById('sticky-booking-link').href = `/booking?tour=${type}`;
+            document.getElementById('desktop-booking-link').href = `/booking?tour=${type}`;
+            document.getElementById('sticky-price').textContent = `${data.price.toLocaleString()} PHP`;
+            document.getElementById('desktop-price').textContent = `${data.price.toLocaleString()} PHP`;
+
+            // Pricing List
+            const pricingList = document.getElementById('pricing-list');
+            pricingList.innerHTML = ''; // Clear previous
+            data.items.forEach(item => {
+                pricingList.innerHTML += `
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <span class="text-gray-400">${item.name}</span>
+                        <span class="font-bold text-sm md:text-xl">${item.price.toLocaleString()} PHP</span>
+                    </div>
+                `;
+            });
+            pricingList.innerHTML += `
+                <div class="flex items-center justify-between pt-4">
+                    <span class="text-gray-400 uppercase tracking-widest text-sm font-bold">Total Individual Value</span>
+                    <span class="text-red-400 font-bold text-2xl line-through">${data.individualValue.toLocaleString()} PHP</span>
+                </div>
+            `;
+
+            // Parts
+            document.getElementById('part1-title').textContent = data.part1.title;
+            document.getElementById('part1-icon').className = `ph ${data.part1.icon}`;
+            document.getElementById('part1-video-src').src = data.part1.video;
+            document.getElementById('part1-video').load();
+            document.getElementById('part1-link').href = data.part1.link;
+            document.getElementById('part1-highlights').innerHTML = data.part1.highlights.map(h => `
+                <li class="flex items-center gap-4">
+                    <i class="ph-bold ph-check text-primary"></i>
+                    <span>${h}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('part2-title').textContent = data.part2.title;
+            document.getElementById('part2-icon').className = `ph ${data.part2.icon}`;
+            document.getElementById('part2-video-src').src = data.part2.video;
+            document.getElementById('part2-video').load();
+            document.getElementById('part2-link').href = data.part2.link;
+            document.getElementById('part2-highlights').innerHTML = data.part2.highlights.map(h => `
+                <li class="flex items-center gap-4">
+                    <i class="ph-bold ph-check text-primary"></i>
+                    <span>${h}</span>
+                </li>
+            `).join('');
+
+            // Logistics Grid
+            const logisticsGrid = document.getElementById('logistics-grid');
+            const logisticsData = {
+                'land': {
+                    tag: 'Land Tour Logistics',
+                    time: '10:15 AM / 10:30 AM',
+                    point: 'Boracay Sean Office',
+                    preps: ['Comfortable clothes', 'Personal items']
+                },
+                'yacht': {
+                    tag: 'Yacht Tour Logistics',
+                    time: '13:15 PM / 13:30 PM',
+                    point: '<span class="text-primary">Front:</span> 8bythebeach (S3)<br><span class="text-primary">Back:</span> Bulabog Beach',
+                    preps: ['Swimwear', 'Sunscreen', 'Towel']
+                },
+                'whale': {
+                    tag: 'Whale Shark Logistics',
+                    time: '6:00 AM Sharp',
+                    point: 'Cagban or Tambisaan Port',
+                    preps: ['Swimwear', 'Eco-Sunscreen', 'Extra Clothes']
+                }
+            };
+
+            const getLogisticsHtml = (key) => {
+                const l = logisticsData[key];
+                return `
+                    <div class="fade-up bg-white rounded-[3rem] p-10 md:p-12 shadow-xl border border-gray-100 h-full">
+                        <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">${l.tag}</span>
+                        <h3 class="text-2xl font-bold text-secondary mb-8 flex items-center gap-3">
+                            <i class="ph ph-info text-primary"></i> Information
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Meeting / Start</p>
+                                <p class="text-lg font-bold text-secondary">${l.time}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Meeting Point</p>
+                                <p class="text-sm font-bold text-secondary">${l.point}</p>
+                            </div>
+                        </div>
+                        <div class="pt-8 border-t border-gray-100">
+                            <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-4">Preparation</p>
+                            <ul class="flex flex-wrap gap-4">
+                                ${l.preps.map(p => `
+                                    <li class="bg-light px-4 py-2 rounded-xl text-sm font-medium text-gray-600 flex items-center gap-2">
+                                        <i class="ph ph-check text-primary"></i> ${p}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            };
+
+            if (type === 'combo1') {
+                logisticsGrid.innerHTML = getLogisticsHtml('land') + getLogisticsHtml('yacht');
+            } else if (type === 'combo2') {
+                logisticsGrid.innerHTML = getLogisticsHtml('land') + getLogisticsHtml('whale');
+            } else if (type === 'combo3') {
+                logisticsGrid.innerHTML = getLogisticsHtml('yacht') + getLogisticsHtml('whale');
+            }
+
+            // --- Sticky Mobile CTA Logic ---
+            const stickyMobileCTA = document.getElementById('sticky-cta');
+            const stickyDesktopCTA = document.getElementById('desktop-cta');
+            const heroHeight = window.innerHeight * 0.8;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > heroHeight) {
+                    if (stickyMobileCTA) stickyMobileCTA.classList.remove('translate-y-full');
+                    if (stickyDesktopCTA) {
+                        stickyDesktopCTA.classList.remove('opacity-0', 'translate-x-10');
+                        stickyDesktopCTA.classList.add('opacity-100', 'translate-x-0');
+                    }
+                } else {
+                    if (stickyMobileCTA) stickyMobileCTA.classList.add('translate-y-full');
+                    if (stickyDesktopCTA) {
+                        stickyDesktopCTA.classList.add('opacity-0', 'translate-x-10');
+                        stickyDesktopCTA.classList.remove('opacity-100', 'translate-x-0');
+                    }
+                }
+            });
+
+            // --- Intersection Observer for Fade-Up ---
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+            }, observerOptions);
+            document.querySelectorAll('.fade-up, .fade-right, .fade-left').forEach(el => observer.observe(el));
         });
     </script>
 </body>

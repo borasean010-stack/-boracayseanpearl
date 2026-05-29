@@ -315,64 +315,85 @@
                 </div>
             </div>
 
-            <!-- New: Ultimate Combo Package -->
-            <div class="fade-up mt-20" style="transition-delay: 400ms;">
-                <div class="relative rounded-[3rem] overflow-hidden bg-secondary text-white shadow-2xl group">
-                    <!-- Split Background -->
-                    <div class="absolute inset-0 flex">
-                        <div class="w-1/2 h-full relative">
-                            <img loading="lazy" src="land.jpg" alt="Land Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-secondary/20"></div>
+            <!-- Combo Packages Section -->
+            <div class="mt-32">
+                <div class="text-center mb-16">
+                    <span class="inline-block px-4 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-xs font-bold uppercase tracking-widest mb-4">Elite Bundles</span>
+                    <h2 class="fade-up text-4xl md:text-6xl font-heading font-bold text-secondary mb-4">
+                        Triple <span class="text-primary italic">Combo</span> Packages
+                    </h2>
+                    <p class="fade-up text-gray-500 max-w-2xl mx-auto text-lg">
+                        Maximize your Boracay experience with our curated premium bundles. Save more when you book your land and sea adventures together.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Combo 1: Land + Yacht -->
+                    <div class="fade-up bg-secondary rounded-[3rem] overflow-hidden shadow-2xl group flex flex-col h-full text-white relative" style="transition-delay: 100ms;">
+                        <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
+                            <img loading="lazy" src="hopping3.jpg" alt="Combo 1" class="w-full h-full object-cover">
                         </div>
-                        <div class="w-1/2 h-full relative">
-                            <img loading="lazy" src="hopping3.jpg" alt="Hopping Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-secondary/20"></div>
-                        </div>
-                        <!-- Centered Overlay to blend the split and ensure text readability -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/40 to-transparent"></div>
-                    </div>
-                    
-                    <div class="relative z-10 p-10 md:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <span class="inline-block px-4 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-xs font-bold uppercase tracking-widest mb-6">Best Value Experience</span>
-                            <h3 class="text-4xl md:text-6xl font-heading font-bold mb-6">Ultimate <span class="text-primary italic">Combo</span> Package</h3>
-                            <p class="text-gray-300 text-lg mb-8 leading-relaxed max-w-lg">
-                                Experience the best of both worlds! Combine the scenic beauty of our <span class="text-white font-semibold">Land Tour</span> with the luxury adventure of the <span class="text-white font-semibold">Pearl of Sean Hopping Tour</span> for a complete Boracay experience.
-                            </p>
-                            
-                            <div class="flex flex-wrap gap-4 mb-10">
-                                <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10">
-                                    <i class="ph ph-check-circle text-primary"></i>
-                                    <span class="text-sm font-medium">Full Land Tour</span>
+                        <div class="p-10 relative z-10 flex flex-col h-full">
+                            <span class="text-primary font-bold text-xs uppercase tracking-widest mb-4">Combo 01</span>
+                            <h3 class="text-3xl font-heading font-bold mb-6">Land + <br>Yacht Hopping</h3>
+                            <ul class="space-y-4 mb-10 flex-grow">
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Full 3h Land Tour</li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Luxury Yacht Hopping</li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Premium Refreshments</li>
+                            </ul>
+                            <div class="border-t border-white/10 pt-8 mt-auto">
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-red-400 line-through text-sm">2,600 PHP</span>
+                                    <span class="text-3xl font-bold">2,500 <span class="text-sm font-normal text-primary">PHP</span></span>
                                 </div>
-                                <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10">
-                                    <i class="ph ph-check-circle text-primary"></i>
-                                    <span class="text-sm font-medium">Yacht Hopping Tour</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10">
-                                    <i class="ph ph-check-circle text-primary"></i>
-                                    <span class="text-sm font-medium">Premium Refreshments</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10">
-                                    <i class="ph ph-check-circle text-primary"></i>
-                                    <span class="text-sm font-medium">Free GoPro Photos</span>
-                                </div>
+                                <a href="package-tour?type=combo1" class="block w-full text-center bg-primary text-white py-4 rounded-2xl font-bold hover:bg-white hover:text-secondary transition-all">Book Combo 1</a>
                             </div>
                         </div>
-                        
-                        <div class="lg:text-right">
-                            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-[2.5rem] inline-block w-full lg:w-auto text-center lg:text-right">
-                                <p class="text-white text-sm uppercase tracking-widest mb-2 font-bold">Special Package Price</p>
-                                <div class="flex flex-col items-center lg:items-end gap-2 mb-8">
-                                    <span class="text-red-500 text-2xl line-through decoration-red-500/50">2,600 PHP</span>
-                                    <span class="text-5xl md:text-7xl font-bold text-white flex items-center justify-center lg:justify-end gap-3 w-full">
-                                        2,500 <span class="text-xl md:text-2xl font-normal text-primary">PHP</span>
-                                    </span>
+                    </div>
+
+                    <!-- Combo 2: Land + Whale Shark -->
+                    <div class="fade-up bg-secondary rounded-[3rem] overflow-hidden shadow-2xl group flex flex-col h-full text-white relative border-2 border-primary/30" style="transition-delay: 200ms;">
+                        <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
+                            <img loading="lazy" src="whale_shark.png" alt="Combo 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute top-6 right-6 bg-primary text-secondary text-[10px] font-bold px-4 py-1 rounded-full shadow-lg">POPULAR</div>
+                        <div class="p-10 relative z-10 flex flex-col h-full">
+                            <span class="text-primary font-bold text-xs uppercase tracking-widest mb-4">Combo 02</span>
+                            <h3 class="text-3xl font-heading font-bold mb-6">Land + <br>Whale Shark</h3>
+                            <ul class="space-y-4 mb-10 flex-grow">
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Full 3h Land Tour</li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Libertad Whale Shark Swim</li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Scenic Coastal Drive</li>
+                            </ul>
+                            <div class="border-t border-white/10 pt-8 mt-auto">
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-red-400 line-through text-sm">3,600 PHP</span>
+                                    <span class="text-3xl font-bold">3,500 <span class="text-sm font-normal text-primary">PHP</span></span>
                                 </div>
-                                <a href="package-tour" class="w-full lg:w-auto inline-flex bg-primary text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white hover:text-secondary transition-all shadow-xl shadow-primary/20 items-center justify-center">
-                                    Book Combo Package
-                                </a>
-                                <p class="text-white text-sm mt-6 italic">Save 100 PHP per person with this exclusive combo!</p>
+                                <a href="package-tour?type=combo2" class="block w-full text-center bg-primary text-white py-4 rounded-2xl font-bold hover:bg-white hover:text-secondary transition-all">Book Combo 2</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Combo 3: Yacht + Whale Shark -->
+                    <div class="fade-up bg-secondary rounded-[3rem] overflow-hidden shadow-2xl group flex flex-col h-full text-white relative" style="transition-delay: 300ms;">
+                        <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
+                            <img loading="lazy" src="libertad_hero.jpeg" alt="Combo 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-10 relative z-10 flex flex-col h-full">
+                            <span class="text-primary font-bold text-xs uppercase tracking-widest mb-4">Combo 03</span>
+                            <h3 class="text-3xl font-heading font-bold mb-6">Yacht + <br>Whale Shark</h3>
+                            <ul class="space-y-4 mb-10 flex-grow">
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Luxury Yacht Hopping</li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Libertad Whale Shark Swim</li>
+                                <li class="flex items-center gap-3 text-sm text-gray-300"><i class="ph ph-check-circle text-primary"></i> Elite Ocean Experience</li>
+                            </ul>
+                            <div class="border-t border-white/10 pt-8 mt-auto">
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-red-400 line-through text-sm">4,800 PHP</span>
+                                    <span class="text-3xl font-bold">4,500 <span class="text-sm font-normal text-primary">PHP</span></span>
+                                </div>
+                                <a href="package-tour?type=combo3" class="block w-full text-center bg-primary text-white py-4 rounded-2xl font-bold hover:bg-white hover:text-secondary transition-all">Book Combo 3</a>
                             </div>
                         </div>
                     </div>
