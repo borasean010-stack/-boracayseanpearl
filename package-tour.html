@@ -490,6 +490,34 @@
                 }
             });
 
+            // --- Video List Definitions ---
+            const landVideos = [
+                { src: 'land_tour_highlights.mp4', label: 'Boracay Land Tour' },
+                { src: 'puka_beach.mp4', label: 'Puka Beach' },
+                { src: 'newcoast.mp4', label: 'Boracay Newcoast' },
+                { src: 'newcoast_keyhole.mp4', label: 'Newcoast Keyhole' },
+                { src: 'mangrove.mp4', label: 'Mangrove Eco Park' },
+                { src: 'sinagpa.mp4', label: 'Sinagpa Beach' },
+                { src: 'bulabog.mp4', label: 'Bulabog Beach' },
+                { src: 'leaning_coconut.mp4', label: 'Leaning Coconut Tree' }
+            ];
+
+            const yachtVideos = [
+                { src: 'hopping_tour_compressed.mp4', label: 'Yacht Tour Highlights' },
+                { src: 'slide.mp4', label: 'Giant Water Slide' },
+                { src: 'diving.mp4', label: 'Rooftop Diving' },
+                { src: 'freediving.mp4', label: 'Free Diving' },
+                { src: 'kayak.mp4', label: 'Kayaking' },
+                { src: 'paddleboard.mp4', label: 'Paddleboarding' },
+                { src: 'slide_balinghai.mp4', label: 'Balinghai Adventure' },
+                { src: 'dance.mp4', label: 'Onboard Dance Party' },
+                { src: 'song.mp4', label: 'Live Performance' }
+            ];
+
+            const whaleVideos = [
+                { src: 'whale_shark.mp4', label: 'Whale Shark Encounter' }
+            ];
+
             // --- Combo Content Definitions ---
             const comboData = {
                 'combo1': {
@@ -510,14 +538,14 @@
                     part1: {
                         title: 'Scenic Land Exploration',
                         icon: 'ph-jeep',
-                        video: 'land_tour_highlights.mp4',
+                        videoList: landVideos,
                         link: '/land-tour',
                         highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
                     },
                     part2: {
                         title: 'Luxury Yacht Adventure',
                         icon: 'ph-sailboat',
-                        video: 'hopping_tour_compressed.mp4',
+                        videoList: yachtVideos,
                         link: '/yacht-tour',
                         highlights: ['Yacht Admission & Snorkeling', 'Giant Slide & Rooftop Diving', 'Unlimited Drinks & Ramen', 'Free GoPro Photography']
                     }
@@ -540,14 +568,14 @@
                     part1: {
                         title: 'Scenic Land Exploration',
                         icon: 'ph-jeep',
-                        video: 'land_tour_highlights.mp4',
+                        videoList: landVideos,
                         link: '/land-tour',
                         highlights: ['Premium Air-conditioned Van', 'Newcoast Keyhole & Viewpoint', 'Puka Shell & Sinagpa Beach', 'Mangrove Eco Park Sanctuary']
                     },
                     part2: {
                         title: 'Whale Shark Encounter',
                         icon: 'ph-fish',
-                        video: 'whale_shark.mp4',
+                        videoList: whaleVideos,
                         link: '/whale-tour',
                         highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
                     }
@@ -570,14 +598,14 @@
                     part1: {
                         title: 'Luxury Yacht Adventure',
                         icon: 'ph-sailboat',
-                        video: 'hopping_tour_compressed.mp4',
+                        videoList: yachtVideos,
                         link: '/yacht-tour',
                         highlights: ['Yacht Admission & Snorkeling', 'Giant Slide & Rooftop Diving', 'Unlimited Drinks & Ramen', 'Free GoPro Photography']
                     },
                     part2: {
                         title: 'Whale Shark Encounter',
                         icon: 'ph-fish',
-                        video: 'whale_shark.mp4',
+                        videoList: whaleVideos,
                         link: '/whale-tour',
                         highlights: ['Whale Shark Swimming', 'Coastal Scenic Drive', 'Professional Snorkeling Gear', 'Ethical Wildlife Experience']
                     }
@@ -588,7 +616,7 @@
             const type = urlParams.get('type') || 'combo1';
             const data = comboData[type] || comboData['combo1'];
 
-            // Update Hero & Core Info
+            // --- UI Update Logic ---
             document.getElementById('combo-title').innerHTML = data.title;
             document.getElementById('combo-subtitle').textContent = data.subtitle;
             document.getElementById('combo-booking-link').href = `/booking?tour=${type}`;
@@ -611,7 +639,7 @@
                 heroImgSrc.src = data.hero.src;
             }
 
-            // Update Benefits
+            // Benefits
             const benefitsList = document.getElementById('benefits-list');
             benefitsList.innerHTML = data.benefits.map(b => `
                 <div class="flex gap-6">
@@ -625,16 +653,9 @@
                 </div>
             `).join('');
 
-            // Update Sticky Elements
-            document.getElementById('cta-booking-link').href = `/booking?tour=${type}`;
-            document.getElementById('sticky-booking-link').href = `/booking?tour=${type}`;
-            document.getElementById('desktop-booking-link').href = `/booking?tour=${type}`;
-            document.getElementById('sticky-price').textContent = `${data.price.toLocaleString()} PHP`;
-            document.getElementById('desktop-price').textContent = `${data.price.toLocaleString()} PHP`;
-
             // Pricing List
             const pricingList = document.getElementById('pricing-list');
-            pricingList.innerHTML = ''; // Clear previous
+            pricingList.innerHTML = '';
             data.items.forEach(item => {
                 pricingList.innerHTML += `
                     <div class="flex items-center justify-between border-b border-white/10 pb-4">
@@ -650,11 +671,34 @@
                 </div>
             `;
 
-            // Parts
+            // Sequential Video Switcher Logic
+            function createVideoSwitcher(videoElem, labelElem, videoList) {
+                if (!videoList || videoList.length <= 1) return;
+                let currentIndex = 0;
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % videoList.length;
+                    const nextVideo = videoList[currentIndex];
+                    videoElem.style.opacity = '0';
+                    setTimeout(() => {
+                        videoElem.src = nextVideo.src;
+                        labelElem.textContent = nextVideo.label;
+                        videoElem.muted = true;
+                        videoElem.play();
+                        videoElem.style.opacity = '1';
+                    }, 500);
+                }, 4000);
+            }
+
+            // Part 1 & Part 2 Rendering
+            const p1Video = document.getElementById('part1-video');
+            const p1Label = document.getElementById('part1-video-label');
+            const p2Video = document.getElementById('part2-video');
+            const p2Label = document.getElementById('part2-video-label');
+
             document.getElementById('part1-title').textContent = data.part1.title;
             document.getElementById('part1-icon').className = `ph ${data.part1.icon}`;
-            document.getElementById('part1-video-src').src = data.part1.video;
-            document.getElementById('part1-video').load();
+            p1Video.src = data.part1.videoList[0].src;
+            p1Label.textContent = data.part1.videoList[0].label;
             document.getElementById('part1-link').href = data.part1.link;
             document.getElementById('part1-highlights').innerHTML = data.part1.highlights.map(h => `
                 <li class="flex items-center gap-4">
@@ -665,8 +709,8 @@
 
             document.getElementById('part2-title').textContent = data.part2.title;
             document.getElementById('part2-icon').className = `ph ${data.part2.icon}`;
-            document.getElementById('part2-video-src').src = data.part2.video;
-            document.getElementById('part2-video').load();
+            p2Video.src = data.part2.videoList[0].src;
+            p2Label.textContent = data.part2.videoList[0].label;
             document.getElementById('part2-link').href = data.part2.link;
             document.getElementById('part2-highlights').innerHTML = data.part2.highlights.map(h => `
                 <li class="flex items-center gap-4">
@@ -674,6 +718,12 @@
                     <span>${h}</span>
                 </li>
             `).join('');
+
+            // Start Switchers
+            p1Video.style.transition = 'opacity 0.5s ease-in-out';
+            p2Video.style.transition = 'opacity 0.5s ease-in-out';
+            createVideoSwitcher(p1Video, p1Label, data.part1.videoList);
+            createVideoSwitcher(p2Video, p2Label, data.part2.videoList);
 
             // Logistics Grid
             const logisticsGrid = document.getElementById('logistics-grid');
