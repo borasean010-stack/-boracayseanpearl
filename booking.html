@@ -497,7 +497,8 @@
         </div>
     </footer>
 
-    <script type="module">
+</body>
+</html>    <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp, initializeFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -529,7 +530,10 @@
             const tourMap = {
                 'land': { id: 'land', name: 'Boracay Land Tour', price: 700, icon: 'ph-jeep' },
                 'yacht': { id: 'yacht', name: 'Pearl Hopping Tour', price: 1900, icon: 'ph-sailboat' },
-                'combo': { id: 'combo', name: 'Ultimate Combo Package', price: 2500, icon: 'ph-sparkles', isCombo: true }
+                'whale': { id: 'whale', name: 'Libertad Whale Shark Tour', price: 2900, icon: 'ph-fish' },
+                'combo1': { id: 'combo1', name: 'Yacht + Whale Combo', price: 4500, icon: 'ph-sparkles', isCombo: true },
+                'combo2': { id: 'combo2', name: 'Whale + Land Combo', price: 3500, icon: 'ph-sparkles', isCombo: true },
+                'combo3': { id: 'combo3', name: 'Yacht + Land Combo', price: 2500, icon: 'ph-sparkles', isCombo: true }
             };
 
             const urlParams = new URLSearchParams(window.location.search);
@@ -620,7 +624,19 @@
             let cal1, cal2;
             if (tour.isCombo) {
                 document.getElementById('cal-2-box').classList.remove('hidden');
-                document.getElementById('label-cal-1').textContent = 'Land Tour Date';
+                
+                // Set Labels based on Combo Type
+                if (tour.id === 'combo1') {
+                    document.getElementById('label-cal-1').textContent = 'Yacht Tour Date';
+                    document.querySelector('#cal-2-box label').textContent = 'Whale Shark Date';
+                } else if (tour.id === 'combo2') {
+                    document.getElementById('label-cal-1').textContent = 'Whale Shark Date';
+                    document.querySelector('#cal-2-box label').textContent = 'Land Tour Date';
+                } else if (tour.id === 'combo3') {
+                    document.getElementById('label-cal-1').textContent = 'Yacht Tour Date';
+                    document.querySelector('#cal-2-box label').textContent = 'Land Tour Date';
+                }
+
                 document.getElementById('calendars-container').classList.add('md:grid-cols-2');
                 document.getElementById('calendars-container').classList.remove('md:flex', 'md:justify-center');
                 document.getElementById('calendar-wrapper').classList.add('grid-cols-1');
@@ -669,9 +685,18 @@
                 const totalPrice = (adults + children) * tour.price;
 
                 document.getElementById('summary-tour-name').textContent = tour.name;
-                const dateText = tour.isCombo 
-                    ? `Land: ${cal1.selectedDate.toLocaleDateString()}<br>Hopping: ${cal2.selectedDate.toLocaleDateString()}` 
-                    : cal1.selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                
+                let dateText = '';
+                if (tour.id === 'combo1') {
+                    dateText = `Yacht: ${cal1.selectedDate.toLocaleDateString()}<br>Whale: ${cal2.selectedDate.toLocaleDateString()}`;
+                } else if (tour.id === 'combo2') {
+                    dateText = `Whale: ${cal1.selectedDate.toLocaleDateString()}<br>Land: ${cal2.selectedDate.toLocaleDateString()}`;
+                } else if (tour.id === 'combo3') {
+                    dateText = `Yacht: ${cal1.selectedDate.toLocaleDateString()}<br>Land: ${cal2.selectedDate.toLocaleDateString()}`;
+                } else {
+                    dateText = cal1.selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                }
+
                 document.getElementById('summary-date').innerHTML = dateText;
                 document.getElementById('summary-pax').textContent = `${adults} Adults${children > 0 ? `, ${children} Children` : ''}`;
                 document.getElementById('summary-subtotal').textContent = `${totalPrice.toLocaleString()} PHP`;
@@ -734,5 +759,4 @@
             document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
         });
     </script>
-</body>
-</html>
+</body></html>
