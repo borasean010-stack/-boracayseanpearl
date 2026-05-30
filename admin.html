@@ -127,12 +127,22 @@
                         </div>
                     </div>
 
+                    <!-- Date Tabs -->
+                    <div class="flex border-b border-gray-100 mb-6 overflow-x-auto no-scrollbar">
+                        <button data-date-tab="today" class="date-tab active px-6 py-3 text-sm font-bold border-b-2 border-primary text-primary transition-all whitespace-nowrap">Today</button>
+                        <button data-date-tab="upcoming" class="date-tab px-6 py-3 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-secondary transition-all whitespace-nowrap">Upcoming</button>
+                        <button data-date-tab="past" class="date-tab px-6 py-3 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-secondary transition-all whitespace-nowrap">Past</button>
+                        <button data-date-tab="all" class="date-tab px-6 py-3 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-secondary transition-all whitespace-nowrap">All Bookings</button>
+                    </div>
+
                     <div class="flex flex-col md:flex-row gap-4 mb-8 justify-between items-start md:items-center">
                         <div class="flex gap-4">
                             <select id="filter-tour" class="bg-white border border-gray-100 rounded-xl px-4 py-2 text-sm font-medium outline-none focus:border-primary">
                                 <option value="all">All Tours</option>
-                                <option value="yacht-hopping">Yacht Hopping</option>
+                                <option value="yacht">Yacht Hopping</option>
                                 <option value="land">Land Tour</option>
+                                <option value="whale">Whale Shark</option>
+                                <option value="combo">Combo Tours</option>
                             </select>
                             <select id="filter-status" class="bg-white border border-gray-100 rounded-xl px-4 py-2 text-sm font-medium outline-none focus:border-primary">
                                 <option value="all">All Status</option>
@@ -144,7 +154,7 @@
                         </div>
                         <div class="relative w-full md:w-64">
                             <i class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                            <input type="text" placeholder="Search customer..." class="w-full bg-white border border-gray-100 rounded-xl pl-12 pr-4 py-2 text-sm outline-none focus:border-primary">
+                            <input type="text" id="search-input" placeholder="Search customer..." class="w-full bg-white border border-gray-100 rounded-xl pl-12 pr-4 py-2 text-sm outline-none focus:border-primary">
                         </div>
                     </div>
 
@@ -204,6 +214,9 @@
             } catch (e) { alert("WRITE FAILED: " + e.message); }
         });
 
+        let allDisplayRecords = [];
+        let currentDateTab = 'today';
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 document.getElementById('login-screen').classList.add('hidden');
@@ -227,6 +240,7 @@
 
         document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
 
+        // Navigation Tabs
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -241,75 +255,250 @@
             });
         });
 
+        // Date Tabs
+        const dateTabs = document.querySelectorAll('.date-tab');
+        dateTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                dateTabs.forEach(t => {
+                    t.classList.remove('active', 'border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-gray-400');
+                });
+                tab.classList.add('active', 'border-primary', 'text-primary');
+                tab.classList.remove('border-transparent', 'text-gray-400');
+                currentDateTab = tab.dataset.dateTab;
+                applyFiltersAndRender();
+            });
+        });
+
+        // Filters and Search
+        document.getElementById('filter-tour').addEventListener('change', applyFiltersAndRender);
+        document.getElementById('filter-status').addEventListener('change', applyFiltersAndRender);
+        document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
+
         async function loadBookings() {
             const list = document.getElementById('bookings-list');
-            list.innerHTML = '<tr><td colspan="7" class="px-6 py-10 text-center">Loading...</td></tr>';
+            list.innerHTML = '<tr><td colspan="8" class="px-6 py-10 text-center">Loading from database...</td></tr>';
             try {
-                const q = collection(db, "bookings");
+                const q = query(collection(db, "bookings"), orderBy("createdAt", "desc"));
                 const snap = await getDocs(q);
-                list.innerHTML = '';
-                if (snap.empty) { list.innerHTML = '<tr><td colspan="7" class="px-6 py-20 text-center">No reservations found.</td></tr>'; return; }
+                allDisplayRecords = [];
+                
                 let totalB = 0, totalR = 0, totalG = 0;
+                
                 snap.forEach(docSnap => {
-                    const data = docSnap.data(); totalB++; totalR += (data.totalPrice || 0); totalG += (data.paxAdult || 0) + (data.paxChild || 0);
-                    const row = document.createElement('tr');
-                    
-                    // Format dates (handle combo)
-                    const date1 = data.tourDate ? (data.tourDate.toDate ? data.tourDate.toDate().toLocaleDateString() : new Date(data.tourDate.seconds*1000).toLocaleDateString()) : 'N/A';
-                    let dateDisplay = `<p class="font-bold text-lg">${date1}</p>`;
-                    if (data.tourId === 'combo' && data.tourDate_2) {
-                        const date2 = data.tourDate_2.toDate ? data.tourDate_2.toDate().toLocaleDateString() : new Date(data.tourDate_2.seconds*1000).toLocaleDateString();
-                        dateDisplay = `
-                            <div class="space-y-1">
-                                <p class="text-xs text-primary font-bold uppercase">Yacht: ${date1}</p>
-                                <p class="text-xs text-accent-700 font-bold uppercase">Land: ${date2}</p>
-                            </div>
-                        `;
-                    }
+                    const data = docSnap.data();
+                    const id = docSnap.id;
+                    totalB++; 
+                    totalR += (data.totalPrice || 0); 
+                    totalG += (data.paxAdult || 0) + (data.paxChild || 0);
 
-                    row.innerHTML = `
-                        <td class="px-6 py-4"><span class="status-badge ${getStatusClass(data.status)}">${data.status}</span></td>
-                        <td class="px-6 py-4">${dateDisplay}</td>
-                        <td class="px-6 py-4"><p class="font-bold">${data.customerName || 'N/A'}</p><p class="text-xs text-gray-400">${data.contactPhone || ''}</p></td>
-                        <td class="px-6 py-4"><span class="text-xs font-bold uppercase">${data.tourId || 'N/A'}</span></td>
-                        <td class="px-6 py-4 text-sm">${data.paxAdult}A, ${data.paxChild}C</td>
-                        <td class="px-6 py-4 font-bold">${(data.totalPrice||0).toLocaleString()} PHP</td>
-                        <td class="px-6 py-4"><span class="text-xs font-bold text-blue-500">${data.paymentMethod || 'GCash'}</span></td>
-                        <td class="px-6 py-4"><button class="text-primary font-bold text-xs view-btn" data-id="${docSnap.id}">Manage</button></td>
-                    `;
-                    list.appendChild(row);
+                    // Helper to create a record object
+                    const createRecord = (tourName, date, isSubTour = false) => {
+                        return {
+                            id: id,
+                            customerName: data.customerName || 'N/A',
+                            contactPhone: data.contactPhone || '',
+                            contactEmail: data.contactEmail || '',
+                            tourName: tourName,
+                            tourId: data.tourId,
+                            date: date ? (date.toDate ? date.toDate() : new Date(date.seconds * 1000)) : null,
+                            paxAdult: data.paxAdult || 0,
+                            paxChild: data.paxChild || 0,
+                            totalPrice: data.totalPrice || 0,
+                            paymentMethod: data.paymentMethod || 'GCash',
+                            status: data.status || 'Pending Payment',
+                            createdAt: data.createdAt ? (data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt.seconds * 1000)) : null,
+                            isSubTour: isSubTour
+                        };
+                    };
+
+                    if (data.tourId === 'combo1') { // Yacht + Whale
+                        allDisplayRecords.push(createRecord('Yacht (Combo)', data.tourDate, true));
+                        allDisplayRecords.push(createRecord('Whale (Combo)', data.tourDate_2, true));
+                    } else if (data.tourId === 'combo2') { // Whale + Land
+                        allDisplayRecords.push(createRecord('Whale (Combo)', data.tourDate, true));
+                        allDisplayRecords.push(createRecord('Land (Combo)', data.tourDate_2, true));
+                    } else if (data.tourId === 'combo3') { // Yacht + Land
+                        allDisplayRecords.push(createRecord('Yacht (Combo)', data.tourDate, true));
+                        allDisplayRecords.push(createRecord('Land (Combo)', data.tourDate_2, true));
+                    } else {
+                        // Standard tour
+                        let tourName = data.tourName || data.tourId || 'N/A';
+                        if (data.tourId === 'yacht') tourName = 'Pearl Hopping';
+                        if (data.tourId === 'land') tourName = 'Land Tour';
+                        if (data.tourId === 'whale') tourName = 'Whale Shark';
+                        allDisplayRecords.push(createRecord(tourName, data.tourDate));
+                    }
                 });
-                document.querySelectorAll('.view-btn').forEach(b => b.addEventListener('click', () => viewBookingDetail(b.dataset.id)));
+
                 document.getElementById('stat-total-bookings').textContent = totalB;
                 document.getElementById('stat-total-revenue').textContent = `${totalR.toLocaleString()} PHP`;
                 document.getElementById('stat-total-guests').textContent = totalG;
-            } catch (e) { console.error(e); }
+                
+                applyFiltersAndRender();
+            } catch (e) { 
+                console.error(e);
+                list.innerHTML = `<tr><td colspan="8" class="px-6 py-10 text-center text-red-500">Error loading data: ${e.message}</td></tr>`;
+            }
+        }
+
+        function applyFiltersAndRender() {
+            const list = document.getElementById('bookings-list');
+            const tourFilter = document.getElementById('filter-tour').value;
+            const statusFilter = document.getElementById('filter-status').value;
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let filtered = allDisplayRecords.filter(rec => {
+                // 1. Date Tab Filter
+                if (currentDateTab === 'today') {
+                    if (!rec.date) return false;
+                    const d = new Date(rec.date); d.setHours(0,0,0,0);
+                    if (d.getTime() !== today.getTime()) return false;
+                } else if (currentDateTab === 'upcoming') {
+                    if (!rec.date) return false;
+                    const d = new Date(rec.date); d.setHours(0,0,0,0);
+                    if (d.getTime() <= today.getTime()) return false;
+                } else if (currentDateTab === 'past') {
+                    if (!rec.date) return false;
+                    const d = new Date(rec.date); d.setHours(0,0,0,0);
+                    if (d.getTime() >= today.getTime()) return false;
+                }
+
+                // 2. Tour Filter
+                if (tourFilter !== 'all') {
+                    if (tourFilter === 'combo') {
+                        if (!rec.tourId.startsWith('combo')) return false;
+                    } else {
+                        if (!rec.tourId.toLowerCase().includes(tourFilter)) return false;
+                    }
+                }
+
+                // 3. Status Filter
+                if (statusFilter !== 'all' && rec.status !== statusFilter) return false;
+
+                // 4. Search Filter
+                if (searchQuery) {
+                    const match = rec.customerName.toLowerCase().includes(searchQuery) || 
+                                  rec.contactPhone.toLowerCase().includes(searchQuery) || 
+                                  rec.contactEmail.toLowerCase().includes(searchQuery);
+                    if (!match) return false;
+                }
+
+                return true;
+            });
+
+            // Sort by Date (Earliest first for Today/Upcoming, Latest first for Past/All)
+            filtered.sort((a, b) => {
+                if (!a.date) return 1;
+                if (!b.date) return -1;
+                return currentDateTab === 'past' || currentDateTab === 'all' ? b.date - a.date : a.date - b.date;
+            });
+
+            list.innerHTML = '';
+            if (filtered.length === 0) {
+                list.innerHTML = '<tr><td colspan="8" class="px-6 py-20 text-center text-gray-400 font-medium">No matching reservations found.</td></tr>';
+                return;
+            }
+
+            filtered.forEach(rec => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50 transition-colors';
+                
+                const dateDisplay = rec.date ? rec.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A';
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4"><span class="status-badge ${getStatusClass(rec.status)}">${rec.status}</span></td>
+                    <td class="px-6 py-4">
+                        <p class="font-bold text-gray-700">${dateDisplay}</p>
+                        ${rec.isSubTour ? '<span class="text-[9px] bg-accent/20 text-accent-700 px-2 py-0.5 rounded-full font-black uppercase tracking-tighter">Part of Combo</span>' : ''}
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="font-bold text-secondary">${rec.customerName}</p>
+                        <p class="text-xs text-gray-400">${rec.contactPhone}</p>
+                    </td>
+                    <td class="px-6 py-4">
+                        <span class="text-[10px] font-black uppercase tracking-wider ${rec.tourId.startsWith('combo') ? 'text-primary' : 'text-gray-500'}">${rec.tourName}</span>
+                    </td>
+                    <td class="px-6 py-4 text-xs font-bold text-gray-500">${rec.paxAdult}A, ${rec.paxChild}C</td>
+                    <td class="px-6 py-4 font-black text-secondary">${rec.totalPrice.toLocaleString()} <span class="text-[10px] font-normal text-gray-400">PHP</span></td>
+                    <td class="px-6 py-4"><span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">${rec.paymentMethod}</span></td>
+                    <td class="px-6 py-4"><button class="text-primary font-black text-[10px] uppercase tracking-widest hover:scale-110 transition-all view-btn" data-id="${rec.id}">Manage</button></td>
+                `;
+                list.appendChild(row);
+            });
+
+            document.querySelectorAll('.view-btn').forEach(b => b.addEventListener('click', () => viewBookingDetail(b.dataset.id)));
         }
 
         async function viewBookingDetail(id) {
             const modal = document.getElementById('modal-overlay');
             const body = document.getElementById('modal-body');
             modal.classList.remove('hidden');
-            body.innerHTML = 'Loading...';
+            body.innerHTML = '<div class="flex flex-col items-center justify-center py-20"><i class="ph ph-spinner animate-spin text-4xl text-primary mb-4"></i><p class="font-bold text-gray-400">Fetching Details...</p></div>';
             try {
                 const snap = await getDocs(query(collection(db, "bookings"), where("__name__", "==", id)));
+                if (snap.empty) return;
                 const data = snap.docs[0].data();
-                body.innerHTML = `<h3 class="text-2xl font-bold mb-8">Reservation Detail</h3><div class="grid grid-cols-2 gap-8 mb-10 text-sm"><div><label class="text-gray-400 block mb-1">Customer</label><p class="font-bold">${data.customerName}</p><p>${data.contactPhone}</p></div><div><label class="text-gray-400 block mb-1">Tour</label><p class="font-bold">${data.tourId.toUpperCase()}</p><p>${data.paxAdult}A, ${data.paxChild}C</p></div><div><label class="text-gray-400 block mb-1">Payment</label><p class="font-bold">${(data.totalPrice||0).toLocaleString()} PHP</p><p class="text-xs text-primary">${data.paymentMethod || 'GCash'}</p></div><div><label class="text-gray-400 block mb-1">Status</label><span class="status-badge ${getStatusClass(data.status)}">${data.status}</span></div></div><div class="flex gap-2"><button class="upd-btn bg-green-500 text-white px-4 py-2 rounded-lg text-xs font-bold" data-status="Confirmed">Confirm</button><button class="upd-btn bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold" data-status="Cancelled">Cancel</button></div>`;
+                
+                const date1 = data.tourDate ? (data.tourDate.toDate ? data.tourDate.toDate().toLocaleDateString() : new Date(data.tourDate.seconds*1000).toLocaleDateString()) : 'N/A';
+                const date2 = data.tourDate_2 ? (data.tourDate_2.toDate ? data.tourDate_2.toDate().toLocaleDateString() : new Date(data.tourDate_2.seconds*1000).toLocaleDateString()) : null;
+                const created = data.createdAt ? (data.createdAt.toDate ? data.createdAt.toDate().toLocaleString() : new Date(data.createdAt.seconds*1000).toLocaleString()) : 'N/A';
+
+                body.innerHTML = `
+                    <h3 class="text-2xl font-heading font-bold mb-2">Reservation Detail</h3>
+                    <p class="text-xs text-gray-400 mb-8 uppercase tracking-widest">Booked on: ${created}</p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-10 text-sm">
+                        <div class="bg-light p-4 rounded-2xl">
+                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Customer info</label>
+                            <p class="font-bold text-lg text-secondary">${data.customerName}</p>
+                            <p class="text-gray-500">${data.contactPhone}</p>
+                            <p class="text-gray-500 text-xs mt-1">${data.contactEmail || ''}</p>
+                        </div>
+                        <div class="bg-light p-4 rounded-2xl">
+                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Tour Package</label>
+                            <p class="font-bold text-lg text-primary uppercase">${data.tourName || data.tourId}</p>
+                            <p class="text-gray-500 font-bold">${data.paxAdult} Adults, ${data.paxChild} Children</p>
+                        </div>
+                        <div class="bg-light p-4 rounded-2xl">
+                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Schedule</label>
+                            <div class="space-y-1">
+                                <p class="font-bold text-secondary">${date1} ${data.tourId.startsWith('combo') ? '(Tour 1)' : ''}</p>
+                                ${date2 ? `<p class="font-bold text-secondary">${date2} (Tour 2)</p>` : ''}
+                            </div>
+                        </div>
+                        <div class="bg-light p-4 rounded-2xl">
+                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Payment Status</label>
+                            <div class="flex items-center gap-3">
+                                <p class="font-black text-xl text-secondary">${(data.totalPrice||0).toLocaleString()} <span class="text-[10px] font-normal">PHP</span></p>
+                                <span class="status-badge ${getStatusClass(data.status)}">${data.status}</span>
+                            </div>
+                            <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest mt-1">${data.paymentMethod || 'GCash'}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button class="upd-btn flex-1 bg-primary text-secondary px-6 py-4 rounded-2xl font-bold hover:shadow-lg transition-all" data-status="Confirmed">Confirm Booking</button>
+                        <button class="upd-btn flex-1 bg-secondary text-white px-6 py-4 rounded-2xl font-bold hover:shadow-lg transition-all" data-status="Payment Complete">Mark as Paid</button>
+                        <button class="upd-btn flex-1 bg-red-50 text-red-500 px-6 py-4 rounded-2xl font-bold hover:bg-red-500 hover:text-white transition-all" data-status="Cancelled">Cancel/Delete</button>
+                    </div>
+                `;
+
                 document.querySelectorAll('.upd-btn').forEach(b => b.addEventListener('click', async () => { 
                     const status = b.dataset.status;
                     if (status === 'Cancelled') {
-                        if (confirm('Are you sure you want to PERMANENTLY DELETE this booking?')) {
-                            await deleteDoc(doc(db, "bookings", id));
-                        } else {
-                            return;
-                        }
+                        if (!confirm('Are you sure you want to PERMANENTLY DELETE this booking?')) return;
+                        await deleteDoc(doc(db, "bookings", id));
                     } else {
                         await updateDoc(doc(db, "bookings", id), { status: status }); 
                     }
                     modal.classList.add('hidden'); 
                     loadBookings(); 
                 }));
-            } catch(e) {}
+            } catch(e) { console.error(e); }
         }
 
         document.getElementById('close-modal').addEventListener('click', () => document.getElementById('modal-overlay').classList.add('hidden'));
