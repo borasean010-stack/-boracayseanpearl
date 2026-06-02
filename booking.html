@@ -458,7 +458,7 @@
                                                         <i class="ph ph-paypal-logo"></i>
                                                     </div>
                                                     <div>
-                                                        <span class="block font-bold text-lg text-white/50">PayPal <span class="text-xs text-red-400 ml-2 font-normal uppercase tracking-wider">(Under Repair - 수리중)</span></span>
+                                                        <span class="block font-bold text-lg text-white/50">PayPal <span class="text-xs text-primary ml-2 font-normal uppercase tracking-wider">(Maintenance in Progress)</span></span>
                                                         <span class="block text-xs text-gray-500">Temporarily unavailable</span>
                                                     </div>
                                                 </div>
@@ -483,18 +483,25 @@
                             <div id="gcash-qr-section" class="hidden relative z-10 space-y-8 text-center">
                                 <div class="space-y-4">
                                     <h3 class="text-xl font-heading font-bold text-white">Scan to Pay with GCash</h3>
-                                    <p class="text-gray-400 text-sm">Please scan the QR code below and complete the payment.</p>
+                                    <p class="text-gray-400 text-sm">Please scan the QR code and complete the payment.</p>
                                 </div>
 
-                                <div class="bg-white p-6 rounded-[2.5rem] inline-block shadow-2xl">
-                                    <img src="gcash qr.jpeg" alt="GCash QR Code" class="w-64 h-auto rounded-xl mx-auto">
+                                <div class="flex flex-col items-center gap-8">
+                                    <div class="bg-white p-6 rounded-[2.5rem] inline-block shadow-2xl relative">
+                                        <img src="gcash qr.jpeg" alt="GCash QR Code" class="w-64 h-auto rounded-xl mx-auto">
+                                        <div class="absolute -bottom-4 -right-4 bg-primary text-secondary px-6 py-3 rounded-2xl font-black shadow-xl border-4 border-secondary">
+                                            <span id="qr-total-amount" class="text-xl tracking-tight">0 PHP</span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="space-y-6 pt-4">
+                                <div class="space-y-6 pt-6">
                                     <button type="button" id="money-sent" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                                        돈 보냈다! (Money Sent!) <i class="ph-bold ph-check text-2xl"></i>
+                                        I've Completed the Transfer <i class="ph-bold ph-check text-2xl"></i>
                                     </button>
-                                    <p class="text-xs text-gray-500 uppercase tracking-widest">Your booking will be confirmed after verification.</p>
+                                    <p class="text-xs text-gray-500 uppercase tracking-widest leading-relaxed">
+                                        Your booking will be confirmed <br> immediately after verification.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -740,55 +747,79 @@
             const payNowBtn = document.getElementById('pay-now');
             const gcashQrSection = document.getElementById('gcash-qr-section');
             const moneySentBtn = document.getElementById('money-sent');
+            const qrTotalAmount = document.getElementById('qr-total-amount');
 
-            payNowBtn.addEventListener('click', async () => {
+            let bookingSavedPromise = null;
+
+            payNowBtn.addEventListener('click', () => {
                 const selectedMethod = document.querySelector('input[name="payment_method"]:checked');
                 if (!selectedMethod) {
                     alert('Please select a payment method.');
                     return;
                 }
 
-                try {
+                const adults = parseInt(document.getElementById('pax-adults').value);
+                const children = parseInt(document.getElementById('pax-children').value);
+                const totalPrice = (adults + children) * tour.price;
+
+                // Prepare Payload
+                const payload = {
+                    customerName: document.getElementsByName('name')[0].value,
+                    contactPhone: document.getElementsByName('phone')[0].value,
+                    contactEmail: document.getElementsByName('email')[0].value,
+                    paxAdult: adults,
+                    paxChild: children,
+                    paymentMethod: selectedMethod.value,
+                    status: 'Pending Payment',
+                    tourId: tour.id,
+                    tourName: tour.name,
+                    tourDate: cal1.selectedDate,
+                    totalPrice: totalPrice,
+                    createdAt: serverTimestamp()
+                };
+
+                if (tour.isCombo) {
+                    payload.tourDate_2 = cal2.selectedDate;
+                }
+
+                // Start saving in background immediately
+                bookingSavedPromise = addDoc(collection(db, "bookings"), payload);
+
+                if (selectedMethod.value === 'GCash') {
+                    // Update QR amount and show section INSTANTLY
+                    qrTotalAmount.textContent = `${totalPrice.toLocaleString()} PHP`;
+                    paymentSection.classList.add('hidden');
+                    gcashQrSection.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // For other methods, wait for save then redirect
                     payNowBtn.disabled = true;
                     payNowBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Processing...`;
-
-                    const payload = {
-                        customerName: document.getElementsByName('name')[0].value,
-                        contactPhone: document.getElementsByName('phone')[0].value,
-                        contactEmail: document.getElementsByName('email')[0].value,
-                        paxAdult: parseInt(document.getElementById('pax-adults').value),
-                        paxChild: parseInt(document.getElementById('pax-children').value),
-                        paymentMethod: selectedMethod.value,
-                        status: 'Pending Payment',
-                        tourId: tour.id,
-                        tourName: tour.name,
-                        tourDate: cal1.selectedDate,
-                        totalPrice: (parseInt(document.getElementById('pax-adults').value) + parseInt(document.getElementById('pax-children').value)) * tour.price,
-                        createdAt: serverTimestamp()
-                    };
-
-                    if (tour.isCombo) {
-                        payload.tourDate_2 = cal2.selectedDate;
-                    }
-
-                    await addDoc(collection(db, "bookings"), payload);
-                    
-                    if (selectedMethod.value === 'GCash') {
-                        paymentSection.classList.add('hidden');
-                        gcashQrSection.classList.remove('hidden');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
+                    bookingSavedPromise.then(() => {
                         window.location.href = '/thank-you';
-                    }
-                } catch (e) {
-                    alert("Submission failed: " + e.message);
-                    payNowBtn.disabled = false;
-                    payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
+                    }).catch(e => {
+                        alert("Submission failed: " + e.message);
+                        payNowBtn.disabled = false;
+                        payNowBtn.innerHTML = `Complete Payment <i class="ph-bold ph-lock text-2xl"></i>`;
+                    });
                 }
             });
 
-            moneySentBtn.addEventListener('click', () => {
-                window.location.href = '/thank-you';
+            moneySentBtn.addEventListener('click', async () => {
+                moneySentBtn.disabled = true;
+                moneySentBtn.innerHTML = `<i class="ph ph-spinner animate-spin text-2xl"></i> Confirming...`;
+                
+                try {
+                    // Wait for the background save to complete if it hasn't yet
+                    if (bookingSavedPromise) {
+                        await bookingSavedPromise;
+                    }
+                    window.location.href = '/thank-you';
+                } catch (e) {
+                    alert("Verification failed: " + e.message);
+                    moneySentBtn.disabled = false;
+                    moneySentBtn.innerHTML = `I've Completed the Transfer <i class="ph-bold ph-check text-2xl"></i>`;
+                }
             });
 
             // --- Intersection Observer for Fade-Up ---
