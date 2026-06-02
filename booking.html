@@ -480,18 +480,25 @@
                             </div>
 
                             <!-- GCash QR Section (Initially Hidden) -->
-                            <div id="gcash-qr-section" class="hidden relative z-10 space-y-8 text-center">
+                            <div id="gcash-qr-section" class="hidden relative z-10 space-y-10 text-center">
                                 <div class="space-y-4">
-                                    <h3 class="text-xl font-heading font-bold text-white">Scan to Pay with GCash</h3>
-                                    <p class="text-gray-400 text-sm">Please scan the QR code and complete the payment.</p>
+                                    <h3 class="text-2xl font-heading font-bold text-white tracking-tight">Scan & Transfer</h3>
+                                    <p class="text-gray-400 text-sm font-medium">Please scan the QR code to complete your booking.</p>
                                 </div>
 
-                                <div class="flex flex-col items-center gap-8">
-                                    <div class="bg-white p-6 rounded-[2.5rem] inline-block shadow-2xl relative">
-                                        <img src="gcash qr.jpeg" alt="GCash QR Code" class="w-64 h-auto rounded-xl mx-auto">
-                                        <div class="absolute -bottom-4 -right-4 bg-primary text-secondary px-6 py-3 rounded-2xl font-black shadow-xl border-4 border-secondary">
-                                            <span id="qr-total-amount" class="text-xl tracking-tight">0 PHP</span>
+                                <div class="max-w-xs mx-auto space-y-6">
+                                    <!-- Premium Amount Display -->
+                                    <div class="bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-md shadow-inner">
+                                        <span class="text-[10px] text-primary/60 uppercase tracking-[0.3em] font-black block mb-3">Total Amount to Transfer</span>
+                                        <div class="flex items-center justify-center gap-2">
+                                            <span id="qr-total-amount" class="text-4xl font-heading font-black text-white text-glow">0</span>
+                                            <span class="text-primary font-bold text-sm tracking-widest">PHP</span>
                                         </div>
+                                    </div>
+
+                                    <!-- QR Card -->
+                                    <div class="bg-white p-6 rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform transition-transform hover:scale-[1.02]">
+                                        <img src="gcash qr.jpeg" alt="GCash QR Code" class="w-full h-auto rounded-2xl mx-auto">
                                     </div>
                                 </div>
 
@@ -499,9 +506,10 @@
                                     <button type="button" id="money-sent" class="w-full bg-primary text-secondary py-6 rounded-[2.5rem] font-bold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
                                         I've Completed the Transfer <i class="ph-bold ph-check text-2xl"></i>
                                     </button>
-                                    <p class="text-xs text-gray-500 uppercase tracking-widest leading-relaxed">
-                                        Your booking will be confirmed <br> immediately after verification.
-                                    </p>
+                                    <div class="flex items-center justify-center gap-3 text-gray-500">
+                                        <i class="ph ph-shield-check text-xl"></i>
+                                        <p class="text-[10px] uppercase tracking-widest font-bold">Secure Verification Process</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -787,7 +795,7 @@
 
                 if (selectedMethod.value === 'GCash') {
                     // Update QR amount and show section INSTANTLY
-                    qrTotalAmount.textContent = `${totalPrice.toLocaleString()} PHP`;
+                    qrTotalAmount.textContent = totalPrice.toLocaleString();
                     paymentSection.classList.add('hidden');
                     gcashQrSection.classList.remove('hidden');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
