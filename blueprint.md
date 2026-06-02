@@ -28,15 +28,29 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Search Engine Optimization & Verification
-*   **Naver Site Verification:** Integrated the Naver site verification meta tag into the `<head>` section of `index.html` to allow the site to be registered and indexed by Naver Search Advisor.
+## 4. Current Task: Admin Panel & Voucher System Optimization
+*   **Quick Voucher System:** Implemented a new "Quick Voucher" generation tool for manual reservations.
+    *   **Creation Tool:** A dedicated form in the admin panel to quickly create guest records and generate sharable links.
+    *   **Voucher Page (`reservation-schedule.html`):** A professional, printable voucher view that fetches data from Firebase and displays tour details, guest info, and meeting instructions.
+*   **Today's Guest Statistics:** Added a "Today's Guests" stat card to the admin dashboard for real-time operational awareness.
 
-### Hopping Tour Gallery Expansion
-*   **Captured Moments Update:** Added 10 new high-quality images (`IMG_8512.jpg` through `IMG_8599.jpg`) to the "Captured Moments" gallery section in `yacht-tour.html`.
-*   **Gallery Page Sync:** Updated `gallery.html` to include the same 10 new images in the "Hopping Tour" section, ensuring consistency across the site.
-*   **Mobile Layout Optimization:** Maintained the 2-column mobile grid for the gallery to ensure a rich visual experience on smaller screens.
+### Payment Flow Optimization
+*   **GCash QR Integration:** Implemented a direct payment flow for GCash. After a user submits their booking details, they are now presented with a scan-to-pay QR code (`gcash.jpg`) within the booking interface.
+*   **Payment Confirmation:** Added a "돈 보냈다! (Money Sent!)" button to the QR section. Clicking this button confirms the user has sent the funds and redirects them to the final thank-you page.
+*   **PayPal Maintenance Mode:** Marked the PayPal payment option as "Under Repair - 수리중" and disabled it. This provides clear communication to users that only GCash is currently available for direct digital payments.
+*   **Step-by-Step Logic:** Updated the multi-step form logic in `booking.html` to handle the transition from "Checkout Summary" to "GCash QR" seamlessly, ensuring a frictionless user journey.
 
 ## 5. Project History
+### Admin Panel & Quick Voucher Integration
+*   **Quick Voucher Feature:** Added a "Quick Voucher" card and modal to `admin.html`. Administrators can now create manual bookings and immediately generate a link to a professional reservation voucher.
+*   **Voucher Rendering:** Created `reservation-schedule.html` which dynamically renders guest and tour information. It includes intelligent "Tour Guidance" that provides meeting point details and Google Map links based on the tour type.
+*   **Today's Guest Statistics:** Added a fourth statistic card to the main dashboard specifically for "Today's Guests".
+*   **Dynamic Calculation:** Updated the `loadBookings` logic to identify and sum the pax for all tours scheduled on the current date.
+*   **Booking List Enhancements:** Added a direct "Voucher" link to each reservation in the admin bookings table.
+
+### Admin Panel Modification: Today's Guest Statistics (Superseded)
+*   **Initial Update:** Added a statistic card for "Today's Guests" to provide real-time operational awareness.
+
 ### SEO & Site Verification
 *   **Naver Verification:** Added `<meta name="naver-site-verification" content="5aad8aba9c3f537bae19fe3700a5e0cbf5f34131" />` to `index.html`.
 ### Navigation Header Standardization

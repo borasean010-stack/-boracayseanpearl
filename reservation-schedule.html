@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Voucher | Pearl Of Sean Boracay</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#29D3D0",
+                        secondary: "#062B43",
+                        accent: "#F2C94C",
+                        light: "#F8F9FA",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        heading: ["Montserrat", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { background: white; padding: 0; }
+            .voucher-container { border: none; shadow: none; max-width: 100%; margin: 0; }
+        }
+        .guide-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #29D3D0;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 py-10 px-4 font-sans text-secondary">
+
+    <div id="loading" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center">
+        <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="font-bold text-gray-400">Loading Voucher...</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-white shadow-2xl rounded-[2.5rem] overflow-hidden voucher-container">
+        <!-- Header -->
+        <div class="bg-secondary p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="pearl_of_sean_logo.png" alt="Logo" class="h-12 filter brightness-0 invert">
+                <div>
+                    <h1 class="text-xl font-heading font-extrabold tracking-tight uppercase">Reservation Voucher</h1>
+                    <p class="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">Pearl Of Sean Boracay</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-xs text-gray-400 uppercase font-bold mb-1">Status</p>
+                <span class="bg-primary/20 text-primary border border-primary/30 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest">Confirmed</span>
+            </div>
+        </div>
+
+        <div class="p-8 md:p-12">
+            <!-- Guest Info Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Guest Name</p>
+                    <p id="v-name" class="font-bold text-secondary">Loading...</p>
+                </div>
+                <div>
+                    <p id="label-purchase" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Phone / Agency</p>
+                    <p id="v-agency" class="font-bold text-secondary">N/A</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Total Pax</p>
+                    <p id="v-pax" class="font-bold text-secondary">0</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Exchange</p>
+                    <p id="v-exchange" class="font-bold text-secondary">-</p>
+                </div>
+                <div id="v-price-box" class="hidden">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Total Amount</p>
+                    <p id="v-price" class="font-bold text-primary">0 PHP</p>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h2 class="text-lg font-heading font-extrabold flex items-center gap-3 border-b border-gray-100 pb-4">
+                    <i class="ph ph-calendar-check text-primary"></i>
+                    Your Paradise Schedule
+                </h2>
+                
+                <div id="item-list" class="space-y-6">
+                    <!-- Dynamic Items -->
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6 no-print">
+                <p class="text-xs text-gray-400">Please present this voucher upon arrival. Have a great tour!</p>
+                <button onclick="window.print()" class="bg-secondary text-white px-8 py-3 rounded-2xl font-bold flex items-center gap-3 hover:bg-primary transition-all">
+                    <i class="ph ph-printer text-xl"></i> Print Voucher
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDqAd03xpQd_o3yXIFHv5t-BZWL6blvkmQ",
+            authDomain: "boracaysean-local.firebaseapp.com",
+            projectId: "boracaysean-local",
+            storageBucket: "boracaysean-local.appspot.com",
+            messagingSenderId: "673386650213",
+            appId: "1:673386650213:web:484b15ee8b2d8ec226448c",
+            measurementId: "G-DKC8HE000W"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function init() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            const type = urlParams.get('type');
+
+            if (!id) {
+                document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold">Invalid Voucher ID</p>';
+                return;
+            }
+
+            if (type === 'quick') {
+                document.getElementById('label-purchase').textContent = 'Purchase Agency';
+            }
+
+            try {
+                const docRef = doc(db, "bookings", id);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    renderVoucher(data);
+                } else {
+                    document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold">Voucher not found.</p>';
+                }
+            } catch (e) {
+                console.error(e);
+                document.getElementById('loading').innerHTML = `<p class="text-red-500 font-bold">Error: ${e.message}</p>`;
+            } finally {
+                document.getElementById('loading').classList.add('hidden');
+            }
+        }
+
+        function renderVoucher(data) {
+            document.getElementById('v-name').textContent = `${data.customerKorName || data.customerName} (${data.engName || 'N/A'})`;
+            
+            const agencyText = data.purchaseAgency || data.contactPhone || 'Direct Booking';
+            document.getElementById('v-agency').textContent = agencyText;
+            
+            document.getElementById('v-pax').textContent = `${(data.paxAdult || 0) + (data.paxChild || 0)} Persons`;
+            document.getElementById('v-exchange').textContent = data.exchangeAmount ? `${data.exchangeAmount.toLocaleString()} PHP` : '-';
+
+            if (data.totalPrice > 0) {
+                document.getElementById('v-price-box').classList.remove('hidden');
+                document.getElementById('v-price').textContent = `${data.totalPrice.toLocaleString()} PHP`;
+            } else {
+                document.getElementById('v-price-box').classList.add('hidden');
+            }
+
+            const list = document.getElementById('item-list');
+            list.innerHTML = '';
+            
+            const items = [];
+            const createItem = (name, date, time) => {
+                if (!date) return null;
+                const d = date.toDate ? date.toDate() : new Date(date.seconds * 1000);
+                return {
+                    name: name,
+                    date: d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+                    time: time || 'TBA',
+                    rawDate: d
+                };
+            };
+
+            if (data.tourId === 'combo1') {
+                items.push(createItem('Pearl Yacht Hopping', data.tourDate, '13:15 (Start 13:30)'));
+                items.push(createItem('Oslob Whale Shark Experience', data.tourDate_2, '07:00'));
+            } else if (data.tourId === 'combo2') {
+                items.push(createItem('Oslob Whale Shark Experience', data.tourDate, '07:00'));
+                items.push(createItem('Coastal Discovery Land Tour', data.tourDate_2, '10:15 (Start 10:30)'));
+            } else if (data.tourId === 'combo3') {
+                items.push(createItem('Pearl Yacht Hopping', data.tourDate, '13:15 (Start 13:30)'));
+                items.push(createItem('Coastal Discovery Land Tour', data.tourDate_2, '10:15 (Start 10:30)'));
+            } else {
+                let tourName = data.tourName || data.tourId;
+                if (data.tourId === 'yacht') tourName = 'Pearl Yacht Hopping';
+                if (data.tourId === 'land') tourName = 'Coastal Discovery Land Tour';
+                if (data.tourId === 'whale') tourName = 'Oslob Whale Shark Experience';
+                items.push(createItem(tourName, data.tourDate, data.tourTime || getDefaultTime(data.tourId)));
+            }
+
+            items.sort((a, b) => a.rawDate - b.rawDate);
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow';
+                const guidance = getTourGuidance(item.name);
+                
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-xl">
+                                <i class="ph ph-calendar"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-secondary uppercase">${item.name}</h3>
+                                <p class="text-xs text-gray-400 font-medium">${item.date} <span class="mx-2">|</span> Meeting: <span class="text-primary font-black">${item.time}</span></p>
+                            </div>
+                        </div>
+                        <span class="bg-green-50 text-green-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-green-100 self-start md:self-auto">Confirmed</span>
+                    </div>
+                    ${guidance}
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function getDefaultTime(tourId) {
+            if (tourId === 'yacht') return '13:15 (Start 13:30)';
+            if (tourId === 'land') return '10:15 (Start 10:30)';
+            if (tourId === 'whale') return '07:00';
+            return 'TBA';
+        }
+
+        function getTourGuidance(tourName) {
+            const name = tourName.toLowerCase();
+            if (name.includes('yacht') || name.includes('hopping')) {
+                return `
+                    <div class="guide-box text-sm space-y-3">
+                        <p class="font-bold text-secondary flex items-center gap-2">
+                            <i class="ph ph-map-pin-line text-primary text-lg"></i>
+                            Meeting Point: Bolabog Beach (Front of Mocambo)
+                        </p>
+                        <div class="text-gray-500 space-y-1">
+                            <p>• <span class="text-secondary font-bold">13:15 Sharp Meeting</span> / 13:30 Tour Departure.</p>
+                            <p>• Preparation: Swimwear, Sunscreen, Towel, Change of clothes.</p>
+                            <p>• Included: Pika-pika, Fruits, K-Ramen, Unlimited Drinks.</p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/9XW6m" target="_blank" class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-xl font-bold text-xs hover:bg-primary hover:text-white transition-all">
+                            <i class="ph ph-google-logo"></i> View on Google Maps
+                        </a>
+                    </div>
+                `;
+            }
+            if (name.includes('land')) {
+                return `
+                    <div class="guide-box text-sm space-y-3">
+                        <p class="font-bold text-secondary flex items-center gap-2">
+                            <i class="ph ph-map-pin-line text-primary text-lg"></i>
+                            Meeting Point: Boracay Sean Office
+                        </p>
+                        <div class="text-gray-500 space-y-1">
+                            <p>• <span class="text-secondary font-bold">10:15 Sharp Meeting</span> at our office.</p>
+                            <p>• 10:30 Tour Start with our dedicated guide.</p>
+                            <p>• Preparation: Comfortable shoes, Sunglasses, Camera.</p>
+                            <p>• Included: Air-conditioned Van, Bottled Water.</p>
+                        </div>
+                    </div>
+                `;
+            }
+            if (name.includes('whale')) {
+                return `
+                    <div class="guide-box text-sm space-y-3">
+                        <p class="font-bold text-secondary flex items-center gap-2">
+                            <i class="ph ph-map-pin-line text-primary text-lg"></i>
+                            Meeting Point: Front Beach (Station 2 Area)
+                        </p>
+                        <div class="text-gray-500 space-y-1">
+                            <p>• Early morning departure for Oslob. Be punctual.</p>
+                            <p>• Detailed pickup instructions will be sent via WhatsApp.</p>
+                        </div>
+                    </div>
+                `;
+            }
+            return '';
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -112,7 +112,7 @@
 
             <div id="tab-content" class="p-8">
                 <div id="tab-bookings" class="tab-pane">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
                         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
                             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl"><i class="ph ph-calendar-check"></i></div>
                             <div><p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Bookings</p><h4 id="stat-total-bookings" class="text-2xl font-bold">0</h4></div>
@@ -120,6 +120,15 @@
                         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
                             <div class="w-12 h-12 rounded-2xl bg-accent/10 text-accent-700 flex items-center justify-center text-2xl"><i class="ph ph-currency-circle-dollar"></i></div>
                             <div><p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Revenue</p><h4 id="stat-total-revenue" class="text-2xl font-bold">0 PHP</h4></div>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center text-2xl"><i class="ph ph-receipt"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Quick Voucher</p>
+                                <button id="open-quick-voucher" class="text-primary font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all flex items-center gap-1">
+                                    <i class="ph ph-plus-circle"></i> Create New
+                                </button>
+                            </div>
                         </div>
                         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
                             <div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center text-2xl"><i class="ph ph-users"></i></div>
@@ -169,6 +178,7 @@
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-400">Pax</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-400">Total</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-400">Method</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-400">Voucher</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-400">Actions</th>
                                 </tr>
                             </thead>
@@ -183,6 +193,70 @@
     </div>
 
     <div id="modal-overlay" class="fixed inset-0 bg-secondary/60 backdrop-blur-sm z-[200] hidden flex items-center justify-center p-6"><div class="max-w-2xl w-full bg-white rounded-[2.5rem] p-10 shadow-2xl relative"><button id="close-modal" class="absolute top-8 right-8 text-gray-400 hover:text-secondary"><i class="ph ph-x text-2xl"></i></button><div id="modal-body"></div></div></div>
+
+    <div id="quick-voucher-modal" class="fixed inset-0 bg-secondary/60 backdrop-blur-sm z-[250] hidden flex items-center justify-center p-6">
+        <div class="max-w-2xl w-full bg-white rounded-[2.5rem] p-10 shadow-2xl relative">
+            <button id="close-quick-modal" class="absolute top-8 right-8 text-gray-400 hover:text-secondary"><i class="ph ph-x text-2xl"></i></button>
+            <h3 class="text-2xl font-heading font-bold mb-6">Create Quick Voucher</h3>
+            
+            <!-- Smart Paste Tool -->
+            <div class="mb-8 p-4 bg-primary/5 border border-primary/20 rounded-2xl">
+                <p class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-3">Smart Paste (Paste a row from your list)</p>
+                <div class="flex gap-2">
+                    <input type="text" id="qv-smart-paste" placeholder="e.g. 5/24 EMILY BESMONTE 3 LANDTOUR 1500" class="flex-grow bg-white border border-gray-100 rounded-xl px-4 py-2 text-xs outline-none focus:border-primary">
+                    <button type="button" id="qv-parse-btn" class="bg-secondary text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap">Auto-Fill</button>
+                </div>
+            </div>
+
+            <form id="quick-voucher-form" class="space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="qv-kor-name" placeholder="Customer Kor Name" required class="bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    <input type="text" id="qv-eng-name" placeholder="Customer Eng Name" required class="bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="qv-agency" placeholder="Purchase Agency (Leave blank for Direct)" class="bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="number" id="qv-exchange" placeholder="Exchange (PHP)" class="bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                        <input type="number" id="qv-total-price" placeholder="Total Price (PHP)" class="bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[9px] font-bold text-gray-400 uppercase ml-2" id="qv-date-label">Tour Date</label>
+                        <input type="date" id="qv-date" required class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    </div>
+                    <div class="space-y-1 hidden" id="qv-date-2-box">
+                        <label class="text-[9px] font-bold text-gray-400 uppercase ml-2" id="qv-date-2-label">Tour Date 2</label>
+                        <input type="date" id="qv-date-2" class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    </div>
+                    <div class="space-y-1" id="qv-pax-box">
+                        <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Total Guests</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="number" id="qv-adult" placeholder="Adult" required class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                            <input type="number" id="qv-child" placeholder="Child" class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+                <select id="qv-tour" required class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    <option value="yacht">Pearl Yacht Hopping</option>
+                    <option value="land">Coastal Discovery Land Tour</option>
+                    <option value="whale">Oslob Whale Shark Experience</option>
+                    <option value="combo1">Combo: Yacht + Whale</option>
+                    <option value="combo2">Combo: Whale + Land</option>
+                    <option value="combo3">Combo: Yacht + Land</option>
+                </select>
+                <button type="submit" class="w-full bg-primary text-secondary py-4 rounded-2xl font-bold hover:shadow-lg transition-all">Generate Voucher Link</button>
+            </form>
+            <div id="qv-result" class="mt-6 hidden">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Voucher Link Generated:</p>
+                <div class="flex gap-2">
+                    <input type="text" id="qv-link" readonly class="flex-grow bg-light border border-gray-100 rounded-xl px-4 py-2 text-xs outline-none">
+                    <button id="copy-qv-link" class="bg-secondary text-white px-4 py-2 rounded-xl text-xs font-bold">Copy</button>
+                </div>
+                <a id="view-qv-link" target="_blank" class="block text-center text-primary font-bold text-sm mt-4 hover:underline">Open Voucher in New Tab</a>
+            </div>
+        </div>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -239,6 +313,129 @@
         });
 
         document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
+
+        // Quick Voucher Modal Logic
+        const qvModal = document.getElementById('quick-voucher-modal');
+        const qvTourSelect = document.getElementById('qv-tour');
+        const qvDate2Box = document.getElementById('qv-date-2-box');
+        const qvDateLabel = document.getElementById('qv-date-label');
+        const qvDate2Label = document.getElementById('qv-date-2-label');
+
+        qvTourSelect.addEventListener('change', () => {
+            const tour = qvTourSelect.value;
+            if (tour.startsWith('combo')) {
+                qvDate2Box.classList.remove('hidden');
+                if (tour === 'combo1') { qvDateLabel.textContent = 'Yacht Date'; qvDate2Label.textContent = 'Whale Date'; }
+                else if (tour === 'combo2') { qvDateLabel.textContent = 'Whale Date'; qvDate2Label.textContent = 'Land Date'; }
+                else if (tour === 'combo3') { qvDateLabel.textContent = 'Yacht Date'; qvDate2Label.textContent = 'Land Date'; }
+            } else {
+                qvDate2Box.classList.add('hidden');
+                qvDateLabel.textContent = 'Tour Date';
+            }
+        });
+
+        document.getElementById('open-quick-voucher').addEventListener('click', () => {
+            qvModal.classList.remove('hidden');
+            document.getElementById('qv-result').classList.add('hidden');
+            document.getElementById('quick-voucher-form').reset();
+            document.getElementById('qv-smart-paste').value = '';
+            qvDate2Box.classList.add('hidden');
+            qvDateLabel.textContent = 'Tour Date';
+        });
+
+        document.getElementById('qv-parse-btn').addEventListener('click', () => {
+            const raw = document.getElementById('qv-smart-paste').value.trim();
+            if (!raw) return;
+
+            // Example: 5/24 EMILY BESMONTE 3 LANDTOUR 1500
+            const parts = raw.split(/\s+/);
+            
+            // 1. Date (look for m/d)
+            const datePart = parts.find(p => p.includes('/'));
+            if (datePart) {
+                const [m, d] = datePart.split('/');
+                const year = new Date().getFullYear();
+                document.getElementById('qv-date').value = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
+            }
+
+            // 2. Pax (first single/double digit number after name)
+            const paxIndex = parts.findIndex((p, i) => i > 0 && /^\d+$/.test(p) && p.length <= 2);
+            if (paxIndex !== -1) {
+                document.getElementById('qv-adult').value = parts[paxIndex];
+                // Name is usually everything between date and pax
+                const dateIndex = parts.indexOf(datePart);
+                const nameParts = parts.slice(dateIndex + 1, paxIndex);
+                document.getElementById('qv-eng-name').value = nameParts.join(' ');
+                document.getElementById('qv-kor-name').value = nameParts.join(' ');
+            }
+
+            // 3. Tour
+            if (raw.toUpperCase().includes('LAND')) qvTourSelect.value = 'land';
+            else if (raw.toUpperCase().includes('HOPPING') || raw.toUpperCase().includes('YACHT')) qvTourSelect.value = 'yacht';
+            else if (raw.toUpperCase().includes('WHALE')) qvTourSelect.value = 'whale';
+            qvTourSelect.dispatchEvent(new Event('change'));
+
+            // 4. Price (last number or number with currency)
+            const pricePart = parts.find(p => p.includes('₱') || (/^\d+$/.test(p) && p.length >= 3 && parts.indexOf(p) > paxIndex));
+            if (pricePart) {
+                const price = pricePart.replace(/[^0-9]/g, '');
+                document.getElementById('qv-total-price').value = price;
+            }
+        });
+
+        document.getElementById('close-quick-modal').addEventListener('click', () => qvModal.classList.add('hidden'));
+
+        document.getElementById('quick-voucher-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true; btn.textContent = 'Generating...';
+
+            try {
+                const tourId = document.getElementById('qv-tour').value;
+                const tourDate = new Date(document.getElementById('qv-date').value);
+                const tourName = document.getElementById('qv-tour').options[document.getElementById('qv-tour').selectedIndex].text;
+
+                const payload = {
+                    customerKorName: document.getElementById('qv-kor-name').value,
+                    engName: document.getElementById('qv-eng-name').value,
+                    purchaseAgency: document.getElementById('qv-agency').value || 'Direct',
+                    exchangeAmount: parseInt(document.getElementById('qv-exchange').value) || 0,
+                    tourId: tourId,
+                    tourName: tourName,
+                    tourDate: tourDate,
+                    paxAdult: parseInt(document.getElementById('qv-adult').value) || 0,
+                    paxChild: parseInt(document.getElementById('qv-child').value) || 0,
+                    status: 'Confirmed',
+                    paymentMethod: 'Quick Voucher',
+                    totalPrice: parseInt(document.getElementById('qv-total-price').value) || 0,
+                    createdAt: serverTimestamp()
+                };
+
+                if (tourId.startsWith('combo')) {
+                    const date2Val = document.getElementById('qv-date-2').value;
+                    if (!date2Val) { alert('Please select the second date for the combo tour.'); return; }
+                    payload.tourDate_2 = new Date(date2Val);
+                }
+
+                const docRef = await addDoc(collection(db, "bookings"), payload);
+                const link = `${window.location.origin}/reservation-schedule.html?id=${docRef.id}&type=quick`;
+                document.getElementById('qv-link').value = link;
+                document.getElementById('view-qv-link').href = link;
+                document.getElementById('qv-result').classList.remove('hidden');
+                loadBookings();
+            } catch (err) {
+                alert('Error generating voucher: ' + err.message);
+            } finally {
+                btn.disabled = false; btn.textContent = 'Generate Voucher Link';
+            }
+        });
+
+        document.getElementById('copy-qv-link').addEventListener('click', () => {
+            const input = document.getElementById('qv-link');
+            input.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+        });
 
         // Navigation Tabs
         const navItems = document.querySelectorAll('.nav-item');
@@ -425,7 +622,14 @@
                     <td class="px-6 py-4 text-xs font-bold text-gray-500">${rec.paxAdult}A, ${rec.paxChild}C</td>
                     <td class="px-6 py-4 font-black text-secondary">${rec.totalPrice.toLocaleString()} <span class="text-[10px] font-normal text-gray-400">PHP</span></td>
                     <td class="px-6 py-4"><span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">${rec.paymentMethod}</span></td>
-                    <td class="px-6 py-4"><button class="text-primary font-black text-[10px] uppercase tracking-widest hover:scale-110 transition-all view-btn" data-id="${rec.id}">Manage</button></td>
+                    <td class="px-6 py-4">
+                        <a href="reservation-schedule.html?id=${rec.id}${rec.paymentMethod === 'Quick Voucher' ? '&type=quick' : ''}" target="_blank" class="bg-secondary/10 text-secondary px-3 py-1 rounded-lg font-black text-[9px] uppercase tracking-widest hover:bg-secondary hover:text-white transition-all inline-flex items-center gap-1">
+                            <i class="ph ph-file-text"></i> View
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <button class="text-primary font-black text-[10px] uppercase tracking-widest hover:scale-110 transition-all view-btn" data-id="${rec.id}">Manage</button>
+                    </td>
                 `;
                 list.appendChild(row);
             });
