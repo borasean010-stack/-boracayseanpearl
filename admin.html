@@ -225,6 +225,12 @@
                         <label class="text-[9px] font-bold text-gray-400 uppercase ml-2" id="qv-date-label">Tour Date</label>
                         <input type="date" id="qv-date" required class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
                     </div>
+                    <div class="space-y-1">
+                        <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Meeting Time</label>
+                        <input type="text" id="qv-time" placeholder="e.g. 13:30" class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-1 hidden" id="qv-date-2-box">
                         <label class="text-[9px] font-bold text-gray-400 uppercase ml-2" id="qv-date-2-label">Tour Date 2</label>
                         <input type="date" id="qv-date-2" class="w-full bg-light border border-gray-100 rounded-xl px-4 py-3 outline-none focus:border-primary">
@@ -379,18 +385,36 @@
                 document.getElementById('qv-kor-name').value = name;
             }
 
-            // 3. Tour
+            // 3. Tour & Time
             const upperRaw = raw.toUpperCase();
             if (upperRaw.includes('LAND')) qvTourSelect.value = 'land';
             else if (upperRaw.includes('HOPPING') || upperRaw.includes('YACHT') || upperRaw.includes('HOPING')) qvTourSelect.value = 'yacht';
             else if (upperRaw.includes('WHALE')) qvTourSelect.value = 'whale';
             qvTourSelect.dispatchEvent(new Event('change'));
 
-            // 4. Price
-            const pricePart = parts.find(p => p.includes('₱') || (/^\d+$/.test(p) && p.length >= 3 && parts.indexOf(p) > firstPaxIndex));
-            if (pricePart) {
-                const price = pricePart.replace(/[^0-9]/g, '');
-                document.getElementById('qv-total-price').value = price;
+            // Look for time (e.g. 13:30)
+            const timePart = parts.find(p => /^(\d{1,2}):(\d{2})$/.test(p));
+            if (timePart) {
+                document.getElementById('qv-time').value = timePart;
+            }
+
+            // 4. Price (Look for "get p6600" or similar)
+            let priceFound = false;
+            const getIndex = parts.findIndex(p => p.toLowerCase() === 'get');
+            if (getIndex !== -1 && parts[getIndex + 1]) {
+                const price = parts[getIndex + 1].replace(/[^0-9]/g, '');
+                if (price) {
+                    document.getElementById('qv-total-price').value = price;
+                    priceFound = true;
+                }
+            }
+            
+            if (!priceFound) {
+                const pricePart = parts.find(p => p.includes('₱') || p.toLowerCase().startsWith('p') || (/^\d+$/.test(p) && p.length >= 3 && parts.indexOf(p) > firstPaxIndex));
+                if (pricePart) {
+                    const price = pricePart.replace(/[^0-9]/g, '');
+                    document.getElementById('qv-total-price').value = price;
+                }
             }
 
             // Optional: Clear the paste box after parsing to make it ready for next entry
@@ -420,6 +444,7 @@
                     tourId: tourId,
                     tourName: tourName,
                     tourDate: tourDate,
+                    tourTime: document.getElementById('qv-time').value,
                     paxAdult: parseInt(document.getElementById('qv-adult').value) || 0,
                     paxChild: parseInt(document.getElementById('qv-child').value) || 0,
                     status: 'Confirmed',
