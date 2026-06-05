@@ -609,7 +609,12 @@
                     this.nextBtn = this.container.querySelector('.next-month');
                     
                     this.viewDate = new Date();
-                    this.selectedDate = null;
+                    
+                    // Pre-select today by default
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    this.selectedDate = today;
+                    this.input.value = this.selectedDate.toISOString();
 
                     this.prevBtn.onclick = () => { this.viewDate.setMonth(this.viewDate.getMonth() - 1); this.render(); };
                     this.nextBtn.onclick = () => { this.viewDate.setMonth(this.viewDate.getMonth() + 1); this.render(); };
@@ -628,7 +633,10 @@
 
                     const firstDay = new Date(year, month, 1).getDay();
                     const daysInMonth = new Date(year, month + 1, 0).getDate();
-                    const today = new Date(); today.setHours(0,0,0,0);
+                    
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    const todayTime = today.getTime();
 
                     for (let i = 0; i < firstDay; i++) {
                         const empty = document.createElement('div');
@@ -640,16 +648,27 @@
                         const dayEl = document.createElement('div');
                         dayEl.className = 'calendar-day';
                         dayEl.textContent = day;
+                        
                         const dateObj = new Date(year, month, day);
-                        if (dateObj < today) dayEl.classList.add('disabled');
-                        else {
+                        dateObj.setHours(0, 0, 0, 0);
+                        const dateTime = dateObj.getTime();
+
+                        if (dateTime < todayTime) {
+                            dayEl.classList.add('disabled');
+                        } else {
                             dayEl.onclick = () => {
-                                this.selectedDate = dateObj;
-                                this.input.value = dateObj.toISOString();
+                                this.selectedDate = new Date(dateObj);
+                                this.input.value = this.selectedDate.toISOString();
                                 this.render();
                             };
-                            if (this.selectedDate && dateObj.getTime() === this.selectedDate.getTime()) dayEl.classList.add('selected');
-                            if (dateObj.getTime() === today.getTime()) dayEl.classList.add('today');
+                            
+                            if (this.selectedDate && dateTime === this.selectedDate.getTime()) {
+                                dayEl.classList.add('selected');
+                            }
+                            
+                            if (dateTime === todayTime) {
+                                dayEl.classList.add('today');
+                            }
                         }
                         this.daysContainer.appendChild(dayEl);
                     }

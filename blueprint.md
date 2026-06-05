@@ -28,20 +28,24 @@ This project is a modern, responsive landing page for "Pearl Of Sean", a premium
 *   **Contact/Booking:** High-visibility CTAs for booking and WhatsApp inquiries.
 *   **Tour Detail Landing Page:** A dedicated, high-conversion page for the Yacht Hopping Tour with cinematic video background, sticky booking UX, and detailed itinerary.
 
-## 4. Current Task: Admin Panel & Voucher System Optimization
-*   **Quick Voucher System:** Implemented a new "Quick Voucher" generation tool for manual reservations.
-    *   **Creation Tool:** A dedicated form in the admin panel to quickly create guest records and generate sharable links.
-    *   **Voucher Page (`reservation-schedule.html`):** A professional, printable voucher view that fetches data from Firebase and displays tour details, guest info, and meeting instructions.
-*   **Today's Guest Statistics:** Added a "Today's Guests" stat card to the admin dashboard for real-time operational awareness.
-
-### Payment Flow Optimization
-*   **GCash QR Integration:** Implemented a direct payment flow for GCash. After a user submits their booking details, they are now presented with a scan-to-pay QR code (`gcash.jpg`) within the booking interface.
-*   **Payment Confirmation:** Added a "돈 보냈다! (Money Sent!)" button to the QR section. Clicking this button confirms the user has sent the funds and redirects them to the final thank-you page.
-*   **PayPal Maintenance Mode:** Marked the PayPal payment option as "Under Repair - 수리중" and disabled it. This provides clear communication to users that only GCash is currently available for direct digital payments.
-*   **Step-by-Step Logic:** Updated the multi-step form logic in `booking.html` to handle the transition from "Checkout Summary" to "GCash QR" seamlessly, ensuring a frictionless user journey.
+## 4. Current Task: Booking & Admin Panel Optimization
+*   **Same-Day Booking Fix:** Resolved issues preventing same-day reservations in `booking.html`.
+    *   **Robust Date Comparison:** Implemented a more reliable timestamp-based comparison to ensure "today" is never incorrectly disabled.
+    *   **Auto-Preselection:** Added logic to automatically pre-select the current date when the booking page loads, improving UX for last-minute travelers.
+*   **Admin Dashboard Synchronization:** Updated `admin.html` to ensure same-day bookings are correctly filtered and displayed in the "Today" tab, regardless of client-side timezone offsets.
+*   **Quick Voucher "Smart Paste" Enhancement:** Significantly improved the Auto-Fill parsing logic in `admin.html`.
+    *   **Spelling Resilience:** Added support for common variations like "hoping" (instead of "hopping").
+    *   **Multi-Pax Detection:** Enhanced parsing to correctly identify and separate adult and child guest counts from pasted text.
+    *   **Extended Name Parsing:** Improved detection of long guest names (e.g., "Lillian Aguinaldo Rodrigo").
+    *   **Workflow Optimization:** The paste box now automatically selects its content after a successful parse, allowing for rapid-fire entry of multiple bookings.
 
 ## 5. Project History
-### Admin Panel & Quick Voucher Integration
+### Booking & Admin Panel Optimization
+*   **Same-Day Reservation Fix:** Overhauled the custom `Calendar` class in `booking.html` to use normalized local dates for all availability checks. This ensures that users in any timezone can reliably book for the current date.
+*   **Today's Booking Visibility:** Synchronized the admin dashboard's filtering logic with the new booking date normalization, ensuring that "Today's Guests" and the "Today" tab are always accurate.
+*   **Advanced Smart Paste Parsing:** Rewrote the `qv-parse-btn` logic to handle tabs and spaces more effectively, supporting direct copy-pastes from complex spreadsheets or lists. Added logic to auto-fill both Korean and English name fields from a single name part.
+
+### Admin Panel & Quick Voucher System Optimization
 *   **Quick Voucher Feature:** Added a "Quick Voucher" card and modal to `admin.html`. Administrators can now create manual bookings and immediately generate a link to a professional reservation voucher.
 *   **Voucher Rendering:** Created `reservation-schedule.html` which dynamically renders guest and tour information. It includes intelligent "Tour Guidance" that provides meeting point details and Google Map links based on the tour type.
 *   **Today's Guest Statistics:** Added a fourth statistic card to the main dashboard specifically for "Today's Guests".

@@ -347,8 +347,8 @@
             const raw = document.getElementById('qv-smart-paste').value.trim();
             if (!raw) return;
 
-            // Example: 5/24 EMILY BESMONTE 3 LANDTOUR 1500
-            const parts = raw.split(/\s+/);
+            // Split by tabs or spaces
+            const parts = raw.split(/[\s\t]+/);
             
             // 1. Date (look for m/d)
             const datePart = parts.find(p => p.includes('/'));
@@ -358,29 +358,46 @@
                 document.getElementById('qv-date').value = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
             }
 
-            // 2. Pax (first single/double digit number after name)
-            const paxIndex = parts.findIndex((p, i) => i > 0 && /^\d+$/.test(p) && p.length <= 2);
-            if (paxIndex !== -1) {
-                document.getElementById('qv-adult').value = parts[paxIndex];
-                // Name is usually everything between date and pax
-                const dateIndex = parts.indexOf(datePart);
-                const nameParts = parts.slice(dateIndex + 1, paxIndex);
-                document.getElementById('qv-eng-name').value = nameParts.join(' ');
-                document.getElementById('qv-kor-name').value = nameParts.join(' ');
+            // 2. Pax (Look for numbers after the name)
+            // Name starts after date and ends before the first pax number
+            const dateIndex = parts.indexOf(datePart);
+            const firstPaxIndex = parts.findIndex((p, i) => i > dateIndex && /^\d+$/.test(p) && p.length <= 2);
+            
+            if (firstPaxIndex !== -1) {
+                document.getElementById('qv-adult').value = parts[firstPaxIndex];
+                
+                // Check if the next part is also a number (child pax)
+                if (parts[firstPaxIndex + 1] && /^\d+$/.test(parts[firstPaxIndex + 1]) && parts[firstPaxIndex + 1].length <= 2) {
+                    document.getElementById('qv-child').value = parts[firstPaxIndex + 1];
+                } else {
+                    document.getElementById('qv-child').value = '';
+                }
+
+                const nameParts = parts.slice(dateIndex + 1, firstPaxIndex);
+                const name = nameParts.join(' ');
+                document.getElementById('qv-eng-name').value = name;
+                document.getElementById('qv-kor-name').value = name;
             }
 
             // 3. Tour
-            if (raw.toUpperCase().includes('LAND')) qvTourSelect.value = 'land';
-            else if (raw.toUpperCase().includes('HOPPING') || raw.toUpperCase().includes('YACHT')) qvTourSelect.value = 'yacht';
-            else if (raw.toUpperCase().includes('WHALE')) qvTourSelect.value = 'whale';
+            const upperRaw = raw.toUpperCase();
+            if (upperRaw.includes('LAND')) qvTourSelect.value = 'land';
+            else if (upperRaw.includes('HOPPING') || upperRaw.includes('YACHT') || upperRaw.includes('HOPING')) qvTourSelect.value = 'yacht';
+            else if (upperRaw.includes('WHALE')) qvTourSelect.value = 'whale';
             qvTourSelect.dispatchEvent(new Event('change'));
 
-            // 4. Price (last number or number with currency)
-            const pricePart = parts.find(p => p.includes('₱') || (/^\d+$/.test(p) && p.length >= 3 && parts.indexOf(p) > paxIndex));
+            // 4. Price
+            const pricePart = parts.find(p => p.includes('₱') || (/^\d+$/.test(p) && p.length >= 3 && parts.indexOf(p) > firstPaxIndex));
             if (pricePart) {
                 const price = pricePart.replace(/[^0-9]/g, '');
                 document.getElementById('qv-total-price').value = price;
             }
+
+            // Optional: Clear the paste box after parsing to make it ready for next entry
+            // document.getElementById('qv-smart-paste').value = ''; 
+            // Actually, let's NOT clear it automatically in case they want to fix it, 
+            // but let's select the text so they can just paste over it.
+            document.getElementById('qv-smart-paste').select();
         });
 
         document.getElementById('close-quick-modal').addEventListener('click', () => qvModal.classList.add('hidden'));
@@ -547,21 +564,23 @@
             
             const today = new Date();
             today.setHours(0, 0, 0, 0);
+            const todayTime = today.getTime();
 
             let filtered = allDisplayRecords.filter(rec => {
                 // 1. Date Tab Filter
+                const recDate = rec.date ? new Date(rec.date) : null;
+                if (recDate) recDate.setHours(0, 0, 0, 0);
+                const recDateTime = recDate ? recDate.getTime() : null;
+
                 if (currentDateTab === 'today') {
-                    if (!rec.date) return false;
-                    const d = new Date(rec.date); d.setHours(0,0,0,0);
-                    if (d.getTime() !== today.getTime()) return false;
+                    if (!recDateTime) return false;
+                    if (recDateTime !== todayTime) return false;
                 } else if (currentDateTab === 'upcoming') {
-                    if (!rec.date) return false;
-                    const d = new Date(rec.date); d.setHours(0,0,0,0);
-                    if (d.getTime() <= today.getTime()) return false;
+                    if (!recDateTime) return false;
+                    if (recDateTime <= todayTime) return false;
                 } else if (currentDateTab === 'past') {
-                    if (!rec.date) return false;
-                    const d = new Date(rec.date); d.setHours(0,0,0,0);
-                    if (d.getTime() >= today.getTime()) return false;
+                    if (!recDateTime) return false;
+                    if (recDateTime >= todayTime) return false;
                 }
 
                 // 2. Tour Filter
